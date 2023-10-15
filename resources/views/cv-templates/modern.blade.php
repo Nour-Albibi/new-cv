@@ -1,85 +1,147 @@
 <!DOCTYPE html>
 <html lang="en" class="direction-ltr">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <title>@yield('title')</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" defer>
-    <link href="{{asset('cv-templates/css/modern.css')}}" rel="stylesheet" defer/>
-    <link rel="apple-touch-icon" sizes="180x180" href="">
-    <link rel="icon" type="image/png" sizes="32x32" href="">
-    <link rel="icon" type="image/png" sizes="16x16" href="">
-    <link rel="manifest" href="">
+    <title>Modern</title>
+    <link href="{{asset('cv-templates/css/modern.css')}}" rel="stylesheet"/>
     <!--Custom CSS-->
 </head>
-<body class="background">
-<div class="Home Home---Mobile">
-    <header class="Mobile--Header">
-        <div class="company-info">
-            <div class="info-icon"></div>
-            <x-template.sidebar-menu :restaurant="$restaurant"/>
-        </div>
-        <div class="logo">
-            <img src="{{asset('files/'.$restaurant->logo)}}" loading="lazy" width="102" height="43">
-        </div>
-        <div class="d-flex receipt-div @if(!$restaurant->CanShowCheckOrderBtn()) disable @endif">
-            <div class="receipt-icon"></div>
-            <p class="Text-400 T-400-xs">
-                {{__('ASK FOR RECEIPT')}}
-            </p>
-        </div>
-    </header>
-    <main>
-        @yield('main_content')
-    </main>
-    <!--    Float Menu Button Component -->
-    <!--    Navigation Type 1-->
-    @if($restaurant->restaurant_template_setting->navigation_id==1)
-        <x-template.float-menu-button/>
-        <!--Add Menu List -->
-        <div class="main-menu">
-            <div class="main-menu-container">
-                <!--Back Button Componenet-->
-                <x-template.back-button class="closeIcon back-btn-sm menu-close"/>
-                <ul class="main-menu-list ">
-                    @php $i=0 @endphp
-                    @foreach($restaurant->main_categories as $category)
-                        <li class="main-menu-list-item" @if($i%2!=0) class="dark" @endif category_id="{{$category->id}}">
-                            <p class="main_menu-title">{{$category->name}}</p>
-                            <div class="main-menu-img">
-                                <img class=""
-                                     src="{{asset('files/thumbnail/'.\App\Services\CategoryService::createImageThump($category))}}"
-                                     loading="lazy"/>
-                            </div>
-                        </li>
-                        @php $i++ @endphp
-                    @endforeach
-                </ul>
+<body>
+<div class="Home">
+    <div class="row">
+        <div class="col-personal">
+            <img class="personal-image" src="images/NoImage.avif" width="168" height="168" loading="lazy"/>
+            <div class="space-49"></div>
+            <div class="personal-info-section">
+                <div class="personal-info-title">CONTACT</div>
+                <div class="personal-info-description mt-10">
+                    <ul class="contact-list">
+                        <li><p class="strong">Address: 46 Roman Rd, Leeds, LS2 3ZR</p></li>
+                        <li><p class="strong">Phone: 07912 345 678</p></li>
+                        <li><p class="strong">Email: dom.webster@example.co.uk</p></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="space-41"></div>
+            <div class="personal-info-section">
+                <div class="personal-info-title">SKILLS</div>
+                <div class="personal-info-description mt-10">
+                    <ul class="skills-list">
+                        <li>Executive team leadership</li>
+                        <li>Multimillion pound P&L management expertise for South East region</li>
+                        <li>Client/Vendor relations</li>
+                        <li>Marketing/product line development</li>
+                        <li>Staff/training policy development</li>
+                        <li>Process improvement</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="space-41"></div>
+            <div class="personal-info-section">
+                <div class="personal-info-title">LANGUAGES</div>
+                <div class="personal-info-description">
+                    <div class="singlecolumn infobarpara mt-10">
+                        <div class="field">
+                            <span class="txt-bold" id="FIELD_FRFM1">English</span><span class="colon"><span
+                                    class="beforecolonspace"> </span><span dependency="FRFM">: </span></span>
+                            <span class="flt-right" id="FIELD_RATG1"></span>
+                        </div>
+                        <div class="rating-bar" dependency="RATV">
+                            <div class="inner-rating" id="FIELD_RATV1" type="width" style="width: 80%;"></div>
+                        </div>
+                        <div class="field field-ratt">
+                            <span id="FIELD_RATT1">Upper Intermediate</span>
+                        </div>
+                    </div>
+                    <div class="singlecolumn infobarpara mt-10">
+                        <div class="field">
+                            <span class="txt-bold" id="FIELD_FRFM">Arabic</span><span class="colon"><span
+                                    class="beforecolonspace"> </span><span dependency="FRFM">: </span></span>
+                            <span class="flt-right" id="FIELD_RATG"></span>
+                        </div>
+                        <div class="rating-bar" dependency="RATV">
+                            <div class="inner-rating" id="FIELD_RATV" type="width" style="width: 80%;"></div>
+                        </div>
+                        <div class="field field-ratt">
+                            <span id="FIELD_RATT">Upper Intermediate</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-@endif
-<!--Bottom Cart Info Bar Component-->
-    <x-cart.bottom-info-bar :cart="$cart" />
-    <!--Modal Component-->
-    <x-template.receipt-modal></x-template.receipt-modal>
-    <!-- Modal variants Component-->
-    <x-template.variants-modal></x-template.variants-modal>
+        <div class="col-main">
+            <div class="main-title">DOM WEBSTER</div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="458" height="8" viewBox="0 0 458 8" fill="none">
+                <path d="M0.732506 3.87695H457.931" stroke="black" stroke-width="6.66665" stroke-miterlimit="10"/>
+            </svg>
+            <div class="space-45"></div>
+            <div class="objective-section section">
+                <h3 class="section-title text-left">OBJECTIVE</h3>
+                <div class="section-description mt-7">
+                    <p>To find a fulfilling position where I can apply my skills and knowledge. </p>
+                </div>
+            </div>
+            <div class="space-45"></div>
+            <div class="summery-section section">
+                <h3 class="section-title text-left">PROFESSIONAL SUMMARY</h3>
+                <div class="section-description mt-15">
+                    <p>Accomplished Operations executive with a successful track record
+                        overseeing regional Marketing, IT, HR/training and property in
+                        company and franchise operations for a large chain of restaurants.
+                    </p>
+                </div>
+            </div>
+            <div class="space-45"></div>
+            <div class="experience-section section">
+                <h3 class="section-title text-left">EXPERIENCE</h3>
+                <div class="section-description mt-15 experience-item">
+                    <p class="strong" style="max-width:285px">Executive Vice President 09/2015 to 02/2019</p>
+                    <p class="strong">Pizza Hut UK & Ireland - St Albans, Herts</p>
+                    <ul class="work-duties mt-16 main-list">
+                        <li>Led operations involved in running the brand including Marketing,
+                            IT, HR/training, development/construction, property and P&L for 200
+                            store locations.
+                        </li>
+                        <li>Oversaw operations for all regional company and franchise locations.</li>
+                        <li>
+                            Assessed profitability of existing company processes to determine
+                            optimum organisational structure for maximum revenue growth.
+                        </li>
+                    </ul>
+                </div>
+                <div class="section-description mt-15 experience-item">
+                    <p class="strong" style="max-width:285px">Senior Vice President 08/2007 to 09/2015</p>
+                    <p class="strong">Café Rouge - London</p>
+                    <ul class="work-duties mt-16 main-list">
+                        <li>Led operations involved in running the brand including Marketing,
+                            IT, HR/training, development/construction, property and P&L for 200
+                            store locations.
+                        </li>
+                        <li>Oversaw operations for all regional company and franchise locations.</li>
+                        <li>
+                            Assessed profitability of existing company processes to determine
+                            optimum organisational structure for maximum revenue growth.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="space-45"></div>
+            <div class="education-section section">
+                <h3 class="section-title text-left">EDUCATION</h3>
+                <div class="section-description mt-15 education-item">
+                    <p class="strong">BA (Hons) : Business Management, 2006</p>
+                    <p class="strong">University Of Westminster - Greater London</p>
+                </div>
+            </div>
+            <div class="space-45"></div>
+            <div class="education-section section">
+                <h3 class="section-title text-left">QUALIFICATIONS</h3>
+                <div class="section-description mt-15 education-item">
+                    <p>CGMA (Chartered Global Management Accountant) conferred by
+                        the Chartered Institute of Management Accountants (CIMA), 2010 </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
-        integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
-<script
-    src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-    crossorigin="anonymous"
-></script>
-<!--Custom JS-->
-<script src="{{asset('assets/js/main.js')}}"></script>
-<script src="{{asset('assets/js/functions.js')}}"></script>
-@yield('customJS')
 </body>
 </html>

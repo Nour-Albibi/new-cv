@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CVController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomeController::class, 'index'])->name('home_page');
+Route::group(['middleware' => 'language'], function () {
+    Route::group(['prefix' => 'cv-builder'], function () {
+        Route::get('/',[CVController::class,'index']);
+        Route::get('/create',[CVController::class,'create']);
+        Route::post('saveCV',[CVController::class,'store'])->name('cv.store');
+    });
 });
