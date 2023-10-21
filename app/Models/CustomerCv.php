@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class CustomerCv extends Model
 {
     use HasFactory;
+    protected $fillable=['template_id','template_color','cv_language','customer_id','first_name',
+        'surename','first_name_ar','surename_ar','phone','email','image','open_for_remote','linkedlin_url',
+        'address_ar','address_en','city_town_ar','city_town_en','country_ar','country_en','postcode',
+        'website','driving_licence','nationality'];
     public function template(){
         return $this->belongsTo('App\Models\Template');
     }

@@ -15,6 +15,11 @@
 @section('main_content')
     <div data-elementor-type="wp-page" data-elementor-id="293" class="elementor elementor-293"
          data-elementor-post-type="page">
+        <form name="start-cv-template" method="post" id="start-cv-template" action="">
+            @csrf
+            <input type="hidden" name="cvColor" value=""/>
+            <input type="hidden" name="cvTemplate" value="{{$cvTemplates[0]->id ?? ''}}" />
+        </form>
         <section data-particle_enable="false" data-particle-mobile-disabled="false"
                  class="elementor-section elementor-top-section elementor-element elementor-element-9b56a60 elementor-section-boxed elementor-section-height-default elementor-section-height-default exad-glass-effect-no exad-sticky-section-no"
                  data-id="9b56a60" data-element_type="section"
@@ -89,9 +94,9 @@
                                     data-id="9c6a0d3" data-element_type="column">
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div
-                                            class="elementor-element elementor-element-9a139a1 elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
+                                            class="cv-color elementor-element elementor-element-9a139a1 elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
                                             data-id="9a139a1" data-element_type="widget"
-                                            data-widget_type="icon.default">
+                                            data-widget_type="icon.default" color="#4A4A4A">
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-icon-wrapper">
                                                     <div class="elementor-icon">
@@ -106,9 +111,9 @@
                                     data-id="4d1cc50" data-element_type="column">
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div
-                                            class="elementor-element elementor-element-92a143c elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
+                                            class="cv-color elementor-element elementor-element-92a143c elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
                                             data-id="92a143c" data-element_type="widget"
-                                            data-widget_type="icon.default">
+                                            data-widget_type="icon.default" color="#102A73">
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-icon-wrapper">
                                                     <div class="elementor-icon">
@@ -123,9 +128,9 @@
                                     data-id="76c0e9c" data-element_type="column">
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div
-                                            class="elementor-element elementor-element-6db4b45 elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
+                                            class="cv-color elementor-element elementor-element-6db4b45 elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
                                             data-id="6db4b45" data-element_type="widget"
-                                            data-widget_type="icon.default">
+                                            data-widget_type="icon.default" color="#496267">
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-icon-wrapper">
                                                     <div class="elementor-icon">
@@ -140,9 +145,9 @@
                                     data-id="eac9126" data-element_type="column">
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div
-                                            class="elementor-element elementor-element-7cefe40 elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
+                                            class="cv-color elementor-element elementor-element-7cefe40 elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
                                             data-id="7cefe40" data-element_type="widget"
-                                            data-widget_type="icon.default">
+                                            data-widget_type="icon.default" color="#C28E56">
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-icon-wrapper">
                                                     <div class="elementor-icon">
@@ -157,9 +162,9 @@
                                     data-id="e8ee68f" data-element_type="column">
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div
-                                            class="elementor-element elementor-element-a8aca47 elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
+                                            class="cv-color elementor-element elementor-element-a8aca47 elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
                                             data-id="a8aca47" data-element_type="widget"
-                                            data-widget_type="icon.default">
+                                            data-widget_type="icon.default" color="#B9481F">
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-icon-wrapper">
                                                     <div class="elementor-icon">
@@ -174,8 +179,8 @@
                                     data-id="205b2cc" data-element_type="column">
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div
-                                            class="elementor-element elementor-element-0ed9f90 elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
-                                            data-id="0ed9f90" data-element_type="widget"
+                                            class="cv-color elementor-element elementor-element-0ed9f90 elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
+                                            data-id="0ed9f90" data-element_type="widget" color="#944150"
                                             data-widget_type="icon.default">
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-icon-wrapper">
@@ -191,9 +196,9 @@
                                     data-id="eab12b8" data-element_type="column">
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div
-                                            class="elementor-element elementor-element-2176bb8 elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
+                                            class="cv-color elementor-element elementor-element-2176bb8 elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
                                             data-id="2176bb8" data-element_type="widget"
-                                            data-widget_type="icon.default">
+                                            data-widget_type="icon.default" color="#69727d">
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-icon-wrapper">
                                                     <div class="elementor-icon">
@@ -216,24 +221,29 @@
                                  data-id="36d6db7" data-element_type="section"
                                  data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
                             <div class="elementor-container elementor-column-gap-custom">
+                                @php $i=0; @endphp
                                 @foreach($cvTemplates as $template)
                                 <div
                                     class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-04e57a2 exad-glass-effect-no exad-sticky-section-no"
                                     data-id="04e57a2" data-element_type="column">
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div
-                                            class="elementor-element elementor-element-1223de4 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-exad-exclusive-card"
+                                            class="cv-template @if($i==0) active @endif elementor-element elementor-element-1223de4 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-exad-exclusive-card"
                                             data-id="1223de4" data-element_type="widget"
-                                            data-widget_type="exad-exclusive-card.default">
+                                            data-widget_type="exad-exclusive-card.default" cv-template-id="{{$template->id}}">
                                             <div class="elementor-widget-container">
                                                 <div class="exad-card left text_on_image yes">
                                                     <div class="exad-card-thumb">
+                                                        @if($i==0)
+                                                            <x-cv-templates.template1></x-cv-templates.template1>
+                                                            @else
                                                         <img width="700" height="990"
                                                              src="{{asset('files/'.$template->image)}}"
                                                              class="attachment-full size-full wp-image-211" alt=""
                                                              decoding="async"
                                                              srcset="{{asset('files/'.$template->image)}} 700w, {{asset('files/'.$template->image)}} 212w"
                                                              sizes="(max-width: 700px) 100vw, 700px" loading="lazy">
+                                                            @endif
                                                     </div>
                                                     <div class="exad-card-body">
                                                     </div>
@@ -249,6 +259,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                    @php $i++ @endphp
                                 @endforeach
                             </div>
                         </section>
@@ -281,10 +292,10 @@
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-button-wrapper">
                                                     <a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-float"
-                                                       href="https://projects.datatime4it.com/chtml">
-						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-text">Back</span>
-		</span>
+                                                       href="{{url()->previous()}}">
+                                                            <span class="elementor-button-content-wrapper">
+                                                            <span class="elementor-button-text">{{__('Back')}}</span>
+	                                                	</span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -317,10 +328,10 @@
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-button-wrapper">
                                                     <a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-float"
-                                                       href="start2.html">
-						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-text">Choose This Template</span>
-		</span>
+                                                       href="javascript:void(0)" onclick="$('form#start-cv-template').submit()">
+                                                            <span class="elementor-button-content-wrapper">
+                                                            <span class="elementor-button-text">{{__('Choose This Template')}}</span>
+		                                                </span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -336,4 +347,20 @@
     </div>
 @endsection
 @section('custom_js')
+    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=62e3f93cf0ce683fcdd5ff7d" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script>
+        var cv_color='';
+        $('.cv-color').on('click',function (){
+            cv_color=$(this).attr('color');
+            $('.cv-color').find('.elementor-icon').removeClass('active');
+            $(this).find('.elementor-icon').addClass('active');
+            $('path#sidebar_color').attr('style','fill: '+cv_color +' !important');
+            $('input[name=cvColor]').val(cv_color);
+        });
+        $('.cv-template').on('click',function(){
+           $('.cv-template').removeClass('active');
+           $(this).addClass('active');
+           $('input[name=cvTemplate]').val($(this).attr('cv-template-id'));
+        });
+    </script>
 @endsection

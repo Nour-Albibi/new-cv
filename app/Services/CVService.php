@@ -1,12 +1,319 @@
 <?php
 
 namespace App\Services;
+
+use App\Models\CustomerCv;
+use App\Models\CustomerCvCourse;
+use App\Models\CustomerCvEducation;
+use App\Models\CustomerCvLanguage;
+use App\Models\CustomerCvProject;
+use App\Models\CustomerCvSkill;
+use App\Models\CustomerCvSummery;
+use App\Models\CustomerCvWorkHistory;
 use App\Models\Template;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Jackiedo\Cart\Facades\Cart;
+use function Ramsey\Uuid\v1;
+
 class CVService
 {
-    public static function getCVTemplates(){
+    public static function getCVTemplates()
+    {
         return Template::all();
     }
+
+    public static function AddCVToCart($data)
+    {
+        $cart = self::refreshCart();
+        $cv = Template::find($data['cvTemplate']);
+        if ($cv != null) {
+            $addedItem = $cart->addItem(array(
+                'id' => $cv->id,
+                'template_id' => $cv->id,
+                'title' => $cv->name_en,
+                'cv_language' => 1,
+                'cv_color' => $data['cvColor'] ?? '',
+                'price' => 0,
+                'quantity' => 1,
+                'options' => array(),
+                'extra_info' => [
+                    'date_time' => [
+                        'added_at' => time(),
+                    ],
+                ],
+            ));
+            return $addedItem;
+        }
+
+    }
+
+    public static function updateItemLanguage($data)
+    {
+        $cart = Cart::name('cv');
+        return $cart->updateItem($data['item_hash'], ['cv_language' => $data['cv_language'] ?? 1]);
+    }
+
+    public static function refreshCart()
+    {
+        $cart = Cart::name('cv');
+        if ($cart->getDetails()->get('quantities_sum') > 1) {
+            $cart->destroy();
+        }
+        return Cart::name('cv');
+    }
+
+    public static function initCart()
+    {
+        return Cart::name('cv');
+    }
+
+    public static function AddItemToCart($cart, $customerCV)
+    {
+        $cv = Template::find(session('chosen_template_id'));
+        if ($cv != null) {
+            $addedItem = $cart->addItem(array(
+                'id' => $customerCV->id,
+                'template_id' => $cv->id,
+                'title' => $cv->name_en,
+                'cv_language' => 1,
+                'cv_color' => session('chosen_cv_color'),
+                'price' => 0,
+                'quantity' => 1,
+                'options' => array(),
+                'extra_info' => [
+                    'date_time' => [
+                        'added_at' => time(),
+                    ],
+                ],
+                'model' => $customerCV
+            ));
+            return $addedItem;
+        }
+
+    }
+
+    public static function storeCVData($step_num, $data)
+    {
+        switch ($step_num) {
+            case 0:
+                $customerCV = self::storePersonalInformation($data);
+                if ($customerCV != null) {
+                    $cart = self::initCart();
+                    self::AddItemToCart($cart, $customerCV);
+                }
+                break;
+            case 1:
+                self::storeWorkHistory($data);
+                break;
+            case 2:
+                self::storeProjects($data);
+                break;
+            case 4:
+                self::storeEducation($data);
+                break;
+            case 5:
+                self::storeCourses($data);
+                break;
+            case 6:
+                self::storeSkills($data);
+                break;
+            case 7:
+                self::storeSummary($data);
+                break;
+            case 8:
+                self::storeLanguages($data);
+                break;
+        }
+    }
+    public static function storeLanguages($data){
+        $data = self::getDataArraysFromRequest($data);
+        $cvItem = self::getCVItem();
+        if (!empty($cvItem)) {
+            foreach ($data as $language) {
+                CustomerCvLanguage::create([
+                    'customer_cv_id' => $cvItem->id,
+                    'language_ar' => $language['language_ar'] ?? '',
+                    'language_en' => $language['language_en'] ?? '',
+                    'language_id' => $language['language_id'] ?? '',
+                    'level_ar' => $language['level_ar'] ?? '',
+                    'level_en' => $language['level_en'] ?? '',
+                    'information_ar' => $language['information_ar'] ?? '',
+                    'information_en' => $language['information_en'] ?? '',
+                ]);
+            }
+        }
+        return true;
+    }
+    public static function storeSummary($data)
+    {
+        $cvItem = self::getCVItem();
+        if (!empty($cvItem)) {
+            CustomerCvSummery::create([
+                'customer_cv_id' => $cvItem->id,
+                'content_ar' => $data['content_ar'] ?? '',
+                'content_en' => $data['content_en'] ?? '',
+            ]);
+        }
+        return true;
+    }
+
+    public static function storeSkills($data)
+    {
+        $data = self::getDataArraysFromRequest($data);
+        $cvItem = self::getCVItem();
+        if (!empty($cvItem)) {
+            foreach ($data as $skill) {
+                CustomerCvSkill::create([
+                    'customer_cv_id' => $cvItem->id,
+                    'content_ar' => $skill['content_ar'] ?? '',
+                    'content_en' => $skill['content_en'] ?? '',
+                    'skill_id' => $skill['skill_id'] ?? '',
+                ]);
+            }
+        }
+        return true;
+    }
+
+    public static function storeCourses($data)
+    {
+        $data = self::getDataArraysFromRequest($data);
+        $cvItem = self::getCVItem();
+        if (!empty($cvItem)) {
+            foreach ($data as $course) {
+                CustomerCvCourse::create([
+                    'customer_cv_id' => $cvItem->id,
+                    'course_name_ar' => $course['course_name_ar'] ?? '',
+                    'course_name_en' => $course['course_name_en'] ?? '',
+                    'trainer_ar' => $course['trainer_ar'] ?? '',
+                    'trainer_en' => $course['trainer_en'] ?? '',
+                    'start_date' => $course['start_date'] ?? '',
+                    'end_date' => $course['end_date'] ?? '',
+                ]);
+            }
+        }
+        return true;
+    }
+
+    public static function storeEducation($data)
+    {
+        $data = self::getDataArraysFromRequest($data);
+        $cvItem = self::getCVItem();
+        if (!empty($cvItem)) {
+            foreach ($data as $education) {
+                CustomerCvEducation::create([
+                    'customer_cv_id' => $cvItem->id,
+                    'institution_name_en' => $education['institution_name_en'] ?? '',
+                    'institution_name_ar' => $education['institution_name_ar'] ?? '',
+                    'city_ar' => $education['city_ar'] ?? '',
+                    'city_en' => $education['city_en'] ?? '',
+                    'qualification_id' => $education['qualification_id'] ?? '',
+                    'field_study_ar' => $education['field_study_ar'] ?? '',
+                    'field_study_en' => $education['field_study_en'] ?? '',
+                    'honours_ar' => $education['honours_ar'] ?? '',
+                    'honours_en' => $education['honours_en'] ?? '',
+                    'start_date' => $education['start_date'] ?? '',
+                    'end_date' => $education['end_date'] ?? '',
+                ]);
+            }
+        }
+        return true;
+    }
+
+    public static function storeProjects($data)
+    {
+        $data = self::getDataArraysFromRequest($data);
+        $cvItem = self::getCVItem();
+        if (!empty($cvItem)) {
+            foreach ($data as $project) {
+                CustomerCvProject::create([
+                    'customer_cv_id' => $cvItem->id,
+                    'project_name_en' => $project['project_name_en'] ?? '',
+                    'project_name_ar' => $project['project_name_ar'] ?? '',
+                    'description_en' => $project['description_en'] ?? '',
+                    'description_ar' => $project['description_ar'] ?? '',
+                    'start_date' => $project['start_date'] ?? '',
+                    'end_date' => $project['end_date'] ?? '',
+                ]);
+            }
+        }
+        return true;
+    }
+
+    public static function storeWorkHistory($data)
+    {
+        $data = self::getDataArraysFromRequest($data);
+        $cvItem = self::getCVItem();
+        foreach ($data as $work) {
+            CustomerCvWorkHistory::create([
+                'customer_cv_id' => $cvItem->id,
+                'job_title_ar' => $work['job_title_ar'] ?? '',
+                'job_title_en' => $work['job_title_en'] ?? '',
+                'employeer_ar' => $work['employeer_ar'] ?? '',
+                'employeer_en' => $work['employeer_en'] ?? '',
+                'city_ar' => $work['city_ar'] ?? '',
+                'city_en' => $work['city_en'] ?? '',
+                'country_ar' => $work['country_ar'] ?? '',
+                'country_en' => $work['country_en'] ?? '',
+                'start_date' => $work['start_date'] ?? null,
+                'end_date' => $work['end_date'] ?? null,
+                'current' => $work['current'] ?? 0,
+                'experience_description_ar' => $work['experience_description_ar'] ?? '',
+                'experience_description_en' => $work['experience_description_en'] ?? ''
+            ]);
+        }
+        return true;
+    }
+
+    public static function storePersonalInformation($data)
+    {
+        $customer_id = 0;
+        if (Auth::guard('customer')->check()) {
+            $customer_id = Auth::guard('customer')->user()->id;
+        }
+        if (!empty(session('chosen_template_id')) && !empty(session('chosen_cv_color')) && !empty(session('chosen_cv_language'))) {
+            $customerCV = CustomerCv::create([
+                'template_id' => session('chosen_template_id'),
+                'template_color' => session('chosen_cv_color'),
+                'cv_language' => session('chosen_cv_language'),
+                'customer_id' => $customer_id,
+                'first_name' => $data['first_name'],
+                'first_name_ar' => $data['first_name_ar'] ?? '',
+                'surename' => $data['surename'],
+                'surename_ar' => $data['surename_ar'] ?? '',
+                'phone' => $data['phone'],
+                'email' => $data['email'] ?? '',
+                'image' => $data['image'] ?? '',
+                'open_for_remote' => $data['open_for_remote'] ?? 0,
+                'linkedlin_url' => $data['linkedlin_url'] ?? '',
+                'address_ar' => $data['address_ar'] ?? '',
+                'address_en' => $data['address_en'] ?? '',
+                'city_town_ar' => $data['city_town_ar'] ?? '',
+                'city_town_en' => $data['city_town_en'] ?? '',
+                'country_ar' => $data['country_ar'] ?? '',
+                'country_en' => $data['country_en'] ?? '',
+                'postcode' => $data['postcode'] ?? '',
+                'website' => $data['website'] ?? '',
+                'driving_licence' => $data['driving_licence'] ?? '',
+                'nationality' => $data['nationality'] ?? '',
+            ]);
+            return $customerCV;
+        }
+        return null;
+    }
+
+    public static function getCVItem()
+    {
+        $cart = Cart::name('cv');
+        return $cart->getDetails()->get('items')->first();
+    }
+
+    public static function getDataArraysFromRequest($data)
+    {
+        unset($data['_token']);
+        unset($data['step']);
+        return $data;
+    }
+
 }

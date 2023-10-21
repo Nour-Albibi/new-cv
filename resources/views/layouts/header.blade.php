@@ -36,16 +36,34 @@
                                                         <span class="elementor-icon-list-text">AR</span>
                                                     </a>
                                                 </li>
-                                                <li class="elementor-icon-list-item elementor-inline-item">
-                                                    <a href="">
-                                                        <span class="elementor-icon-list-text">{{__('Sign in')}}</span>
-                                                    </a>
-                                                </li>
-                                                <li class="elementor-icon-list-item elementor-inline-item">
-                                                    <a href="">
-                                                        <span class="elementor-icon-list-text">{{__('Sign up')}}</span>
-                                                    </a>
-                                                </li>
+                                                @if(auth()->guard('customer')->check())
+                                                    <li class="elementor-icon-list-item elementor-inline-item">
+                                                        <a href="#">
+                                                            <span
+                                                                class="elementor-icon-list-text">{{__('My Profile')}}</span>
+                                                        </a>
+                                                    </li>
+                                                @elseif(auth()->guard('company')->check())
+                                                    <li class="elementor-icon-list-item elementor-inline-item">
+                                                        <a href="#">
+                                                            <span
+                                                                class="elementor-icon-list-text">{{__('My Profile')}}</span>
+                                                        </a>
+                                                    </li>
+                                                @else
+                                                    <li class="elementor-icon-list-item elementor-inline-item">
+                                                        <a href="{{route('customer.login')}}">
+                                                            <span
+                                                                class="elementor-icon-list-text">{{__('Sign in')}}</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="elementor-icon-list-item elementor-inline-item">
+                                                        <a href="{{route('customer.register')}}">
+                                                            <span
+                                                                class="elementor-icon-list-text">{{__('Sign up')}}</span>
+                                                        </a>
+                                                    </li>
+                                                @endif
                                             </ul>
                                         </div>
                                     </div>
@@ -90,13 +108,21 @@
                                                 class="elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-horizontal e--pointer-underline e--animation-drop-out">
                                                 <ul id="menu-1-3cb49089" class="elementor-nav-menu">
                                                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-96">
-                                                        <a href="#" class="elementor-item elementor-item-anchor">{{__('Cover Letter')}}</a></li>
+                                                        <a href="#"
+                                                           class="elementor-item elementor-item-anchor">{{__('Cover Letter')}}</a>
+                                                    </li>
                                                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-98">
-                                                        <a href="#" class="elementor-item elementor-item-anchor">{{__('CV Templates')}}</a></li>
+                                                        <a href="#"
+                                                           class="elementor-item elementor-item-anchor">{{__('CV Templates')}}</a>
+                                                    </li>
                                                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-99">
-                                                        <a href="#" class="elementor-item elementor-item-anchor">{{__('About us')}}</a></li>
+                                                        <a href="#"
+                                                           class="elementor-item elementor-item-anchor">{{__('About us')}}</a>
+                                                    </li>
                                                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-97">
-                                                        <a href="#" class="elementor-item elementor-item-anchor">{{__('Contact us')}}</a></li>
+                                                        <a href="#"
+                                                           class="elementor-item elementor-item-anchor">{{__('Contact us')}}</a>
+                                                    </li>
                                                 </ul>
                                             </nav>
                                             <div class="elementor-menu-toggle" role="button" tabindex="0"
@@ -139,7 +165,7 @@
                                         <div class="elementor-widget-container">
                                             <div class="elementor-button-wrapper">
                                                 <a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-float"
-                                                   href="startcv.html"><span class="elementor-button-content-wrapper">
+                                                   href="{{route('cv.start')}}"><span class="elementor-button-content-wrapper">
                                                         <span class="elementor-button-text">{{__('Start Now')}}</span>
 		                                         </span>
                                                 </a>
