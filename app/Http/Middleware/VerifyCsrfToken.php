@@ -12,6 +12,10 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        //
+        'cv-builder/AddNewWorkHistory',
+        'cv-builder/AddProject',
+        'cv-builder/AddEducation',
+        'cv-builder/AddCourse',
+        'cv-builder/AddLanguage'
     ];
 }
