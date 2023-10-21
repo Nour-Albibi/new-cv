@@ -1,6 +1,13 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CVController;
+use App\Http\Controllers\CVCourseController;
+use App\Http\Controllers\CVEducationController;
+use App\Http\Controllers\CVLanguageController;
+use App\Http\Controllers\CVProjectController;
+use App\Http\Controllers\CVWorkHistoryController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,12 +21,24 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [HomeController::class, 'index'])->name('home_page');
 Route::group(['middleware' => 'language'], function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home_page');
+    Route::get('/home', [HomeController::class, 'index']);
+    Route::group(['prefix' => 'customer'], function () {
+        Route::get('/signup',[AuthController::class,'getSignupForm'])->name('customer.register');
+        Route::post('/doSignup',[AuthController::class,'doSignup'])->name('customer.signup');
+        Route::get('/login',[AuthController::class,'getLoginForm'])->name('customer.login');
+        Route::post('/doLogin',[AuthController::class,'doLogin'])->name('customer.doLogin');
+    });
     Route::group(['prefix' => 'cv-builder'], function () {
-        Route::get('/',[CVController::class,'index']);
+        Route::match(['post','get'],'/',[CVController::class,'index'])->name('cv.start');
+        Route::post('create',[CVController::class,'create'])->name('cv.create');
         Route::get('/create',[CVController::class,'create']);
         Route::post('saveCV',[CVController::class,'store'])->name('cv.store');
+        Route::post('AddNewWorkHistory',[CVWorkHistoryController::class,'AddNewWorkHistory']);
+        Route::post('AddProject',[CVProjectController::class,'AddProject']);
+        Route::post('AddEducation',[CVEducationController::class,'AddEducation']);
+        Route::post('AddCourse',[CVCourseController::class,'AddCourse']);
+        Route::post('AddLanguage',[CVLanguageController::class,'AddLanguage']);
     });
 });
