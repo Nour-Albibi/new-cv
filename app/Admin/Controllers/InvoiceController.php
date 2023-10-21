@@ -28,19 +28,27 @@ class InvoiceController extends AdminController
 
         $grid->column('invoice_no', __('Invoice no'));
         $grid->column('subscription_id', __('Subscription id'));
-        $grid->column('customer_id', __('Customer id'));
-        $grid->column('cutomer_type', __('Cutomer type'));
-        $grid->column('package_fee', __('Package fee'));
-        $grid->column('sub_total', __('Sub total'));
+        $grid->column('customer_id',__('Customer name'))->display(function (){
+            $name=$this->customer->first_name.' '.$this->customer->last_name;
+            return $name;
+        });
+        // $grid->column('customer.first_name'.' '.'customer.lastname');
+        // $grid->column('customer_id', __('Customer id'));
+        $grid->column('cutomer_type', __('Cutomer type'))->display(function (){
+            return ($this->customer_type == 1) ? 'customer' : 'company';
+            });
+        // $grid->column('package_fee', __('Package fee'));
+        // $grid->column('sub_total', __('Sub total'));
         $grid->column('discount_value', __('Discount value'));
-        $grid->column('discount_id', __('Discount id'));
+        // $grid->column('discount_id', __('Discount id'));
         $grid->column('coupon_code', __('Coupon code'));
         $grid->column('total_amount', __('Total amount'));
         $grid->column('invoice_date', __('Invoice date'));
         $grid->column('status', __('Status'));
-        $grid->column('payment_gateway', __('Payment gateway'));
+        // $grid->column('payment_gateway', __('Payment gateway'));
         $grid->column('payment_status', __('Payment status'));
-        $grid->column('created_at', __('Created at'));
+        // $grid->column('created_at', __('Created at'));
+        $grid->disableCreateButton();
 
         return $grid;
     }

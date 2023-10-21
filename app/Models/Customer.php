@@ -31,4 +31,7 @@ class Customer  extends Authenticatable
     public function customer_cv(){
         return $this->hasMany('App\Models\CustomerCv','customer_id');
     }
+    public function invoice(){
+        return $this->hasMany('App\Models\Invoice','customer_id');
+    }
 }
