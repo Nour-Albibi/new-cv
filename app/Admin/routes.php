@@ -35,4 +35,5 @@ Route::group([
     $router->resource('customer-cv-skills', CustomerCvSkillController::class);
     $router->resource('customer-cv-summeries', CustomerCvSummeryController::class);
     $router->resource('customer-cv-work-histories', CustomerCvWorkHistoryController::class);
+    $router->resource('coupons', CouponController::class);
 });
