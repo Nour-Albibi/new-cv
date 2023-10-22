@@ -28,10 +28,16 @@ class Customer  extends Authenticatable
     public function subscription(){
         return $this->hasMany('App\Models\CustomerSubscription','user_id');
     }
+    public function cv(){
+        return $this->hasMany('App\Models\CustomerCv','customer_id');
+    }
     public function customer_cv(){
         return $this->hasMany('App\Models\CustomerCv','customer_id');
     }
     public function invoice(){
         return $this->hasMany('App\Models\Invoice','customer_id');
+    }
+    public function syncCV($cv_id){
+        CustomerCv::where('id',$cv_id)->update(['customer_id'=>$this->id]);
     }
 }

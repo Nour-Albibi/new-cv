@@ -16,9 +16,11 @@
                             <form id="cv_heading_form"
                                   class="wpforms-validate wpforms-form wpforms-ajax-form cv_heading_form"
                                   data-formid="412" method="post" enctype="multipart/form-data"
-                                  action="/"
+                                  action="{{route('cv.storeFirstStepData')}}"
                                   data-token="bd03f5379139322e31b053c6ab97fff9">
                                 @csrf
+                                <input type="hidden" name="step" value="0"/>
+                                <input type="hidden" name="redirect_after_login" value="{{url('cv-builder/create?step=1')}}"/>
                                 <noscript class="wpforms-error-noscript">
                                     {{__('Please enable JavaScript in your browser to complete this form.')}}
                                 </noscript>
@@ -30,7 +32,7 @@
                                                for="wpforms-412-field_2">{{__('FIRST NAME')}}</label><input
                                             type="text" id="wpforms-412-field_2"
                                             class="wpforms-field-large input_required" required name="first_name"
-                                            placeholder="{{__('FIRST NAME')}}">
+                                            placeholder="{{__('FIRST NAME')}}" value="{{CVSession('customer_cv_data','first_name')}}">
                                     </div>
                                     <div id="wpforms-412-field_3-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half wpforms-one-half"
@@ -39,7 +41,7 @@
                                                for="wpforms-412-field_3">{{__('SURNAME')}}</label><input
                                             type="text" id="wpforms-412-field_3"
                                             class="wpforms-field-large input_required" required name="surename"
-                                            placeholder="{{__('SURNAME')}}">
+                                            placeholder="{{__('SURNAME')}}" value="{{CVSession('customer_cv_data','surename')}}">
                                     </div>
                                     <div id="wpforms-412-field_4-container"
                                          class="wpforms-field wpforms-field-phone wpforms-one-half wpforms-first"
@@ -49,7 +51,7 @@
                                             type="tel" id="wpforms-412-field_4"
                                             class="wpforms-field-large wpforms-smart-phone-field input_required"
                                             data-rule-smart-phone-field="true" required
-                                            name="phone" placeholder="{{__('Phone')}}">
+                                            name="phone" placeholder="{{__('Phone')}}" value="{{CVSession('customer_cv_data','phone')}}">
                                     </div>
                                     <div id="wpforms-412-field_5-container"
                                          class="wpforms-field wpforms-field-email wpforms-one-half"
@@ -58,7 +60,7 @@
                                                for="wpforms-412-field_5">{{__('EMAIL ADDRESS')}}</label><input
                                             type="email" id="wpforms-412-field_5"
                                             class="wpforms-field-large" name="email"
-                                            placeholder="{{__('EMAIL ADDRESS')}}">
+                                            placeholder="{{__('EMAIL ADDRESS')}}" value="{{CVSession('customer_cv_data','email')}}">
                                     </div>
                                     <div id="wpforms-412-field_6-container"
                                          class="wpforms-field wpforms-field-checkbox"
@@ -92,7 +94,7 @@
                                                                   id="wpforms-412-field_13"
                                                                   class="wpforms-field-large"
                                                                   name="address_{{$lang}}"
-                                                                  placeholder="{{__('STREET ADDRESS')}}">
+                                                                  placeholder="{{__('STREET ADDRESS')}}" value="{{CVSession('customer_cv_data','address_'.$lang)}}">
                                     </div>
                                     <div id="wpforms-412-field_14-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half"
@@ -101,7 +103,7 @@
                                                for="wpforms-412-field_14">{{__('CITY/TOWN')}}</label><input
                                             type="text" id="wpforms-412-field_14"
                                             class="wpforms-field-large" name="city_town_{{$lang}}"
-                                            placeholder="{{__('CITY/TOWN')}}">
+                                            placeholder="{{__('CITY/TOWN')}}" value="{{CVSession('customer_cv_data','city_town_'.$lang)}}">
                                     </div>
                                     <div id="wpforms-412-field_15-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half wpforms-first"
@@ -110,7 +112,7 @@
                                                for="wpforms-412-field_15">{{__('COUNTRY')}}</label><input
                                             type="text" id="wpforms-412-field_15"
                                             class="wpforms-field-large" name="country_{{$lang}}"
-                                            placeholder="{{__('COUNTRY')}}">
+                                            placeholder="{{__('COUNTRY')}}" value="{{CVSession('customer_cv_data','country_'.$lang)}}">
                                     </div>
                                     <div id="wpforms-412-field_16-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half"
@@ -118,7 +120,7 @@
                                         <label class="wpforms-field-label"
                                                for="wpforms-412-field_16">{{__('POSTCODE')}}</label><input
                                             type="text" id="wpforms-412-field_16"
-                                            class="wpforms-field-large" name="postcode">
+                                            class="wpforms-field-large" name="postcode" value="{{CVSession('customer_cv_data','postcode')}}">
                                     </div>
                                     <div id="wpforms-412-field_17-container"
                                          class="wpforms-field wpforms-field-html"
@@ -139,7 +141,7 @@
                                                for="wpforms-412-field_18">{{__('LINKEDIN')}}</label><input
                                             type="text" id="wpforms-412-field_18"
                                             class="wpforms-field-large" name="linkedin"
-                                            placeholder="{{__('LINKEDIN')}}">
+                                            placeholder="{{__('LINKEDIN')}}" value="{{CVSession('customer_cv_data','linkedin')}}">
                                     </div>
                                     <div id="wpforms-412-field_20-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half"
@@ -148,7 +150,7 @@
                                                for="wpforms-412-field_20">{{__('WEBSITE')}}</label><input
                                             type="text" id="wpforms-412-field_20"
                                             class="wpforms-field-large" name="website"
-                                            placeholder="{{__('WEBSITE')}}">
+                                            placeholder="{{__('WEBSITE')}}" value="{{CVSession('customer_cv_data','website')}}">
                                     </div>
                                     <div id="wpforms-412-field_21-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half wpforms-first"
@@ -158,7 +160,7 @@
                                         <input type="text"
                                                                   id="wpforms-412-field_21"
                                                                   class="wpforms-field-large"
-                                                                  name="driving_licence">
+                                                                  name="driving_licence" value="{{CVSession('customer_cv_data','driving_licence')}}">
                                     </div>
                                     <div id="wpforms-412-field_22-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half"
@@ -167,7 +169,7 @@
                                                for="wpforms-412-field_22">{{__('NATIONALITY')}}</label><input
                                             type="text" id="wpforms-412-field_22"
                                             class="wpforms-field-large" name="nationality"
-                                            placeholder="{{__('NATIONALITY')}}">
+                                            placeholder="{{__('NATIONALITY')}}" value="{{CVSession('customer_cv_data','nationality')}}">
                                     </div>
                                     <div id="wpforms-412-field_24-container"
                                          class="wpforms-field wpforms-field-file-upload"
@@ -195,20 +197,11 @@
                                         </div>
                                         <input type="text" class="dropzone-input"
                                                style="position:absolute!important;clip:rect(0,0,0,0)!important;height:1px!important;width:1px!important;border:0!important;overflow:hidden!important;padding:0!important;margin:0!important;"
-                                               id="wpforms-412-field_24" name="image">
+                                               id="wpforms-412-field_24" name="image" value="{{CVSession('customer_cv_data','image')}}">
                                     </div>
                                 </div>
-                                <div class="wpforms-submit-container">
-                                    <button type="submit" name="wpforms[submit]"
-                                            class="wpforms-submit " id="wpforms-submit-412"
-                                            value="wpforms-submit" aria-live="assertive"></button>
-                                    <img decoding="async"
-                                         src="{{asset('plugins/wpforms/assets/images/submit-spin.svg')}}"
-                                         class="wpforms-submit-spinner" style="display: none;"
-                                         width="26" height="26" alt="" loading="lazy">
-                                </div>
                             </form>
-                        </div>  <!-- .wpforms-container -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -238,11 +231,10 @@
                     data-id="cc8a3ec" data-element_type="widget"
                     data-widget_type="exad-exclusive-card.default">
                     <div class="elementor-widget-container">
-
                         <div class="exad-card left text_on_image yes">
                             <div class="exad-card-thumb">
                                 <img width="595" height="842"
-                                     src="{{asset('uploads/2023/09/jtv21-cv9.svg')}}"
+                                     src="{{asset('files/'.$chosen_template->image)}}"
                                      class="attachment-full size-full wp-image-247" alt=""
                                      decoding="async"></div>
                             <div class="exad-card-body">

@@ -14,6 +14,7 @@ use App\Models\Template;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Session;
 use Jackiedo\Cart\Facades\Cart;
 use function Ramsey\Uuid\v1;
 
@@ -68,7 +69,11 @@ class CVService
     {
         return Cart::name('cv');
     }
-
+    public static function syncCustomer(){
+        $cvItem=self::getCVItem();
+        CustomerCv::where('id',$cvItem->id)->update(['customer_id'=>Auth::guard('customer')->user()->id]);
+        Session::forget('redirect_after_login');
+    }
     public static function AddItemToCart($cart, $customerCV)
     {
         $cv = Template::find(session('chosen_template_id'));
@@ -93,17 +98,22 @@ class CVService
         }
 
     }
-
+    public static function ResetCVDataForCreateNew(){
+        session('current_step',0);
+        Session::forget('customer_cv_data');
+        Session::forget('show_confirm');
+        $cart=Cart::name('cv');
+        $cart->distroy();
+    }
     public static function storeCVData($step_num, $data)
     {
         switch ($step_num) {
             case 0:
                 $customerCV = self::storePersonalInformation($data);
                 if ($customerCV != null) {
-                    $cart = self::initCart();
-                    self::AddItemToCart($cart, $customerCV);
+                  $addedItem=CartService::AddToCart($customerCV);
                 }
-                break;
+                return json_encode(['addedItem'=>$addedItem,'customerCV'=>$customerCV]);
             case 1:
                 self::storeWorkHistory($data);
                 break;
@@ -272,7 +282,7 @@ class CVService
         if (Auth::guard('customer')->check()) {
             $customer_id = Auth::guard('customer')->user()->id;
         }
-        if (!empty(session('chosen_template_id')) && !empty(session('chosen_cv_color')) && !empty(session('chosen_cv_language'))) {
+        if (self::checkChosenCVSetting()) {
             $customerCV = CustomerCv::create([
                 'template_id' => session('chosen_template_id'),
                 'template_color' => session('chosen_cv_color'),
@@ -302,7 +312,12 @@ class CVService
         }
         return null;
     }
-
+    public static function checkChosenCVSetting(){
+        if(empty(session('chosen_template_id'))){Session::put('chosen_template_id',1);}
+        if(empty(session('chosen_cv_color'))){Session::put('chosen_template_id','#ccc');}
+        if(empty(session('chosen_cv_language'))){Session::put('chosen_cv_language',1);}
+        return true;
+    }
     public static function getCVItem()
     {
         $cart = Cart::name('cv');

@@ -78,3 +78,9 @@ if (!function_exists('getDashboardJobApplications')) {
     function getDashboardJobApplications(){
     }
 }
+function CVSession($key,$value){
+    if(!empty(session($key))){
+        return session($key)[$value] ?? '';
+    }
+    return  '';
+}

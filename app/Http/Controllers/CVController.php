@@ -2,55 +2,96 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CustomerCv;
 use App\Services\CVService;
+use App\Services\CVTemplateService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-use Jackiedo\Cart\Facades\Cart;
 
 class CVController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         if ($request->isMethod('post')) {
             $request->validate([
                 'cvColor' => ['string', 'max:255'],
                 'cvTemplate' => ['required'],
             ]);
-            Session::put(['chosen_template_id'=>$request->cvTemplate,'chosen_cv_color'=>$request->cvColor]);
+            Session::put(['chosen_template_id' => $request->cvTemplate, 'chosen_cv_color' => $request->cvColor]);
             return view('cv.start2');
-        }else{
-            $cvTemplates=CVService::getCVTemplates();
-            return view('cv.index',compact('cvTemplates'));
+        } else {
+            $cvTemplates = CVService::getCVTemplates();
+            return view('cv.index', compact('cvTemplates'));
         }
     }
-    public function create(Request $request){
+
+    public function create(Request $request)
+    {
+       //Session::flush();Auth::guard('customer')->logout();
         if ($request->isMethod('post')) {
             $request->validate([
                 'cv_language' => ['required'],
             ]);
-            Session::put('chosen_cv_language',$request->cv_language);
+            Session::put('chosen_cv_language', $request->cv_language);
         }
-        return view('cv.create-cv-steps');
+        $addedItem=CVService::getCVItem();
+        if (Auth::guard('customer')->check() && empty($addedItem)) {
+            $addedItem = CustomerCv::where('customer_id', Auth::guard('customer')->user()->id)
+                ->where('status', 0)->latest()->first();
+        }
+        $chosen_template = CVTemplateService::getChosenTemplate();
+        return view('cv.create-cv-steps', compact('chosen_template','addedItem'));
     }
-    public function store(Request $request){
+    public function resetDataAndCreateNewCV(Request $request){
         try{
-            if($request->step!=null){
-                $data=$request->all();
-                $step_num=$request->step;
-                $validator=self::ValidateFormDataBasedOnStepNumber($step_num,$data);
+            if (Auth::guard('customer')->check()) {
+                CVService::ResetCVDataForCreateNew();
+                $chosen_template = CVTemplateService::getChosenTemplate();
+                return view('cv.create-cv-steps', compact('chosen_template'));
+            }else{
+                abort(404);
+            }
+        }catch (\Exception $exception){
+            return json_encode($exception->getMessage());
+        }
+    }
+    public function store(Request $request)
+    {
+        try {
+            if ($request->step != null) {
+                $data = $request->all();
+                $step_num = $request->step;
+                Session::put('current_step_num', $step_num);
+                $validator = self::ValidateFormDataBasedOnStepNumber($step_num, $data);
                 if (!empty($validator) && $validator->fails()) {
                     return false;
                 }
-                return CVService::storeCVData($step_num,$data);
-            }else{
+                return CVService::storeCVData($step_num, $data);
+            } else {
                 return false;
             }
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             return response()->json(['error' => $exception->getMessage()], 500);
         }
     }
-    public static function ValidateFormDataBasedOnStepNumber($step_num,$data){
-        switch ($step_num){
+    public function storeFirstStepDataBeforeLogin(Request $request){
+        try {
+            if (!Auth::guard('customer')->check()) {
+                if (!empty($request->redirect_after_login)) {
+                    Session::put(['redirect_after_login' => $request->redirect_after_login]);
+                }
+                CVService::storeCVData(0,$request->all());
+                return redirect()->route('customer.login');
+            }
+        }catch (\Exception $exception) {
+            return response()->json(['error' => $exception->getMessage()], 500);
+        }
+    }
+    public static function ValidateFormDataBasedOnStepNumber($step_num, $data)
+    {
+        switch ($step_num) {
             case 0:
                 return Validator::make($data, [
                     'first_name' => 'required|string|min:2|max:255',

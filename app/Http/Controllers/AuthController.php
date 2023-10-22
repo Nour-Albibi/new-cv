@@ -7,9 +7,11 @@ use App\Http\Requests\RegisterRequest;
 use App\Models\Customer;
 use App\Providers\RouteServiceProvider;
 use App\Services\AuthService;
+use App\Services\CVService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rules\Password;
 
 class AuthController extends Controller
@@ -48,6 +50,12 @@ class AuthController extends Controller
         try{
             $request->authenticate();
             $request->session()->regenerate();
+            if(!empty(session('redirect_after_login'))){
+                $redirect=session('redirect_after_login');
+                CVService::syncCustomer();
+                Session::put('show_confirm',1);
+                return redirect($redirect);
+            }
             return redirect()->intended(RouteServiceProvider::HOME);
         }catch (\Exception $exception){
             return redirect()->back()->withErrors(['msg' =>$exception->getMessage()]);
