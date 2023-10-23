@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Jackiedo\Cart\Contracts\UseCartable;
+use Jackiedo\Cart\Traits\CanUseCart;
 
-class CustomerCv extends Model
+class CustomerCv extends Model implements UseCartable
 {
     use HasFactory;
+    use CanUseCart;
     protected $fillable=['template_id','template_color','cv_language','customer_id','first_name',
         'surename','first_name_ar','surename_ar','phone','email','image','open_for_remote','linkedlin_url',
         'address_ar','address_en','city_town_ar','city_town_en','country_ar','country_en','postcode',

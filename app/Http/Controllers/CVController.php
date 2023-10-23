@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Jackiedo\Cart\Cart;
 
 class CVController extends Controller
 {
@@ -29,7 +30,9 @@ class CVController extends Controller
 
     public function create(Request $request)
     {
-       //Session::flush();Auth::guard('customer')->logout();
+//       Session::flush();Auth::guard('customer')->logout();
+//       $cart=\Jackiedo\Cart\Facades\Cart::name('cv');
+//       $cart->destroy();
         if ($request->isMethod('post')) {
             $request->validate([
                 'cv_language' => ['required'],
@@ -41,6 +44,7 @@ class CVController extends Controller
             $addedItem = CustomerCv::where('customer_id', Auth::guard('customer')->user()->id)
                 ->where('status', 0)->latest()->first();
         }
+
         $chosen_template = CVTemplateService::getChosenTemplate();
         return view('cv.create-cv-steps', compact('chosen_template','addedItem'));
     }

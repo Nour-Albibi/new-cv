@@ -25,6 +25,7 @@ class CartService
                          'added_at' => time(),
                      ],
                  ],
+//                 'associated_class'=>'App/Models/CustomerCv',
                  'model' => $customerCV
              ));
              return $addedItem;

@@ -103,7 +103,7 @@ class CVService
         Session::forget('customer_cv_data');
         Session::forget('show_confirm');
         $cart=Cart::name('cv');
-        $cart->distroy();
+        $cart->destroy();
     }
     public static function storeCVData($step_num, $data)
     {
@@ -314,7 +314,7 @@ class CVService
     }
     public static function checkChosenCVSetting(){
         if(empty(session('chosen_template_id'))){Session::put('chosen_template_id',1);}
-        if(empty(session('chosen_cv_color'))){Session::put('chosen_template_id','#ccc');}
+        if(empty(session('chosen_cv_color'))){Session::put('chosen_cv_color','#ccc');}
         if(empty(session('chosen_cv_language'))){Session::put('chosen_cv_language',1);}
         return true;
     }
