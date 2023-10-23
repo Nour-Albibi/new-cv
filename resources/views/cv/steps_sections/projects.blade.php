@@ -41,7 +41,7 @@
                                 <noscript
                                     class="wpforms-error-noscript">{{__('Please enable JavaScript in your browser to complete this form.')}}</noscript>
                                 <div id="project_section_container">
-                                    @if(!empty($addedItem) && count($addedItem->model->customer_cv_work_history))
+                                    @if(!empty($addedItem) && count($addedItem->model->customer_cv_project))
                                         @php $i=1; @endphp
                                         @foreach($addedItem->model->customer_cv_project as $project)
                                             <div class="wpforms-field-container">

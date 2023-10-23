@@ -1,4 +1,8 @@
 <?php
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
 function is_home()
 {
     if (\Illuminate\Support\Facades\Request::path() == '/' || \Illuminate\Support\Facades\Request::path() == 'home' || \Illuminate\Support\Facades\Request::path() == 'index') {
@@ -83,4 +87,9 @@ function CVSession($key,$value){
         return session($key)[$value] ?? '';
     }
     return  '';
+}
+function resetAllSessions(){
+       Session::flush();Auth::guard('customer')->logout();
+       $cart=\Jackiedo\Cart\Facades\Cart::name('cv');
+       $cart->destroy();
 }

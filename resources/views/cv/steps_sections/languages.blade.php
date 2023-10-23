@@ -13,74 +13,7 @@
                         data-id="63f1253" data-element_type="widget"
                         data-widget_type="progress.default">
                         <div class="elementor-widget-container">
-                            <style>/*! elementor - v3.16.0 - 20-09-2023 */
-                                .elementor-widget-progress {
-                                    text-align: left
-                                }
-
-                                .elementor-progress-wrapper {
-                                    position: relative;
-                                    background-color: #eee;
-                                    color: #fff;
-                                    height: 100%;
-                                    border-radius: 2px
-                                }
-
-                                .elementor-progress-bar {
-                                    display: flex;
-                                    background-color: #69727d;
-                                    width: 0;
-                                    font-size: 11px;
-                                    height: 30px;
-                                    line-height: 30px;
-                                    border-radius: 2px;
-                                    transition: width 1s ease-in-out
-                                }
-
-                                .elementor-progress-text {
-                                    flex-grow: 1;
-                                    white-space: nowrap;
-                                    text-overflow: ellipsis;
-                                    overflow: hidden;
-                                    padding-left: 15px
-                                }
-
-                                .elementor-progress-percentage {
-                                    padding-right: 15px
-                                }
-
-                                .elementor-widget-progress .elementor-progress-wrapper.progress-info .elementor-progress-bar {
-                                    background-color: #5bc0de
-                                }
-
-                                .elementor-widget-progress .elementor-progress-wrapper.progress-success .elementor-progress-bar {
-                                    background-color: #5cb85c
-                                }
-
-                                .elementor-widget-progress .elementor-progress-wrapper.progress-warning .elementor-progress-bar {
-                                    background-color: #f0ad4e
-                                }
-
-                                .elementor-widget-progress .elementor-progress-wrapper.progress-danger .elementor-progress-bar {
-                                    background-color: #d9534f
-                                }
-
-                                .elementor-progress .elementor-title {
-                                    display: block
-                                }
-
-                                @media (max-width: 767px) {
-                                    .elementor-progress-text {
-                                        padding-left: 10px
-                                    }
-                                }
-
-                                .e-con-inner .elementor-progress-wrapper, .e-con .elementor-progress-wrapper {
-                                    height: auto
-                                }</style>
-                            <span class="elementor-title">
-				            English			</span>
-
+                            <span class="elementor-title">English</span>
                             <div class="elementor-progress-wrapper" role="progressbar" aria-valuemin="0"
                                  aria-valuemax="100" aria-valuenow="50"
                                  aria-valuetext="50% (Elementary)">
@@ -150,64 +83,117 @@
                                       action="/"
                                       data-token="bd03f5379139322e31b053c6ab97fff9">
                                     @csrf
-                                    <noscript class="wpforms-error-noscript">Please enable JavaScript in
-                                        your browser to complete this form.
-                                    </noscript>
+                                    <noscript
+                                        class="wpforms-error-noscript">{{__('Please enable JavaScript in your browser to complete this form.')}}</noscript>
                                     <div class="wpforms-field-container">
                                         <div id="languages_section">
-                                            <div class="wpforms-field-container">
-                                                <div id="wpforms-626-field_1-container"
-                                                     class="wpforms-field wpforms-field-checkbox"
-                                                     data-field-id="1">
-                                                    <label class="wpforms-field-label"
-                                                           for="wpforms-626-field_1">Select between infographic
-                                                        or text format</label>
-                                                    <ul id="wpforms-626-field_1">
-                                                        <li class="choice-1 depth-1">
-                                                            <input type="checkbox" id="wpforms-626-field_1_1"
-                                                                   name="wpforms[fields][1][]"
-                                                                   value="DISPLAY OPTIONS FOR YOUR LANGUAGE SKILLS"><label
-                                                                class="wpforms-field-label-inline"
-                                                                for="wpforms-626-field_1_1">DISPLAY OPTIONS FOR
-                                                                YOUR LANGUAGE SKILLS</label>
-                                                        </li>
-                                                    </ul>
+                                            @if(!empty($addedItem) && count($addedItem->model->customer_cv_language))
+                                                @php $i=1; @endphp
+                                                @foreach($addedItem->model->customer_cv_language as $language)
+                                                    <div class="wpforms-field-container">
+                                                        <div id="wpforms-626-field_1-container"
+                                                             class="wpforms-field wpforms-field-checkbox"
+                                                             data-field-id="1">
+                                                            <label class="wpforms-field-label"
+                                                                   for="wpforms-626-field_1">{{__('Select between infographic or text format')}}</label>
+                                                            <ul id="wpforms-626-field_1">
+                                                                <li class="choice-1 depth-1">
+                                                                    <input type="checkbox" id="wpforms-626-field_1_1"
+                                                                           name="wpforms[fields][1][]"
+                                                                           value="DISPLAY OPTIONS FOR YOUR LANGUAGE SKILLS"><label
+                                                                        class="wpforms-field-label-inline"
+                                                                        for="wpforms-626-field_1_1">{{__('DISPLAY OPTIONS FOR YOUR LANGUAGE SKILLS')}}</label>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div id="wpforms-626-field_2-container"
+                                                             class="wpforms-field wpforms-field-select wpforms-field-select-style-classic"
+                                                             data-field-id="2">
+                                                            <label class="wpforms-field-label"
+                                                                   for="wpforms-626-field_2">{{__('LANGUAGES')}}</label><select
+                                                                id="wpforms-626-field_2" class="wpforms-field-large"
+                                                                name="language_{{$i}}['language_id']">
+                                                                <option value="1" selected>English</option>
+                                                                <option value="2">Arabic</option>
+                                                                <option value="3">Frensh</option>
+                                                            </select>
+                                                        </div>
+                                                        <div id="wpforms-626-field_3-container"
+                                                             class="wpforms-field wpforms-field-select wpforms-field-select-style-classic"
+                                                             data-field-id="3">
+                                                            <label class="wpforms-field-label"
+                                                                   for="wpforms-626-field_3">{{__('LEVEL')}}</label><select
+                                                                id="wpforms-626-field_3" class="wpforms-field-large"
+                                                                name="language_{{$i}}['level_{{$lang}}']">
+                                                                <option value="FirstChoice" selected>First Choice</option>
+                                                                <option value="SecondChoice">Second Choice</option>
+                                                                <option value="ThirdChoice">Third Choice</option>
+                                                            </select>
+                                                        </div>
+                                                        <div id="wpforms-626-field_4-container"
+                                                             class="wpforms-field wpforms-field-text" data-field-id="4">
+                                                            <label class="wpforms-field-label"
+                                                                   for="wpforms-626-field_4">{{__('ADDITIONAL INFORMATION (OPTIONAL)')}}</label>
+                                                            <input type="text" id="wpforms-626-field_4"
+                                                                   class="wpforms-field-large"
+                                                                   name="language_{{$i}}['information_{{$lang}}']"
+                                                                   placeholder="{{__('ADDITIONAL INFORMATION (OPTIONAL)')}}" value="{{$language->{"information_".$lang } }}">
+                                                        </div>
+                                                    </div>
+                                                    @php $i++; @endphp
+                                                @endforeach
+                                            @else
+                                                <div class="wpforms-field-container">
+                                                    <div id="wpforms-626-field_1-container"
+                                                         class="wpforms-field wpforms-field-checkbox"
+                                                         data-field-id="1">
+                                                        <label class="wpforms-field-label"
+                                                               for="wpforms-626-field_1">{{__('Select between infographic or text format')}}</label>
+                                                        <ul id="wpforms-626-field_1">
+                                                            <li class="choice-1 depth-1">
+                                                                <input type="checkbox" id="wpforms-626-field_1_1"
+                                                                       name="wpforms[fields][1][]"
+                                                                       value="DISPLAY OPTIONS FOR YOUR LANGUAGE SKILLS"><label
+                                                                    class="wpforms-field-label-inline"
+                                                                    for="wpforms-626-field_1_1">{{__('DISPLAY OPTIONS FOR YOUR LANGUAGE SKILLS')}}</label>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div id="wpforms-626-field_2-container"
+                                                         class="wpforms-field wpforms-field-select wpforms-field-select-style-classic"
+                                                         data-field-id="2">
+                                                        <label class="wpforms-field-label"
+                                                               for="wpforms-626-field_2">LANGUAGES</label><select
+                                                            id="wpforms-626-field_2" class="wpforms-field-large"
+                                                            name="language_1['language_id']">
+                                                            <option value="1">English</option>
+                                                            <option value="2">Arabic</option>
+                                                            <option value="3">Frensh</option>
+                                                        </select>
+                                                    </div>
+                                                    <div id="wpforms-626-field_3-container"
+                                                         class="wpforms-field wpforms-field-select wpforms-field-select-style-classic"
+                                                         data-field-id="3">
+                                                        <label class="wpforms-field-label"
+                                                               for="wpforms-626-field_3">LEVEL</label><select
+                                                            id="wpforms-626-field_3" class="wpforms-field-large"
+                                                            name="language_1['level_{{$lang}}']">
+                                                            <option value="FirstChoice">First Choice</option>
+                                                            <option value="SecondChoice">Second Choice</option>
+                                                            <option value="ThirdChoice">Third Choice</option>
+                                                        </select>
+                                                    </div>
+                                                    <div id="wpforms-626-field_4-container"
+                                                         class="wpforms-field wpforms-field-text" data-field-id="4">
+                                                        <label class="wpforms-field-label"
+                                                               for="wpforms-626-field_4">{{__('ADDITIONAL INFORMATION (OPTIONAL)')}}</label>
+                                                        <input type="text" id="wpforms-626-field_4"
+                                                               class="wpforms-field-large"
+                                                               name="language_1['information_{{$lang}}']"
+                                                               placeholder="{{__('ADDITIONAL INFORMATION (OPTIONAL)')}}">
+                                                    </div>
                                                 </div>
-                                                <div id="wpforms-626-field_2-container"
-                                                     class="wpforms-field wpforms-field-select wpforms-field-select-style-classic"
-                                                     data-field-id="2">
-                                                    <label class="wpforms-field-label"
-                                                           for="wpforms-626-field_2">LANGUAGES</label><select
-                                                        id="wpforms-626-field_2" class="wpforms-field-large"
-                                                        name="language_1['language_id']">
-                                                        <option value="1">First Choice</option>
-                                                        <option value="2">Second Choice</option>
-                                                        <option value="3">Third Choice</option>
-                                                    </select>
-                                                </div>
-                                                <div id="wpforms-626-field_3-container"
-                                                     class="wpforms-field wpforms-field-select wpforms-field-select-style-classic"
-                                                     data-field-id="3">
-                                                    <label class="wpforms-field-label"
-                                                           for="wpforms-626-field_3">LEVEL</label><select
-                                                        id="wpforms-626-field_3" class="wpforms-field-large"
-                                                        name="language_1['level_{{$lang}}']">
-                                                        <option value="FirstChoice">First Choice</option>
-                                                        <option value="SecondChoice">Second Choice</option>
-                                                        <option value="ThirdChoice">Third Choice</option>
-                                                    </select>
-                                                </div>
-                                                <div id="wpforms-626-field_4-container"
-                                                     class="wpforms-field wpforms-field-text" data-field-id="4">
-                                                    <label class="wpforms-field-label"
-                                                           for="wpforms-626-field_4">ADDITIONAL INFORMATION
-                                                        (OPTIONAL)</label><input type="text"
-                                                                                 id="wpforms-626-field_4"
-                                                                                 class="wpforms-field-large"
-                                                                                 name="language_1['information_{{$lang}}']"
-                                                                                 placeholder="ADDITIONAL INFORMATION (OPTIONAL)">
-                                                </div>
-                                            </div>
+                                            @endif
                                         </div>
                                         <div id="wpforms-626-field_5-container"
                                              class="wpforms-field wpforms-field-html wpforms-two-thirds wpforms-first"

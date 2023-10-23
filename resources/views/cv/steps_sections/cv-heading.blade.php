@@ -196,9 +196,8 @@
                                                 <span class="modern-title">{{__('Click or drag a file to this area to upload.')}}</span>
                                             </div>
                                         </div>
-                                        <input type="text" class="dropzone-input"
-                                               style="position:absolute!important;clip:rect(0,0,0,0)!important;height:1px!important;width:1px!important;border:0!important;overflow:hidden!important;padding:0!important;margin:0!important;"
-                                               id="wpforms-412-field_24" name="image" value="{{$addedItem->model->image ?? ''}}">
+                                        <input type="text" class="dropzone-input" style="position:absolute!important;clip:rect(0,0,0,0)!important;height:1px!important;width:1px!important;border:0!important;overflow:hidden!important;padding:0!important;margin:0!important;" id="wpforms-412-field_24"
+                                               name="image" value="{{$addedItem->model->image ?? ''}}">
                                     </div>
                                 </div>
                             </form>
@@ -238,8 +237,7 @@
                                      src="{{asset('files/'.$chosen_template->image)}}"
                                      class="attachment-full size-full wp-image-247" alt=""
                                      decoding="async"></div>
-                            <div class="exad-card-body">
-                            </div>
+                                    <div class="exad-card-body"></div>
                         </div>
                     </div>
                 </div>

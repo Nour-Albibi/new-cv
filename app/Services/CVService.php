@@ -31,7 +31,7 @@ class CVService
         Session::forget('redirect_after_login');
     }
     public static function ResetCVDataForCreateNew(){
-        session('current_step',0);
+        session('current_step_num',0);
         Session::forget('customer_cv_data');
         Session::forget('show_confirm');
         $cart=Cart::name('cv');
@@ -126,22 +126,30 @@ class CVService
         }
         return true;
     }
-
+    public static function deleteOldCourses($cv){
+        if(count($cv->customer_cv_course)){
+            $cv->customer_cv_course()->delete();
+        }
+    }
     public static function storeCourses($data)
     {
         $data = self::getDataArraysFromRequest($data);
         $cvItem = self::getCVItem();
         if (!empty($cvItem)) {
-            foreach ($data as $course) {
-                CustomerCvCourse::create([
-                    'customer_cv_id' => $cvItem->id,
-                    'course_name_ar' => $course['course_name_ar'] ?? '',
-                    'course_name_en' => $course['course_name_en'] ?? '',
-                    'trainer_ar' => $course['trainer_ar'] ?? '',
-                    'trainer_en' => $course['trainer_en'] ?? '',
-                    'start_date' => $course['start_date'] ?? '',
-                    'end_date' => $course['end_date'] ?? '',
-                ]);
+            $customer_cv=CustomerCv::find($cvItem->id);
+            if(!empty($customer_cv)) {
+                self::deleteOldCourses($customer_cv);
+                foreach ($data as $course) {
+                    CustomerCvCourse::create([
+                        'customer_cv_id' => $cvItem->id,
+                        'course_name_ar' => $course['course_name_ar'] ?? '',
+                        'course_name_en' => $course['course_name_en'] ?? '',
+                        'trainer_ar' => $course['trainer_ar'] ?? '',
+                        'trainer_en' => $course['trainer_en'] ?? '',
+                        'start_date' => $course['start_date'] ?? '',
+                        'end_date' => $course['end_date'] ?? '',
+                    ]);
+                }
             }
         }
         return true;
@@ -153,7 +161,6 @@ class CVService
     }
     public static function storeEducation($data)
     {
-        //dd($data);
         $data = self::getDataArraysFromRequest($data);
         $cvItem = self::getCVItem();
         if (!empty($cvItem)) {

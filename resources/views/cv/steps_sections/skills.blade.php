@@ -11,18 +11,16 @@
                      data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
                      data-widget_type="heading.default">
                     <div class="elementor-widget-container">
-                        <h4 class="elementor-heading-title elementor-size-default">Highlight
-                            relevant skills for the job you want
-                        </h4></div>
+                        <h4 class="elementor-heading-title elementor-size-default">{{__('Highlight relevant skills for the job you want')}}</h4></div>
                 </div>
                 <div class="elementor-element elementor-element-4a953a8c exad-sticky-section-no exad-glass-effect-no elementor-invisible elementor-widget elementor-widget-heading"
                      data-id="4a953a8c" data-element_type="widget"
                      data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
                      data-widget_type="heading.default">
                     <div class="elementor-widget-container">
-                        <h6 class="elementor-heading-title elementor-size-default">Start with our
+                        <h6 class="elementor-heading-title elementor-size-default">{{__('Start with our
                             expert recommendations by job title or pull the skills required from the
-                            job description</h6></div>
+                            job description')}}</h6></div>
                 </div>
                 <div class="elementor-element elementor-element-40c1aed5 elementor-hidden-tablet elementor-hidden-mobile exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-wpforms"
                      data-id="40c1aed5" data-element_type="widget"
@@ -34,20 +32,16 @@
                                   action="/"
                                   data-token="bd03f5379139322e31b053c6ab97fff9">
                                 @csrf
-                                <noscript class="wpforms-error-noscript">Please enable JavaScript in
-                                    your browser to complete this form.
-                                </noscript>
+                                <noscript class="wpforms-error-noscript">{{__('Please enable JavaScript in your browser to complete this form.')}}</noscript>
                                 <div class="wpforms-field-container">
                                     <div id="wpforms-591-field_2-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half wpforms-first"
                                          data-field-id="2">
                                         <label class="wpforms-field-label"
-                                               for="wpforms-591-field_2">Search for pre-written
-                                            examples</label><input type="text"
-                                                                   id="wpforms-591-field_2"
-                                                                   class="wpforms-field-large"
+                                               for="wpforms-591-field_2">{{_('Search for pre-written examples')}}</label>
+                                        <input type="text" id="wpforms-591-field_2" class="wpforms-field-large"
                                                                    name="wpforms[fields][2]"
-                                                                   placeholder="Search">
+                                                                   placeholder="{{__('Search')}}">
                                     </div>
                                     <div id="wpforms-591-field_3-container"
                                          class="wpforms-field wpforms-field-html wpforms-one-half"
@@ -62,7 +56,7 @@
     box-sizing: border-box;
     padding: 5px;
     margin-top: 27px;
-    border-radius: 5px;">Search
+    border-radius: 5px;">{{__('Search')}}
                                             </button>
                                         </div>
                                     </div>
@@ -70,8 +64,7 @@
                                          class="wpforms-field wpforms-field-textarea wpforms-one-half wpforms-first"
                                          data-field-id="1">
                                         <label class="wpforms-field-label"
-                                               for="wpforms-591-field_1">skills for the job you
-                                            want</label>
+                                               for="wpforms-591-field_1">{{__('skills for the job you want')}}</label>
                                         <textarea id="wpforms-591-field_1"
                                                                   class="wpforms-field-medium"
                                                                   name="content_{{$lang}}"></textarea>
@@ -83,16 +76,12 @@
                                             <br>
                                             <ul class="uleducation add-list"
                                                 style="margin-top: 55px;">
-
-
                                                 <i class="fas fa-plus-circle"></i> Google Workspace
-
                                                 <br>
                                                 <i class="fas fa-plus-circle"
                                                    style="list-style:none"></i> Self-Motivated
                                                 <br>
                                                 <i class="fas fa-plus-circle"></i> PPE Compliance
-
                                             </ul>
                                         </div>
                                     </div>

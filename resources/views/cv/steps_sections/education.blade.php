@@ -40,10 +40,9 @@
                                   action="/"
                                   data-token="bd03f5379139322e31b053c6ab97fff9">
                                 @csrf
-                                <noscript
-                                    class="wpforms-error-noscript">{{__('Please enable JavaScript in your browser to complete this form.')}}</noscript>
+                                <noscript class="wpforms-error-noscript">{{__('Please enable JavaScript in your browser to complete this form.')}}</noscript>
                                 <div id="education_section_container">
-                                    @if(!empty($addedItem) && count($addedItem->model->customer_cv_work_history))
+                                    @if(!empty($addedItem) && count($addedItem->model->customer_cv_education))
                                         @php $i=1; @endphp
                                         @foreach($addedItem->model->customer_cv_education as $education)
                                             <div class="wpforms-field-container">
