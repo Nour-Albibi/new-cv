@@ -25,12 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'language'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home_page');
     Route::get('/home', [HomeController::class, 'index']);
-    Route::group(['prefix' => 'customer'], function () {
-        Route::get('/signup',[AuthController::class,'getSignupForm'])->name('customer.register');
-        Route::post('/doSignup',[AuthController::class,'doSignup'])->name('customer.signup');
-        Route::get('/login',[AuthController::class,'getLoginForm'])->name('customer.login');
-        Route::post('/doLogin',[AuthController::class,'doLogin'])->name('customer.doLogin');
-    });
+
     Route::group(['prefix' => 'cv-builder'], function () {
         Route::match(['post','get'],'/',[CVController::class,'index'])->name('cv.start');
         Route::post('create',[CVController::class,'create'])->name('cv.create');

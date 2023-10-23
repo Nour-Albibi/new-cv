@@ -83,7 +83,7 @@
                                                                class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                                data-date-format="m/d/Y"
                                                                data-disable-past-dates="0" data-input="true"
-                                                               name="course_{{$i}}['end_date']" value="{{Illuminate\Support\Carbon::parse($course->end_date)->toDateString(}}">
+                                                               name="course_{{$i}}['end_date']" value="{{Illuminate\Support\Carbon::parse($course->end_date)->toDateString()}}">
                                                     </div>
                                                 </div>
                                             </div>
