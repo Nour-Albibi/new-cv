@@ -38,57 +38,112 @@
                                   action="/"
                                   data-token="bd03f5379139322e31b053c6ab97fff9">
                                 @csrf
-                                <noscript class="wpforms-error-noscript">{{__('Please enable JavaScript in your browser to complete this form.')}}</noscript>
+                                <noscript
+                                    class="wpforms-error-noscript">{{__('Please enable JavaScript in your browser to complete this form.')}}</noscript>
                                 <div id="project_section_container">
-                                    <div class="wpforms-field-container">
-                                    <div id="wpforms-519-field_1-container"
-                                         class="wpforms-field wpforms-field-text" data-field-id="1">
-                                        <label class="wpforms-field-label"
-                                               for="wpforms-519-field_1">PROJECT NAME</label><input
-                                            type="text" id="wpforms-519-field_1"
-                                            class="wpforms-field-large" name="project_1[project_name_{{$lang}}]"
-                                            placeholder="PROJECT NAME">
-                                    </div>
-                                    <div id="wpforms-519-field_3-container"
-                                         class="wpforms-field wpforms-field-text" data-field-id="3">
-                                        <label class="wpforms-field-label"
-                                               for="wpforms-519-field_3">{{__('DESCRIPTION OF WORK ON THE PROJECT')}}</label>
-                                        <textarea name="project_1[description_{{$lang}}]"  class="wpforms-field-large"
-                                                  placeholder="{{__('DESCRIPTION OF WORK ON THE PROJECT')}}"></textarea>
-                                    </div>
-                                    <div id="wpforms-519-field_4-container"
-                                         class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
-                                         data-field-id="4">
-                                        <label class="wpforms-field-label"
-                                               for="wpforms-519-field_4">START DATE</label>
-                                        <div class="wpforms-datepicker-wrap">
-                                            <input type="date" id="wpforms-519-field_4"
-                                                   class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
-                                                   data-date-format="m/d/Y"
-                                                   data-disable-past-dates="0" data-input="true"
-                                                   name="project_1[start_date]"><a
-                                                title="Clear Date" data-clear
-                                                class="wpforms-datepicker-clear"
-                                                style="display:none;"></a>
+                                    @if(!empty($addedItem) && count($addedItem->model->customer_cv_work_history))
+                                        @php $i=1; @endphp
+                                        @foreach($addedItem->model->customer_cv_project as $project)
+                                            <div class="wpforms-field-container">
+                                                <div id="wpforms-519-field_1-container"
+                                                     class="wpforms-field wpforms-field-text" data-field-id="1">
+                                                    <label class="wpforms-field-label"
+                                                           for="wpforms-519-field_1">{{__('PROJECT NAME')}}</label><input
+                                                        type="text" id="wpforms-519-field_1"
+                                                        class="wpforms-field-large"
+                                                        name="project_{{$i}}[project_name_{{$lang}}]"
+                                                        placeholder="{{__('PROJECT NAME')}}" value="{{$project->{"project_name_".$lang } }}">
+                                                </div>
+                                                <div id="wpforms-519-field_3-container"
+                                                     class="wpforms-field wpforms-field-text" data-field-id="3">
+                                                    <label class="wpforms-field-label"
+                                                           for="wpforms-519-field_3">{{__('DESCRIPTION OF WORK ON THE PROJECT')}}</label>
+                                                    <textarea name="project_{{$i}}[description_{{$lang}}]"
+                                                              class="wpforms-field-large"
+                                                              placeholder="{{__('DESCRIPTION OF WORK ON THE PROJECT')}}">{!! $project->{"description_".$lang} !!}</textarea>
+                                                </div>
+                                                <div id="wpforms-519-field_4-container"
+                                                     class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
+                                                     data-field-id="4">
+                                                    <label class="wpforms-field-label"
+                                                           for="wpforms-519-field_4">{{__('START DATE')}}</label>
+                                                    <div class="wpforms-datepicker-wrap">
+                                                        <input type="date" id="wpforms-519-field_4"
+                                                               class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                               data-date-format="m/d/Y"
+                                                               data-disable-past-dates="0" data-input="true"
+                                                               name="project_{{$i}}[start_date]" value="{{$project->start_date }}">
+                                                    </div>
+                                                </div>
+                                                <div id="wpforms-519-field_5-container"
+                                                     class="wpforms-field wpforms-field-date-time wpforms-one-half"
+                                                     data-field-id="5">
+                                                    <label class="wpforms-field-label"
+                                                           for="wpforms-519-field_5">{{__('END DATE')}}</label>
+                                                    <div class="wpforms-datepicker-wrap">
+                                                        <input type="date" id="wpforms-519-field_5"
+                                                               class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                               data-date-format="m/d/Y"
+                                                               data-disable-past-dates="0" data-input="true"
+                                                               name="project_{{$i}}[end_date]" value="{{$project->end_date }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @php $i++; @endphp
+                                        @endforeach
+                                    @else
+                                        <div class="wpforms-field-container">
+                                            <div id="wpforms-519-field_1-container"
+                                                 class="wpforms-field wpforms-field-text" data-field-id="1">
+                                                <label class="wpforms-field-label"
+                                                       for="wpforms-519-field_1">PROJECT NAME</label><input
+                                                    type="text" id="wpforms-519-field_1"
+                                                    class="wpforms-field-large"
+                                                    name="project_1[project_name_{{$lang}}]"
+                                                    placeholder="PROJECT NAME">
+                                            </div>
+                                            <div id="wpforms-519-field_3-container"
+                                                 class="wpforms-field wpforms-field-text" data-field-id="3">
+                                                <label class="wpforms-field-label"
+                                                       for="wpforms-519-field_3">{{__('DESCRIPTION OF WORK ON THE PROJECT')}}</label>
+                                                <textarea name="project_1[description_{{$lang}}]"
+                                                          class="wpforms-field-large"
+                                                          placeholder="{{__('DESCRIPTION OF WORK ON THE PROJECT')}}"></textarea>
+                                            </div>
+                                            <div id="wpforms-519-field_4-container"
+                                                 class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
+                                                 data-field-id="4">
+                                                <label class="wpforms-field-label"
+                                                       for="wpforms-519-field_4">START DATE</label>
+                                                <div class="wpforms-datepicker-wrap">
+                                                    <input type="date" id="wpforms-519-field_4"
+                                                           class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                           data-date-format="m/d/Y"
+                                                           data-disable-past-dates="0" data-input="true"
+                                                           name="project_1[start_date]"><a
+                                                        title="Clear Date" data-clear
+                                                        class="wpforms-datepicker-clear"
+                                                        style="display:none;"></a>
+                                                </div>
+                                            </div>
+                                            <div id="wpforms-519-field_5-container"
+                                                 class="wpforms-field wpforms-field-date-time wpforms-one-half"
+                                                 data-field-id="5">
+                                                <label class="wpforms-field-label"
+                                                       for="wpforms-519-field_5">{{__('END DATE')}}</label>
+                                                <div class="wpforms-datepicker-wrap">
+                                                    <input type="date" id="wpforms-519-field_5"
+                                                           class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                           data-date-format="m/d/Y"
+                                                           data-disable-past-dates="0" data-input="true"
+                                                           name="project_1[end_date]"><a
+                                                        title="Clear Date" data-clear
+                                                        class="wpforms-datepicker-clear"
+                                                        style="display:none;"></a>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div id="wpforms-519-field_5-container"
-                                         class="wpforms-field wpforms-field-date-time wpforms-one-half"
-                                         data-field-id="5">
-                                        <label class="wpforms-field-label"
-                                               for="wpforms-519-field_5">{{__('END DATE')}}</label>
-                                        <div class="wpforms-datepicker-wrap">
-                                            <input type="date" id="wpforms-519-field_5"
-                                                   class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
-                                                   data-date-format="m/d/Y"
-                                                   data-disable-past-dates="0" data-input="true"
-                                                   name="project_1[end_date]"><a
-                                                title="Clear Date" data-clear
-                                                class="wpforms-datepicker-clear"
-                                                style="display:none;"></a>
-                                        </div>
-                                    </div>
-                                </div>
+                                    @endif
                                 </div>
                                 <div id="wpforms-626-field_5-container"
                                      class="wpforms-field wpforms-field-html wpforms-two-thirds wpforms-first"
@@ -110,7 +165,8 @@
     box-sizing: border-box;
     padding: 5px;
 
-    border-radius: 5px;" type="button" onclick="AddProject()">+</button>
+    border-radius: 5px;" type="button" onclick="AddProject()">+
+                                        </button>
                                     </div>
                                 </div>
                             </form>

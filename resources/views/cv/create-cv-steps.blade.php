@@ -314,6 +314,9 @@
             id="wpforms-js"></script>
     <script src="{{asset('assets/plugins/wpforms/pro/assets/js/wpforms-file-upload.min.js?ver=1.6.7')}}"
             id="wpforms-file-upload-js"></script>
+    <script>
+        var currentTab = {{session('current_step') ?? 0}};
+    </script>
     <script src="{{asset('assets/js/cv.js')}}"></script>
 
 @endsection

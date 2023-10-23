@@ -1,4 +1,4 @@
-var currentTab = 0; // Current tab is set to be the first tab (0)
+// var currentTab = 0; // Current tab is set to be the first tab (0)
 var current_workExperience=1;
 var current_project=1;
 var button_indecator=0;
