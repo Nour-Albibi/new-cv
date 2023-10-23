@@ -106,4 +106,7 @@ class CVController extends Controller
                 return null;
         }
     }
+    public function uploadFile(Request $request){
+        dd($request);
+    }
 }

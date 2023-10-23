@@ -37,7 +37,7 @@ class CustomerCv extends Model implements UseCartable
         return $this->hasMany('App\Models\CustomerCvSkill','customer_cv_id');
     }
     public function customer_cv_summery(){
-        return $this->hasOne('App\Models\CustomerCvSummery','customer_cv_id');
+        return $this->hasMany('App\Models\CustomerCvSummery','customer_cv_id');
     }
     public function customer_cv_language(){
         return $this->hasMany('App\Models\CustomerCvLanguage','customer_cv_id');

@@ -70,7 +70,7 @@
                                                                class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                                data-date-format="m/d/Y"
                                                                data-disable-past-dates="0" data-input="true"
-                                                               name="course_{{$i}}['start_date']" value="{{$course->start_date }}">
+                                                               name="course_{{$i}}['start_date']" value="{{Illuminate\Support\Carbon::parse($course->start_date)->toDateString()}}">
                                                     </div>
                                                 </div>
                                                 <div id="wpforms-568-field_4-container"
@@ -83,7 +83,7 @@
                                                                class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                                data-date-format="m/d/Y"
                                                                data-disable-past-dates="0" data-input="true"
-                                                               name="course_{{$i}}['end_date']" value="{{$course->end_date }}">
+                                                               name="course_{{$i}}['end_date']" value="{{Illuminate\Support\Carbon::parse($course->end_date)->toDateString(}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -119,10 +119,7 @@
                                                            class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                            data-date-format="m/d/Y"
                                                            data-disable-past-dates="0" data-input="true"
-                                                           name="course_1['start_date']"><a
-                                                        title="Clear Date" data-clear
-                                                        class="wpforms-datepicker-clear"
-                                                        style="display:none;"></a>
+                                                           name="course_1['start_date']">
                                                 </div>
                                             </div>
                                             <div id="wpforms-568-field_4-container"
@@ -135,10 +132,7 @@
                                                            class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                            data-date-format="m/d/Y"
                                                            data-disable-past-dates="0" data-input="true"
-                                                           name="course_1['end_date']"><a
-                                                        title="Clear Date" data-clear
-                                                        class="wpforms-datepicker-clear"
-                                                        style="display:none;"></a>
+                                                           name="course_1['end_date']">
                                                 </div>
                                             </div>
                                         </div>

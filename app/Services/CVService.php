@@ -61,21 +61,23 @@ class CVService
             case 2:
                 self::storeProjects($data);
                 break;
-            case 4:
+            case 3:
                 self::storeEducation($data);
                 break;
-            case 5:
+            case 4:
                 self::storeCourses($data);
                 break;
-            case 6:
+            case 5:
                 self::storeSkills($data);
                 break;
-            case 7:
+            case 6:
                 self::storeSummary($data);
                 break;
-            case 8:
+            case 7:
                 self::storeLanguages($data);
                 break;
+            case 8:
+                return  redirect()->route('getCustomerPackagesPricing');
         }
     }
     public static function storeLanguages($data){

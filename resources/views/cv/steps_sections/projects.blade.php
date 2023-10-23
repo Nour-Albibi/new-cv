@@ -72,7 +72,7 @@
                                                                class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                                data-date-format="m/d/Y"
                                                                data-disable-past-dates="0" data-input="true"
-                                                               name="project_{{$i}}[start_date]" value="{{$project->start_date }}">
+                                                               name="project_{{$i}}[start_date]" value="{{Illuminate\Support\Carbon::parse($project->start_date)->toDateString()}}">
                                                     </div>
                                                 </div>
                                                 <div id="wpforms-519-field_5-container"
@@ -85,7 +85,7 @@
                                                                class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                                data-date-format="m/d/Y"
                                                                data-disable-past-dates="0" data-input="true"
-                                                               name="project_{{$i}}[end_date]" value="{{$project->end_date }}">
+                                                               name="project_{{$i}}[end_date]" value="{{Illuminate\Support\Carbon::parse($project->end_date)->toDateString()}}">
                                                     </div>
                                                 </div>
                                             </div>

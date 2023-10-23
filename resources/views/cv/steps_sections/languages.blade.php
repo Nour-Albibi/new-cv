@@ -125,9 +125,9 @@
                                                                    for="wpforms-626-field_3">{{__('LEVEL')}}</label><select
                                                                 id="wpforms-626-field_3" class="wpforms-field-large"
                                                                 name="language_{{$i}}['level_{{$lang}}']">
-                                                                <option value="FirstChoice" selected>First Choice</option>
-                                                                <option value="SecondChoice">Second Choice</option>
-                                                                <option value="ThirdChoice">Third Choice</option>
+                                                                <option value="1" selected>First Choice</option>
+                                                                <option value="2">Second Choice</option>
+                                                                <option value="3">Third Choice</option>
                                                             </select>
                                                         </div>
                                                         <div id="wpforms-626-field_4-container"
@@ -178,9 +178,9 @@
                                                                for="wpforms-626-field_3">LEVEL</label><select
                                                             id="wpforms-626-field_3" class="wpforms-field-large"
                                                             name="language_1['level_{{$lang}}']">
-                                                            <option value="FirstChoice">First Choice</option>
-                                                            <option value="SecondChoice">Second Choice</option>
-                                                            <option value="ThirdChoice">Third Choice</option>
+                                                            <option value="1">First Choice</option>
+                                                            <option value="2">Second Choice</option>
+                                                            <option value="3">Third Choice</option>
                                                         </select>
                                                     </div>
                                                     <div id="wpforms-626-field_4-container"

@@ -36,7 +36,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::post('create',[CVController::class,'create'])->name('cv.create');
         Route::get('/create',[CVController::class,'create']);
         Route::post('/create_new',[CVController::class,'resetDataAndCreateNewCV'])->name('cv.resetDataAndCreateNewCV');
-
+        Route::post('uploadFile',[CVController::class,'uploadFile'])->name('cv.upload');
         Route::post('saveCV',[CVController::class,'store'])->name('cv.store');
         Route::post('saveFirstStepData',[CVController::class,'storeFirstStepDataBeforeLogin'])->name('cv.storeFirstStepData');
         Route::post('AddNewWorkHistory',[CVWorkHistoryController::class,'AddNewWorkHistory']);
@@ -45,5 +45,5 @@ Route::group(['middleware' => 'language'], function () {
         Route::post('AddCourse',[CVCourseController::class,'AddCourse']);
         Route::post('AddLanguage',[CVLanguageController::class,'AddLanguage']);
     });
-    Route::get('user-packages',[PackageController::class,'getCustomerPackagesPricing']);
+    Route::get('user-packages',[PackageController::class,'getCustomerPackagesPricing'])->name('getCustomerPackagesPricing');
 });

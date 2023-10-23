@@ -89,7 +89,7 @@
                                                                class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                                data-date-format="m/d/Y"
                                                                data-disable-past-dates="0" data-input="true"
-                                                               name="work_{{$i}}[start_date]" value="{{$work->start_date}}">
+                                                               name="work_{{$i}}[start_date]" value="{{Illuminate\Support\Carbon::parse($work->start_date)->toDateString()}}">
                                                     </div>
                                                 </div>
                                                 <div id="wpforms-488-field_6-container"
@@ -102,7 +102,7 @@
                                                                class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                                data-date-format="m/d/Y"
                                                                data-disable-past-dates="0" data-input="true"
-                                                               name="work_{{$i}}[end_date]" value="{{$work->end_date}}">
+                                                               name="work_{{$i}}[end_date]" value="{{Illuminate\Support\Carbon::parse($work->end_date)->toDateString()}}">
                                                     </div>
                                                 </div>
                                                 <div id="wpforms-488-field_7-container"

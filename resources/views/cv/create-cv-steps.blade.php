@@ -61,47 +61,47 @@
                 <div class="row cv-steps-row">
                     <div num="0" step_title="{{__('CV heading')}}"
                         class=" cv-step-box elementor-column elementor-col-11 elementor-inner-column elementor-element elementor-element-62b5156f exad-glass-effect-no exad-sticky-section-no">
-                        <div class="active cv-step-num" num="0"><span>1</span></div>
+                        <div class="@if(session('current_step_num')>=0) active @endif cv-step-num" num="0"><span>1</span></div>
                         <div class="cv-step-title text-center"><h6>{{__('CV heading')}}</h6></div>
                     </div>
                     <div num="1"  step_title="{{__('Work history')}}"
                         class="cv-step-box elementor-column elementor-col-11 elementor-inner-column elementor-element elementor-element-62b5156f exad-glass-effect-no exad-sticky-section-no">
-                        <div class="cv-step-num" num="1"><span>2</span></div>
+                        <div class="@if(session('current_step_num')>=1) active @endif cv-step-num" num="1"><span>2</span></div>
                         <div class="cv-step-title text-center"><h6>{{__('Work history')}}</h6></div>
                     </div>
                     <div num="2" step_title="{{__('Projects')}}"
                         class="cv-step-box elementor-column elementor-col-11 elementor-inner-column elementor-element elementor-element-62b5156f exad-glass-effect-no exad-sticky-section-no">
-                        <div class="cv-step-num" num="2"><span>3</span></div>
+                        <div class="@if(session('current_step_num')>=2) active @endif cv-step-num" num="2"><span>3</span></div>
                         <div class="cv-step-title text-center"><h6>{{__('Projects')}}</h6></div>
                     </div>
                     <div num="3"  step_title="{{__('Education')}}"
                         class="cv-step-box elementor-column elementor-col-11 elementor-inner-column elementor-element elementor-element-62b5156f exad-glass-effect-no exad-sticky-section-no">
-                        <div class="cv-step-num" num="3"><span>4</span></div>
+                        <div class="@if(session('current_step_num')>=3) active @endif cv-step-num" num="3"><span>4</span></div>
                         <div class="cv-step-title text-center"><h6>{{__('Education')}}</h6></div>
                     </div>
                     <div num="4" step_title="{{__('Training Courses')}}"
                         class="cv-step-box elementor-column elementor-col-11 elementor-inner-column elementor-element elementor-element-62b5156f exad-glass-effect-no exad-sticky-section-no">
-                        <div class="cv-step-num" num="4"><span>5</span></div>
+                        <div class="@if(session('current_step_num')>=4) active @endif cv-step-num" num="4"><span>5</span></div>
                         <div class="cv-step-title text-center"><h6>{{__('Training Courses')}}</h6></div>
                     </div>
                     <div num="5" step_title="{{__('Skills')}}"
                         class="cv-step-box elementor-column elementor-col-11 elementor-inner-column elementor-element elementor-element-62b5156f exad-glass-effect-no exad-sticky-section-no">
-                        <div class="cv-step-num" num="5"><span>6</span></div>
+                        <div class="@if(session('current_step_num')>=5) active @endif cv-step-num" num="5"><span>6</span></div>
                         <div class="cv-step-title text-center"><h6>{{__('Skills')}}</h6></div>
                     </div>
                     <div num="6" step_title="{{__('Professional summary')}}"
                         class="cv-step-box elementor-column elementor-col-11 elementor-inner-column elementor-element elementor-element-62b5156f exad-glass-effect-no exad-sticky-section-no">
-                        <div class="cv-step-num"  num="6"><span>7</span></div>
+                        <div class="@if(session('current_step_num')>=6) active @endif cv-step-num"  num="6"><span>7</span></div>
                         <div class="cv-step-title text-center"><h6>{{__('Professional summary')}}</h6></div>
                     </div>
                     <div num="7" step_title="{{__('Languages')}}"
                         class="cv-step-box elementor-column elementor-col-11 elementor-inner-column elementor-element elementor-element-62b5156f exad-glass-effect-no exad-sticky-section-no">
-                        <div class="cv-step-num" num="7"><span>8</span></div>
+                        <div class="@if(session('current_step_num')>=7) active @endif cv-step-num" num="7"><span>8</span></div>
                         <div class="cv-step-title text-center"><h6>{{__('Languages')}}</h6></div>
                     </div>
                     <div num="8" step_title="{{__('Finalise')}}"
                         class="cv-step-box elementor-column elementor-col-11 elementor-inner-column elementor-element elementor-element-62b5156f exad-glass-effect-no exad-sticky-section-no">
-                        <div class="cv-step-num" num="8"><span>9</span></div>
+                        <div class="cv-step-num @if(session('current_step_num')>=8) active @endif" num="8"><span>9</span></div>
                         <div class="cv-step-title text-center"><h6>{{__('Finalise')}}</h6></div>
                     </div>
                 </div>
@@ -150,7 +150,7 @@
     <script src="{{asset('assets/plugins/wpforms/pro/assets/js/vendor/jquery.intl-tel-input.min.js?ver=17.0.5')}}"
             id="wpforms-smart-phone-field-js"></script>
     <script id="wpforms-dropzone-js-extra">var wpforms_file_upload = {
-            "url": "https:\/\/projects.datatime4it.com\/chtml\/wp-admin\/admin-ajax.php",
+            "url": "{{route('cv.upload')}}",
             "errors": {
                 "default_error": "Something went wrong, please try again.",
                 "file_not_uploaded": "This file was not uploaded.",
@@ -171,5 +171,4 @@
         var currentTab = {{session('current_step_num') ?? 0}};
     </script>
     <script src="{{asset('assets/js/cv.js')}}"></script>
-
 @endsection
