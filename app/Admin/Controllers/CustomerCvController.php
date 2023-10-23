@@ -38,7 +38,9 @@ class CustomerCvController extends AdminController
            else {return "Both";}
         });
         $grid->column('customer_id', __('Customer'))->display(function () {
-            return '<a href="' . url('admin/customers?user_id=' . $this->id) . '">' . $this->customer->first_name . ' ' . $this->customer->last_name . '</a>';
+            if(!empty($this->customer)){
+                return '<a href="' . url('admin/customers?user_id=' . $this->id) . '">' . $this->customer->username ?? '' . '</a>';
+            }
         });
         $grid->column('first_name', __('First name'));
         $grid->column('surename', __('Sure name'));

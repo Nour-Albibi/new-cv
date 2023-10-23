@@ -20,7 +20,6 @@
                                   data-token="bd03f5379139322e31b053c6ab97fff9">
                                 @csrf
                                 <input type="hidden" name="item_hash" value="{{$addedItem->hash ?? ''}}"/>
-                                <input type="hidden" name="database_col" value="{{$addedItem->model->id}}" />
                                 <input type="hidden" name="step" value="0"/>
                                 <input type="hidden" name="redirect_after_login" value="{{url('cv-builder/create?step=1')}}"/>
                                 <noscript class="wpforms-error-noscript">

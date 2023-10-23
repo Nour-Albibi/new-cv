@@ -25,10 +25,13 @@ class CartService
                          'added_at' => time(),
                      ],
                  ],
-//                 'associated_class'=>'App/Models/CustomerCv',
                  'model' => $customerCV
              ));
              return $addedItem;
          }
+     }
+     public static function UpdateItem($item_hash){
+//         $cart=Cart::name('cv');
+//         return $cart->updateItem($data['item_hash']);
      }
 }

@@ -6,6 +6,7 @@
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <title>{{setting('site_title_'.$lang)}} @yield('title')</title>
     @yield('seo_section')
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="robots" content="max-image-preview:large">
     <script>
         window._wpemojiSettings = {
@@ -475,6 +476,13 @@
 <script
     src="{{asset('assets/plugins/wpforms/assets/js/integrations/elementor/frontend.min.js?ver=1.6.7')}}"
     id="wpforms-elementor-js"></script>
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 @yield('custom_js')
 </body>
 </html>

@@ -16,6 +16,6 @@ class VerifyCsrfToken extends Middleware
         'cv-builder/AddProject',
         'cv-builder/AddEducation',
         'cv-builder/AddCourse',
-        'cv-builder/AddLanguage'
+        'cv-builder/AddLanguage',
     ];
 }

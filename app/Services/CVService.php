@@ -25,78 +25,10 @@ class CVService
         return Template::all();
     }
 
-    public static function AddCVToCart($data)
-    {
-        $cart = self::refreshCart();
-        $cv = Template::find($data['cvTemplate']);
-        if ($cv != null) {
-            $addedItem = $cart->addItem(array(
-                'id' => $cv->id,
-                'template_id' => $cv->id,
-                'title' => $cv->name_en,
-                'cv_language' => 1,
-                'cv_color' => $data['cvColor'] ?? '',
-                'price' => 0,
-                'quantity' => 1,
-                'options' => array(),
-                'extra_info' => [
-                    'date_time' => [
-                        'added_at' => time(),
-                    ],
-                ],
-            ));
-            return $addedItem;
-        }
-
-    }
-
-    public static function updateItemLanguage($data)
-    {
-        $cart = Cart::name('cv');
-        return $cart->updateItem($data['item_hash'], ['cv_language' => $data['cv_language'] ?? 1]);
-    }
-
-    public static function refreshCart()
-    {
-        $cart = Cart::name('cv');
-        if ($cart->getDetails()->get('quantities_sum') > 1) {
-            $cart->destroy();
-        }
-        return Cart::name('cv');
-    }
-
-    public static function initCart()
-    {
-        return Cart::name('cv');
-    }
     public static function syncCustomer(){
         $cvItem=self::getCVItem();
         CustomerCv::where('id',$cvItem->id)->update(['customer_id'=>Auth::guard('customer')->user()->id]);
         Session::forget('redirect_after_login');
-    }
-    public static function AddItemToCart($cart, $customerCV)
-    {
-        $cv = Template::find(session('chosen_template_id'));
-        if ($cv != null) {
-            $addedItem = $cart->addItem(array(
-                'id' => $customerCV->id,
-                'template_id' => $cv->id,
-                'title' => $cv->name_en,
-                'cv_language' => 1,
-                'cv_color' => session('chosen_cv_color'),
-                'price' => 0,
-                'quantity' => 1,
-                'options' => array(),
-                'extra_info' => [
-                    'date_time' => [
-                        'added_at' => time(),
-                    ],
-                ],
-                'model' => $customerCV
-            ));
-            return $addedItem;
-        }
-
     }
     public static function ResetCVDataForCreateNew(){
         session('current_step',0);
@@ -109,9 +41,18 @@ class CVService
     {
         switch ($step_num) {
             case 0:
-                $customerCV = self::storePersonalInformation($data);
-                if ($customerCV != null) {
-                  $addedItem=CartService::AddToCart($customerCV);
+                //Store new data or update
+                $cvItem=self::getCVItem();
+                if(!empty($cvItem)){
+                    //update data
+                    $customerCV = self::updatePersonalInformation($cvItem->id,$data);
+                    $addedItem=$cvItem;
+                }else{
+                    //Add new
+                    $customerCV = self::storePersonalInformation($data);
+                    if ($customerCV != null) {
+                        $addedItem=CartService::AddToCart($customerCV);
+                    }
                 }
                 return json_encode(['addedItem'=>$addedItem,'customerCV'=>$customerCV]);
             case 1:
@@ -205,77 +146,128 @@ class CVService
         }
         return true;
     }
-
+    public static function deleteOldCEducations($cv){
+        if(count($cv->customer_cv_education)){
+            $cv->customer_cv_education()->delete();
+        }
+    }
     public static function storeEducation($data)
     {
+        //dd($data);
         $data = self::getDataArraysFromRequest($data);
         $cvItem = self::getCVItem();
         if (!empty($cvItem)) {
-            foreach ($data as $education) {
-                CustomerCvEducation::create([
-                    'customer_cv_id' => $cvItem->id,
-                    'institution_name_en' => $education['institution_name_en'] ?? '',
-                    'institution_name_ar' => $education['institution_name_ar'] ?? '',
-                    'city_ar' => $education['city_ar'] ?? '',
-                    'city_en' => $education['city_en'] ?? '',
-                    'qualification_id' => $education['qualification_id'] ?? '',
-                    'field_study_ar' => $education['field_study_ar'] ?? '',
-                    'field_study_en' => $education['field_study_en'] ?? '',
-                    'honours_ar' => $education['honours_ar'] ?? '',
-                    'honours_en' => $education['honours_en'] ?? '',
-                    'start_date' => $education['start_date'] ?? '',
-                    'end_date' => $education['end_date'] ?? '',
-                ]);
+            $customer_cv=CustomerCv::find($cvItem->id);
+            if(!empty($customer_cv)) {
+                self::deleteOldCEducations($customer_cv);
+                foreach ($data as $education) {
+                    CustomerCvEducation::create([
+                        'customer_cv_id' => $cvItem->id,
+                        'institution_name_en' => $education['institution_name_en'] ?? '',
+                        'institution_name_ar' => $education['institution_name_ar'] ?? '',
+                        'city_ar' => $education['city_ar'] ?? '',
+                        'city_en' => $education['city_en'] ?? '',
+                        'qualification_id' => $education['qualification_id'] ?? '',
+                        'field_study_ar' => $education['field_study_ar'] ?? '',
+                        'field_study_en' => $education['field_study_en'] ?? '',
+                        'honours_ar' => $education['honours_ar'] ?? '',
+                        'honours_en' => $education['honours_en'] ?? '',
+                        'start_date' => $education['start_date'] ?? '',
+                        'end_date' => $education['end_date'] ?? '',
+                    ]);
+                }
             }
         }
         return true;
     }
-
+    public static function deleteOldCProjects($cv){
+        if(count($cv->customer_cv_project)){
+            $cv->customer_cv_project()->delete();
+        }
+    }
     public static function storeProjects($data)
     {
         $data = self::getDataArraysFromRequest($data);
         $cvItem = self::getCVItem();
         if (!empty($cvItem)) {
-            foreach ($data as $project) {
-                CustomerCvProject::create([
+            $customer_cv=CustomerCv::find($cvItem->id);
+            if(!empty($customer_cv)){
+                self::deleteOldCProjects($customer_cv);
+                foreach ($data as $project) {
+                    CustomerCvProject::create([
+                        'customer_cv_id' => $cvItem->id,
+                        'project_name_en' => $project['project_name_en'] ?? '',
+                        'project_name_ar' => $project['project_name_ar'] ?? '',
+                        'description_en' => $project['description_en'] ?? '',
+                        'description_ar' => $project['description_ar'] ?? '',
+                        'start_date' => $project['start_date'] ?? '',
+                        'end_date' => $project['end_date'] ?? '',
+                    ]);
+                }
+            }
+        }
+        return true;
+    }
+    public static function deleteOldCVWorkHistory($cv){
+        if(count($cv->customer_cv_work_history)){
+            $cv->customer_cv_work_history()->delete();
+        }
+    }
+    public static function storeWorkHistory($data)
+    {
+        $data = self::getDataArraysFromRequest($data);
+        $cvItem = self::getCVItem();
+        $customer_cv=CustomerCv::find($cvItem->id);
+        if(!empty($customer_cv)){
+            self::deleteOldCVWorkHistory($customer_cv);
+            foreach ($data as $work) {
+                CustomerCvWorkHistory::create([
                     'customer_cv_id' => $cvItem->id,
-                    'project_name_en' => $project['project_name_en'] ?? '',
-                    'project_name_ar' => $project['project_name_ar'] ?? '',
-                    'description_en' => $project['description_en'] ?? '',
-                    'description_ar' => $project['description_ar'] ?? '',
-                    'start_date' => $project['start_date'] ?? '',
-                    'end_date' => $project['end_date'] ?? '',
+                    'job_title_ar' => $work['job_title_ar'] ?? '',
+                    'job_title_en' => $work['job_title_en'] ?? '',
+                    'employeer_ar' => $work['employeer_ar'] ?? '',
+                    'employeer_en' => $work['employeer_en'] ?? '',
+                    'city_ar' => $work['city_ar'] ?? '',
+                    'city_en' => $work['city_en'] ?? '',
+                    'country_ar' => $work['country_ar'] ?? '',
+                    'country_en' => $work['country_en'] ?? '',
+                    'start_date' => $work['start_date'] ?? null,
+                    'end_date' => $work['end_date'] ?? null,
+                    'current' => $work['current'] ?? 0,
+                    'experience_description_ar' => $work['experience_description_ar'] ?? '',
+                    'experience_description_en' => $work['experience_description_en'] ?? ''
                 ]);
             }
         }
         return true;
     }
-
-    public static function storeWorkHistory($data)
-    {
-        $data = self::getDataArraysFromRequest($data);
-        $cvItem = self::getCVItem();
-        foreach ($data as $work) {
-            CustomerCvWorkHistory::create([
-                'customer_cv_id' => $cvItem->id,
-                'job_title_ar' => $work['job_title_ar'] ?? '',
-                'job_title_en' => $work['job_title_en'] ?? '',
-                'employeer_ar' => $work['employeer_ar'] ?? '',
-                'employeer_en' => $work['employeer_en'] ?? '',
-                'city_ar' => $work['city_ar'] ?? '',
-                'city_en' => $work['city_en'] ?? '',
-                'country_ar' => $work['country_ar'] ?? '',
-                'country_en' => $work['country_en'] ?? '',
-                'start_date' => $work['start_date'] ?? null,
-                'end_date' => $work['end_date'] ?? null,
-                'current' => $work['current'] ?? 0,
-                'experience_description_ar' => $work['experience_description_ar'] ?? '',
-                'experience_description_en' => $work['experience_description_en'] ?? ''
-            ]);
-        }
-        return true;
+    public static function updatePersonalInformation($id,$data){
+      return CustomerCv::where('id',$id)->update([
+            'template_id' => session('chosen_template_id'),
+            'template_color' => session('chosen_cv_color'),
+            'cv_language' => session('chosen_cv_language'),
+            'customer_id' => Auth::guard('customer')->user()->id,
+            'first_name' => $data['first_name'],
+            'first_name_ar' => $data['first_name_ar'] ?? '',
+            'surename' => $data['surename'],
+            'surename_ar' => $data['surename_ar'] ?? '',
+            'phone' => $data['phone'],
+            'email' => $data['email'] ?? '',
+            'image' => $data['image'] ?? '',
+            'open_for_remote' => $data['open_for_remote'] ?? 0,
+            'linkedlin_url' => $data['linkedlin_url'] ?? '',
+            'address_ar' => $data['address_ar'] ?? '',
+            'address_en' => $data['address_en'] ?? '',
+            'city_town_ar' => $data['city_town_ar'] ?? '',
+            'city_town_en' => $data['city_town_en'] ?? '',
+            'country_ar' => $data['country_ar'] ?? '',
+            'country_en' => $data['country_en'] ?? '',
+            'postcode' => $data['postcode'] ?? '',
+            'website' => $data['website'] ?? '',
+            'driving_licence' => $data['driving_licence'] ?? '',
+            'nationality' => $data['nationality'] ?? '',
+        ]);
     }
-
     public static function storePersonalInformation($data)
     {
         $customer_id = 0;
