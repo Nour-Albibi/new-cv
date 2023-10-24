@@ -141,6 +141,7 @@
 @endsection
 @section('custom_js')
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=62e3f93cf0ce683fcdd5ff7d" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script id="wp-util-js-extra">var _wpUtilSettings = {"ajax": {"url":"http://localhost/cv/public/cv-builder/uploadFile"}};</script>
     <script id="wpforms-elementor-js-extra">var wpformsElementorVars = {
             "captcha_provider": "recaptcha",
             "recaptcha_type": "v2"
@@ -167,6 +168,53 @@
             id="wpforms-js"></script>
     <script src="{{asset('assets/plugins/wpforms/pro/assets/js/wpforms-file-upload.min.js?ver=1.6.7')}}"
             id="wpforms-file-upload-js"></script>
+    <script src="{{asset('wp-content/plugins/wpforms/assets/js/jquery.validate.min.js?ver=1.19.0')}}"
+            id="wpforms-validation-js"></script>
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var wpforms_settings = {
+            "val_required": "This field is required.",
+            "val_email": "Please enter a valid email address.",
+            "val_email_suggestion": "Did you mean {suggestion}?",
+            "val_email_suggestion_title": "Click to accept this suggestion.",
+            "val_email_restricted": "This email address is not allowed.",
+            "val_number": "Please enter a valid number.",
+            "val_number_positive": "Please enter a valid positive number.",
+            "val_confirm": "Field values do not match.",
+            "val_checklimit": "You have exceeded the number of allowed selections: {#}.",
+            "val_limit_characters": "{count} of {limit} max characters.",
+            "val_limit_words": "{count} of {limit} max words.",
+            "val_recaptcha_fail_msg": "Google reCAPTCHA verification failed, please try again later.",
+            "val_empty_blanks": "Please fill out all blanks.",
+            "uuid_cookie": "1",
+            "locale": "en",
+            "wpforms_plugin_url": "https:\/\/projects.datatime4it.com\/chtml\/wp-content\/plugins\/wpforms\/",
+            "gdpr": "",
+            "ajaxurl": "https:\/\/projects.datatime4it.com\/chtml\/wp-admin\/admin-ajax.php",
+            "mailcheck_enabled": "1",
+            "mailcheck_domains": [],
+            "mailcheck_toplevel_domains": ["dev"],
+            "is_ssl": "1",
+            "currency_code": "USD",
+            "currency_thousands": ",",
+            "currency_decimals": "2",
+            "currency_decimal": ".",
+            "currency_symbol": "$",
+            "currency_symbol_pos": "left",
+            "val_requiredpayment": "Payment is required.",
+            "val_creditcard": "Please enter a valid credit card number.",
+            "val_post_max_size": "The total size of the selected files {totalSize} Mb exceeds the allowed limit {maxSize} Mb.",
+            "val_time12h": "Please enter time in 12-hour AM\/PM format (eg 8:45 AM).",
+            "val_time24h": "Please enter time in 24-hour format (eg 22:45).",
+            "val_url": "Please enter a valid URL.",
+            "val_fileextension": "File type is not allowed.",
+            "val_filesize": "File exceeds max size allowed. File was not uploaded.",
+            "post_max_size": "838860800",
+            "val_password_strength": "A stronger password is required. Consider using upper and lower case letters, numbers, and symbols.",
+            "val_phone": "Please enter a valid phone number."
+        }
+        /* ]]> */
+    </script>
     <script>
         var currentTab = {{session('current_step_num') ?? 0}};
     </script>

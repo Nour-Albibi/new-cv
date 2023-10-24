@@ -65,24 +65,30 @@
                                          data-field-id="1">
                                         <label class="wpforms-field-label"
                                                for="wpforms-591-field_1">{{__('skills for the job you want')}}</label>
+                                        @php $out=''; @endphp
+                                        @if(!empty($addedItem) && count($addedItem->model->customer_cv_skill))
+                                            @foreach($addedItem->model->customer_cv_skill as $addedSkill)
+                                                <input type="hidden" class="skills_idss" name="skills_ids[]" value="{{$addedSkill->id}}"/>
+                                               @php
+                                                    $out.=$addedSkill->{"content_".$lang}.'</br>';
+                                               @endphp
+                                            @endforeach
+                                            <textarea id="wpforms-591-field_1"
+                                                      class="wpforms-field-medium skill_content"
+                                                      name="content_{{$lang}}">
+                                                {!! $out !!}
+                                            </textarea>
+                                       @else
                                         <textarea id="wpforms-591-field_1"
-                                                                  class="wpforms-field-medium"
+                                                                  class="wpforms-field-medium skill_content"
                                                                   name="content_{{$lang}}"></textarea>
+                                        <input type="hidden" class="skills_idss" name="skills_ids[]" value=""/>
+                                        @endif
                                     </div>
                                     <div id="wpforms-591-field_4-container"
                                          class="wpforms-field wpforms-field-html wpforms-one-half"
                                          data-field-id="4">
-                                        <div id="wpforms-591-field_4">
-                                            <br>
-                                            <ul class="uleducation add-list"
-                                                style="margin-top: 55px;">
-                                                <i class="fas fa-plus-circle"></i> Google Workspace
-                                                <br>
-                                                <i class="fas fa-plus-circle"
-                                                   style="list-style:none"></i> Self-Motivated
-                                                <br>
-                                                <i class="fas fa-plus-circle"></i> PPE Compliance
-                                            </ul>
+                                        <div id="skills_suggestions">
                                         </div>
                                     </div>
                                 </div>

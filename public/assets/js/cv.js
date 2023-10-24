@@ -60,6 +60,9 @@ function nextPrev(n) {
     $('.cv-step-num[num='+currentTab+']').addClass('active');
     // Otherwise, display the correct tab:
     showTab(currentTab);
+    if(currentTab==5){
+        getAllSkillRelatedToJobTitle();
+    }
 }
 function validateForm(n) {
     // This function deals with validation of the form fields
@@ -176,4 +179,26 @@ function AddLanguage(){
     $.post(main_path+'cv-builder/AddLanguage', {current_language:current_language}, function (data) {
         $('#languages_section').append(data);
     });
+}
+function getAllSkillRelatedToJobTitle(){
+    $('#skills_suggestions').html('<i class="fa fa-spinner"></i>');
+    $.ajax({
+        method: "post",
+        url: main_path + "cv-builder/getSkillsRelatedToJobTitle",
+        contentType: false,
+        cache: false,
+        processData:false,
+        success: function (data) {
+           $('#skills_suggestions').html(data);
+        },
+        error: function (data) {
+            console.log(data);
+            valid=false;
+        }
+    });
+}
+function addSkillData(skill_id,skill_content){
+    $('#skills_form').append('<input type="hidden" class="skills_idss" name="skills_ids[]" value="'+skill_id+'"/>');
+    $('.skill_content').append(skill_content+'\r\n');
+    $('.skills_data[skill_id='+skill_id+']').remove();
 }

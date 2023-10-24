@@ -10,6 +10,7 @@ use App\Models\CustomerCvProject;
 use App\Models\CustomerCvSkill;
 use App\Models\CustomerCvSummery;
 use App\Models\CustomerCvWorkHistory;
+use App\Models\Skill;
 use App\Models\Template;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -36,6 +37,27 @@ class CVService
         Session::forget('show_confirm');
         $cart=Cart::name('cv');
         $cart->destroy();
+    }
+    public static function getSkillSuggestions(){
+        $cvItem=self::getCVItem();
+        $newest_work=CustomerCvWorkHistory::select('id','job_title_ar','job_title_en','job_title_id')
+        ->where('customer_cv_id',$cvItem->id)->latest()->first();
+        if(!empty($newest_work)){
+            if(!empty($newest_work->job_title_id)){
+                $related_skills=Skill::where('job_title_id',$newest_work->job_title_id)->get();
+            }else{
+                $related_skills=Skill::select('skills.*')->join('job_titles','job_titles.id','skills.job_title_id')
+                    ->where('job_titles.name_ar','like','%'.$newest_work->job_title_ar.'%')
+                    ->orwhere('job_titles.name_en','like','%'.$newest_work->job_title_en.'%')
+                    ->get();
+            }
+        }else{
+            $related_skills=Skill::where('is_general',1)->get();
+        }
+        return $related_skills;
+    }
+    public static function addStoredCVinCart($customerCV){
+        return CartService::AddToCart($customerCV);
     }
     public static function storeCVData($step_num, $data)
     {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CustomerCv;
 use App\Services\CVService;
 use App\Services\CVTemplateService;
+use App\Services\UploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -38,10 +39,10 @@ class CVController extends Controller
         }
         $addedItem=CVService::getCVItem();
         if (Auth::guard('customer')->check() && empty($addedItem)) {
-            $addedItem = CustomerCv::where('customer_id', Auth::guard('customer')->user()->id)
-                ->where('status', 0)->latest()->first();
+            $customerCV = CustomerCv::where('customer_id', Auth::guard('customer')->user()->id)
+                ->where('cv_status', 0)->latest()->first();
+            $addedItem=CVService::addStoredCVinCart($customerCV);
         }
-
         $chosen_template = CVTemplateService::getChosenTemplate();
         return view('cv.create-cv-steps', compact('chosen_template','addedItem'));
     }
@@ -107,6 +108,12 @@ class CVController extends Controller
         }
     }
     public function uploadFile(Request $request){
-        dd($request);
+        try{
+
+            $uploader=new UploadService();
+            return $uploader->UploadImageFile($request);
+        }catch (\Exception $exception){
+            return response()->json(['error' => $exception->getMessage()], 500);
+        }
     }
 }
