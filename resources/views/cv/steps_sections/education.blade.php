@@ -51,7 +51,7 @@
                                                            for="wpforms-535-field_1">{{__('INSTITUTION NAME')}}</label>
                                                     <input type="text" id="wpforms-535-field_1"
                                                            class="wpforms-field-large"
-                                                           name="education_{{$i}}['institution_name_{{$lang}}']"
+                                                           name="education_{{$i}}[institution_name_{{$lang}}]"
                                                            placeholder="{{__('INSTITUTION NAME')}}" value="{{$education->{"institution_name_".$lang} }}">
                                                 </div>
                                                 <div id="wpforms-535-field_2-container"
@@ -61,7 +61,7 @@
                                                            for="wpforms-535-field_2">{{__('CITY / COUNTRY')}}</label>
                                                     <input type="text" id="wpforms-535-field_2"
                                                                               class="wpforms-field-large"
-                                                                              name="education_{{$i}}['city_{{$lang}}']"
+                                                                              name="education_{{$i}}[city_{{$lang}}]"
                                                                               placeholder="{{__('City/Country')}}" value="{{$education->{"city_".$lang} }}">
                                                 </div>
                                                 <div id="wpforms-535-field_3-container"
@@ -70,7 +70,7 @@
                                                     <label class="wpforms-field-label"
                                                            for="wpforms-535-field_3">{{__('QUALIFICATION')}}</label><select
                                                         id="wpforms-535-field_3" class="wpforms-field-large"
-                                                        name="education_{{$i}}['qualification_id']">
+                                                        name="education_{{$i}}[qualification_id]">
                                                         <option value="1" selected>First Choice</option>
                                                         <option value="2">Second Choice</option>
                                                         <option value="3">Third Choice</option>
@@ -83,7 +83,7 @@
                                                            for="wpforms-535-field_4">{{__('FIELD OF STUDY')}}</label>
                                                     <input type="text" id="wpforms-535-field_4"
                                                            class="wpforms-field-large"
-                                                           name="education_{{$i}}['field_study_{{$lang}}']"
+                                                           name="education_{{$i}}[field_study_{{$lang}}]"
                                                            value="{{$education->{"field_study_".$lang} }}">
                                                 </div>
                                                 <div id="wpforms-535-field_5-container"
@@ -93,7 +93,7 @@
                                                            for="wpforms-535-field_5">{{__('HONOURS(optional)')}}</label><input
                                                         type="text" pattern="\d*" id="wpforms-535-field_5"
                                                         class="wpforms-field-large"
-                                                        name="education_{{$i}}['honours_{{$lang}}']" value="{{$education->{"honours_".$lang} }}">
+                                                        name="education_{{$i}}[honours_{{$lang}}]" value="{{$education->{"honours_".$lang} }}">
                                                 </div>
                                                 <div id="wpforms-535-field_6-container"
                                                      class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
@@ -105,7 +105,7 @@
                                                                class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                                data-date-format="m/d/Y"
                                                                data-disable-past-dates="0" data-input="true"
-                                                               name="education_{{$i}}['start_date']" value="{{Illuminate\Support\Carbon::parse($education->start_date)->toDateString()}}">
+                                                               name="education_{{$i}}[start_date]" value="{{Illuminate\Support\Carbon::parse($education->start_date)->toDateString()}}">
                                                     </div>
                                                 </div>
                                                 <div id="wpforms-535-field_7-container"
@@ -118,7 +118,7 @@
                                                                class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                                data-date-format="m/d/Y"
                                                                data-disable-past-dates="0" data-input="true"
-                                                               name="education_{{$i}}['end_date']" value="{{Illuminate\Support\Carbon::parse($education->end_date)->toDateString()}}">
+                                                               name="education_{{$i}}[end_date]" value="{{Illuminate\Support\Carbon::parse($education->end_date)->toDateString()}}">
                                                     </div>
                                                 </div>
                                                 <div id="wpforms-488-field_7-container"
@@ -145,7 +145,7 @@
                                                        for="wpforms-535-field_1">{{__('INSTITUTION NAME')}}</label>
                                                 <input type="text" id="wpforms-535-field_1"
                                                        class="wpforms-field-large"
-                                                       name="education_1['institution_name_{{$lang}}']"
+                                                       name="education_1[institution_name_{{$lang}}]"
                                                        placeholder="{{__('INSTITUTION NAME')}}">
                                             </div>
                                             <div id="wpforms-535-field_2-container"
@@ -155,7 +155,7 @@
                                                        for="wpforms-535-field_2">{{__('CITY /COUNTRY')}}</label><input type="text"
                                                                           id="wpforms-535-field_2"
                                                                           class="wpforms-field-large"
-                                                                          name="education_1['city_{{$lang}}']"
+                                                                          name="education_1[city_{{$lang}}]"
                                                                           placeholder="{{__('City/Country')}}">
                                             </div>
                                             <div id="wpforms-535-field_3-container"
@@ -164,7 +164,7 @@
                                                 <label class="wpforms-field-label"
                                                        for="wpforms-535-field_3">{{__('QUALIFICATION')}}</label><select
                                                     id="wpforms-535-field_3" class="wpforms-field-large"
-                                                    name="education_1['qualification_id']">
+                                                    name="education_1[qualification_id]">
                                                     <option value="1" selected>First Choice</option>
                                                     <option value="2">Second Choice</option>
                                                     <option value="3">Third Choice</option>
@@ -177,7 +177,7 @@
                                                        for="wpforms-535-field_4">{{__('FIELD OF STUDY')}}</label>
                                                 <input type="text" id="wpforms-535-field_4"
                                                        class="wpforms-field-large"
-                                                       name="education_1['field_study_{{$lang}}']"
+                                                       name="education_1[field_study_{{$lang}}]"
                                                        placeholder="{{__('FIELD OF STUDY')}}">
                                             </div>
                                             <div id="wpforms-535-field_5-container"
@@ -186,7 +186,7 @@
                                                 <label class="wpforms-field-label"
                                                        for="wpforms-535-field_5">{{__('HONOURS(optional)')}}</label><input
                                                     type="text" pattern="\d*" id="wpforms-535-field_5"
-                                                    class="wpforms-field-large" name="education_1['honours_{{$lang}}']">
+                                                    class="wpforms-field-large" name="education_1[honours_{{$lang}}]">
                                             </div>
                                             <div id="wpforms-535-field_6-container"
                                                  class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
@@ -198,7 +198,7 @@
                                                            class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                            data-date-format="m/d/Y"
                                                            data-disable-past-dates="0" data-input="true"
-                                                           name="education_1['start_date']">
+                                                           name="education_1[start_date]">
                                                 </div>
                                             </div>
                                             <div id="wpforms-535-field_7-container"
@@ -211,7 +211,7 @@
                                                            class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                            data-date-format="m/d/Y"
                                                            data-disable-past-dates="0" data-input="true"
-                                                           name="education_1['end_date']">
+                                                           name="education_1[end_date]">
                                                 </div>
                                             </div>
                                             <div id="wpforms-488-field_7-container"

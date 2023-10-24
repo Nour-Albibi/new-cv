@@ -49,7 +49,7 @@
                                                            for="wpforms-568-field_1">{{__('Course name')}}</label><input
                                                         type="text" id="wpforms-568-field_1"
                                                         class="wpforms-field-large"
-                                                        name="course_{{$i}}['course_name_{{$lang}}']"
+                                                        name="course_{{$i}}[course_name_{{$lang}}]"
                                                         placeholder="{{__('Course name')}}" value="{{$course->{"course_name_".$lang } }}">
                                                 </div>
                                                 <div id="wpforms-568-field_2-container"
@@ -57,7 +57,7 @@
                                                     <label class="wpforms-field-label"
                                                            for="wpforms-568-field_2">{{__('The entity responsible for the course')}}</label>
                                                     <input type="text" id="wpforms-568-field_2" class="wpforms-field-large"
-                                                           name="course_{{$i}}['trainer_{{$lang}}']"
+                                                           name="course_{{$i}}[trainer_{{$lang}}]"
                                                            placeholder="{{__('The entity responsible for the course')}}" value="{{$course->{"trainer_".$lang } }}">
                                                 </div>
                                                 <div id="wpforms-568-field_3-container"
@@ -70,7 +70,7 @@
                                                                class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                                data-date-format="m/d/Y"
                                                                data-disable-past-dates="0" data-input="true"
-                                                               name="course_{{$i}}['start_date']" value="{{Illuminate\Support\Carbon::parse($course->start_date)->toDateString()}}">
+                                                               name="course_{{$i}}[start_date]" value="{{Illuminate\Support\Carbon::parse($course->start_date)->toDateString()}}">
                                                     </div>
                                                 </div>
                                                 <div id="wpforms-568-field_4-container"
@@ -83,7 +83,7 @@
                                                                class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                                data-date-format="m/d/Y"
                                                                data-disable-past-dates="0" data-input="true"
-                                                               name="course_{{$i}}['end_date']" value="{{Illuminate\Support\Carbon::parse($course->end_date)->toDateString()}}">
+                                                               name="course_{{$i}}[end_date]" value="{{Illuminate\Support\Carbon::parse($course->end_date)->toDateString()}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -96,43 +96,41 @@
                                                 <label class="wpforms-field-label"
                                                        for="wpforms-568-field_1">{{__('Course name')}}</label><input
                                                     type="text" id="wpforms-568-field_1"
-                                                    class="wpforms-field-large" name="course_1['course_name_{{$lang}}']"
+                                                    class="wpforms-field-large" name="course_1[course_name_{{$lang}}]"
                                                     placeholder="Course name">
                                             </div>
                                             <div id="wpforms-568-field_2-container"
                                                  class="wpforms-field wpforms-field-text" data-field-id="2">
                                                 <label class="wpforms-field-label"
-                                                       for="wpforms-568-field_2">The entity responsible for
-                                                    the course</label><input type="text"
-                                                                             id="wpforms-568-field_2"
-                                                                             class="wpforms-field-large"
-                                                                             name="course_1['trainer_{{$lang}}']"
+                                                       for="wpforms-568-field_2">{{__('The entity responsible for the course')}}</label>
+                                                <input type="text" id="wpforms-568-field_2" class="wpforms-field-large"
+                                                                             name="course_1[trainer_{{$lang}}]"
                                                                              placeholder="The entity responsible for the course">
                                             </div>
                                             <div id="wpforms-568-field_3-container"
                                                  class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
                                                  data-field-id="3">
                                                 <label class="wpforms-field-label"
-                                                       for="wpforms-568-field_3">START DATE</label>
+                                                       for="wpforms-568-field_3">{{__('START DATE')}}</label>
                                                 <div class="wpforms-datepicker-wrap">
                                                     <input type="date" id="wpforms-568-field_3"
                                                            class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                            data-date-format="m/d/Y"
                                                            data-disable-past-dates="0" data-input="true"
-                                                           name="course_1['start_date']">
+                                                           name="course_1[start_date]">
                                                 </div>
                                             </div>
                                             <div id="wpforms-568-field_4-container"
                                                  class="wpforms-field wpforms-field-date-time wpforms-one-half"
                                                  data-field-id="4">
                                                 <label class="wpforms-field-label"
-                                                       for="wpforms-568-field_4">END DATE</label>
+                                                       for="wpforms-568-field_4">{{__('END DATE')}}</label>
                                                 <div class="wpforms-datepicker-wrap">
                                                     <input type="date" id="wpforms-568-field_4"
                                                            class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                            data-date-format="m/d/Y"
                                                            data-disable-past-dates="0" data-input="true"
-                                                           name="course_1['end_date']">
+                                                           name="course_1[end_date]">
                                                 </div>
                                             </div>
                                         </div>

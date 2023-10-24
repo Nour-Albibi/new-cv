@@ -172,6 +172,7 @@ class CVService
             $customer_cv=CustomerCv::find($cvItem->id);
             if(!empty($customer_cv)) {
                 self::deleteOldCEducations($customer_cv);
+                dd($data);
                 foreach ($data as $education) {
                     CustomerCvEducation::create([
                         'customer_cv_id' => $cvItem->id,
