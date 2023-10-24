@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CustomerCv;
 use App\Services\CVService;
 use App\Services\CVTemplateService;
+use App\Services\UploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -108,6 +109,12 @@ class CVController extends Controller
         }
     }
     public function uploadFile(Request $request){
-        dd($request);
+        try{
+
+            $uploader=new UploadService();
+            return $uploader->UploadImageFile($request);
+        }catch (\Exception $exception){
+            return response()->json(['error' => $exception->getMessage()], 500);
+        }
     }
 }

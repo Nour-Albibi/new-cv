@@ -93,3 +93,9 @@ function resetAllSessions(){
        $cart=\Jackiedo\Cart\Facades\Cart::name('cv');
        $cart->destroy();
 }
+function getRandString($length=5,$num=1){
+    if($num==1){$ch = '0123456789abcdefghijklmnopqrstuvwxyz';}else{$ch = 'abcdefghijklmnopqrstuvwxyz';}
+    $rand_name='';
+    for($p=0;$p < $length;$p++){$rand_name.= $ch[mt_rand(0, (strlen($ch))-1)];}
+    return $rand_name;
+}
