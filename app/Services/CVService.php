@@ -37,6 +37,9 @@ class CVService
         $cart=Cart::name('cv');
         $cart->destroy();
     }
+    public static function addStoredCVinCart($customerCV){
+        return CartService::AddToCart($customerCV);
+    }
     public static function storeCVData($step_num, $data)
     {
         switch ($step_num) {
