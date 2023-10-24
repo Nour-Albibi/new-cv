@@ -43,7 +43,6 @@ class CVController extends Controller
                 ->where('cv_status', 0)->latest()->first();
             $addedItem=CVService::addStoredCVinCart($customerCV);
         }
-
         $chosen_template = CVTemplateService::getChosenTemplate();
         return view('cv.create-cv-steps', compact('chosen_template','addedItem'));
     }

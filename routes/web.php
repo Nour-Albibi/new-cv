@@ -7,6 +7,7 @@ use App\Http\Controllers\CVCourseController;
 use App\Http\Controllers\CVEducationController;
 use App\Http\Controllers\CVLanguageController;
 use App\Http\Controllers\CVProjectController;
+use App\Http\Controllers\CVSkillsController;
 use App\Http\Controllers\CVWorkHistoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PackageController;
@@ -39,6 +40,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::post('AddEducation',[CVEducationController::class,'AddEducation']);
         Route::post('AddCourse',[CVCourseController::class,'AddCourse']);
         Route::post('AddLanguage',[CVLanguageController::class,'AddLanguage']);
+        Route::post('getSkillsRelatedToJobTitle',[CVSkillsController::class,'getSkillRelatedToJobTitle']);
     });
     Route::get('user-packages',[PackageController::class,'getCustomerPackagesPricing'])->name('getCustomerPackagesPricing');
 });

@@ -27,12 +27,17 @@ class JobTitleController extends AdminController
         $grid = new Grid(new JobTitle());
 
         $grid->column('id', __('Id'));
-        $grid->column('name_en', __('Name en'));
-        $grid->column('name_ar', __('Name ar'));
-        $grid->column('code', __('Code'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
-
+        $grid->column('name_en', __('English Name'));
+        $grid->column('name_ar', __('Arabic Name'));
+        $grid->filter(function ($filter) {
+            $filter->where(function ($query) {
+                $query->where('name_ar', 'like', "%{$this->input}%");
+            }, 'Arabic Name');
+            $filter->where(function ($query) {
+                $query->where('name_en', 'like', "%{$this->input}%");
+            }, 'English  Name');
+        });
+        $grid->expandFilter();
         return $grid;
     }
 
@@ -65,10 +70,14 @@ class JobTitleController extends AdminController
     {
         $form = new Form(new JobTitle());
 
-        $form->text('name_en', __('Name en'));
-        $form->text('name_ar', __('Name ar'));
-        $form->text('code', __('Code'));
-
+        $form->text('name_en', __('English Name'));
+        $form->text('name_ar', __('Arabic Name'));
+//        $form->text('code', __('Code'));
+        $form->hasMany('skills', function (Form\NestedForm $form) {
+            $form->hidden('id');
+            $form->text('name_ar',__('Arabic Name'));
+            $form->text('name_en',__('English Name'));
+        });
         return $form;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\JobTitle;
 use App\Models\Skill;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -65,10 +66,14 @@ class SkillController extends AdminController
     {
         $form = new Form(new Skill());
 
-        $form->number('job_title_id', __('Job title id'));
-        $form->text('name_ar', __('Name ar'));
-        $form->text('name_en', __('Name en'));
-
+        $form->select('job_title_id',__('Related Job Title'))->options(JobTitle::select('id','name_en')->take(40)->pluck('name_en','id'));
+        $form->text('name_ar', __('Arabic Name'));
+        $form->text('name_en', __('English Name'));
+        $states = [
+            'on'  => ['value' => 1, 'text' => __('General Skill'), 'color' => 'success'],
+            'off' => ['value' => 0, 'text' => __('Related To Job Title'), 'color' => 'info'],
+        ];
+        $form->switch('is_general',__('General Skill'))->states($states)->default(0);
         return $form;
     }
 }

@@ -177,3 +177,23 @@ function AddLanguage(){
         $('#languages_section').append(data);
     });
 }
+function getAllSkillRelatedToJobTitle(){
+    $.ajax({
+        method: "post",
+        url: main_path + "cv-builder/saveCV?step=" + step_num,
+        data: new FormData(form),
+        contentType: false,
+        cache: false,
+        processData:false,
+        success: function (data) {
+            redirect=JSON.parse(data).redirect;
+            if(redirect!="" && typeof redirect !== 'undefined'){
+                return location.href=data.redirect;
+            }
+        },
+        error: function (data) {
+            console.log(data);
+            valid=false;
+        }
+    });
+}
