@@ -1,0 +1,298 @@
+.elementor-kit-36 {
+    --e-global-color-primary: #024a53;
+    --e-global-color-secondary: #024a53;
+    --e-global-color-text: #6E6E6E;
+    --e-global-color-accent: #181818;
+    --e-global-color-50b2a21: #FFFFFF45;
+    --e-global-color-2d6a869: #DADADA;
+    --e-global-color-9c764db: #181818;
+    --e-global-color-6b0ce64: #F2F2F2;
+    --e-global-color-fdf12ae: #FFFFFFD4;
+    --e-global-color-0b5147f: #8758FF70;
+    --e-global-color-d9dbee0: #8758FF36;
+    --e-global-color-ca8a21d: #5CB8E442;
+    --e-global-color-fa93dad: #8758FF1A;
+    --e-global-color-70f41d5: #F2F2F282;
+    --e-global-typography-primary-font-family: "Poppins";
+    --e-global-typography-secondary-font-family: "Poppins";
+    --e-global-typography-text-font-family: "Poppins";
+    --e-global-typography-text-font-size: 17px;
+    --e-global-typography-text-font-weight: 400;
+    --e-global-typography-text-line-height: 1.5em;
+    --e-global-typography-accent-font-family: "Poppins";
+    --e-global-typography-accent-font-size: 15px;
+    --e-global-typography-accent-font-weight: 500;
+    --e-global-typography-accent-line-height: 1.3em;
+    --e-global-typography-5898891-font-family: "Poppins";
+    --e-global-typography-5898891-font-size: 250px;
+    --e-global-typography-5898891-font-weight: 600;
+    --e-global-typography-5898891-line-height: 1em;
+    --e-global-typography-5898891-letter-spacing: 25px;
+    --e-global-typography-db48b8b-font-family: "Poppins";
+    --e-global-typography-db48b8b-font-size: 60px;
+    --e-global-typography-db48b8b-font-weight: 600;
+    --e-global-typography-db48b8b-line-height: 1.3em;
+    --e-global-typography-c397194-font-family: "Poppins";
+    --e-global-typography-c397194-font-size: 45px;
+    --e-global-typography-c397194-font-weight: 600;
+    --e-global-typography-c397194-line-height: 1.3em;
+    --e-global-typography-679076f-font-family: "Poppins";
+    --e-global-typography-679076f-font-size: 35px;
+    --e-global-typography-679076f-font-weight: 600;
+    --e-global-typography-679076f-line-height: 1.3em;
+    --e-global-typography-a10f8a0-font-family: "Poppins";
+    --e-global-typography-a10f8a0-font-size: 25px;
+    --e-global-typography-a10f8a0-font-weight: 600;
+    --e-global-typography-a10f8a0-line-height: 1.3em;
+    --e-global-typography-b21c26e-font-family: "Poppins";
+    --e-global-typography-b21c26e-font-size: 20px;
+    --e-global-typography-b21c26e-font-weight: 600;
+    --e-global-typography-b21c26e-line-height: 1.3em;
+    --e-global-typography-4aceb21-font-family: "Poppins";
+    --e-global-typography-4aceb21-font-size: 17px;
+    --e-global-typography-4aceb21-font-weight: 600;
+    --e-global-typography-4aceb21-line-height: 1.3em;
+    --e-global-typography-1eb2da8-font-family: "Poppins";
+    --e-global-typography-1eb2da8-font-size: 15px;
+    --e-global-typography-1eb2da8-font-weight: 400;
+    --e-global-typography-3be2057-font-family: "Poppins";
+    --e-global-typography-3be2057-font-size: 20px;
+    --e-global-typography-3be2057-font-weight: 500;
+    --e-global-typography-3be2057-font-style: italic;
+    --e-global-typography-3be2057-line-height: 1.3em;
+    --e-global-typography-94bac04-font-family: "Poppins";
+    --e-global-typography-94bac04-font-size: 15px;
+    --e-global-typography-94bac04-font-weight: 500;
+    --e-global-typography-94bac04-line-height: 1.5em;
+    --e-global-typography-b9711bb-font-family: "Poppins";
+    --e-global-typography-b9711bb-font-size: 18px;
+    --e-global-typography-b9711bb-font-weight: 500;
+    --e-global-typography-b9711bb-text-transform: uppercase;
+    --e-global-typography-b9711bb-line-height: 1.3em;
+    --e-global-typography-b9711bb-letter-spacing: 2px;
+    --e-global-typography-f4f8084-font-family: "Poppins";
+    --e-global-typography-f4f8084-font-size: 35px;
+    --e-global-typography-f4f8084-font-weight: 500;
+    --e-global-typography-f4f8084-font-style: italic;
+    --e-global-typography-f4f8084-line-height: 1.3em;
+    --e-global-typography-f4f8084-letter-spacing: 1.5px;
+    --e-global-typography-48cd92d-font-family: "Poppins";
+    --e-global-typography-48cd92d-font-size: 17px;
+    --e-global-typography-48cd92d-font-weight: 500;
+    --e-global-typography-48cd92d-font-style: italic;
+    --e-global-typography-48cd92d-line-height: 1.5em;
+    --e-global-typography-3958d75-font-family: "Poppins";
+    --e-global-typography-3958d75-font-size: 13px;
+    --e-global-typography-3958d75-font-weight: 500;
+    --e-global-typography-3958d75-text-transform: uppercase;
+    --e-global-typography-3958d75-line-height: 1.3em;
+    --e-global-typography-3958d75-letter-spacing: 2.5px;
+    color: var(--e-global-color-text);
+    font-family: var(--e-global-typography-text-font-family), Sans-serif;
+    font-size: var(--e-global-typography-text-font-size);
+    font-weight: var(--e-global-typography-text-font-weight);
+    line-height: var(--e-global-typography-text-line-height);
+}
+:root {
+    --main-color: #024a53;
+    --color2: #024a53;
+}
+
+.elementor-646 .elementor-element.elementor-element-4d7fd3a8 {
+
+    margin-top: 35PX;
+    margin-bottom: 0px;
+    padding: 100px 50px 100px 50px;
+}
+
+.pricingTable {
+    color: var(--main-color);
+    background: linear-gradient(135deg, var(--main-color), var(--color2));
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    padding: 30px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.pricingTable .pricingTable-header {
+    margin: 0 0 30px;
+}
+
+.pricingTable .title {
+    color: #fff;
+    font-size: 35px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.pricingTable .pricing-content {
+    background-color: #fff;
+    padding: 20px 15px;
+    margin: 0 0 15px;
+    border-radius: 20px;
+}
+
+.pricingTable .price-value {
+    padding: 0 0 15px;
+    margin: 0 0 15px;
+    border-bottom: 2px solid var(--main-color);
+}
+
+.pricingTable .price-value .currency {
+    font-size: 25px;
+    line-height: 28px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.pricingTable .price-value .amount {
+    font-size: 50px;
+    font-weight: 500;
+    line-height: 45px;
+    display: inline-block;
+}
+
+.pricingTable .price-value .amount-sm {
+    font-size: 25px;
+    line-height: 28px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.pricingTable .pricing-content ul {
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+}
+
+.pricingTable .pricing-content ul li {
+    font-size: 17px;
+    font-weight: 500;
+    text-transform: capitalize;
+    line-height: 35px;
+    padding: 0 0 0 30px;
+    margin: 0 0 5px;
+    position: relative;
+}
+
+.pricingTable .pricing-content ul li:last-child {
+    margin: 0;
+}
+
+.pricingTable .pricing-content ul li:before {
+    content: "\f00c";
+    color: #fff;
+    background-color: var(--main-color);
+    font-family: "Font Awesome 5 free";
+    font-size: 11px;
+    font-weight: 900;
+    text-align: center;
+    line-height: 21px;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: 8px;
+    left: 0;
+}
+
+.pricingTable .pricing-content li.disable:before {
+    content: "\f00d";
+}
+
+.pricingTable .price-value .duration {
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 30px;
+    text-transform: capitalize;
+    margin: 0 0 0 -10px;
+    vertical-align: bottom;
+    display: inline-block;
+}
+
+.pricingTable .pricingTable-signup {
+    background-color: #fff;
+    padding: 12px 15px 10px;
+    border-radius: 15px;
+}
+
+.pricingTable .pricingTable-signup a {
+    color: var(--main-color);
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 500;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+}
+
+.pricingTable .pricingTable-signup a:hover {
+    letter-spacing: 3px;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.pricingTable.pink {
+    --main-color: #024a53;
+    --color2: #024a53;
+}
+
+.pricingTable.green {
+    --main-color: #0FBEB7;
+    --color2: #51D0C9;
+}
+
+@media only screen and (max-width: 990px) {
+    .pricingTable {
+        margin: 0 0 40px;
+    }
+}
+.elementor-column .elementor-spacer-inner {
+    height: var(--spacer-size)
+}
+
+.e-con {
+    --container-widget-width: 100%
+}
+
+.e-con-inner > .elementor-widget-spacer, .e-con > .elementor-widget-spacer {
+    width: var(--container-widget-width, var(--spacer-size));
+    --align-self: var(--container-widget-align-self, initial);
+    --flex-shrink: 0
+}
+
+.e-con-inner > .elementor-widget-spacer > .elementor-widget-container, .e-con > .elementor-widget-spacer > .elementor-widget-container {
+    height: 100%;
+    width: 100%
+}
+
+.e-con-inner > .elementor-widget-spacer > .elementor-widget-container > .elementor-spacer, .e-con > .elementor-widget-spacer > .elementor-widget-container > .elementor-spacer {
+    height: 100%
+}
+
+.e-con-inner > .elementor-widget-spacer > .elementor-widget-container > .elementor-spacer > .elementor-spacer-inner, .e-con > .elementor-widget-spacer > .elementor-widget-container > .elementor-spacer > .elementor-spacer-inner {
+    height: var(--container-widget-height, var(--spacer-size))
+}
+
+.e-con-inner > .elementor-widget-spacer.elementor-widget-empty, .e-con > .elementor-widget-spacer.elementor-widget-empty {
+    position: relative;
+    min-height: 22px;
+    min-width: 22px
+}
+
+.e-con-inner > .elementor-widget-spacer.elementor-widget-empty .elementor-widget-empty-icon, .e-con > .elementor-widget-spacer.elementor-widget-empty .elementor-widget-empty-icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 0;
+    width: 22px;
+    height: 22px
+}

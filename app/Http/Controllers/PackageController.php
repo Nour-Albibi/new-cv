@@ -2,11 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\PackageService;
 use Illuminate\Http\Request;
 
 class PackageController extends Controller
 {
     public function getCustomerPackagesPricing(){
-        return view('packages.index');
+        $available_customer_packages=PackageService::getAvailableCustomerPackages();
+        return view('packages.index',compact('available_customer_packages'));
+    }
+    public function subscribeToPackage(Request $request){
+        try{
+            $request->validate(['package_id'=>'required']);
+            PackageService::subscribeToPackage($request->package_id);
+            return redirect()->route('payment.checkout');
+        }catch (\Exception $exception){
+            return response()->json(['error' => $exception->getMessage()], 500);
+        }
     }
 }

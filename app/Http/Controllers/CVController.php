@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CustomerCv;
 use App\Services\CVService;
 use App\Services\CVTemplateService;
+use App\Services\PackageService;
 use App\Services\UploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,7 +42,7 @@ class CVController extends Controller
         if (Auth::guard('customer')->check() && empty($addedItem)) {
             $customerCV = CustomerCv::where('customer_id', Auth::guard('customer')->user()->id)
                 ->where('cv_status', 0)->latest()->first();
-            $addedItem=CVService::addStoredCVinCart($customerCV);
+            $addedItem=CVService::adddStoreCVinCart($customerCV);
         }
         $chosen_template = CVTemplateService::getChosenTemplate();
         return view('cv.create-cv-steps', compact('chosen_template','addedItem'));
@@ -70,6 +71,7 @@ class CVController extends Controller
                 if (!empty($validator) && $validator->fails()) {
                     return false;
                 }
+
                 return CVService::storeCVData($step_num, $data);
             } else {
                 return false;
@@ -88,6 +90,16 @@ class CVController extends Controller
                 return redirect()->route('customer.login');
             }
         }catch (\Exception $exception) {
+            return response()->json(['error' => $exception->getMessage()], 500);
+        }
+    }
+    public function FinaliseCVApplication(Request $request){
+        try{
+            if($request->step==8){
+                if(!Auth::guard('customer')->user()->has_active_subscription()) //And must check if there is still avalaiblr cv counts if he has active subscription
+                    return redirect()->route('getCustomerPackagesPricing');
+            }
+        }catch (\Exception $exception){
             return response()->json(['error' => $exception->getMessage()], 500);
         }
     }

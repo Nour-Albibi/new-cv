@@ -158,21 +158,12 @@
             id="jquery-core-js"></script>
     <script src="{{asset('assets/js/jquery/jquery-migrate.min.js?ver=3.4.1')}}"
             id="jquery-migrate-js"></script>
-    <link rel="https://api.w.org/" href="https://projects.datatime4it.com/chtml/wp-json/">
-    <link rel="alternate" type="application/json" href="https://projects.datatime4it.com/chtml/wp-json/wp/v2/pages/59">
-    <link rel="EditURI" type="application/rsd+xml" title="RSD"
-          href="https://projects.datatime4it.com/chtml/xmlrpc.php?rsd">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="all">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css"
           media="all">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css"
           media="all">
-    <meta name="generator" content="WordPress 6.3.1">
-    <link rel="canonical" href="https://projects.datatime4it.com/chtml/">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortlink" href="https://projects.datatime4it.com/chtml/">
-    <link rel="alternate" type="application/json+oembed"
-          href="https://projects.datatime4it.com/chtml/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fprojects.datatime4it.com%2Fchtml%2F">
     <link rel="alternate" type="text/xml+oembed"
           href="https://projects.datatime4it.com/chtml/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fprojects.datatime4it.com%2Fchtml%2F#038;format=xml">
     <meta name="generator"
@@ -181,6 +172,7 @@
     <link rel="stylesheet"
           href="{{asset('assets/plugins/elementor-pro/assets/css/widget-nav-menu.min.css')}}" defer>
     <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}" defer>
+    @yield('custom2Css')
 </head>
 <body class="{{$bodyClass ?? ''}} page-template page-template-elementor_header_footer page page-id-59 exclusive-addons-elementor elementor-default elementor-template-full-width elementor-kit-36 elementor-page elementor-page-59">
 <a class="skip-link screen-reader-text" href="#content">{{__('Skip to content')}}</a>
@@ -204,82 +196,12 @@
     };</script>
 <script src="{{asset('assets/plugins/contact-form-7/includes/js/index.js?ver=5.8.1')}}"
         id="contact-form-7-js"></script>
-{{--<script id="exad-main-script-js-extra">var exad_ajax_object = {--}}
-{{--        "ajax_url": "https:\/\/projects.datatime4it.com\/chtml\/wp-admin\/admin-ajax.php",--}}
-{{--        "nonce": "090ca3765e"--}}
-{{--    };</script>--}}
 <script
     src="{{asset('assets/plugins/exclusive-addons-for-elementor/assets/js/exad-scripts.min.js?ver=2.6.8')}}"
     id="exad-main-script-js"></script>
 <script
     src="{{asset('assets/themes/hello-elementor/assets/js/hello-frontend.min.js?ver=1.0.0')}}"
     id="hello-theme-frontend-js"></script>
-{{--<script id="eael-general-js-extra">var localize = {--}}
-{{--        "ajaxurl": "https:\/\/projects.datatime4it.com\/chtml\/wp-admin\/admin-ajax.php",--}}
-{{--        "nonce": "860542ee48",--}}
-{{--        "i18n": {"added": "Added ", "compare": "Compare", "loading": "Loading..."},--}}
-{{--        "eael_translate_text": {--}}
-{{--            "required_text": "is a required field",--}}
-{{--            "invalid_text": "Invalid",--}}
-{{--            "billing_text": "Billing"--}}
-{{--        },--}}
-{{--        "page_permalink": "https:\/\/projects.datatime4it.com\/chtml\/",--}}
-{{--        "cart_redirectition": "",--}}
-{{--        "cart_page_url": "",--}}
-{{--        "el_breakpoints": {--}}
-{{--            "mobile": {--}}
-{{--                "label": "Mobile Portrait",--}}
-{{--                "value": 767,--}}
-{{--                "default_value": 767,--}}
-{{--                "direction": "max",--}}
-{{--                "is_enabled": true--}}
-{{--            },--}}
-{{--            "mobile_extra": {--}}
-{{--                "label": "Mobile Landscape",--}}
-{{--                "value": 880,--}}
-{{--                "default_value": 880,--}}
-{{--                "direction": "max",--}}
-{{--                "is_enabled": false--}}
-{{--            },--}}
-{{--            "tablet": {--}}
-{{--                "label": "Tablet Portrait",--}}
-{{--                "value": 1024,--}}
-{{--                "default_value": 1024,--}}
-{{--                "direction": "max",--}}
-{{--                "is_enabled": true--}}
-{{--            },--}}
-{{--            "tablet_extra": {--}}
-{{--                "label": "Tablet Landscape",--}}
-{{--                "value": 1200,--}}
-{{--                "default_value": 1200,--}}
-{{--                "direction": "max",--}}
-{{--                "is_enabled": false--}}
-{{--            },--}}
-{{--            "laptop": {--}}
-{{--                "label": "Laptop",--}}
-{{--                "value": 1366,--}}
-{{--                "default_value": 1366,--}}
-{{--                "direction": "max",--}}
-{{--                "is_enabled": false--}}
-{{--            },--}}
-{{--            "widescreen": {--}}
-{{--                "label": "Widescreen",--}}
-{{--                "value": 2400,--}}
-{{--                "default_value": 2400,--}}
-{{--                "direction": "min",--}}
-{{--                "is_enabled": false--}}
-{{--            }--}}
-{{--        },--}}
-{{--        "ParticleThemesData": {--}}
-{{--            "default": "{\"particles\":{\"number\":{\"value\":160,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#ffffff\"},\"shape\":{\"type\":\"circle\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.5,\"random\":false,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":3,\"random\":true,\"anim\":{\"enable\":false,\"speed\":40,\"size_min\":0.1,\"sync\":false}},\"line_linked\":{\"enable\":true,\"distance\":150,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":1},\"move\":{\"enable\":true,\"speed\":6,\"direction\":\"none\",\"random\":false,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":true,\"mode\":\"repulse\"},\"onclick\":{\"enable\":true,\"mode\":\"push\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":400,\"size\":40,\"duration\":2,\"opacity\":8,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}",--}}
-{{--            "nasa": "{\"particles\":{\"number\":{\"value\":250,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#ffffff\"},\"shape\":{\"type\":\"circle\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":1,\"random\":true,\"anim\":{\"enable\":true,\"speed\":1,\"opacity_min\":0,\"sync\":false}},\"size\":{\"value\":3,\"random\":true,\"anim\":{\"enable\":false,\"speed\":4,\"size_min\":0.3,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":150,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":1},\"move\":{\"enable\":true,\"speed\":1,\"direction\":\"none\",\"random\":true,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":600}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":true,\"mode\":\"bubble\"},\"onclick\":{\"enable\":true,\"mode\":\"repulse\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":250,\"size\":0,\"duration\":2,\"opacity\":0,\"speed\":3},\"repulse\":{\"distance\":400,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}",--}}
-{{--            "bubble": "{\"particles\":{\"number\":{\"value\":15,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#1b1e34\"},\"shape\":{\"type\":\"polygon\",\"stroke\":{\"width\":0,\"color\":\"#000\"},\"polygon\":{\"nb_sides\":6},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.3,\"random\":true,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":50,\"random\":false,\"anim\":{\"enable\":true,\"speed\":10,\"size_min\":40,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":200,\"color\":\"#ffffff\",\"opacity\":1,\"width\":2},\"move\":{\"enable\":true,\"speed\":8,\"direction\":\"none\",\"random\":false,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":false,\"mode\":\"grab\"},\"onclick\":{\"enable\":false,\"mode\":\"push\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":400,\"size\":40,\"duration\":2,\"opacity\":8,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}",--}}
-{{--            "snow": "{\"particles\":{\"number\":{\"value\":450,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#fff\"},\"shape\":{\"type\":\"circle\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.5,\"random\":true,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":5,\"random\":true,\"anim\":{\"enable\":false,\"speed\":40,\"size_min\":0.1,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":500,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":2},\"move\":{\"enable\":true,\"speed\":6,\"direction\":\"bottom\",\"random\":false,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":true,\"mode\":\"bubble\"},\"onclick\":{\"enable\":true,\"mode\":\"repulse\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":0.5}},\"bubble\":{\"distance\":400,\"size\":4,\"duration\":0.3,\"opacity\":1,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}",--}}
-{{--            "nyan_cat": "{\"particles\":{\"number\":{\"value\":150,\"density\":{\"enable\":false,\"value_area\":800}},\"color\":{\"value\":\"#ffffff\"},\"shape\":{\"type\":\"star\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"http:\/\/wiki.lexisnexis.com\/academic\/images\/f\/fb\/Itunes_podcast_icon_300.jpg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.5,\"random\":false,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":4,\"random\":true,\"anim\":{\"enable\":false,\"speed\":40,\"size_min\":0.1,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":150,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":1},\"move\":{\"enable\":true,\"speed\":14,\"direction\":\"left\",\"random\":false,\"straight\":true,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":false,\"mode\":\"grab\"},\"onclick\":{\"enable\":true,\"mode\":\"repulse\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":200,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":400,\"size\":40,\"duration\":2,\"opacity\":8,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}"--}}
-{{--        },--}}
-{{--        "eael_login_nonce": "a535a7db1b",--}}
-{{--        "eael_register_nonce": "67bd7c0b4a"--}}
-{{--    };</script>--}}
 <script
     src="{{asset('assets/plugins/essential-addons-for-elementor-lite/assets/front-end/js/view/general.min.js?ver=5.8.9')}}"
     id="eael-general-js"></script>
@@ -289,7 +211,7 @@
 <script src="{{asset('assets/js/imagesloaded.min.js?ver=4.1.4')}}"
         id="imagesloaded-js"></script>
 <script
-    src="https://projects.datatime4it.com/chtml/wp-content/plugins/exclusive-addons-for-elementor/assets/vendor/js/slick.min.js?ver=2.6.8"
+    src="{{asset('assets/plugins/exclusive-addons-for-elementor/assets/vendor/js/slick.min.js?ver=2.6.8')}}"
     id="exad-slick-js"></script>
 <script
     src="{{asset('assets/plugins/elementor/assets/lib/jquery-numerator/jquery-numerator.min.js?ver=0.2.1')}}"
@@ -316,37 +238,6 @@
 <script id="wp-i18n-js-after">
     wp.i18n.setLocaleData({'text directionltr': ['ltr']});
 </script>
-{{--<script id="elementor-pro-frontend-js-before">--}}
-{{--    var ElementorProFrontendConfig = {--}}
-{{--        "ajaxurl": "https:\/\/projects.datatime4it.com\/chtml\/wp-admin\/admin-ajax.php",--}}
-{{--        "nonce": "939c9d8457",--}}
-{{--        "urls": {--}}
-{{--            "assets": "https:\/\/projects.datatime4it.com\/chtml\/wp-content\/plugins\/elementor-pro\/assets\/",--}}
-{{--            "rest": "https:\/\/projects.datatime4it.com\/chtml\/wp-json\/"--}}
-{{--        },--}}
-{{--        "shareButtonsNetworks": {--}}
-{{--            "facebook": {"title": "Facebook", "has_counter": true},--}}
-{{--            "twitter": {"title": "Twitter"},--}}
-{{--            "linkedin": {"title": "LinkedIn", "has_counter": true},--}}
-{{--            "pinterest": {"title": "Pinterest", "has_counter": true},--}}
-{{--            "reddit": {"title": "Reddit", "has_counter": true},--}}
-{{--            "vk": {"title": "VK", "has_counter": true},--}}
-{{--            "odnoklassniki": {"title": "OK", "has_counter": true},--}}
-{{--            "tumblr": {"title": "Tumblr"},--}}
-{{--            "digg": {"title": "Digg"},--}}
-{{--            "skype": {"title": "Skype"},--}}
-{{--            "stumbleupon": {"title": "StumbleUpon", "has_counter": true},--}}
-{{--            "mix": {"title": "Mix"},--}}
-{{--            "telegram": {"title": "Telegram"},--}}
-{{--            "pocket": {"title": "Pocket", "has_counter": true},--}}
-{{--            "xing": {"title": "XING", "has_counter": true},--}}
-{{--            "whatsapp": {"title": "WhatsApp"},--}}
-{{--            "email": {"title": "Email"},--}}
-{{--            "print": {"title": "Print"}--}}
-{{--        },--}}
-{{--        "facebook_sdk": {"lang": "en_US", "app_id": ""},--}}
-{{--        "lottie": {"defaultAnimationUrl": "https:\/\/projects.datatime4it.com\/chtml\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"}--}}
-{{--    };</script>--}}
 <script
     src="{{asset('assets/plugins/elementor-pro/assets/js/frontend.min.js?ver=3.16.2')}}"
     id="elementor-pro-frontend-js"></script>
@@ -468,8 +359,8 @@
     id="pro-elements-handlers-js"></script>
 <script src="{{asset('assets/js/underscore.min.js?ver=1.13.4')}}"
         id="underscore-js"></script>
-<script id="wp-util-js-extra">var _wpUtilSettings = {"ajax": {"url":"http://localhost/cv/public/cv-builder/uploadFile"}};</script>
 <script src="{{asset('assets/js/wp-util.min.js?ver=6.3.1')}}" id="wp-util-js"></script>
+<script id="wp-util-js-extra">var _wpUtilSettings = {"ajax": {"url":"http://localhost/cv/public/cv-builder/uploadFile"}};</script>
 <script id="wpforms-elementor-js-extra">var wpformsElementorVars = {
         "captcha_provider": "recaptcha",
         "recaptcha_type": "v2"
@@ -477,6 +368,7 @@
 <script
     src="{{asset('assets/plugins/wpforms/assets/js/integrations/elementor/frontend.min.js?ver=1.6.7')}}"
     id="wpforms-elementor-js"></script>
+@yield('custom_js')
 <script type="text/javascript">
     $.ajaxSetup({
         headers: {
@@ -484,6 +376,5 @@
         }
     });
 </script>
-@yield('custom_js')
 </body>
 </html>

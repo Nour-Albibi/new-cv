@@ -17,6 +17,8 @@ $(document).ready(function(){
     $('.continue_create_cv').on('click',function (){
         $('.modal').removeClass('show');
     });
+    $('input[type=tel]').attr('name','phone');
+
 })
 function showTab(n) {
     // This function will display the specified tab of the form...
@@ -126,9 +128,11 @@ function storeCVData(step_num){
     var loggedCustomer=$('input[name=customer]').val();
     if(step_num==0 && loggedCustomer==''){
        $('#cv_heading_form').submit();
-    }else{
+    }else if(step_num==8){
+        $('#finalise').submit();
+    }
+    else{
         var form=getFormBasedOnStep(step_num);
-
         $.ajax({
             method: "post",
             url: main_path + "cv-builder/saveCV?step=" + step_num,

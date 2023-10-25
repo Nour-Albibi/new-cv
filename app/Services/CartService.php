@@ -30,8 +30,8 @@ class CartService
              return $addedItem;
          }
      }
-     public static function UpdateItem($item_hash){
-//         $cart=Cart::name('cv');
-//         return $cart->updateItem($data['item_hash']);
+     public static function UpdateItem($item_hash,$updateArray){
+         $cart=Cart::name('cv');
+         return $cart->updateItem($item_hash,$updateArray);
      }
 }
