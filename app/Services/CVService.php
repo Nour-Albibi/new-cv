@@ -140,11 +140,12 @@ class CVService
         $cvItem = self::getCVItem();
         if (!empty($cvItem)) {
             foreach ($data as $skill) {
+                $selected_skill=Skill::where('id',$skill)->get();
                 CustomerCvSkill::create([
                     'customer_cv_id' => $cvItem->id,
-                    'content_ar' => $skill['content_ar'] ?? '',
-                    'content_en' => $skill['content_en'] ?? '',
-                    'skill_id' => $skill['skill_id'] ?? '',
+                    'content_ar' => $selected_skill->name_ar ?? '',
+                    'content_en' => $selected_skill->name_en ?? '',
+                    'skill_id' => $selected_skill->id ?? '',
                 ]);
             }
         }

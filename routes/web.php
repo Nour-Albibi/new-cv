@@ -11,6 +11,7 @@ use App\Http\Controllers\CVSkillsController;
 use App\Http\Controllers\CVWorkHistoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::post('/create_new',[CVController::class,'resetDataAndCreateNewCV'])->name('cv.resetDataAndCreateNewCV');
         Route::post('uploadFile',[CVController::class,'uploadFile'])->name('cv.upload');
         Route::post('saveCV',[CVController::class,'store'])->name('cv.store');
+        Route::post('FinaliseCVApplication',[CVController::class,'FinaliseCVApplication'])->name('FinaliseCVApplication');
         Route::post('saveFirstStepData',[CVController::class,'storeFirstStepDataBeforeLogin'])->name('cv.storeFirstStepData');
         Route::post('AddNewWorkHistory',[CVWorkHistoryController::class,'AddNewWorkHistory']);
         Route::post('AddProject',[CVProjectController::class,'AddProject']);
@@ -42,5 +44,9 @@ Route::group(['middleware' => 'language'], function () {
         Route::post('AddLanguage',[CVLanguageController::class,'AddLanguage']);
         Route::post('getSkillsRelatedToJobTitle',[CVSkillsController::class,'getSkillRelatedToJobTitle']);
     });
-    Route::get('user-packages',[PackageController::class,'getCustomerPackagesPricing'])->name('getCustomerPackagesPricing');
+    Route::group(['prefix' => 'payment'], function () {
+        Route::get('plans', [PackageController::class, 'getCustomerPackagesPricing'])->name('getCustomerPackagesPricing');
+        Route::post('subscribeToPackage', [PackageController::class, 'subscribeToPackage'])->name('subscribeToPackage');
+        Route::get('checkout',[PaymentController::class,'checkout'])->name('payment.checkout');
+    });
 });

@@ -40,4 +40,9 @@ class Customer  extends Authenticatable
     public function syncCV($cv_id){
         CustomerCv::where('id',$cv_id)->update(['customer_id'=>$this->id]);
     }
+    public function has_active_subscription(){
+        $check_res=Subscription::where('user_id',$this->id)->where('status',1)->count();
+        if($check_res) return true;
+        else return false;
+    }
 }
