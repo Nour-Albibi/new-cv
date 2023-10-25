@@ -95,9 +95,9 @@
                                                                         </div>
                                                                         <div class="pricing-content">
                                                                             <div class="price-value">
-                                                                                <span class="currency">SAR</span>
+                                                                                <span class="currency">{{__('SAR')}}</span>
                                                                                 <span class="amount">{{$pkg->total_price}}</span>
-                                                                                <span class="amount-sm">{{$pkg->quantity}}</span>
+                                                                                <span class="amount-sm">{{$pkg->cv_price}}</span>
                                                                             </div>
                                                                             <ul>
                                                                                 <li>Unlimited printing and downloading for {{$pkg->duration*30}}

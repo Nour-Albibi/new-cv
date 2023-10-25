@@ -47,6 +47,6 @@ Route::group(['middleware' => 'language'], function () {
     Route::group(['prefix' => 'payment'], function () {
         Route::get('plans', [PackageController::class, 'getCustomerPackagesPricing'])->name('getCustomerPackagesPricing');
         Route::post('subscribeToPackage', [PackageController::class, 'subscribeToPackage'])->name('subscribeToPackage');
-        Route::get('checkout',[PaymentController::class,'getCheckoutPage']);
+        Route::get('checkout',[PaymentController::class,'checkout'])->name('payment.checkout');
     });
 });

@@ -14,8 +14,9 @@ class PackageController extends Controller
     public function subscribeToPackage(Request $request){
         try{
             $request->validate(['package_id'=>'required']);
-            PackageService::subscribeToPackage($request->package_id);
+            if(PackageService::subscribeToPackage($request->package_id))
             return redirect()->route('payment.checkout');
+            else abort(404);
         }catch (\Exception $exception){
             return response()->json(['error' => $exception->getMessage()], 500);
         }

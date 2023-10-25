@@ -12,10 +12,14 @@ class PackageService
         return Package::where('type',1)
             ->where('is_active',1)->get();
     }
-    public static function subscribeToPackage($pkg){
+    public static function subscribeToPackage($pkg_id){
         $cvItem=CVService::getCVItem();
-        CartService::UpdateItem($cvItem->hash,['package_id'=>$pkg]);
-        CustomerCv::where('id',$cvItem->id)->update(['package_id'=>$pkg]);
+        $pkg=Package::find($pkg_id);
+        if($pkg){
+            CartService::UpdateItem($cvItem->hash,['package_id'=>$pkg->id,'price'=>$pkg->cv_price]);
+        }else{
+            return false;
+        }
         return true;
     }
 }
