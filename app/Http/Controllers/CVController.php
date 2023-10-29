@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class CVController extends Controller
 {
     public function index(Request $request)
@@ -130,6 +130,9 @@ class CVController extends Controller
     }
     public function DownloadCV(CustomerCv $cv){
         $cvFileName=$cv->template->file_name;
-        return view('cv-templates.'.$cvFileName,compact('cv'));
+//        return view('cv-templates.'.$cvFileName,compact('cv'));
+        $pdf = Pdf::loadView('cv-templates.'.$cvFileName.'2',['cv' => $cv]);
+        return $pdf->download('CV.pdf');
+//        return $pdf->stream('CV.pdf');
     }
 }

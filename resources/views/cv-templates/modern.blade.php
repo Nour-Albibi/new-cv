@@ -2,6 +2,9 @@
 <html lang="en" class="direction-ltr">
 <head>
     <title>{{__('CV')}}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{asset('cv-templates/css/modern.css')}}" rel="stylesheet"/>
     <!--Custom CSS-->
 </head>
@@ -104,7 +107,7 @@
                     <h3 class="section-title text-left">{{__('EXPERIENCE')}}</h3>
                     @foreach($cv->customer_cv_work_history as $work)
                         <div class="section-description mt-15 experience-item">
-                            <div style="display:flex;justify-content: space-between;margin-bottom: 4px;">
+                            <div style="display:flex;/*justify-content: space-between;*/ margin-bottom: 4px;">
                                 <p class="strong" style="max-width:285px">{{$work->{"job_title_".$lang} }}</p>
                                 <p class="strong">09/2015 to 02/2019</p>
                             </div>
@@ -131,7 +134,7 @@
                     <h3 class="section-title text-left">{{__('Projects')}}</h3>
                     @foreach($cv->customer_cv_project as $project)
                         <div class="section-description mt-15 education-item">
-                            <div style="display:flex;justify-content: space-between;margin-bottom: 4px;">
+                            <div style="display:flex;/*justify-content: space-between;*/margin-bottom: 4px;">
                                 <p class="strong" style="max-width:285px">{{__("Project Name")}}
                                     :{{$project->{"project_name_".$lang} }}</p>
                                 <p class="strong">@if(!empty($project->start_date)){{ date("m-Y",strtotime($project->start_date))}}  @endif
