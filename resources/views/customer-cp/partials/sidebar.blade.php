@@ -10,7 +10,20 @@
                     <span class="avatar-online bg-success"></span>
                 </div>
                 <div class="user-info">
-                    <h5 class="mt-3 font-size-16 text-white">James 1</h5>
+                    <h5 class="mt-3 font-size-16 text-white">
+
+                        @if(auth()->guard('customer')->check())
+                            <li class="elementor-icon-list-item elementor-inline-item">
+                                <a href="#">
+                                    <span
+                                        class="elementor-icon-list-text">
+                                        {{Auth::guard('customer')->user()->first_name.' '.Auth::guard('customer')->user()->last_name  }}
+                                    </span>
+                                </a>
+                            </li>
+                        @endif
+
+                    </h5>
                     <span class="font-size-13 text-white-50">Customer</span>
                 </div>
             </div>
