@@ -16,7 +16,7 @@ class PackageService
         $cvItem=CVService::getCVItem();
         $pkg=Package::find($pkg_id);
         if($pkg){
-            CartService::UpdateItem($cvItem->hash,['package_id'=>$pkg->id,'price'=>$pkg->cv_price]);
+            CartService::UpdateItem($cvItem->hash,['extra_info'=>['package_id'=>$pkg->id],'price'=>$pkg->cv_price]);
         }else{
             return false;
         }

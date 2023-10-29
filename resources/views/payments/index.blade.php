@@ -66,6 +66,7 @@
         </section>
         <form name="doCheckOut" id="doCheckOut" action="{{route('payment.checkout')}}" method="post">
             @csrf
+            <input type="hidden" name="package_id" value="{{$package->id}}"/>
         <section data-particle_enable="false" data-particle-mobile-disabled="false"
                  class="elementor-section elementor-top-section elementor-element elementor-element-4d7fd3a8 elementor-section-boxed elementor-section-height-default elementor-section-height-default exad-glass-effect-no exad-sticky-section-no"
                  data-id="4d7fd3a8" data-element_type="section"
@@ -94,15 +95,15 @@
                                                     <div class="col-md-8">
                                                         <div class="card p-3">
                                                             <h6 class="text-uppercase">Payment details</h6>
-                                                            <div class="inputbox mt-3"><input type="text" name="name"
-                                                                                              class="form-control"
+                                                            <div class="inputbox mt-3">
+                                                                <input type="text" name="name_on_card" class="form-control"
                                                                                               required="required">
                                                                 <span>Name on card</span>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div class="inputbox mt-3 mr-2">
-                                                                        <input type="text" name="name" class="form-control" required="required">
+                                                                        <input type="text" name="card_number" class="form-control" required="required">
                                                                         <i class="fa fa-credit-card"></i>
                                                                         <span>Card Number</span>
                                                                     </div>
@@ -111,13 +112,13 @@
                                                                     <div class="d-flex flex-row">
                                                                         <div class="inputbox mt-3 mr-2"><input
                                                                                 type="text"
-                                                                                name="name"
+                                                                                name="expiry"
                                                                                 class="form-control"
                                                                                 required="required">
                                                                             <span>Expiry</span></div>
                                                                         <div class="inputbox mt-3 mr-2"><input
                                                                                 type="text"
-                                                                                name="name"
+                                                                                name="cvv"
                                                                                 class="form-control"
                                                                                 required="required">
                                                                             <span>CVV</span></div>
@@ -130,7 +131,7 @@
                                                                     <div class="col-md-6">
                                                                         <div class="inputbox mt-3 mr-2"><input
                                                                                 type="text"
-                                                                                name="name"
+                                                                                name="address"
                                                                                 class="form-control"
                                                                                 required="required">
                                                                             <span>Street Address</span></div>
@@ -138,7 +139,7 @@
                                                                     <div class="col-md-6">
                                                                         <div class="inputbox mt-3 mr-2"><input
                                                                                 type="text"
-                                                                                name="name"
+                                                                                name="city"
                                                                                 class="form-control"
                                                                                 required="required">
                                                                             <span>City</span></div>
@@ -148,7 +149,7 @@
                                                                     <div class="col-md-6">
                                                                         <div class="inputbox mt-3 mr-2"><input
                                                                                 type="text"
-                                                                                name="name"
+                                                                                name="state"
                                                                                 class="form-control"
                                                                                 required="required">
                                                                             <span>State/Province</span></div>
@@ -156,7 +157,7 @@
                                                                     <div class="col-md-6">
                                                                         <div class="inputbox mt-3 mr-2"><input
                                                                                 type="text"
-                                                                                name="name"
+                                                                                name="zip_code"
                                                                                 class="form-control"
                                                                                 required="required">
                                                                             <span>Zip code</span></div>
@@ -214,9 +215,9 @@
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-button-wrapper">
                                                     <a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-float"
-                                                       href="finalise.html">
+                                                       href="{{route('getCustomerPackagesPricing')}}">
                                                         <span class="elementor-button-content-wrapper">
-                                                        <span class="elementor-button-text">Back</span>
+                                                        <span class="elementor-button-text">{{__('Back')}}</span>
 	                                            	</span>
                                                     </a>
                                                 </div>
@@ -240,12 +241,12 @@
                                             data-widget_type="button.default">
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-button-wrapper">
-                                                    <a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-float"
-                                                       href="#">
+                                                    <button class="elementor-button elementor-button-link elementor-size-sm elementor-animation-float"
+                                                       type="submit">
                                                         <span class="elementor-button-content-wrapper">
-                                                        <span class="elementor-button-text">Pay $5</span>
+                                                        <span class="elementor-button-text">{{__('Pay')}} {{__('SAR')}} {{$total}}</span>
 		                                            </span>
-                                                    </a>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
