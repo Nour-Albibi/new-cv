@@ -58,7 +58,7 @@
                                     <span class="flt-right" id="FIELD_RATG1"></span>
                                 </div>
                                 <div class="rating-bar" dependency="RATV">
-                                    <div class="inner-rating" id="FIELD_RATV1" type="width" style="width: 80%;"></div>
+                                    <div class="inner-rating" id="FIELD_RATV1" type="width" style="width: {{getLanguageLevel($language->{"level_".$lang})}}%;"></div>
                                 </div>
                                 <div class="field field-ratt">
                                     @if(!empty($language->{"level_".$lang}))
