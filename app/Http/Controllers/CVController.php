@@ -128,4 +128,8 @@ class CVController extends Controller
             return response()->json(['error' => $exception->getMessage()], 500);
         }
     }
+    public function DownloadCV(CustomerCv $cv){
+        $cvFileName=$cv->template->file_name;
+        return view('cv-templates.'.$cvFileName,compact('cv'));
+    }
 }

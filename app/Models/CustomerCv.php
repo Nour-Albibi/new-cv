@@ -42,4 +42,7 @@ class CustomerCv extends Model implements UseCartable
     public function customer_cv_language(){
         return $this->hasMany('App\Models\CustomerCvLanguage','customer_cv_id');
     }
+    public function customer_cv_professional_summary(){
+        return CustomerCvSummery::where('customer_cv_id',$this->id)->latest()->first();
+    }
 }
