@@ -147,14 +147,24 @@
                         @foreach($cv->customer_cv_work_history as $work)
                             <tr class="width100">
                                 <td class="width100">
-                            <div class="section-description mt-15 experience-item">
-                                <div style="display:flex;/*justify-content: space-between;*/ margin-bottom: 4px;">
-                                    <p class="strong" style="max-width:285px">{{$work->{"job_title_".$lang} }}</p>
-                                    <p class="strong">09/2015 to 02/2019</p>
-                                </div>
-                                <p class="strong">{{$work->{"employeer_".$lang} }}</p>
+                                <div class="section-description mt-15 experience-item">
+                                    <div style="display:flex;/*justify-content: space-between;*/ margin-bottom: 4px;">
+                                        <table class="" style="width: 95%">
+                                            <tr class="width100">
+                                                <td>
+                                                    <p class="strong" style="max-width:285px">{{$work->{"job_title_".$lang} }}</p>
+                                                </td>
+                                                <td style="width: 50%">
+                                                    <p class="strong" style=";text-align:right;;">{{ date("m-Y",strtotime($work->start_date))}} {{__('to')}}
+                                                        {{date("m-Y",strtotime($work->end_date))}}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
                                 {{--                    <p>{!! $work->{"experience_description_".$lang } !!}</p>--}}
-                                <ul class="work-duties mt-16 main-list width100" style="">
+                                <ul class="work-duties mt-16 main-list " >
                                     <li>Led operations involved in running the brand including Marketing,
                                         IT, HR/training, development/construction, property and P&L for 200
                                         store locations.
