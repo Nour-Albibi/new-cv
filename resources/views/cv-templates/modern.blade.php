@@ -52,7 +52,7 @@
                             <div class="singlecolumn infobarpara mt-10">
                                 <div class="field">
                                     <span class="txt-bold"
-                                          id="FIELD_FRFM1">{{$language->{"language_".$lang } }}</span><span
+                                          id="FIELD_FRFM1">{{$language->language->{"name_".$lang } }}</span><span
                                         class="colon"><span
                                             class="beforecolonspace"> </span><span dependency="FRFM">: </span></span>
                                     <span class="flt-right" id="FIELD_RATG1"></span>
