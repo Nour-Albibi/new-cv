@@ -49,20 +49,23 @@
                     <div class="personal-info-title">{{__('LANGUAGES')}}</div>
                     <div class="personal-info-description">
                         @foreach($cv->customer_cv_language as $language)
-                        <div class="singlecolumn infobarpara mt-10">
-                            <div class="field">
-                                <span class="txt-bold" id="FIELD_FRFM1">{{$language->{"language_".$lang } }}</span><span class="colon"><span
-                                        class="beforecolonspace"> </span><span dependency="FRFM">: </span></span>
-                                <span class="flt-right" id="FIELD_RATG1"></span>
+                            <div class="singlecolumn infobarpara mt-10">
+                                <div class="field">
+                                    <span class="txt-bold"
+                                          id="FIELD_FRFM1">{{$language->{"language_".$lang } }}</span><span
+                                        class="colon"><span
+                                            class="beforecolonspace"> </span><span dependency="FRFM">: </span></span>
+                                    <span class="flt-right" id="FIELD_RATG1"></span>
+                                </div>
+                                <div class="rating-bar" dependency="RATV">
+                                    <div class="inner-rating" id="FIELD_RATV1" type="width" style="width: 80%;"></div>
+                                </div>
+                                <div class="field field-ratt">
+                                    @if(!empty($language->{"level_".$lang}))
+                                        <span id="FIELD_RATT1">{{$language->{"level_".$lang} }}</span>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="rating-bar" dependency="RATV">
-                                <div class="inner-rating" id="FIELD_RATV1" type="width" style="width: 80%;"></div>
-                            </div>
-                            <div class="field field-ratt">
-                                @if($)
-                                <span id="FIELD_RATT1">{{$language->{"level_".$lang} }}</span>
-                            </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>
