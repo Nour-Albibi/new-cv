@@ -52,10 +52,10 @@
                     </div>
                 </div>
                 <div
-                    class="elementor-element elementor-element-874e47b exad-sticky-section-no exad-glass-effect-no elementor-invisible elementor-widget elementor-widget-heading"
+                    class="elementor-element elementor-element-874e47b exad-sticky-section-no exad-glass-effect-no hello-element elementor-invisible elementor-widget elementor-widget-heading"
                     data-id="874e47b" data-element_type="widget"
                     data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
-                    data-widget_type="heading.default">
+                    data-widget_type="heading.default" current_tab="8">
                     <div class="elementor-widget-container">
                         <h6 class="elementor-heading-title elementor-size-default"> It means that
                             your CV will be matched to potential recruiters looking for your skills,
@@ -101,10 +101,10 @@
                     </div>
                 </div>
                 <div
-                    class="elementor-element elementor-element-30293d2b exad-sticky-section-no exad-glass-effect-no elementor-invisible elementor-widget elementor-widget-heading"
+                    class="elementor-element elementor-element-30293d2b exad-sticky-section-no exad-glass-effect-no hello-element elementor-invisible elementor-widget elementor-widget-heading"
                     data-id="30293d2b" data-element_type="widget"
                     data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
-                    data-widget_type="heading.default">
+                    data-widget_type="heading.default" current_tab="8">
                     <div class="elementor-widget-container">
                         <h6 class="elementor-heading-title elementor-size-default">Your CV is ready.
                             Let's take a look.</h6></div>

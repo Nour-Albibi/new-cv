@@ -6,17 +6,17 @@
         <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-1cf01187 exad-glass-effect-no exad-sticky-section-no"
              data-id="1cf01187" data-element_type="column">
             <div class="elementor-widget-wrap elementor-element-populated">
-                <div class="elementor-element elementor-element-47332c22 exad-sticky-section-no exad-glass-effect-no elementor-invisible elementor-widget elementor-widget-heading"
+                <div class="elementor-element elementor-element-47332c22 exad-sticky-section-no exad-glass-effect-no hello-element elementor-invisible elementor-widget elementor-widget-heading"
                      data-id="47332c22" data-element_type="widget"
                      data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
-                     data-widget_type="heading.default">
+                     data-widget_type="heading.default" current_tab="6">
                     <div class="elementor-widget-container">
                         <h4 class="elementor-heading-title elementor-size-default">{{__('Briefly tell us about your background')}}</h4></div>
                 </div>
-                <div class="elementor-element elementor-element-4cf1e1ac exad-sticky-section-no exad-glass-effect-no elementor-invisible elementor-widget elementor-widget-heading"
+                <div class="elementor-element elementor-element-4cf1e1ac exad-sticky-section-no exad-glass-effect-no hello-element elementor-invisible elementor-widget elementor-widget-heading"
                      data-id="4cf1e1ac" data-element_type="widget"
                      data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
-                     data-widget_type="heading.default">
+                     data-widget_type="heading.default" current_tab="6">
                     <div class="elementor-widget-container">
                         <h6 class="elementor-heading-title elementor-size-default">{{__('Use the samples
                             below, and tailor them to fit your experience and the role.')}}</h6></div>

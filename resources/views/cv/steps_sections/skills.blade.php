@@ -6,17 +6,17 @@
         <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-49124a5a exad-glass-effect-no exad-sticky-section-no"
              data-id="49124a5a" data-element_type="column">
             <div class="elementor-widget-wrap elementor-element-populated">
-                <div class="elementor-element elementor-element-20126956 exad-sticky-section-no exad-glass-effect-no elementor-invisible elementor-widget elementor-widget-heading"
+                <div class="elementor-element elementor-element-20126956 exad-sticky-section-no exad-glass-effect-no hello-element elementor-invisible elementor-widget elementor-widget-heading"
                      data-id="20126956" data-element_type="widget"
                      data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
-                     data-widget_type="heading.default">
+                     data-widget_type="heading.default" current_tab="5">
                     <div class="elementor-widget-container">
                         <h4 class="elementor-heading-title elementor-size-default">{{__('Highlight relevant skills for the job you want')}}</h4></div>
                 </div>
-                <div class="elementor-element elementor-element-4a953a8c exad-sticky-section-no exad-glass-effect-no elementor-invisible elementor-widget elementor-widget-heading"
+                <div class="elementor-element elementor-element-4a953a8c exad-sticky-section-no exad-glass-effect-no hello-element elementor-invisible elementor-widget elementor-widget-heading"
                      data-id="4a953a8c" data-element_type="widget"
                      data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
-                     data-widget_type="heading.default">
+                     data-widget_type="heading.default" current_tab="5">
                     <div class="elementor-widget-container">
                         <h6 class="elementor-heading-title elementor-size-default">{{__('Start with our
                             expert recommendations by job title or pull the skills required from the

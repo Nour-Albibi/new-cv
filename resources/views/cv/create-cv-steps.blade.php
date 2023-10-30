@@ -33,11 +33,16 @@
           media="all">
     <link rel="stylesheet" href="{{asset('assets/uploads/elementor/css/post-36.css?ver=1695906899')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/DragAndDropUploadFile.css')}}"/>
+    <link rel="stylesheet" id="elementor-post-619-css"
+          href="{{asset('assets/css/post-619.css?ver=1696705965')}}"
+          media="all" defer>
+    <link rel="stylesheet" href="{{asset('assets/css/languages.css')}}"/>
+
     <script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
 @endsection
 @section('main_content')
     <input type="hidden" name="customer" value="{{auth()->guard('customer')->user()->id ?? ''}}"/>
-    <div data-elementor-type="wp-page" data-elementor-id="380" class="elementor elementor-380"
+    <div data-elementor-type="wp-page" data-elementor-id="380" class="wp-page-el elementor elementor-380"
          data-elementor-post-type="page">
         <section data-particle_enable="false" data-particle-mobile-disabled="false"
                  class="elementor-section elementor-top-section elementor-element elementor-element-331b8a80 elementor-section-boxed elementor-section-height-default elementor-section-height-default exad-glass-effect-no exad-sticky-section-no"

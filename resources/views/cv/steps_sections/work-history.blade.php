@@ -8,19 +8,19 @@
             data-id="109d2954" data-element_type="column">
             <div class="elementor-widget-wrap elementor-element-populated">
                 <div
-                    class="elementor-element elementor-element-5585903 exad-sticky-section-no exad-glass-effect-no elementor-invisible elementor-widget elementor-widget-heading"
+                    class="elementor-element elementor-element-5585903 exad-sticky-section-no exad-glass-effect-no hello-element elementor-invisible elementor-widget elementor-widget-heading"
                     data-id="5585903" data-element_type="widget"
                     data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
-                    data-widget_type="heading.default">
+                    data-widget_type="heading.default" current_tab="1">
                     <div class="elementor-widget-container">
                         <h4 class="elementor-heading-title elementor-size-default">{{__('Tell us about your work history')}}</h4>
                     </div>
                 </div>
                 <div
-                    class="elementor-element elementor-element-f7e3c06 exad-sticky-section-no exad-glass-effect-no elementor-invisible elementor-widget elementor-widget-heading"
+                    class="elementor-element elementor-element-f7e3c06 exad-sticky-section-no exad-glass-effect-no hello-element elementor-invisible elementor-widget elementor-widget-heading"
                     data-id="f7e3c06" data-element_type="widget"
                     data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
-                    data-widget_type="heading.default">
+                    data-widget_type="heading.default" current_tab="1">
                     <div class="elementor-widget-container">
                         <h6 class="elementor-heading-title elementor-size-default">{{__('Start with your most recent job and work backwards.')}}</h6>
                     </div>

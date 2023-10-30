@@ -65,12 +65,12 @@
             id="jquery-core-js"></script>
     <script src="{{asset('assets/js/jquery/jquery-migrate.min.js?ver=3.4.1')}}"
             id="jquery-migrate-js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="all" defer>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="all" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css"
           media="all" defer>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css"
-          media="all" defer>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" defer>
+          media="all" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" >
     <link rel="alternate" type="text/xml+oembed"
           href="https://projects.datatime4it.com/chtml/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fprojects.datatime4it.com%2Fchtml%2F#038;format=xml">
     <meta name="generator"

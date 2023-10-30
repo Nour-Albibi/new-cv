@@ -149,6 +149,7 @@ function showTab(n) {
     x[n].style.display = "block";
     current_step_title = $('.cv-step-box[num=' + n + ']').attr('step_title');
     $('#step_head_title').html(current_step_title);
+
     //... and fix the Previous/Next buttons:
     if (n == 0) {
         $('.cv-footer-wizard').addClass('direction-rtl');
@@ -187,12 +188,22 @@ function nextPrev(n) {
     if (n == -1) $('.cv-step-num[num=' + (currentTab + 1) + ']').removeClass('active');
     $('.cv-step-num[num=' + currentTab + ']').addClass('active');
     // Otherwise, display the correct tab:
+    $('.wp-page-el').removeClass('elementor-619');
+    if(currentTab===7){
+        $('.wp-page-el').addClass('elementor-619');
+    }
     showTab(currentTab);
+    animateTabsElem(currentTab)
     if (currentTab == 5) {
         getAllSkillRelatedToJobTitle();
     }
 }
-
+function animateTabsElem(currentTab){
+    $('.hello-element').removeClass('animate_text');
+    $('.hello-element').addClass('elementor-invisible');
+    $('.hello-element[current_tab='+currentTab+']').removeClass('elementor-invisible');
+    $('.hello-element[current_tab='+currentTab+']').addClass('animate_text');
+}
 function validateForm(n) {
     // This function deals with validation of the form fields
     var x, y, i, valid = true;
@@ -345,6 +356,14 @@ function getAllSkillRelatedToJobTitle() {
 
 function addSkillData(skill_id, skill_content) {
     $('#skills_form').append('<input type="hidden" class="skills_idss" name="skills_ids[]" value="' + skill_id + '"/>');
-    $('.skill_content').append(skill_content + '\r\n');
-    $('.skills_data[skill_id=' + skill_id + ']').remove();
+    $('.skill_content').append(skill_content +'\r\n');
+    // $('.skills_data[skill_id=' + skill_id + ']').remove();
+    $('.skills_data[skill_id=' + skill_id + ']').find("span.add-remove").html('<i class="fas fa-minus-circle"></i>');
+    $('.skills_data[skill_id=' + skill_id + ']').attr('onclick','removeSkillDate("'+skill_id+'","'+skill_content+'")')
+}
+function removeSkillDate(skill_id,skill_content){
+    // $('p[id="'+skill_id+'"]').remove();
+    $('.skills_data[skill_id=' + skill_id + ']').find("span.add-remove").html('<i class="fas fa-plus-circle"></i>');
+    $('.skills_data[skill_id=' + skill_id + ']').attr('onclick','addSkillData("'+skill_id+'","'+skill_content+'")')
+
 }
