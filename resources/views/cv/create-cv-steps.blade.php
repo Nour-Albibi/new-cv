@@ -32,6 +32,8 @@
           href="{{asset('assets/plugins/wpforms/pro/assets/css/dropzone.min.css?ver=5.7.2')}}"
           media="all">
     <link rel="stylesheet" href="{{asset('assets/uploads/elementor/css/post-36.css?ver=1695906899')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/DragAndDropUploadFile.css')}}"/>
+    <script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
 @endsection
 @section('main_content')
     <input type="hidden" name="customer" value="{{auth()->guard('customer')->user()->id ?? ''}}"/>
@@ -219,4 +221,5 @@
         var currentTab = {{session('current_step_num') ?? 0}};
     </script>
     <script src="{{asset('assets/js/cv.js')}}"></script>
+    <x-cv.upload_image_js></x-cv.upload_image_js>
 @endsection
