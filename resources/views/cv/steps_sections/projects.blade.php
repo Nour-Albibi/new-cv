@@ -69,9 +69,11 @@
                                                            for="wpforms-519-field_4">{{__('START DATE')}}</label>
                                                     <div class="wpforms-datepicker-wrap">
                                                         <input type="date" id="wpforms-519-field_4"
-                                                               class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                               class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                                data-date-format="m/d/Y"
                                                                data-disable-past-dates="0" data-input="true"
+                                                               input_name="project_start_date"
+                                                               project_num="{{$i}}"
                                                                name="project_{{$i}}[start_date]" value="{{Illuminate\Support\Carbon::parse($project->start_date)->toDateString()}}">
                                                     </div>
                                                 </div>
@@ -82,9 +84,11 @@
                                                            for="wpforms-519-field_5">{{__('END DATE')}}</label>
                                                     <div class="wpforms-datepicker-wrap">
                                                         <input type="date" id="wpforms-519-field_5"
-                                                               class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                               class="end_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                                data-date-format="m/d/Y"
                                                                data-disable-past-dates="0" data-input="true"
+                                                               input_name="project_end_date"
+                                                               project_num="{{$i}}"
                                                                name="project_{{$i}}[end_date]" value="{{Illuminate\Support\Carbon::parse($project->end_date)->toDateString()}}">
                                                     </div>
                                                 </div>
@@ -117,13 +121,12 @@
                                                        for="wpforms-519-field_4">START DATE</label>
                                                 <div class="wpforms-datepicker-wrap">
                                                     <input type="date" id="wpforms-519-field_4"
-                                                           class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                           class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                            data-date-format="m/d/Y"
                                                            data-disable-past-dates="0" data-input="true"
-                                                           name="project_1[start_date]"><a
-                                                        title="Clear Date" data-clear
-                                                        class="wpforms-datepicker-clear"
-                                                        style="display:none;"></a>
+                                                           input_name="project_start_date"
+                                                           project_num="1"
+                                                           name="project_1[start_date]">
                                                 </div>
                                             </div>
                                             <div id="wpforms-519-field_5-container"
@@ -133,13 +136,12 @@
                                                        for="wpforms-519-field_5">{{__('END DATE')}}</label>
                                                 <div class="wpforms-datepicker-wrap">
                                                     <input type="date" id="wpforms-519-field_5"
-                                                           class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                           class="end_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                            data-date-format="m/d/Y"
                                                            data-disable-past-dates="0" data-input="true"
-                                                           name="project_1[end_date]"><a
-                                                        title="Clear Date" data-clear
-                                                        class="wpforms-datepicker-clear"
-                                                        style="display:none;"></a>
+                                                           input_name="project_end_date"
+                                                           project_num="1"
+                                                           name="project_1[end_date]">
                                                 </div>
                                             </div>
                                         </div>

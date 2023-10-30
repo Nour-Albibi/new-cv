@@ -21,7 +21,7 @@
                                 @csrf
                                 <input type="hidden" name="item_hash" value="{{$addedItem->hash ?? ''}}"/>
                                 <input type="hidden" name="step" value="0"/>
-                                <input type="hidden" name="image_file" value=""/>
+                                <input type="hidden" name="image_file" value="{{$addedItem->model->image ?? ''}}"/>
                                 <input type="hidden" name="redirect_after_login"
                                        value="{{url('cv-builder/create?step=1')}}"/>
                                 <noscript class="wpforms-error-noscript">
@@ -192,37 +192,7 @@
                             </form>
                             @if($chosen_template->has_personal_image)
                                 <div class="wpforms-field-container">
-                                    <x-cv.upload_image_field></x-cv.upload_image_field>
-                                    {{--                                        <div id="wpforms-412-field_24-container"--}}
-                                    {{--                                             class="wpforms-field wpforms-field-file-upload"--}}
-                                    {{--                                             data-field-id="24">--}}
-                                    {{--                                            <label class="wpforms-field-label"--}}
-                                    {{--                                                   for="wpforms-412-field_24">{{__('Upload cv photograph')}}</label>--}}
-                                    {{--                                            <div class="wpforms-uploader" data-field-id="24"--}}
-                                    {{--                                                 data-form-id="412" data-input-name="wpforms_412_24"--}}
-                                    {{--                                                 data-extensions="jpg,jpeg,jpe,gif,png,bmp,tiff,tif,webp,ico,heic,asf,asx,wmv,wmx,wm,avi,divx,mov,qt,mpeg,mpg,mpe,mp4,m4v,ogv,webm,mkv,3gp,3gpp,3g2,3gp2,txt,asc,c,cc,h,srt,csv,tsv,ics,rtx,css,vtt,mp3,m4a,m4b,aac,ra,ram,wav,ogg,oga,flac,mid,midi,wma,wax,mka,rtf,pdf,class,tar,zip,gz,gzip,rar,7z,psd,xcf,doc,pot,pps,ppt,wri,xla,xls,xlt,xlw,mpp,docx,docm,dotx,dotm,xlsx,xlsm,xlsb,xltx,xltm,xlam,pptx,pptm,ppsx,ppsm,potx,potm,ppam,sldx,sldm,onetoc,onetoc2,onepkg,oxps,xps,odt,odp,ods,odg,odc,odb,odf,wp,wpd,key,numbers,pages"--}}
-                                    {{--                                                 data-max-size="209715200" data-max-file-number="1"--}}
-                                    {{--                                                 data-post-max-size="209715200"--}}
-                                    {{--                                                 data-max-parallel-uploads="4"--}}
-                                    {{--                                                 data-parallel-uploads="true"--}}
-                                    {{--                                                 data-file-chunk-size="2097152">--}}
-                                    {{--                                                <div class="dz-message">--}}
-                                    {{--                                                    <svg viewbox="0 0 1024 1024" focusable="false"--}}
-                                    {{--                                                         class="" data-icon="inbox" width="50px"--}}
-                                    {{--                                                         height="50px" fill="#B1B1B1"--}}
-                                    {{--                                                         aria-hidden="true">--}}
-                                    {{--                                                        <path--}}
-                                    {{--                                                            d="M885.2 446.3l-.2-.8-112.2-285.1c-5-16.1-19.9-27.2-36.8-27.2H281.2c-17 0-32.1 11.3-36.9 27.6L139.4 443l-.3.7-.2.8c-1.3 4.9-1.7 9.9-1 14.8-.1 1.6-.2 3.2-.2 4.8V830a60.9 60.9 0 0 0 60.8 60.8h627.2c33.5 0 60.8-27.3 60.9-60.8V464.1c0-1.3 0-2.6-.1-3.7.4-4.9 0-9.6-1.3-14.1zm-295.8-43l-.3 15.7c-.8 44.9-31.8 75.1-77.1 75.1-22.1 0-41.1-7.1-54.8-20.6S436 441.2 435.6 419l-.3-15.7H229.5L309 210h399.2l81.7 193.3H589.4zm-375 76.8h157.3c24.3 57.1 76 90.8 140.4 90.8 33.7 0 65-9.4 90.3-27.2 22.2-15.6 39.5-37.4 50.7-63.6h156.5V814H214.4V480.1z"></path>--}}
-                                    {{--                                                    </svg>--}}
-                                    {{--                                                    <span--}}
-                                    {{--                                                        class="modern-title">{{__('Click or drag a file to this area to upload.')}}</span>--}}
-                                    {{--                                                </div>--}}
-                                    {{--                                            </div>--}}
-                                    {{--                                            <input type="text" class="dropzone-input"--}}
-                                    {{--                                                   style="position:absolute!important;clip:rect(0,0,0,0)!important;height:1px!important;width:1px!important;border:0!important;overflow:hidden!important;padding:0!important;margin:0!important;"--}}
-                                    {{--                                                   id="wpforms-412-field_24"--}}
-                                    {{--                                                   name="image" value="{{$addedItem->model->image ?? ''}}">--}}
-                                    {{--                                        </div>--}}
+                                    <x-cv.upload_image_field :addedItem=$addedItem></x-cv.upload_image_field>
                                 </div>
                             @endif
 

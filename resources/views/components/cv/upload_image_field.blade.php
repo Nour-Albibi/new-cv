@@ -5,7 +5,7 @@
             <form class="box" action="{{route('cv.upload')}}" method="post">
                 <span class="inner_input"></span>
                 <div class="box__input">
-                    <img src="" width="100" height="100" class="d-none" id="uploaded_im"/>
+                    <img src="{{asset('files/uploads/'.$addedItem->model->image)}}"  @if(empty($addedItem->model->image)) class="d-none" @endif id="uploaded_im" width="100" height="100"/>
                     @csrf
                     <div class="upload_icon"></div>
                     <input class="box__file" type="file" name="image" id="file"

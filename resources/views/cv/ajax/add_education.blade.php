@@ -1,3 +1,26 @@
+<div id="added_education_{{$new_edu_num}}">
+    <div id="wpforms-626-field_5-container" class="wpforms-field wpforms-field-html wpforms-two-thirds wpforms-first"
+         data-field-id="5">
+        <div id="wpforms-626-field_5">
+            <hr>
+        </div>
+    </div>
+    <div id="wpforms-626-field_6-container"
+         class="wpforms-field wpforms-field-html wpforms-one-third"
+         data-field-id="6">
+        <div id="wpforms-626-field_6">
+            <button type="button" style="display: inline-block;
+        vertical-align: middle;
+        background: #024851;
+        height: auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 5px;
+        border-radius: 5px;" type="button" onclick="RemoveAddedItem('added_education_{{$new_edu_num}}')">-
+            </button>
+        </div>
+    </div>
 <div class="wpforms-field-container">
     <div id="wpforms-535-field_1-container"
          class="wpforms-field wpforms-field-text wpforms-one-half wpforms-first"
@@ -57,13 +80,12 @@
                for="wpforms-535-field_6">START DATE</label>
         <div class="wpforms-datepicker-wrap">
             <input type="date" id="wpforms-535-field_6"
-                   class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                   class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                    data-date-format="m/d/Y"
                    data-disable-past-dates="0" data-input="true"
-                   name="education_{{$new_edu_num}}['start_date']"><a
-                title="Clear Date" data-clear
-                class="wpforms-datepicker-clear"
-                style="display:none;"></a>
+                   input_name="education_start_date"
+                   education_num="{{$new_edu_num}}"
+                   name="education_{{$new_edu_num}}['start_date']">
         </div>
     </div>
     <div id="wpforms-535-field_7-container"
@@ -73,13 +95,12 @@
                for="wpforms-535-field_7">END DATE</label>
         <div class="wpforms-datepicker-wrap">
             <input type="date" id="wpforms-535-field_7"
-                   class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                   class="end_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                    data-date-format="m/d/Y"
                    data-disable-past-dates="0" data-input="true"
-                   name="education_{{$new_edu_num}}['end_date']"><a
-                title="Clear Date" data-clear
-                class="wpforms-datepicker-clear"
-                style="display:none;"></a>
+                   input_name="education_end_date"
+                   education_num="{{$new_edu_num}}"
+                   name="education_{{$new_edu_num}}['end_date']">
         </div>
     </div>
     <div id="wpforms-488-field_7-container"
@@ -95,4 +116,5 @@
             </li>
         </ul>
     </div>
+</div>
 </div>
