@@ -123,7 +123,8 @@ class CVController extends Controller
         try{
 
             $uploader=new UploadService();
-            return $uploader->UploadImageFile($request);
+            $uploadedImage=$uploader->UploadImageFile($request);
+            return response()->json(['success' => true,'data'=>$uploadedImage], 200);
         }catch (\Exception $exception){
             return response()->json(['error' => $exception->getMessage()], 500);
         }

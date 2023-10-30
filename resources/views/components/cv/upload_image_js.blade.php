@@ -1,1 +1,1 @@
-<script src="{{asset('assets/js/dragAndDropUploadFile.js')}}"></script>
+<script src="{{asset('assets/js/dargAndDropUploadFile.js')}}"></script>

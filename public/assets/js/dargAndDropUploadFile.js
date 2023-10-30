@@ -13,9 +13,9 @@
 
 
     // applying the effect for every form
-
     $( '.box' ).each( function()
     {
+
         var $form		 = $( this ),
             $input		 = $form.find( 'input[type="file"]' ),
             $label		 = $form.find( 'label' ),
@@ -78,15 +78,14 @@
 
         $form.on( 'submit', function( e )
         {
+
             // preventing the duplicate submissions if the current one is in progress
             if( $form.hasClass( 'is-uploading' ) ) return false;
 
             $form.addClass( 'is-uploading' ).removeClass( 'is-error' );
-
             if( isAdvancedUpload ) // ajax file upload for modern browsers
             {
                 e.preventDefault();
-
                 // gathering the form data
                 var ajaxData = new FormData( $form.get( 0 ) );
                 if( droppedFiles )
@@ -96,7 +95,6 @@
                         ajaxData.append( $input.attr( 'name' ), file );
                     });
                 }
-
                 // ajax request
                 $.ajax(
                     {
@@ -113,12 +111,17 @@
                         },
                         success: function( data )
                         {
+                            // console.log(data);
+                            $('input[name=image_file]').val(data.data);
+                            $('#uploaded_im').removeClass('d-none');
+                            $("#uploaded_im").attr('src',"http://localhost/cv/public/files/uploads/"+data.data);
+                            // console.log(JSON.stringify(data));
                             $form.addClass( data.success == true ? 'is-success' : 'is-error' );
                             if( !data.success ) $errorMsg.text( data.error );
                         },
-                        error: function()
+                        error: function(data)
                         {
-                            alert( 'Error. Please, contact the webmaster!' );
+                            alert( 'Error! Please try again');
                         }
                     });
             }

@@ -143,6 +143,7 @@
 @endsection
 @section('custom_js')
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=62e3f93cf0ce683fcdd5ff7d" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <x-cv.upload_image_js></x-cv.upload_image_js>
     <script id="wp-util-js-extra">var _wpUtilSettings = {"ajax": {"url":"http://localhost/cv/public/cv-builder/uploadFile"}};</script>
     <script id="wpforms-elementor-js-extra">var wpformsElementorVars = {
             "captcha_provider": "recaptcha",
@@ -150,7 +151,7 @@
         };</script>
     <script src="{{asset('assets/plugins/wpforms/assets/js/integrations/elementor/frontend.min.js?ver=1.6.7')}}"
             id="wpforms-elementor-js"></script>
-    <script src="{{asset('assets/plugins/wpforms/pro/assets/js/vendor/jquery.intl-tel-input.min.js?ver=17.0.5')}}"
+    <script src="{{asset('assets/js/jquery.intl-tel-input.min.js')}}"
             id="wpforms-smart-phone-field-js"></script>
     <script id="wpforms-dropzone-js-extra">var wpforms_file_upload = {
             "url": "{{route('cv.upload')}}",
@@ -170,8 +171,14 @@
             id="wpforms-js"></script>
     <script src="{{asset('assets/plugins/wpforms/pro/assets/js/wpforms-file-upload.min.js?ver=1.6.7')}}"
             id="wpforms-file-upload-js"></script>
-    <script src="{{asset('wp-content/plugins/wpforms/assets/js/jquery.validate.min.js?ver=1.19.0')}}"
+    <script src="{{asset('assets/js/webform/jquery.validate.min.js?ver=1.19.0')}}"
             id="wpforms-validation-js"></script>
+{{--    <script src="{{asset('assets/js/jquery.validate.min.js?ver=1.19.0')}}"--}}
+{{--            id="wpforms-validation-js"></script>--}}
+    <script src="{{asset('assets/js/webform/jquery.inputmask.min.js')}}"
+            id="wpforms-maskedinput-js"></script>
+    <script src="{{asset('assets/js/webform/mailcheck.min.js?ver=1.1.2')}}"
+            id="wpforms-mailcheck-js"></script>
     <script type="text/javascript">
         /* <![CDATA[ */
         var wpforms_settings = {
@@ -221,5 +228,5 @@
         var currentTab = {{session('current_step_num') ?? 0}};
     </script>
     <script src="{{asset('assets/js/cv.js')}}"></script>
-    <x-cv.upload_image_js></x-cv.upload_image_js>
+
 @endsection
