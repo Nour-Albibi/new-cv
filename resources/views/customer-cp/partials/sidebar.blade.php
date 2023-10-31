@@ -38,20 +38,20 @@
                 <li class="menu-title">Menu</li>
 
                 <li>
-                    <a href="customer-dash.html" class="waves-effect">
+                    <a href="{{ route('customer.dashboard') }}" class="waves-effect">
                         <i class="dripicons-home"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="cv-managment.html" class=" waves-effect">
+                    <a href="{{ route('customer.CVs') }}" class=" waves-effect">
                         <i class="dripicons-calendar"></i>
                         <span style="font-size: small;">CV Managment</span>
                     </a>
                 </li>
                 <li>
-                    <a href="subscription-managment.html" class=" waves-effect">
+                    <a href="{{ route('customer.subscriptions') }}" class=" waves-effect">
                         <i class="dripicons-calendar"></i>
                         <span style="font-size: small;">Supcription Managment</span>
                     </a>
