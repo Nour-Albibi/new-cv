@@ -224,7 +224,7 @@
                                                                 <label class="wpforms-field-label"
                                                                        for="wpforms-626-field_3">{{__('LEVEL')}}</label><select
                                                                     id="wpforms-626-field_3" class="wpforms-field-large"
-                                                                    name="language_{{$i}}[level_{{$lang}}]">
+                                                                    name="language_{{$i}}[level_{{$cv_lang}}]">
                                                                     <option value="1" selected>First Choice</option>
                                                                     <option value="2">Second Choice</option>
                                                                     <option value="3">Third Choice</option>
@@ -236,8 +236,8 @@
                                                                        for="wpforms-626-field_4">{{__('ADDITIONAL INFORMATION (OPTIONAL)')}}</label>
                                                                 <input type="text" id="wpforms-626-field_4"
                                                                        class="wpforms-field-large"
-                                                                       name="language_{{$i}}[information_{{$lang}}]"
-                                                                       placeholder="{{__('ADDITIONAL INFORMATION (OPTIONAL)')}}" value="{{$language->{"information_".$lang } }}">
+                                                                       name="language_{{$i}}[information_{{$cv_lang}}]"
+                                                                       placeholder="{{__('ADDITIONAL INFORMATION (OPTIONAL)')}}" value="{{$language->{"information_".$cv_lang } }}">
                                                             </div>
                                                         </div>
                                                         @php $i++; @endphp
@@ -277,7 +277,7 @@
                                                             <label class="wpforms-field-label"
                                                                    for="wpforms-626-field_3">{{__('LEVEL')}}</label><select
                                                                 id="wpforms-626-field_3" class="wpforms-field-large"
-                                                                name="language_1[level_{{$lang}}]">
+                                                                name="language_1[level_{{$cv_lang}}]">
                                                                 <option value="1">First Choice</option>
                                                                 <option value="2">Second Choice</option>
                                                                 <option value="3">Third Choice</option>
@@ -289,7 +289,7 @@
                                                                    for="wpforms-626-field_4">{{__('ADDITIONAL INFORMATION (OPTIONAL)')}}</label>
                                                             <input type="text" id="wpforms-626-field_4"
                                                                    class="wpforms-field-large"
-                                                                   name="language_1[information_{{$lang}}]"
+                                                                   name="language_1[information_{{$cv_lang}}]"
                                                                    placeholder="{{__('ADDITIONAL INFORMATION (OPTIONAL)')}}">
                                                         </div>
                                                     </div>

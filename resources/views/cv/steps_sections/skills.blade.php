@@ -32,6 +32,7 @@
                                   action="/"
                                   data-token="bd03f5379139322e31b053c6ab97fff9">
                                 @csrf
+                                <input name="skills_content" type="hidden" value="{{$addedItem->model->{"skill_content_".$cv_lang} }}">
                                 <noscript class="wpforms-error-noscript">{{__('Please enable JavaScript in your browser to complete this form.')}}</noscript>
                                 <div class="wpforms-field-container">
                                     <div id="wpforms-591-field_2-container"
@@ -60,13 +61,10 @@
                                         @if(!empty($addedItem) && count($addedItem->model->customer_cv_skill))
                                             @foreach($addedItem->model->customer_cv_skill as $addedSkill)
                                                 <input type="hidden" class="skills_idss" name="skills_ids[]" value="{{$addedSkill->id}}"/>
-                                               @php
-                                                    $out.=$addedSkill->{"content_".$lang}.'</br>';
-                                               @endphp
                                             @endforeach
                                                 <x-cv.tiny_editor id="wpforms-591-field_1" :selector="$editor_id"
                                                                   class="wpforms-field-medium skill_content"
-                                                                  name="content_{{$lang}}">{!! $out !!}</x-cv.tiny_editor>
+                                                                  name="content_{{$cv_lang}}">{!! $addedItem->model->{"skill_content_".$cv_lang}  !!}</x-cv.tiny_editor>
                                        @else
                                         <x-cv.tiny_editor :selector="$editor_id"></x-cv.tiny_editor>
                                         <input type="hidden" class="skills_idss" name="skills_ids[]" value=""/>

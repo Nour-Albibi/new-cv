@@ -51,8 +51,8 @@
                                                            for="wpforms-535-field_1">{{__('INSTITUTION NAME')}}</label>
                                                     <input type="text" id="wpforms-535-field_1"
                                                            class="wpforms-field-large"
-                                                           name="education_{{$i}}[institution_name_{{$lang}}]"
-                                                           placeholder="{{__('INSTITUTION NAME')}}" value="{{$education->{"institution_name_".$lang} }}">
+                                                           name="education_{{$i}}[institution_name_{{$cv_lang}}]"
+                                                           placeholder="{{__('INSTITUTION NAME')}}" value="{{$education->{"institution_name_".$cv_lang} }}">
                                                 </div>
                                                 <div id="wpforms-535-field_2-container"
                                                      class="wpforms-field wpforms-field-text wpforms-one-half"
@@ -61,8 +61,8 @@
                                                            for="wpforms-535-field_2">{{__('CITY / COUNTRY')}}</label>
                                                     <input type="text" id="wpforms-535-field_2"
                                                                               class="wpforms-field-large"
-                                                                              name="education_{{$i}}[city_{{$lang}}]"
-                                                                              placeholder="{{__('City/Country')}}" value="{{$education->{"city_".$lang} }}">
+                                                                              name="education_{{$i}}[city_{{$cv_lang}}]"
+                                                                              placeholder="{{__('City/Country')}}" value="{{$education->{"city_".$cv_lang} }}">
                                                 </div>
                                                 <div id="wpforms-535-field_3-container"
                                                      class="wpforms-field wpforms-field-select wpforms-one-half wpforms-first wpforms-field-select-style-classic"
@@ -83,8 +83,8 @@
                                                            for="wpforms-535-field_4">{{__('FIELD OF STUDY')}}</label>
                                                     <input type="text" id="wpforms-535-field_4"
                                                            class="wpforms-field-large"
-                                                           name="education_{{$i}}[field_study_{{$lang}}]"
-                                                           value="{{$education->{"field_study_".$lang} }}">
+                                                           name="education_{{$i}}[field_study_{{$cv_lang}}]"
+                                                           value="{{$education->{"field_study_".$cv_lang} }}">
                                                 </div>
                                                 <div id="wpforms-535-field_5-container"
                                                      class="wpforms-field wpforms-field-number"
@@ -93,7 +93,7 @@
                                                            for="wpforms-535-field_5">{{__('HONOURS(optional)')}}</label><input
                                                         type="text" pattern="\d*" id="wpforms-535-field_5"
                                                         class="wpforms-field-large"
-                                                        name="education_{{$i}}[honours_{{$lang}}]" value="{{$education->{"honours_".$lang} }}">
+                                                        name="education_{{$i}}[honours_{{$cv_lang}}]" value="{{$education->{"honours_".$cv_lang} }}">
                                                 </div>
                                                 <div id="wpforms-535-field_6-container"
                                                      class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
@@ -149,7 +149,7 @@
                                                        for="wpforms-535-field_1">{{__('INSTITUTION NAME')}}</label>
                                                 <input type="text" id="wpforms-535-field_1"
                                                        class="wpforms-field-large"
-                                                       name="education_1[institution_name_{{$lang}}]"
+                                                       name="education_1[institution_name_{{$cv_lang}}]"
                                                        placeholder="{{__('INSTITUTION NAME')}}">
                                             </div>
                                             <div id="wpforms-535-field_2-container"
@@ -159,7 +159,7 @@
                                                        for="wpforms-535-field_2">{{__('CITY /COUNTRY')}}</label><input type="text"
                                                                           id="wpforms-535-field_2"
                                                                           class="wpforms-field-large"
-                                                                          name="education_1[city_{{$lang}}]"
+                                                                          name="education_1[city_{{$cv_lang}}]"
                                                                           placeholder="{{__('City/Country')}}">
                                             </div>
                                             <div id="wpforms-535-field_3-container"
@@ -181,7 +181,7 @@
                                                        for="wpforms-535-field_4">{{__('FIELD OF STUDY')}}</label>
                                                 <input type="text" id="wpforms-535-field_4"
                                                        class="wpforms-field-large"
-                                                       name="education_1[field_study_{{$lang}}]"
+                                                       name="education_1[field_study_{{$cv_lang}}]"
                                                        placeholder="{{__('FIELD OF STUDY')}}">
                                             </div>
                                             <div id="wpforms-535-field_5-container"
@@ -190,7 +190,7 @@
                                                 <label class="wpforms-field-label"
                                                        for="wpforms-535-field_5">{{__('HONOURS(optional)')}}</label><input
                                                     type="text" pattern="\d*" id="wpforms-535-field_5"
-                                                    class="wpforms-field-large" name="education_1[honours_{{$lang}}]">
+                                                    class="wpforms-field-large" name="education_1[honours_{{$cv_lang}}]">
                                             </div>
                                             <div id="wpforms-535-field_6-container"
                                                  class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"

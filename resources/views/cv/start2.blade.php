@@ -170,9 +170,9 @@
 {{--                                                    <input type="hidden" name="item_hash" value="{{$addedItem->get('hash')}}"/>--}}
                                                 <select class="form-control text-center" name="cv_language">
                                                     <option value="">{{__('Please Choose CV Language')}}</option>
-                                                    <option value="1">{{__('English')}}</option>
-                                                    <option value="2">{{__('Arabic')}}</option>
-                                                    <option value="3">{{__('Both')}}</option>
+                                                    <option value="en">{{__('English')}}</option>
+                                                    <option value="ar">{{__('Arabic')}}</option>
+                                                    <option value="en">{{__('Both')}}</option>
                                                 </select>
 
                                             </div>

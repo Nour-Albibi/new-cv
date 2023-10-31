@@ -102,9 +102,9 @@
                                             type="text"
                                             id="wpforms-412-field_13"
                                             class="wpforms-field-large"
-                                            name="address_{{$lang}}"
+                                            name="address_{{$cv_lang}}"
                                             placeholder="{{__('STREET ADDRESS')}}"
-                                            value="{{$addedItem->model->{"address_".$lang} ?? ''}}">
+                                            value="{{$addedItem->model->{"address_".$cv_lang} ?? ''}}">
                                     </div>
                                     <div id="wpforms-412-field_14-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half"
@@ -112,9 +112,9 @@
                                         <label class="wpforms-field-label"
                                                for="wpforms-412-field_14">{{__('CITY/TOWN')}}</label><input
                                             type="text" id="wpforms-412-field_14"
-                                            class="wpforms-field-large" name="city_town_{{$lang}}"
+                                            class="wpforms-field-large" name="city_town_{{$cv_lang}}"
                                             placeholder="{{__('CITY/TOWN')}}"
-                                            value="{{$addedItem->model->{"city_town_".$lang} ?? ''}}">
+                                            value="{{$addedItem->model->{"city_town_".$cv_lang} ?? ''}}">
                                     </div>
                                     <div id="wpforms-412-field_15-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half wpforms-first"
@@ -122,9 +122,9 @@
                                         <label class="wpforms-field-label"
                                                for="wpforms-412-field_15">{{__('COUNTRY')}}</label><input
                                             type="text" id="wpforms-412-field_15"
-                                            class="wpforms-field-large" name="country_{{$lang}}"
+                                            class="wpforms-field-large" name="country_{{$cv_lang}}"
                                             placeholder="{{__('COUNTRY')}}"
-                                            value="{{$addedItem->model->{"country_".$lang} ?? ''}}">
+                                            value="{{$addedItem->model->{"country_".$cv_lang} ?? ''}}">
                                     </div>
                                     <div id="wpforms-412-field_16-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half"

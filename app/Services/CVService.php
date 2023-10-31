@@ -142,20 +142,39 @@ class CVService
         }
         return true;
     }
-
+    public static function deleteOldSkills($cv){
+        if(count($cv->customer_cv_skill)){
+            $cv->customer_cv_skill()->delete();
+        }
+    }
+    public static function updateSkillsContent($cv,$content){
+        $cv->skills_content_en=$content;
+        $cv->skills_content_ar=$content;
+        $cv->save();
+    }
     public static function storeSkills($data)
     {
-        $data = self::getDataArraysFromRequest($data);
         $cvItem = self::getCVItem();
         if (!empty($cvItem)) {
-            foreach ($data as $skill) {
-                $selected_skill=Skill::where('id',$skill)->get();
-                CustomerCvSkill::create([
-                    'customer_cv_id' => $cvItem->id,
-                    'content_ar' => $selected_skill->name_ar ?? '',
-                    'content_en' => $selected_skill->name_en ?? '',
-                    'skill_id' => $selected_skill->id ?? '',
-                ]);
+            $customer_cv=CustomerCv::find($cvItem->id);
+            if(!empty($customer_cv)){
+                self::updateSkillsContent($customer_cv,$data['skills_content'] ?? '');
+                self::deleteOldSkills($customer_cv);
+                if(isset($data['skills_ids'])){
+                    foreach ($data['skills_ids'] as $skill) {
+                        if($skill!=null){
+                            $selected_skill=Skill::find($skill);
+                           if(!empty($selected_skill)){
+                               $test=CustomerCvSkill::create([
+                                   'customer_cv_id' => $cvItem->id,
+                                   'content_ar' => $selected_skill->name_ar ?? '',
+                                   'content_en' => $selected_skill->name_en ?? '',
+                                   'skill_id' => $selected_skill->id ?? '',
+                               ]);
+                           }
+                        }
+                    }
+                }
             }
         }
         return true;

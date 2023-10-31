@@ -48,8 +48,8 @@
                                                     <label class="wpforms-field-label"
                                                            for="wpforms-488-field_1">{{__('JOB TITLE')}}</label><input
                                                         type="text" id="wpforms-488-field_1"
-                                                        class="wpforms-field-large" name="work_{{$i}}[job_title_{{$lang}}]"
-                                                        placeholder="JOB TITLE" value="{{$work->{"job_title_".$lang } }}">
+                                                        class="wpforms-field-large" name="work_{{$i}}[job_title_{{$cv_lang}}]"
+                                                        placeholder="JOB TITLE" value="{{$work->{"job_title_".$cv_lang } }}">
                                                 </div>
                                                 <div id="wpforms-488-field_2-container"
                                                      class="wpforms-field wpforms-field-text wpforms-one-half"
@@ -57,8 +57,8 @@
                                                     <label class="wpforms-field-label"
                                                            for="wpforms-488-field_2">{{__('EMPLOYER')}}</label><input
                                                         type="text" id="wpforms-488-field_2"
-                                                        class="wpforms-field-large" name="work_{{$i}}[employeer_{{$lang}}]"
-                                                        placeholder="EMPLOYER" value="{{$work->{"employeer_".$lang } }}">
+                                                        class="wpforms-field-large" name="work_{{$i}}[employeer_{{$cv_lang}}]"
+                                                        placeholder="EMPLOYER" value="{{$work->{"employeer_".$cv_lang } }}">
                                                 </div>
                                                 <div id="wpforms-488-field_3-container"
                                                      class="wpforms-field wpforms-field-text wpforms-one-half wpforms-first"
@@ -66,8 +66,8 @@
                                                     <label class="wpforms-field-label"
                                                            for="wpforms-488-field_3">{{__('CITY/TOWN')}}</label><input
                                                         type="text" id="wpforms-488-field_3"
-                                                        class="wpforms-field-large" name="work_{{$i}}[city_{{$lang}}]"
-                                                        placeholder="CITY/TOWN" value="{{$work->{"city_".$lang } }}">
+                                                        class="wpforms-field-large" name="work_{{$i}}[city_{{$cv_lang}}]"
+                                                        placeholder="CITY/TOWN" value="{{$work->{"city_".$cv_lang } }}">
                                                 </div>
                                                 <div id="wpforms-488-field_4-container"
                                                      class="wpforms-field wpforms-field-text wpforms-one-half"
@@ -76,8 +76,8 @@
                                                            for="wpforms-488-field_4">{{__('COUNTY')}}</label>
                                                     <input
                                                         type="text" id="wpforms-488-field_4"
-                                                        class="wpforms-field-large" name="work_{{$i}}[country_{{$lang}}]"
-                                                        placeholder="COUNTY" value="{{$work->{"country_".$lang } }}">
+                                                        class="wpforms-field-large" name="work_{{$i}}[country_{{$cv_lang}}]"
+                                                        placeholder="COUNTY" value="{{$work->{"country_".$cv_lang } }}">
                                                 </div>
                                                 <div id="wpforms-488-field_5-container"
                                                      class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
@@ -128,8 +128,8 @@
                                                     <label class="wpforms-field-label"
                                                            for="wpforms-488-field_4">{{__('Job Description')}}</label>
                                                     <textarea class="wpforms-field-large"
-                                                              name="work_1[experience_description_{{$lang}}]"
-                                                              placeholder="{{__('Job Description')}}">{!! $work->{"experience_description_".$lang} !!}</textarea>
+                                                              name="work_1[experience_description_{{$cv_lang}}]"
+                                                              placeholder="{{__('Job Description')}}">{!! $work->{"experience_description_".$cv_lang} !!}</textarea>
                                                 </div>
                                             </div>
                                             @php $i++; @endphp
@@ -142,7 +142,7 @@
                                                 <label class="wpforms-field-label"
                                                        for="wpforms-488-field_1">{{__('JOB TITLE')}}</label><input
                                                     type="text" id="wpforms-488-field_1"
-                                                    class="wpforms-field-large" name="work_1[job_title_{{$lang}}]"
+                                                    class="wpforms-field-large" name="work_1[job_title_{{$cv_lang}}]"
                                                     placeholder="JOB TITLE">
                                             </div>
                                             <div id="wpforms-488-field_2-container"
@@ -151,7 +151,7 @@
                                                 <label class="wpforms-field-label"
                                                        for="wpforms-488-field_2">{{__('EMPLOYER')}}</label><input
                                                     type="text" id="wpforms-488-field_2"
-                                                    class="wpforms-field-large" name="work_1[employeer_{{$lang}}]"
+                                                    class="wpforms-field-large" name="work_1[employeer_{{$cv_lang}}]"
                                                     placeholder="EMPLOYER">
                                             </div>
                                             <div id="wpforms-488-field_3-container"
@@ -160,7 +160,7 @@
                                                 <label class="wpforms-field-label"
                                                        for="wpforms-488-field_3">{{__('CITY/TOWN')}}</label><input
                                                     type="text" id="wpforms-488-field_3"
-                                                    class="wpforms-field-large" name="work_1[city_{{$lang}}]"
+                                                    class="wpforms-field-large" name="work_1[city_{{$cv_lang}}]"
                                                     placeholder="CITY/TOWN">
                                             </div>
                                             <div id="wpforms-488-field_4-container"
@@ -170,7 +170,7 @@
                                                        for="wpforms-488-field_4">{{__('COUNTY')}}</label>
                                                 <input
                                                     type="text" id="wpforms-488-field_4"
-                                                    class="wpforms-field-large" name="work_1[country_{{$lang}}]"
+                                                    class="wpforms-field-large" name="work_1[country_{{$cv_lang}}]"
                                                     placeholder="COUNTY">
                                             </div>
                                             <div id="wpforms-488-field_5-container"
@@ -221,7 +221,7 @@
                                                 <label class="wpforms-field-label"
                                                        for="wpforms-488-field_4">{{__('Job Description')}}</label>
                                                 <textarea class="wpforms-field-large"
-                                                          name="work_1[experience_description_{{$lang}}]"
+                                                          name="work_1[experience_description_{{$cv_lang}}]"
                                                           placeholder="{{__('Job Description')}}"></textarea>
                                             </div>
                                         </div>

@@ -42,6 +42,7 @@
 @endsection
 @section('main_content')
     <input type="hidden" name="customer" value="{{auth()->guard('customer')->user()->id ?? ''}}"/>
+    <input type="hidden" name="cv_lang" value="{{session('chosen_cv_language') ?? ''}}"/>
     <div data-elementor-type="wp-page" data-elementor-id="380" class="wp-page-el elementor elementor-380"
          data-elementor-post-type="page">
         <section data-particle_enable="false" data-particle-mobile-disabled="false"

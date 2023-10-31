@@ -488,3 +488,9 @@
     margin-top: 27px !important;
     border-radius: 5px !important;
 }
+.skills_data{
+    cursor:pointer;
+}
+.skills_data.checked{
+    color: #aeacac;
+}

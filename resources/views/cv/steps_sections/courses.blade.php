@@ -49,16 +49,16 @@
                                                            for="wpforms-568-field_1">{{__('Course name')}}</label><input
                                                         type="text" id="wpforms-568-field_1"
                                                         class="wpforms-field-large"
-                                                        name="course_{{$i}}[course_name_{{$lang}}]"
-                                                        placeholder="{{__('Course name')}}" value="{{$course->{"course_name_".$lang } }}">
+                                                        name="course_{{$i}}[course_name_{{$cv_lang}}]"
+                                                        placeholder="{{__('Course name')}}" value="{{$course->{"course_name_".$cv_lang } }}">
                                                 </div>
                                                 <div id="wpforms-568-field_2-container"
                                                      class="wpforms-field wpforms-field-text" data-field-id="2">
                                                     <label class="wpforms-field-label"
                                                            for="wpforms-568-field_2">{{__('The entity responsible for the course')}}</label>
                                                     <input type="text" id="wpforms-568-field_2" class="wpforms-field-large"
-                                                           name="course_{{$i}}[trainer_{{$lang}}]"
-                                                           placeholder="{{__('The entity responsible for the course')}}" value="{{$course->{"trainer_".$lang } }}">
+                                                           name="course_{{$i}}[trainer_{{$cv_lang}}]"
+                                                           placeholder="{{__('The entity responsible for the course')}}" value="{{$course->{"trainer_".$cv_lang } }}">
                                                 </div>
                                                 <div id="wpforms-568-field_3-container"
                                                      class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
@@ -100,7 +100,7 @@
                                                 <label class="wpforms-field-label"
                                                        for="wpforms-568-field_1">{{__('Course name')}}</label><input
                                                     type="text" id="wpforms-568-field_1"
-                                                    class="wpforms-field-large" name="course_1[course_name_{{$lang}}]"
+                                                    class="wpforms-field-large" name="course_1[course_name_{{$cv_lang}}]"
                                                     placeholder="Course name">
                                             </div>
                                             <div id="wpforms-568-field_2-container"
@@ -108,7 +108,7 @@
                                                 <label class="wpforms-field-label"
                                                        for="wpforms-568-field_2">{{__('The entity responsible for the course')}}</label>
                                                 <input type="text" id="wpforms-568-field_2" class="wpforms-field-large"
-                                                                             name="course_1[trainer_{{$lang}}]"
+                                                                             name="course_1[trainer_{{$cv_lang}}]"
                                                                              placeholder="The entity responsible for the course">
                                             </div>
                                             <div id="wpforms-568-field_3-container"

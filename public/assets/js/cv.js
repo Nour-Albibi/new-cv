@@ -258,6 +258,7 @@ function getFormBasedOnStep(step_num) {
         return document.getElementById('courses_form');
     }
     if (step_num === 5) {
+        SetSkillsContent();
         return document.getElementById('skills_form');
     }
     if (step_num === 6) {
@@ -267,7 +268,9 @@ function getFormBasedOnStep(step_num) {
         return document.getElementById('languages_form');
     }
 }
-
+function SetSkillsContent(){
+    $('input[name=skills_content]').val(tinymce.get('wpforms-591-field_1').getContent());
+}
 function storeCVData(step_num) {
     var valid = true;
     var loggedCustomer = $('input[name=customer]').val();
@@ -356,15 +359,16 @@ function getAllSkillRelatedToJobTitle() {
 
 function addSkillData(skill_id, skill_content) {
     $('#skills_form').append('<input type="hidden" class="skills_idss a_skill_id_'+skill_id+'" name="skills_ids[]" value="' + skill_id + '"/>');
-    $('.skill_content').append(skill_content +'\r\n');
     var el = tinymce.activeEditor.dom.create('p', {id: skill_id, 'class': 'myclass'}, skill_content);
     tinymce.activeEditor.selection.setNode(el);
+    $('.skills_data[skill_id=' + skill_id + ']').addClass('checked');
     $('.skills_data[skill_id=' + skill_id + ']').find("span.add-remove").html('<i class="fas fa-minus-circle"></i>');
     $('.skills_data[skill_id=' + skill_id + ']').attr('onclick','removeSkillDate("'+skill_id+'","'+skill_content+'")')
 }
 function removeSkillDate(skill_id,skill_content){
     tinymce.activeEditor.dom.remove(skill_id);
     $('.a_skill_id_'+skill_id).remove();
+    $('.skills_data[skill_id=' + skill_id + ']').removeClass('checked');
     $('.skills_data[skill_id=' + skill_id + ']').find("span.add-remove").html('<i class="fas fa-plus-circle"></i>');
     $('.skills_data[skill_id=' + skill_id + ']').attr('onclick','addSkillData("'+skill_id+'","'+skill_content+'")')
 
