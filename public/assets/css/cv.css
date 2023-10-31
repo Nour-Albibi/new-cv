@@ -494,3 +494,9 @@
 .skills_data.checked{
     color: #aeacac;
 }
+.summaries_data{
+    cursor:pointer;
+}
+.summaries_data.checked{
+    color: #aeacac;
+}

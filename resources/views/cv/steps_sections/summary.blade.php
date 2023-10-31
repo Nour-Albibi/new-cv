@@ -31,6 +31,8 @@
                                   action="/"
                                   data-token="bd03f5379139322e31b053c6ab97fff9">
                                 @csrf
+                                <input name="summary_content" type="hidden" value="{{$addedItem->model->{"summary_content_".$cv_lang} }}">
+
                                 <noscript class="wpforms-error-noscript">{{__('Please enable JavaScript in your browser to complete this form.')}}</noscript>
                                 <div class="wpforms-field-container">
                                     <div id="wpforms-614-field_2-container"
@@ -40,7 +42,7 @@
                                                for="wpforms-614-field_2">{{__('Search for pre-written examples')}}</label>
                                         <input type="text" id="wpforms-614-field_2"
                                                                    class="wpforms-field-large"
-                                                                   name="wpforms[fields][2]"
+                                                                   name="search_summaries_job_title"
                                                                    placeholder="{{__('Search')}}">
                                     </div>
                                     <div id="wpforms-614-field_3-container"
@@ -56,7 +58,7 @@
     box-sizing: border-box;
     padding: 5px;
     margin-top: 27px;
-    border-radius: 5px;">{{__('Search')}}</button>
+    border-radius: 5px;" onclick="getAllSummariesRelatedToJobTitle()">{{__('Search')}}</button>
                                         </div>
                                     </div>
                                     <div id="wpforms-614-field_5-container"
@@ -67,15 +69,7 @@
                                     </div>
                                     <div id="wpforms-614-field_4-container"
                                          class="wpforms-field wpforms-field-html" data-field-id="4">
-                                        <div id="wpforms-614-field_4">
-                                            <br>
-                                            <i class="fas fa-plus-circle" style="list-style:none"></i>
-                                            <span class="f">{{__('Organized and dependable candidate successful at managing multiple priorities with a positive attitude.')}}</span>
-                                            <br>
-                                            <i class="fas fa-plus-circle"
-                                               style="list-style:none"></i>
-                                                {{__('Hardworking and passionate job seeker with strong organizational skills')}}
-                                            <br>
+                                        <div id="summaries_suggestions">
                                         </div>
                                     </div>
                                     <div id="wpforms-614-field_1-container"
@@ -83,8 +77,15 @@
                                          data-field-id="1">
                                         <label class="wpforms-field-label"
                                                for="wpforms-614-field_1">{{__('Professional summary')}}</label>
-                                        <textarea id="wpforms-614-field_1" class="wpforms-field-medium"
-                                                  name="content_{{$lang}}">{!! $addedItem->customer_cv_summery ?? '' !!}</textarea>
+                                        @php $editor_id="wpforms-614-field_1" @endphp
+                                        @if(!empty($addedItem) && count($addedItem->model->customer_cv_summery))
+                                            @foreach($addedItem->model->customer_cv_summery as $addedSummary)
+                                                <input type="hidden" class="summaries_idss" name="summaries_ids[]" value="{{$addedSummary->id}}"/>
+                                            @endforeach
+                                        @endif
+                                        <x-cv.tiny_editor id="wpforms-614-field_1" :selector="$editor_id"
+                                                          class="wpforms-field-medium summary_content"
+                                                          name="content_{{$cv_lang}}">{!!$addedItem->model->{"summary_content_".$cv_lang}  !!}</x-cv.tiny_editor>
                                     </div>
                                 </div>
                             </form>

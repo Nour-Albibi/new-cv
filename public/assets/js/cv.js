@@ -4,9 +4,9 @@ var current_project = 1;
 var button_indecator = 0;
 var current_edu = 1;
 var current_language = 1;
+var main_path = "http://localhost/cv/public/";
 showTab(currentTab); // Display the current tab
 openModal();
-var main_path = "http://localhost/cv/public/";
 
 function openModal() {
     $('.modal').toggleClass('show');
@@ -164,6 +164,9 @@ function showTab(n) {
         next_step_title = $('.cv-step-box[num=' + (n + 1) + ']').attr('step_title');
         document.getElementById("nextBtn").innerHTML = "Next: " + next_step_title;
     }
+    if(n==5){
+        getAllSkillRelatedToJobTitle();
+    }
     //... and run a function that will display the correct step indicator:
     //fixStepIndicator(n)
 }
@@ -194,9 +197,9 @@ function nextPrev(n) {
     }
     showTab(currentTab);
     animateTabsElem(currentTab)
-    if (currentTab == 5) {
-        getAllSkillRelatedToJobTitle();
-    }
+    // if (currentTab == 5) {
+    //     getAllSkillRelatedToJobTitle();
+    // }
 }
 function animateTabsElem(currentTab){
     $('.hello-element').removeClass('animate_text');
@@ -356,17 +359,49 @@ function getAllSkillRelatedToJobTitle() {
         }
     });
 }
+function getAllSummariesRelatedToJobTitle() {
+    $('#skills_suggestions').html('<i class="fa fa-spinner"></i>');
+    var search_keys=$('input[name=search_summaries_job_title]').val();
+    $.ajax({
+        method: "post",
+        url: main_path + "cv-builder/getAllSummariesRelatedToJobTitle",
+        data:{search_keys:search_keys},
+        cache: false,
+        success: function (data) {
+            $('#summaries_suggestions').html(data);
+        },
+        error: function (data) {
+            console.log(data);
+            valid = false;
+        }
+    });
+}
+function addSummaryData(id,content){
+    $('#summary_form').append('<input type="hidden" class="summaries_idss a_summary_id_'+id+'" name="summaries_ids[]" value="' + id + '"/>');
+    var el = tinymce.get("wpforms-614-field_1").dom.create('p', {id: id, 'class': 'myclass'}, content);
+    tinymce.get("wpforms-614-field_1").selection.setNode(el);
+    $('.summaries_data[summary_id=' + id + ']').addClass('checked');
+    $('.summaries_data[summary_id=' + id + ']').find("span.add-remove").html('<i class="fas fa-minus-circle"></i>');
+    $('.summaries_data[summary_id=' + id + ']').attr('onclick','removeSummaryDate("'+id+'","'+content+'")')
 
+}
+function removeSummaryDate(id,content){
+    tinymce.get("wpforms-614-field_1").dom.remove(id);
+    $('.a_summary_id_'+id).remove();
+    $('.summaries_data[summary_id=' + id + ']').removeClass('checked');
+    $('.summaries_data[summary_id=' + id + ']').find("span.add-remove").html('<i class="fas fa-plus-circle"></i>');
+    $('.summaries_data[summary_id=' + id + ']').attr('onclick','addSummaryData("'+id+'","'+content+'")')
+}
 function addSkillData(skill_id, skill_content) {
     $('#skills_form').append('<input type="hidden" class="skills_idss a_skill_id_'+skill_id+'" name="skills_ids[]" value="' + skill_id + '"/>');
-    var el = tinymce.activeEditor.dom.create('p', {id: skill_id, 'class': 'myclass'}, skill_content);
-    tinymce.activeEditor.selection.setNode(el);
+    var el = tinymce.get("wpforms-591-field_1").dom.create('p', {id: skill_id, 'class': 'myclass'}, skill_content);
+    tinymce.get("wpforms-591-field_1").selection.setNode(el);
     $('.skills_data[skill_id=' + skill_id + ']').addClass('checked');
     $('.skills_data[skill_id=' + skill_id + ']').find("span.add-remove").html('<i class="fas fa-minus-circle"></i>');
     $('.skills_data[skill_id=' + skill_id + ']').attr('onclick','removeSkillDate("'+skill_id+'","'+skill_content+'")')
 }
 function removeSkillDate(skill_id,skill_content){
-    tinymce.activeEditor.dom.remove(skill_id);
+    tinymce.get("wpforms-591-field_1").dom.remove(skill_id);
     $('.a_skill_id_'+skill_id).remove();
     $('.skills_data[skill_id=' + skill_id + ']').removeClass('checked');
     $('.skills_data[skill_id=' + skill_id + ']').find("span.add-remove").html('<i class="fas fa-plus-circle"></i>');

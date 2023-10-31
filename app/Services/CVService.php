@@ -10,6 +10,7 @@ use App\Models\CustomerCvProject;
 use App\Models\CustomerCvSkill;
 use App\Models\CustomerCvSummery;
 use App\Models\CustomerCvWorkHistory;
+use App\Models\ProfessionalSummary;
 use App\Models\Skill;
 use App\Models\Template;
 use Carbon\Carbon;
@@ -60,6 +61,32 @@ class CVService
                 }
             }else{
                 $related_skills=Skill::where('is_general',1)->get();
+            }
+        }
+
+        return $related_skills;
+    }
+    public static function getSummariesSuggestions($possible_keys){
+        $related_skills=null;
+        if(isset($possible_keys['search_keys']) && !empty($possible_keys['search_keys'])){
+            $related_skills=ProfessionalSummary::select('professional_summaries.*')->join('job_titles','job_titles.id','professional_summaries.job_title_id')
+                ->where('job_titles.name_ar','like','%'.$possible_keys['search_keys'].'%')
+                ->orwhere('job_titles.name_en','like','%'.$possible_keys['search_keys'].'%')
+                ->get();
+
+        }else{
+            $cvItem=self::getCVItem();
+            $newest_work=CustomerCvWorkHistory::select('id','job_title_ar','job_title_en','job_title_id')
+                ->where('customer_cv_id',$cvItem->id)->latest()->first();
+            if(!empty($newest_work)){
+                if(!empty($newest_work->job_title_id)){
+                    $related_skills=ProfessionalSummary::where('job_title_id',$newest_work->job_title_id)->get();
+                }else{
+                    $related_skills=ProfessionalSummary::select('professional_summaries.*')->join('job_titles','job_titles.id','professional_summaries.job_title_id')
+                        ->where('job_titles.name_ar','like','%'.$newest_work->job_title_ar.'%')
+                        ->orwhere('job_titles.name_en','like','%'.$newest_work->job_title_en.'%')
+                        ->get();
+                }
             }
         }
 
