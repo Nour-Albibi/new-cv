@@ -40,24 +40,14 @@
                                         <label class="wpforms-field-label"
                                                for="wpforms-591-field_2">{{_('Search for pre-written examples')}}</label>
                                         <input type="text" id="wpforms-591-field_2" class="wpforms-field-large"
-                                                                   name="wpforms[fields][2]"
-                                                                   placeholder="{{__('Search')}}">
+                                                                   name="search_skills_job_title"
+                                                                   placeholder="{{__('Search Skills for Specific Job Title')}}">
                                     </div>
                                     <div id="wpforms-591-field_3-container"
                                          class="wpforms-field wpforms-field-html wpforms-one-half"
                                          data-field-id="3">
                                         <div id="wpforms-591-field_3">
-                                            <button type="button" style="display: inline-block;
-    vertical-align: middle;
-    background: #024851;
-    height: auto;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 5px;
-    margin-top: 27px;
-    border-radius: 5px;">{{__('Search')}}
-                                            </button>
+                                            <button type="button" class="skills_search_button" onclick="getAllSkillRelatedToJobTitle()">{{__('Search')}}</button>
                                         </div>
                                     </div>
                                     <div id="wpforms-591-field_1-container"
@@ -66,6 +56,7 @@
                                         <label class="wpforms-field-label"
                                                for="wpforms-591-field_1">{{__('skills for the job you want')}}</label>
                                         @php $out=''; @endphp
+                                        @php $editor_id="wpforms-591-field_1" @endphp
                                         @if(!empty($addedItem) && count($addedItem->model->customer_cv_skill))
                                             @foreach($addedItem->model->customer_cv_skill as $addedSkill)
                                                 <input type="hidden" class="skills_idss" name="skills_ids[]" value="{{$addedSkill->id}}"/>
@@ -73,15 +64,11 @@
                                                     $out.=$addedSkill->{"content_".$lang}.'</br>';
                                                @endphp
                                             @endforeach
-                                            <textarea id="wpforms-591-field_1"
-                                                      class="wpforms-field-medium skill_content"
-                                                      name="content_{{$lang}}">
-                                                {!! $out !!}
-                                            </textarea>
-                                       @else
-                                        <textarea id="wpforms-591-field_1"
+                                                <x-cv.tiny_editor id="wpforms-591-field_1" :selector="$editor_id"
                                                                   class="wpforms-field-medium skill_content"
-                                                                  name="content_{{$lang}}"></textarea>
+                                                                  name="content_{{$lang}}">{!! $out !!}</x-cv.tiny_editor>
+                                       @else
+                                        <x-cv.tiny_editor :selector="$editor_id"></x-cv.tiny_editor>
                                         <input type="hidden" class="skills_idss" name="skills_ids[]" value=""/>
                                         @endif
                                     </div>

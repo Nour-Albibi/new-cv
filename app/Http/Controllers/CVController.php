@@ -42,7 +42,8 @@ class CVController extends Controller
         if (Auth::guard('customer')->check() && empty($addedItem)) {
             $customerCV = CustomerCv::where('customer_id', Auth::guard('customer')->user()->id)
                 ->where('cv_status', 0)->latest()->first();
-            $addedItem=CVService::adddStoreCVinCart($customerCV);
+             CVService::addStoredCVinCart($customerCV);
+            $addedItem=CVService::getCVItem();
         }
         $chosen_template = CVTemplateService::getChosenTemplate();
         return view('cv.create-cv-steps', compact('chosen_template','addedItem'));

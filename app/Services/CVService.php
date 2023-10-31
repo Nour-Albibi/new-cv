@@ -38,22 +38,31 @@ class CVService
         $cart=Cart::name('cv');
         $cart->destroy();
     }
-    public static function getSkillSuggestions(){
-        $cvItem=self::getCVItem();
-        $newest_work=CustomerCvWorkHistory::select('id','job_title_ar','job_title_en','job_title_id')
-        ->where('customer_cv_id',$cvItem->id)->latest()->first();
-        if(!empty($newest_work)){
-            if(!empty($newest_work->job_title_id)){
-                $related_skills=Skill::where('job_title_id',$newest_work->job_title_id)->get();
-            }else{
-                $related_skills=Skill::select('skills.*')->join('job_titles','job_titles.id','skills.job_title_id')
-                    ->where('job_titles.name_ar','like','%'.$newest_work->job_title_ar.'%')
-                    ->orwhere('job_titles.name_en','like','%'.$newest_work->job_title_en.'%')
-                    ->get();
-            }
+    public static function getSkillSuggestions($possible_keys){
+        if(isset($possible_keys['search_keys']) && !empty($possible_keys['search_keys'])){
+            $related_skills=Skill::select('skills.*')->join('job_titles','job_titles.id','skills.job_title_id')
+                ->where('job_titles.name_ar','like','%'.$possible_keys['search_keys'].'%')
+                ->orwhere('job_titles.name_en','like','%'.$possible_keys['search_keys'].'%')
+                ->get();
+
         }else{
-            $related_skills=Skill::where('is_general',1)->get();
+            $cvItem=self::getCVItem();
+            $newest_work=CustomerCvWorkHistory::select('id','job_title_ar','job_title_en','job_title_id')
+                ->where('customer_cv_id',$cvItem->id)->latest()->first();
+            if(!empty($newest_work)){
+                if(!empty($newest_work->job_title_id)){
+                    $related_skills=Skill::where('job_title_id',$newest_work->job_title_id)->get();
+                }else{
+                    $related_skills=Skill::select('skills.*')->join('job_titles','job_titles.id','skills.job_title_id')
+                        ->where('job_titles.name_ar','like','%'.$newest_work->job_title_ar.'%')
+                        ->orwhere('job_titles.name_en','like','%'.$newest_work->job_title_en.'%')
+                        ->get();
+                }
+            }else{
+                $related_skills=Skill::where('is_general',1)->get();
+            }
         }
+
         return $related_skills;
     }
     public static function addStoredCVinCart($customerCV){
