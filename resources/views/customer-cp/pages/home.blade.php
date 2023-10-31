@@ -16,7 +16,7 @@
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
-                  <h5>Viewed MY CV</h5>
+                  <h5>MY CVs</h5>
                         <div class="table-responsive">
                             <table class="table table-centered table-nowrap mb-0">
                                 <thead>
@@ -47,7 +47,7 @@
                                                             </td>
                                                             <td>{{date('d/m/Y', strtotime($cv->created_at))  }}</td>
                                                             <td>
-                                                                <button type="button" class="btn btn-primary waves-effect waves-light">Download <i class="fas fa-arrow-down"></i></button>
+                                                                <button type="button" class="btn btn-primary waves-effect waves-light" onclick="window.location.href='{{ route('customer.downloadCV',$cv) }}';">Download <i class="fas fa-arrow-down"></i></button>
                                                             </td>
 
                                                             <td>
@@ -60,27 +60,7 @@
                                     @endforeach
 
 
-                                                        <tr>
 
-                                                            <td>
-                                                               <h5 class="font-size-16"> 12</h5>
-
-                                                            </td>
-                                                            <td>
-                                                                <img src="assets/images/resume-template-with-photo.jpg" alt="" class="" style="width: 150px;">
-                                                            </td>
-                                                            <td>07/10/2020</td>
-                                                            <td>
-                                                                <button type="button" class="btn btn-primary waves-effect waves-light">Download <i class="fas fa-arrow-down"></i></button>
-                                                            </td>
-
-                                                            <td>
-                                                                <i class="fas fa-pen"></i>
-                                                                <i class="fas fa-trash-alt text-danger"></i>
-                                                            </td>
-
-
-                                                        </tr>
 
 
                                                     </tbody>

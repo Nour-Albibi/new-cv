@@ -185,15 +185,11 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="@if(auth()->guard('customer')->check())
-                    <li class="elementor-icon-list-item elementor-inline-item">
-                        <a href="#">
-                            <span
-                                class="elementor-icon-list-text">
-                                {{Auth::guard('customer')->user()->avatar}}
-                            </span>
-                        </a>
-                    </li>
+                    <img class="rounded-circle header-profile-user" src="
+
+                    @if(auth()->guard('customer')->check())
+                    {{Auth::guard('customer')->user()->avatar}}
+
                 @endif"
                         alt="Header Avatar">
                     <span class="d-none d-xl-inline-block ms-1">
@@ -217,7 +213,7 @@
                     <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-end">11</span><i class="mdi mdi-cog-outline font-size-16 align-middle me-1"></i> Settings</a>
                     <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline font-size-16 align-middle me-1"></i> Lock screen</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="#"><i class="mdi mdi-power font-size-16 align-middle me-1 text-danger"></i> Logout</a>
+                    <a class="dropdown-item text-danger" href="{{ route('customer.logout') }}"><i class="mdi mdi-power font-size-16 align-middle me-1 text-danger"></i> Logout</a>
                 </div>
             </div>
 

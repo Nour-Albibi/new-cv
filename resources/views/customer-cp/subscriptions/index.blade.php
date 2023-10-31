@@ -1,6 +1,6 @@
 @extends('customer-cp.layouts.app')
 
-@section('template_title')
+@section('title')
     Subscriptions
 @endsection
 

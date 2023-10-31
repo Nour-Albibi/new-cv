@@ -61,4 +61,8 @@ class AuthController extends Controller
             return redirect()->back()->withErrors(['msg' =>$exception->getMessage()]);
         }
     }
+    public function logout(){
+        Session::flush();Auth::guard('customer')->logout();
+        return view('home');
+}
 }

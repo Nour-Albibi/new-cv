@@ -1,6 +1,6 @@
 @extends('customer-cp.layouts.app')
 
-@section('template_title')
+@section('title')
     CVs
 @endsection
 
@@ -80,27 +80,7 @@
                                     @endforeach
 
 
-                                                        <tr>
 
-                                                            <td>
-                                                               <h5 class="font-size-16"> 12</h5>
-
-                                                            </td>
-                                                            <td>
-                                                                <img src="assets/images/resume-template-with-photo.jpg" alt="" class="" style="width: 150px;">
-                                                            </td>
-                                                            <td>07/10/2020</td>
-                                                            <td>
-                                                                <button type="button" class="btn btn-primary waves-effect waves-light">Download <i class="fas fa-arrow-down"></i></button>
-                                                            </td>
-
-                                                            <td>
-                                                                <i class="fas fa-pen"></i>
-                                                                <i class="fas fa-trash-alt text-danger"></i>
-                                                            </td>
-
-
-                                                        </tr>
 
 
                                                     </tbody>
