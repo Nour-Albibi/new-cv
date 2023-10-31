@@ -43,10 +43,12 @@ Route::group(['middleware' => 'language'], function () {
         Route::post('AddCourse',[CVCourseController::class,'AddCourse']);
         Route::post('AddLanguage',[CVLanguageController::class,'AddLanguage']);
         Route::post('getSkillsRelatedToJobTitle',[CVSkillsController::class,'getSkillRelatedToJobTitle']);
+        Route::get('DownloadCV/{cv}',[CVController::class,'DownloadCV']);
     });
     Route::group(['prefix' => 'payment'], function () {
         Route::get('plans', [PackageController::class, 'getCustomerPackagesPricing'])->name('getCustomerPackagesPricing');
         Route::post('subscribeToPackage', [PackageController::class, 'subscribeToPackage'])->name('subscribeToPackage');
-        Route::get('checkout',[PaymentController::class,'checkout'])->name('payment.checkout');
+        Route::match(['post','get'],'checkout',[PaymentController::class,'checkout'])->name('payment.checkout');
+        Route::get('Confirmation',[PaymentController::class,'order_confirmed'])->name('order_confirmed');
     });
 });

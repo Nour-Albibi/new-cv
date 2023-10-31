@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class CVController extends Controller
 {
     public function index(Request $request)
@@ -42,7 +42,8 @@ class CVController extends Controller
         if (Auth::guard('customer')->check() && empty($addedItem)) {
             $customerCV = CustomerCv::where('customer_id', Auth::guard('customer')->user()->id)
                 ->where('cv_status', 0)->latest()->first();
-            $addedItem=CVService::adddStoreCVinCart($customerCV);
+             CVService::addStoredCVinCart($customerCV);
+            $addedItem=CVService::getCVItem();
         }
         $chosen_template = CVTemplateService::getChosenTemplate();
         return view('cv.create-cv-steps', compact('chosen_template','addedItem'));
@@ -123,9 +124,17 @@ class CVController extends Controller
         try{
 
             $uploader=new UploadService();
-            return $uploader->UploadImageFile($request);
+            $uploadedImage=$uploader->UploadImageFile($request);
+            return response()->json(['success' => true,'data'=>$uploadedImage], 200);
         }catch (\Exception $exception){
             return response()->json(['error' => $exception->getMessage()], 500);
         }
+    }
+    public function DownloadCV(CustomerCv $cv){
+        $cvFileName=$cv->template->file_name;
+//        return view('cv-templates.'.$cvFileName,compact('cv'));
+        $pdf = Pdf::loadView('cv-templates.'.$cvFileName.'2',['cv' => $cv]);
+        return $pdf->download('CV.pdf');
+//        return $pdf->stream('CV.pdf');
     }
 }

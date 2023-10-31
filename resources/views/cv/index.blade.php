@@ -17,7 +17,7 @@
          data-elementor-post-type="page">
         <form name="start-cv-template" method="post" id="start-cv-template" action="">
             @csrf
-            <input type="hidden" name="cvColor" value=""/>
+            <input type="hidden" name="cvColor" value="{{$cvTemplates[0]->default_color ?? ''}}"/>
             <input type="hidden" name="cvTemplate" value="{{$cvTemplates[0]->id ?? ''}}" />
         </form>
         <section data-particle_enable="false" data-particle-mobile-disabled="false"
@@ -87,6 +87,23 @@
                                     class="elementor-column elementor-col-11 elementor-inner-column elementor-element elementor-element-9a5df53 exad-glass-effect-no exad-sticky-section-no"
                                     data-id="9a5df53" data-element_type="column">
                                     <div class="elementor-widget-wrap">
+                                    </div>
+                                </div>
+                                <div
+                                    class="elementor-column elementor-col-11 elementor-inner-column elementor-element elementor-element-205b2cc exad-glass-effect-no exad-sticky-section-no"
+                                    data-id="205b2cc" data-element_type="column">
+                                    <div class="elementor-widget-wrap elementor-element-populated">
+                                        <div
+                                            class="cv-color elementor-element elementor-element-0ed9f90 elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
+                                            data-id="0ed9f90" data-element_type="widget" color="default"
+                                            data-widget_type="icon.default">
+                                            <div class="elementor-widget-container">
+                                                <div class="elementor-icon-wrapper">
+                                                    <div class="active elementor-icon" style="color: #fff;border-color:#ccc !important;">
+                                                        <i aria-hidden="true" class="fas fa-circle" style="color: #fff;border-color:#ccc !important;"></i></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div
@@ -230,7 +247,7 @@
                                         <div
                                             class="cv-template @if($i==0) active @endif elementor-element elementor-element-1223de4 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-exad-exclusive-card"
                                             data-id="1223de4" data-element_type="widget"
-                                            data-widget_type="exad-exclusive-card.default" cv-template-id="{{$template->id}}">
+                                            data-widget_type="exad-exclusive-card.default" cv-template-id="{{$template->id}}" default_color="{{$template->default_color}}">
                                             <div class="elementor-widget-container">
                                                 <div class="exad-card left text_on_image yes">
                                                     <div class="exad-card-thumb">
@@ -354,13 +371,24 @@
             cv_color=$(this).attr('color');
             $('.cv-color').find('.elementor-icon').removeClass('active');
             $(this).find('.elementor-icon').addClass('active');
-            $('path#sidebar_color').attr('style','fill: '+cv_color +' !important');
-            $('input[name=cvColor]').val(cv_color);
+            if(cv_color!=="default"){
+                $('path#sidebar_color').attr('style','fill: '+cv_color +' !important');
+                $('input[name=cvColor]').val(cv_color);
+            }else{
+                $('.cv-template').each(function(){
+                   if($(this).hasClass('active')){
+                       default_color=$(this).attr('default_color');
+                       $('path#sidebar_color').attr('style','fill: '+default_color +' !important');
+                      $('input[name=cvColor]').val(default_color);
+                   }
+                });
+            }
         });
         $('.cv-template').on('click',function(){
            $('.cv-template').removeClass('active');
            $(this).addClass('active');
            $('input[name=cvTemplate]').val($(this).attr('cv-template-id'));
+
         });
     </script>
 @endsection

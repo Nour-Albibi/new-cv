@@ -8,99 +8,6 @@
     @yield('seo_section')
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="robots" content="max-image-preview:large">
-    <script>
-        window._wpemojiSettings = {
-            "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/",
-            "ext": ".png",
-            "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/",
-            "svgExt": ".svg",
-            "source": {"concatemoji": "https:\/\/projects.datatime4it.com\/chtml\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.3.1"}
-        };
-        /*! This file is auto-generated */
-        !function (i, n) {
-            var o, s, e;
-
-            function c(e) {
-                try {
-                    var t = {supportTests: e, timestamp: (new Date).valueOf()};
-                    sessionStorage.setItem(o, JSON.stringify(t))
-                } catch (e) {
-                }
-            }
-
-            function p(e, t, n) {
-                e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(t, 0, 0);
-                var t = new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data),
-                    r = (e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(n, 0, 0), new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data));
-                return t.every(function (e, t) {
-                    return e === r[t]
-                })
-            }
-
-            function u(e, t, n) {
-                switch (t) {
-                    case"flag":
-                        return n(e, "🏳️‍⚧️", "🏳️​⚧️") ? !1 : !n(e, "🇺🇳", "🇺​🇳") && !n(e, "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");
-                    case"emoji":
-                        return !n(e, "🫱🏻‍🫲🏿", "🫱🏻​🫲🏿")
-                }
-                return !1
-            }
-
-            function f(e, t, n) {
-                var r = "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope ? new OffscreenCanvas(300, 150) : i.createElement("canvas"),
-                    a = r.getContext("2d", {willReadFrequently: !0}),
-                    o = (a.textBaseline = "top", a.font = "600 32px Arial", {});
-                return e.forEach(function (e) {
-                    o[e] = t(a, e, n)
-                }), o
-            }
-
-            function t(e) {
-                var t = i.createElement("script");
-                t.src = e, t.defer = !0, i.head.appendChild(t)
-            }
-
-            "undefined" != typeof Promise && (o = "wpEmojiSettingsSupports", s = ["flag", "emoji"], n.supports = {
-                everything: !0,
-                everythingExceptFlag: !0
-            }, e = new Promise(function (e) {
-                i.addEventListener("DOMContentLoaded", e, {once: !0})
-            }), new Promise(function (t) {
-                var n = function () {
-                    try {
-                        var e = JSON.parse(sessionStorage.getItem(o));
-                        if ("object" == typeof e && "number" == typeof e.timestamp && (new Date).valueOf() < e.timestamp + 604800 && "object" == typeof e.supportTests) return e.supportTests
-                    } catch (e) {
-                    }
-                    return null
-                }();
-                if (!n) {
-                    if ("undefined" != typeof Worker && "undefined" != typeof OffscreenCanvas && "undefined" != typeof URL && URL.createObjectURL && "undefined" != typeof Blob) try {
-                        var e = "postMessage(" + f.toString() + "(" + [JSON.stringify(s), u.toString(), p.toString()].join(",") + "));",
-                            r = new Blob([e], {type: "text/javascript"}),
-                            a = new Worker(URL.createObjectURL(r), {name: "wpTestEmojiSupports"});
-                        return void (a.onmessage = function (e) {
-                            c(n = e.data), a.terminate(), t(n)
-                        })
-                    } catch (e) {
-                    }
-                    c(n = f(s, u, p))
-                }
-                t(n)
-            }).then(function (e) {
-                for (var t in e) n.supports[t] = e[t], n.supports.everything = n.supports.everything && n.supports[t], "flag" !== t && (n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && n.supports[t]);
-                n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && !n.supports.flag, n.DOMReady = !1, n.readyCallback = function () {
-                    n.DOMReady = !0
-                }
-            }).then(function () {
-                return e
-            }).then(function () {
-                var e;
-                n.supports.everything || (n.readyCallback(), (e = n.source || {}).concatemoji ? t(e.concatemoji) : e.wpemoji && e.twemoji && (t(e.twemoji), t(e.wpemoji)))
-            }))
-        }((window, document), window._wpemojiSettings);
-    </script>
     @yield('custom_css')
     <link rel="stylesheet" id="exad-slick-css"
           href="{{asset('assets/plugins/exclusive-addons-for-elementor/assets/vendor/css/slick.min.css?ver=6.3.1')}}"
@@ -158,12 +65,12 @@
             id="jquery-core-js"></script>
     <script src="{{asset('assets/js/jquery/jquery-migrate.min.js?ver=3.4.1')}}"
             id="jquery-migrate-js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="all" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css"
-          media="all">
+          media="all" defer>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css"
-          media="all">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          media="all" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" >
     <link rel="alternate" type="text/xml+oembed"
           href="https://projects.datatime4it.com/chtml/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fprojects.datatime4it.com%2Fchtml%2F#038;format=xml">
     <meta name="generator"
@@ -360,11 +267,11 @@
 <script src="{{asset('assets/js/underscore.min.js?ver=1.13.4')}}"
         id="underscore-js"></script>
 <script src="{{asset('assets/js/wp-util.min.js?ver=6.3.1')}}" id="wp-util-js"></script>
-<script id="wp-util-js-extra">var _wpUtilSettings = {"ajax": {"url":"http://localhost/cv/public/cv-builder/uploadFile"}};</script>
-<script id="wpforms-elementor-js-extra">var wpformsElementorVars = {
-        "captcha_provider": "recaptcha",
-        "recaptcha_type": "v2"
-    };</script>
+{{--<script id="wp-util-js-extra">var _wpUtilSettings = {"ajax": {"url":"http://localhost/cv/public/cv-builder/uploadFile"}};</script>--}}
+{{--<script id="wpforms-elementor-js-extra">var wpformsElementorVars = {--}}
+{{--        "captcha_provider": "recaptcha",--}}
+{{--        "recaptcha_type": "v2"--}}
+{{--    };</script>--}}
 <script
     src="{{asset('assets/plugins/wpforms/assets/js/integrations/elementor/frontend.min.js?ver=1.6.7')}}"
     id="wpforms-elementor-js"></script>

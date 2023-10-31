@@ -8,18 +8,18 @@
             data-id="6cb5930a" data-element_type="column">
             <div class="elementor-widget-wrap elementor-element-populated">
                 <div
-                    class="elementor-element elementor-element-15324d3d exad-sticky-section-no exad-glass-effect-no elementor-invisible elementor-widget elementor-widget-heading"
+                    class="elementor-element elementor-element-15324d3d exad-sticky-section-no exad-glass-effect-no  hello-element elementor-invisible elementor-widget elementor-widget-heading"
                     data-id="15324d3d" data-element_type="widget"
                     data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
-                    data-widget_type="heading.default">
+                    data-widget_type="heading.default" current_tab="3">
                     <div class="elementor-widget-container">
                         <h4 class="elementor-heading-title elementor-size-default">{{__('Tell us about your education')}}</h4></div>
                 </div>
                 <div
-                    class="elementor-element elementor-element-522986e6 exad-sticky-section-no exad-glass-effect-no elementor-invisible elementor-widget elementor-widget-heading"
+                    class="elementor-element elementor-element-522986e6 exad-sticky-section-no exad-glass-effect-no  hello-element elementor-invisible elementor-widget elementor-widget-heading"
                     data-id="522986e6" data-element_type="widget"
                     data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
-                    data-widget_type="heading.default">
+                    data-widget_type="heading.default" current_tab="3">
                     <div class="elementor-widget-container">
                         <h6 class="elementor-heading-title elementor-size-default">
                             {{__("List universities, colleges or institutions where you studied. If you didn't
@@ -102,9 +102,11 @@
                                                            for="wpforms-535-field_6">{{__('START DATE')}}</label>
                                                     <div class="wpforms-datepicker-wrap">
                                                         <input type="date" id="wpforms-535-field_6"
-                                                               class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                               class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                                data-date-format="m/d/Y"
                                                                data-disable-past-dates="0" data-input="true"
+                                                               input_name="education_start_date"
+                                                               education_num="{{$i}}"
                                                                name="education_{{$i}}[start_date]" value="{{Illuminate\Support\Carbon::parse($education->start_date)->toDateString()}}">
                                                     </div>
                                                 </div>
@@ -115,9 +117,11 @@
                                                            for="wpforms-535-field_7">{{__('END DATE')}}</label>
                                                     <div class="wpforms-datepicker-wrap">
                                                         <input type="date" id="wpforms-535-field_7"
-                                                               class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                               class="end_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                                data-date-format="m/d/Y"
                                                                data-disable-past-dates="0" data-input="true"
+                                                               input_name="education_end_date"
+                                                               education_num="{{$i}}"
                                                                name="education_{{$i}}[end_date]" value="{{Illuminate\Support\Carbon::parse($education->end_date)->toDateString()}}">
                                                     </div>
                                                 </div>
@@ -195,9 +199,11 @@
                                                        for="wpforms-535-field_6">{{__('START DATE')}}</label>
                                                 <div class="wpforms-datepicker-wrap">
                                                     <input type="date" id="wpforms-535-field_6"
-                                                           class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                           class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                            data-date-format="m/d/Y"
                                                            data-disable-past-dates="0" data-input="true"
+                                                           input_name="education_start_date"
+                                                           education_num="1"
                                                            name="education_1[start_date]">
                                                 </div>
                                             </div>
@@ -208,9 +214,11 @@
                                                        for="wpforms-535-field_7">{{__('END DATE')}}</label>
                                                 <div class="wpforms-datepicker-wrap">
                                                     <input type="date" id="wpforms-535-field_7"
-                                                           class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                           class="end_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                            data-date-format="m/d/Y"
                                                            data-disable-past-dates="0" data-input="true"
+                                                           input_name="education_end_date"
+                                                           education_num="1"
                                                            name="education_1[end_date]">
                                                 </div>
                                             </div>

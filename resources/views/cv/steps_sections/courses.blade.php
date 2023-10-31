@@ -8,20 +8,20 @@
             data-id="2c10efc4" data-element_type="column">
             <div class="elementor-widget-wrap elementor-element-populated">
                 <div
-                    class="elementor-element elementor-element-13bbc91b exad-sticky-section-no exad-glass-effect-no elementor-invisible elementor-widget elementor-widget-heading"
+                    class="elementor-element elementor-element-13bbc91b exad-sticky-section-no exad-glass-effect-no hello-element elementor-invisible elementor-widget elementor-widget-heading"
                     data-id="13bbc91b" data-element_type="widget"
                     data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
-                    data-widget_type="heading.default">
+                    data-widget_type="heading.default" current_tab="4">
                     <div class="elementor-widget-container">
                         <h4 class="elementor-heading-title elementor-size-default">Tell us about
                             your Training Courses
                         </h4></div>
                 </div>
                 <div
-                    class="elementor-element elementor-element-442e38ab exad-sticky-section-no exad-glass-effect-no elementor-invisible elementor-widget elementor-widget-heading"
+                    class="elementor-element elementor-element-442e38ab exad-sticky-section-no exad-glass-effect-no hello-element elementor-invisible elementor-widget elementor-widget-heading"
                     data-id="442e38ab" data-element_type="widget"
                     data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
-                    data-widget_type="heading.default">
+                    data-widget_type="heading.default" current_tab="4">
                     <div class="elementor-widget-container">
                         <h6 class="elementor-heading-title elementor-size-default">Start with your
                             most recent job and work backwards.
@@ -67,9 +67,11 @@
                                                            for="wpforms-568-field_3">{{__('START DATE')}}</label>
                                                     <div class="wpforms-datepicker-wrap">
                                                         <input type="date" id="wpforms-568-field_3"
-                                                               class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                               class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                                data-date-format="m/d/Y"
                                                                data-disable-past-dates="0" data-input="true"
+                                                               input_name="course_start_date"
+                                                               course_num="{{$i}}"
                                                                name="course_{{$i}}[start_date]" value="{{Illuminate\Support\Carbon::parse($course->start_date)->toDateString()}}">
                                                     </div>
                                                 </div>
@@ -80,9 +82,11 @@
                                                            for="wpforms-568-field_4">{{__('END DATE')}}</label>
                                                     <div class="wpforms-datepicker-wrap">
                                                         <input type="date" id="wpforms-568-field_4"
-                                                               class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                               class="end_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                                data-date-format="m/d/Y"
                                                                data-disable-past-dates="0" data-input="true"
+                                                               input_name="course_end_date"
+                                                               course_num="{{$i}}"
                                                                name="course_{{$i}}[end_date]" value="{{Illuminate\Support\Carbon::parse($course->end_date)->toDateString()}}">
                                                     </div>
                                                 </div>
@@ -114,9 +118,11 @@
                                                        for="wpforms-568-field_3">{{__('START DATE')}}</label>
                                                 <div class="wpforms-datepicker-wrap">
                                                     <input type="date" id="wpforms-568-field_3"
-                                                           class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                           class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                            data-date-format="m/d/Y"
                                                            data-disable-past-dates="0" data-input="true"
+                                                           input_name="course_start_date"
+                                                           course_num="1"
                                                            name="course_1[start_date]">
                                                 </div>
                                             </div>
@@ -127,9 +133,11 @@
                                                        for="wpforms-568-field_4">{{__('END DATE')}}</label>
                                                 <div class="wpforms-datepicker-wrap">
                                                     <input type="date" id="wpforms-568-field_4"
-                                                           class="wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                           class="end_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
                                                            data-date-format="m/d/Y"
                                                            data-disable-past-dates="0" data-input="true"
+                                                           input_name="course_end_date"
+                                                           course_num="1"
                                                            name="course_1[end_date]">
                                                 </div>
                                             </div>

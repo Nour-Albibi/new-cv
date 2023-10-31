@@ -63,10 +63,10 @@ class CVTemplateController extends AdminController
     {
         $form = new Form(new Template());
 
-        $form->text('name_en', __('English Name'));
-        $form->text('name_ar', __('Arabic Name'));
-        $form->image('image', __('Image'));
-
+        $form->text('name_en', __('English Name'))->required();
+        $form->text('name_ar', __('Arabic Name'))->required();
+        $form->image('image', __('Image'))->required();
+        $form->color('default_color', __('Default Color'))->required();
         return $form;
     }
 }

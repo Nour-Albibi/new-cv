@@ -459,3 +459,32 @@
 .invalid{
     border:1px solid red;
 }
+
+.animate_text{
+    animation-name: fadeInUp;
+    animation-duration: 1.3s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+.skills_search_button{
+    display: inline-block !important;
+    vertical-align: middle !important;
+    background: #024851 !important;
+    height: auto !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 5px !important;
+    margin-top: 27px !important;
+    border-radius: 5px !important;
+}

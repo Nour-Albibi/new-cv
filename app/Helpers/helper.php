@@ -99,3 +99,10 @@ function getRandString($length=5,$num=1){
     for($p=0;$p < $length;$p++){$rand_name.= $ch[mt_rand(0, (strlen($ch))-1)];}
     return $rand_name;
 }
+function getLanguageLevel($level_name){
+    switch ($level_name){
+        case "No Proficiency": return 0;
+        case "Elementary": return 50;
+        case "Native": return 100;
+    }
+}

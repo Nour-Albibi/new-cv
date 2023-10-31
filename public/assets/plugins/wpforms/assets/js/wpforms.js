@@ -251,14 +251,14 @@ var wpforms = window.wpforms || ( function( document, window, $ ) {
 				} );
 
 				// Validate Smart Phone Field.
-				if ( typeof $.fn.intlTelInput !== 'undefined' ) {
-					$.validator.addMethod( 'smart-phone-field', function( value, element ) {
-						if ( value.match( /[^\d()\-+\s]/ ) ) {
-							return false;
-						}
-						return this.optional( element ) || $( element ).intlTelInput( 'isValidNumber' );
-					}, wpforms_settings.val_phone );
-				}
+				// if ( typeof $.fn.intlTelInput !== 'undefined' ) {
+				// 	$.validator.addMethod( 'smart-phone-field', function( value, element ) {
+				// 		if ( value.match( /[^\d()\-+\s]/ ) ) {
+				// 			return false;
+				// 		}
+				// 		return this.optional( element ) || $( element ).intlTelInput( 'isValidNumber' );
+				// 	}, wpforms_settings.val_phone );
+				// }
 
 				// Validate Input Mask minimum length.
 				$.validator.addMethod( 'empty-blanks', function( value, element ) {
@@ -349,44 +349,44 @@ var wpforms = window.wpforms || ( function( document, window, $ ) {
 								}
 								$field.removeClass( 'wpforms-has-error' );
 							},
-							submitHandler: function( form ) {
-
-								var $form       = $( form ),
-									$submit     = $form.find( '.wpforms-submit' ),
-									altText     = $submit.data( 'alt-text' ),
-									recaptchaID = $submit.get( 0 ).recaptchaID;
-
-								if ( $form.data( 'token' ) && 0 === $( '.wpforms-token', $form ).length ) {
-									$( '<input type="hidden" class="wpforms-token" name="wpforms[token]" />' )
-										.val( $form.data( 'token' ) )
-										.appendTo( $form );
-								}
-
-								$submit.prop( 'disabled', true );
-								$form.find( '#wpforms-field_recaptcha-error' ).remove();
-
-								// Display processing text.
-								if ( altText ) {
-									$submit.text( altText );
-								}
-
-								if ( ! app.empty( recaptchaID ) || recaptchaID === 0 ) {
-
-									// Form contains invisible reCAPTCHA.
-									grecaptcha.execute( recaptchaID ).then( null, function( reason ) {
-
-										reason = ( null === reason ) ? '' : '<br>' + reason;
-										$form.find( '.wpforms-recaptcha-container' ).append( '<label id="wpforms-field_recaptcha-error" class="wpforms-error"> ' + wpforms_settings.val_recaptcha_fail_msg + reason + '</label>' );
-										$submit.prop( 'disabled', false );
-									} );
-									return false;
-								}
-
-								// Remove name attributes if needed.
-								$( '.wpforms-input-temp-name' ).removeAttr( 'name' );
-
-								app.formSubmit( $form );
-							},
+							// submitHandler: function( form ) {
+                            //
+							// 	var $form       = $( form ),
+							// 		$submit     = $form.find( '.wpforms-submit' ),
+							// 		altText     = $submit.data( 'alt-text' )
+							// 		// recaptchaID = $submit.get( 0 ).recaptchaID;
+                            //
+							// 	if ( $form.data( 'token' ) && 0 === $( '.wpforms-token', $form ).length ) {
+							// 		$( '<input type="hidden" class="wpforms-token" name="wpforms[token]" />' )
+							// 			.val( $form.data( 'token' ) )
+							// 			.appendTo( $form );
+							// 	}
+                            //
+							// 	$submit.prop( 'disabled', true );
+							// 	$form.find( '#wpforms-field_recaptcha-error' ).remove();
+                            //
+							// 	// Display processing text.
+							// 	if ( altText ) {
+							// 		$submit.text( altText );
+							// 	}
+                            //
+							// 	if ( ! app.empty( recaptchaID ) || recaptchaID === 0 ) {
+                            //
+							// 		// Form contains invisible reCAPTCHA.
+							// 		grecaptcha.execute( recaptchaID ).then( null, function( reason ) {
+                            //
+							// 			reason = ( null === reason ) ? '' : '<br>' + reason;
+							// 			$form.find( '.wpforms-recaptcha-container' ).append( '<label id="wpforms-field_recaptcha-error" class="wpforms-error"> ' + wpforms_settings.val_recaptcha_fail_msg + reason + '</label>' );
+							// 			$submit.prop( 'disabled', false );
+							// 		} );
+							// 		return false;
+							// 	}
+                            //
+							// 	// Remove name attributes if needed.
+							// 	$( '.wpforms-input-temp-name' ).removeAttr( 'name' );
+                            //
+							// 	app.formSubmit( $form );
+							// },
 							invalidHandler: function( event, validator ) {
 
 								if ( typeof validator.errorList[0] !== 'undefined' ) {
