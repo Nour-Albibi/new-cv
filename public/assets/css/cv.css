@@ -247,6 +247,10 @@
     border-radius: 30px;
     outline: 0;
 }
+.modal-dialog .modal-content, .modal-dialog-common .modal-content {
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.18);
+    /*padding: 38px 58px 26px;*/
+}
 .head_container {
     display: flex;
     width: 100%;

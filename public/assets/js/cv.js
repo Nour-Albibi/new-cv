@@ -9,7 +9,7 @@ showTab(currentTab); // Display the current tab
 openModal();
 
 function openModal() {
-    $('.modal').toggleClass('show');
+    $('.modal.cv_steps_modal').toggleClass('show');
 }
 
 $(document).ready(function () {
@@ -17,10 +17,11 @@ $(document).ready(function () {
         $('.modal').removeClass('show');
     });
     $('.continue_create_cv').on('click', function () {
-        $('.modal').removeClass('show');
+        $('.modal.cv_steps_modal').removeClass('show');
     });
     $('input[type=tel]').attr('name', 'phone');
-
+    SetInitSkillContent();
+    SetInitSummaryContent();
 })
 
 function CheckWordDates() {
@@ -407,4 +408,26 @@ function removeSkillDate(skill_id,skill_content){
     $('.skills_data[skill_id=' + skill_id + ']').find("span.add-remove").html('<i class="fas fa-plus-circle"></i>');
     $('.skills_data[skill_id=' + skill_id + ']').attr('onclick','addSkillData("'+skill_id+'","'+skill_content+'")')
 
+}
+function SetInitSkillContent(){
+    $('#wpforms-591-field_1').html($('input[name=skills_content]').val());
+}
+function SetInitSummaryContent(){
+    $('#wpforms-614-field_1').html($('input[name=summary_content]').val());
+}
+function previewCV(){
+    $('.preview_cv_modal').addClass('show');
+    cv_id=$('input[name=customer_cv_id]').val();
+    $.ajax({
+        method: "post",
+        url: main_path + "cv-builder/PreviewCV/"+cv_id,
+        cache: false,
+        success: function (data) {
+            $('#preview_cv_modal_content').html(data);
+        },
+        error: function (data) {
+            console.log(data);
+            valid = false;
+        }
+    });
 }

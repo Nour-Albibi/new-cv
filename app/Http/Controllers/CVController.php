@@ -137,4 +137,11 @@ class CVController extends Controller
         return $pdf->download('CV.pdf');
 //        return $pdf->stream('CV.pdf');
     }
+    public function PreviewCVinPage(CustomerCv $cv){
+        $cvFileName=$cv->template->file_name;
+        return view('cv-templates.'.$cvFileName,['cv' => $cv]);
+    }
+    public function PreviewCV(CustomerCv $cv){
+        return view('cv.ajax.cv_modal',['cv'=>$cv])->render();
+    }
 }

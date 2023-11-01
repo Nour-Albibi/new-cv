@@ -212,7 +212,7 @@
                     <div class="elementor-widget-container">
                         <ul class="elementor-icon-list-items elementor-inline-items">
                             <li class="elementor-icon-list-item elementor-inline-item">
-                                <a href="#"><span class="elementor-icon-list-icon">
+                                <a href="javascript:void(0)" onclick="previewCV()"><span class="elementor-icon-list-icon">
 							            <i aria-hidden="true" class="far fa-eye"></i>
                                     </span>
                                     <span class="elementor-icon-list-text">{{__('preview')}}</span>

@@ -42,6 +42,7 @@
 @endsection
 @section('main_content')
     <input type="hidden" name="customer" value="{{auth()->guard('customer')->user()->id ?? ''}}"/>
+    <input type="hidden" name="customer_cv_id" value="{{$addedItem->id ?? ''}}"/>
     <input type="hidden" name="cv_lang" value="{{session('chosen_cv_language') ?? ''}}"/>
     <div data-elementor-type="wp-page" data-elementor-id="380" class="wp-page-el elementor elementor-380"
          data-elementor-post-type="page">
@@ -138,7 +139,7 @@
             </div>
             <div class="cv-container">
                 {{--Wizard Footer--}}
-                <div class="row width100 cv-footer-wizard mt-15">
+                <div class=" width100 cv-footer-wizard mt-15">
                     <div id="prevBtn" class="back-btn cv-btn elementor-button elementor-button-link elementor-size-sm elementor-animation-float" onclick="nextPrev(-1)">{{__('Back')}}</div>
                     <div id="nextBtn" class="next-btn cv-btn elementor-button elementor-button-link elementor-size-sm elementor-animation-float" onclick="nextPrev(1)">{{__('Next')}}</div>
                 </div>
@@ -146,6 +147,7 @@
         </section>
     </div>
 @include('cv.modal')
+  <x-cv.cv_modal></x-cv.cv_modal>
 @endsection
 @section('custom_js')
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=62e3f93cf0ce683fcdd5ff7d" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>

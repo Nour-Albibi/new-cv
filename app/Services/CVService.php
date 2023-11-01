@@ -157,15 +157,40 @@ class CVService
         }
         return true;
     }
+    public static function deleteOldSummaries($cv){
+        if(count($cv->customer_cv_summery)){
+            $cv->customer_cv_summery()->delete();
+        }
+    }
+    public static function updateSummaryContent($cv,$content){
+        $cv->summary_content_en=$content;
+        $cv->summary_content_ar=$content;
+        $cv->save();
+    }
     public static function storeSummary($data)
     {
         $cvItem = self::getCVItem();
         if (!empty($cvItem)) {
-            CustomerCvSummery::create([
-                'customer_cv_id' => $cvItem->id,
-                'content_ar' => $data['content_ar'] ?? '',
-                'content_en' => $data['content_en'] ?? '',
-            ]);
+            $customer_cv=CustomerCv::find($cvItem->id);
+            if(!empty($customer_cv)){
+                self::updateSummaryContent($customer_cv,$data['summary_content'] ?? '');
+                self::deleteOldSummaries($customer_cv);
+                if(isset($data['summaries_ids'])){
+                    foreach ($data['summaries_ids'] as $summary) {
+                        if($summary!=null){
+                            $selected_summary=ProfessionalSummary::find($summary);
+                            if(!empty($selected_summary)){
+                                CustomerCvSummery::create([
+                                    'customer_cv_id' => $cvItem->id,
+                                    'content_ar' => $selected_summary->content_ar ?? '',
+                                    'content_en' => $selected_summary->content_en ?? '',
+                                    'summary_id' => $selected_summary->id ?? '',
+                                ]);
+                            }
+                        }
+                    }
+                }
+            }
         }
         return true;
     }
@@ -192,7 +217,7 @@ class CVService
                         if($skill!=null){
                             $selected_skill=Skill::find($skill);
                            if(!empty($selected_skill)){
-                               $test=CustomerCvSkill::create([
+                               CustomerCvSkill::create([
                                    'customer_cv_id' => $cvItem->id,
                                    'content_ar' => $selected_skill->name_ar ?? '',
                                    'content_en' => $selected_skill->name_en ?? '',
