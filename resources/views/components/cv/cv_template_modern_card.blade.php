@@ -574,7 +574,7 @@
                 <path style="stroke:none;" d=""/>
             </symbol>
         </g>
-        @if(isset($addedItem->model) && !empty($addedItem->model->image))
+        @if(!empty($addedItem->model->image))
             <image id="image5" width="189" height="189"
                    xlink:href="{{asset('files/uploads/'.$addedItem->model->image)}}"/>
         @else
@@ -583,7 +583,7 @@
         @endif
     </defs>
     <g id="surface2">
-        <path id="sidebar_color" style=" stroke:none;fill-rule:evenodd;@if(!empty($addedItem)) fill:{{$addedItem->model->template_color}}; @else fill:rgb(73,98,103); @endif fill-opacity:1;"
+        <path id="sidebar_color" style=" stroke:none;fill-rule:evenodd;@if(!empty($addedItem->model->template_color)) fill:{{$addedItem->model->template_color}}; @else fill:rgb(73,98,103); @endif fill-opacity:1;"
               d="M 0 0 L 96.992188 0 L 96.992188 341.234375 L 0 341.234375 Z M 0 0 "/>
         <use xlink:href="#image5" transform="matrix(0.384894,0,0,0.383837,15.371694,11.011336)"
              id="template_profile_image"/>
