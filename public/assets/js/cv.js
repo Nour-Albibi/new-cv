@@ -266,6 +266,7 @@ function getFormBasedOnStep(step_num) {
         return document.getElementById('skills_form');
     }
     if (step_num === 6) {
+        SetSummaryContent();
         return document.getElementById('summary_form');
     }
     if (step_num === 7) {
@@ -274,6 +275,9 @@ function getFormBasedOnStep(step_num) {
 }
 function SetSkillsContent(){
     $('input[name=skills_content]').val(tinymce.get('wpforms-591-field_1').getContent());
+}
+function SetSummaryContent(){
+    $('input[name=summary_content]').val(tinymce.get('wpforms-614-field_1').getContent());
 }
 function storeCVData(step_num) {
     var valid = true;

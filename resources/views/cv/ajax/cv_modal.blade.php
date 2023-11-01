@@ -23,16 +23,12 @@
                 </ul>
             </div>
         </div>
-        @if(count($cv->customer_cv_skill))
+        @if(!empty($cv->{"skills_content_".$cv_lang}))
             <div class="space-41"></div>
             <div class="personal-info-section">
                 <div class="personal-info-title">{{__('SKILLS')}}</div>
                 <div class="personal-info-description mt-10">
-                    <ul class="skills-list">
-                        @foreach($cv->customer_cv_skill as $skill)
-                            <li>{{$skill->{"content_".$cv_lang} }}}</li>
-                        @endforeach
-                    </ul>
+                   {!! $cv->{"skills_content_".$cv_lang} !!}
                 </div>
             </div>
         @endif
@@ -80,7 +76,7 @@
             <div class="summery-section section">
                 <h3 class="section-title text-left">{{__('PROFESSIONAL SUMMARY')}}</h3>
                 <div class="section-description mt-15">
-                    <p>{!! $cv->customer_cv_professional_summary()->{"content_".$cv_lang} !!}</p>
+                    <p>{!! $cv->{"summary_content_".$cv_lang} !!}</p>
                 </div>
             </div>
         @endif

@@ -12,7 +12,19 @@
 ul.contact-list, ul.skills-list, ul.work-duties{
     padding-left:0;
 }
-
+.personal-info-description ul{
+    padding-left:0;
+}
+.personal-info-description ul li{
+    /*color: #FFF;*/
+    font-family: 'CenturyGothic';
+    font-size: 13.333px;
+    font-style: normal;
+    font-weight: 400;
+    /*line-height: normal;*/
+    line-height: 1.5;
+    margin-left: 14px;
+}
 .Home {
     width: 100%;
     height:100%;
