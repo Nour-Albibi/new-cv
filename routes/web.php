@@ -48,6 +48,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('DownloadCV/{cv}',[CVController::class,'DownloadCV']);
         Route::post('PreviewCV/{cv}',[CVController::class,'PreviewCV'])->name('PreviewCV');
         Route::get('PreviewCVinPage/{cv}',[CVController::class,'PreviewCVinPage']);
+        Route::get('screenshotCV',[CVController::class,'screenshotCV']);
     });
     Route::group(['prefix' => 'payment'], function () {
         Route::get('plans', [PackageController::class, 'getCustomerPackagesPricing'])->name('getCustomerPackagesPricing');

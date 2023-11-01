@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Spatie\Browsershot\Browsershot;
+
 class CVController extends Controller
 {
     public function index(Request $request)
@@ -143,5 +145,13 @@ class CVController extends Controller
     }
     public function PreviewCV(CustomerCv $cv){
         return view('cv.ajax.cv_modal',['cv'=>$cv])->render();
+    }
+    function screenshotCV() {
+        Browsershot::url(url('cv-builder/PreviewCVinPage/32'))
+            ->setOption('landscape', true)
+            ->windowSize(3840, 2160)
+            ->waitUntilNetworkIdle()
+            ->setNodeBinary('C:\\nodejs\\node.exe')
+            ->save("storage/". 'googlescreenshot.jpg');
     }
 }
