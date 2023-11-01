@@ -7,6 +7,7 @@ use App\Services\CVService;
 use App\Services\CVTemplateService;
 use App\Services\PackageService;
 use App\Services\UploadService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -99,7 +100,9 @@ class CVController extends Controller
     public function FinaliseCVApplication(Request $request){
         try{
             if($request->step==8){
-                if(!Auth::guard('customer')->user()->has_active_subscription()) //And must check if there is still avalaiblr cv counts if he has active subscription
+                if(!Auth::guard('customer')->user()->has_active_subscription())
+                    //Auth::guard('customer')->user()->is_exceeded_subscription_limit()
+                    //And must check if there is still avalaiblr cv counts if he has active subscription
                     return redirect()->route('getCustomerPackagesPricing');
             }
         }catch (\Exception $exception){

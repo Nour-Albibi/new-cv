@@ -1,5 +1,5 @@
 <section data-particle_enable="false" data-particle-mobile-disabled="false"
-         class="section-tab width100 elementor-section elementor-inner-section elementor-element elementor-element-3a8f1c36 exad-glass-effect-yes elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-sticky-section-no"
+         class="section-tab elementor-646 width100 elementor-section elementor-inner-section elementor-element elementor-element-3a8f1c36 exad-glass-effect-yes elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-sticky-section-no"
          data-id="3a8f1c36" data-element_type="section"
          data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
     <form name="finalise" id="finalise" action="{{route('FinaliseCVApplication')}}" method="post">
@@ -10,7 +10,7 @@
         <div
             class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-11024663 exad-glass-effect-no exad-sticky-section-no"
             data-id="11024663" data-element_type="column">
-            <div class="elementor-widget-wrap elementor-element-populated">
+            <div class="tips_area elementor-widget-wrap elementor-element-populated">
                 <div
                     class="elementor-element elementor-element-48ad7f8 elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
                     data-id="48ad7f8" data-element_type="widget" data-widget_type="icon.default">
@@ -92,9 +92,9 @@
                     <div class="elementor-widget-container">
                         <ul class="elementor-icon-list-items">
                             <li class="elementor-icon-list-item">
-                                <a href="#"><span class="elementor-icon-list-icon">
+                                <a href="javascript:void(0)" onclick="$('.tips_area').css('visibility','hidden')"><span class="elementor-icon-list-icon">
 							<i aria-hidden="true" class="fas fa-chevron-right"></i></span>
-                                    <span class="elementor-icon-list-text">Don't show me tips anymore</span>
+                                    <span class="elementor-icon-list-text">{{__("Don't show me tips anymore")}}</span>
                                 </a>
                             </li>
                         </ul>
@@ -120,12 +120,13 @@
                     data-id="481b714" data-element_type="widget"
                     data-widget_type="exad-exclusive-card.default">
                     <div class="elementor-widget-container">
-
                         <div class="exad-card left text_on_image yes">
                             <div class="exad-card-thumb">
-                                <img decoding="async"
-                                     src="{{asset('files/'.$chosen_template->image)}}"
-                                     title="jtv21-cv9" alt="jtv21-cv9" loading="lazy"></div>
+                                <x-cv.cv_template_modern_card :addedItem="$addedItem" :lang="$cv_lang"></x-cv.cv_template_modern_card>
+{{--                                <img decoding="async"--}}
+{{--                                     src="{{asset('files/'.$chosen_template->image)}}"--}}
+{{--                                     title="jtv21-cv9" alt="jtv21-cv9" loading="lazy">--}}
+                            </div>
                             <div class="exad-card-body">
                             </div>
                         </div>

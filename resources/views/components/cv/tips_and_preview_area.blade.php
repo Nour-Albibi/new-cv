@@ -1,5 +1,5 @@
 <section data-particle_enable="false" data-particle-mobile-disabled="false"
-         class="elementor-section elementor-inner-section elementor-element elementor-element-1b9df0c elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-glass-effect-no exad-sticky-section-no"
+         class="elementor-section  elementor-inner-section elementor-element elementor-element-1b9df0c elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-glass-effect-no exad-sticky-section-no"
          data-id="1b9df0c" data-element_type="section" style="padding-bottom:20px;">
     <div class="elementor-container elementor-column-gap-custom">
         {{ $slot }}

@@ -572,3 +572,74 @@
 .projects_tab,.training_courses_tab{
     background: #FFFFFF45;
 }
+@media (min-width: 768px){
+    .elementor-646 .elementor-element.elementor-element-5e7b4fb {
+        width: 22.316%;
+    }
+    .elementor-646 .elementor-element.elementor-element-11024663 {
+        width: 77.461%;
+    }
+}
+
+.elementor-646 .elementor-element.elementor-element-5e7b4fb > .elementor-widget-wrap > .elementor-widget:not(.elementor-widget__width-auto):not(.elementor-widget__width-initial):not(:last-child):not(.elementor-absolute) {
+    margin-bottom: 0px;
+}
+
+.elementor-646 .elementor-element.elementor-element-5e7b4fb > .elementor-element-populated {
+    margin: 0px 10px 0px 10px;
+    --e-column-margin-right: 10px;
+    --e-column-margin-left: 10px;
+}
+@media (max-width: 767px) {
+    .elementor-646 .elementor-element.elementor-element-1d9a96f9 {
+        padding: 35px 35px 35px 35px;
+    }
+
+    .elementor-646 .elementor-element.elementor-element-4d7fd3a8 {
+        margin-top: 175px;
+        margin-bottom: 0px;
+    }
+
+    .elementor-646 .elementor-element.elementor-element-66221cc1 .elementor-heading-title {
+        font-size: 28px;
+        line-height: 1.6em;
+    }
+
+    .elementor-646 .elementor-element.elementor-element-3a8f1c36 {
+        padding: 0px 0px 0px 0px;
+    }
+
+    .elementor-646 .elementor-element.elementor-element-11024663 {
+        width: 100%;
+    }
+
+    .elementor-646 .elementor-element.elementor-element-11024663 > .elementor-element-populated {
+        margin: 0px 0px 31px 0px;
+        --e-column-margin-right: 0px;
+        --e-column-margin-left: 0px;
+        padding: 5px 5px 5px 5px;
+    }
+
+    .elementor-646 .elementor-element.elementor-element-5e7b4fb {
+        width: 100%;
+    }
+
+    .elementor-646 .elementor-element.elementor-element-5e7b4fb > .elementor-element-populated {
+        margin: 0px 0px 0px 0px;
+        --e-column-margin-right: 0px;
+        --e-column-margin-left: 0px;
+        padding: 0px 0px 0px 0px;
+    }
+
+    .elementor-646 .elementor-element.elementor-element-7512db20 {
+        width: 100%;
+    }
+
+    .elementor-646 .elementor-element.elementor-element-1d8a6014 {
+        width: 100%;
+    }
+
+    .elementor-646 .elementor-element.elementor-element-77f142fb {
+        padding: 50px 15px 50px 15px;
+    }
+}

@@ -4,6 +4,7 @@ var current_project = 1;
 var button_indecator = 0;
 var current_edu = 1;
 var current_language = 1;
+var current_course=1;
 var main_path = "http://localhost/cv/public/";
 showTab(currentTab); // Display the current tab
 openModal();
@@ -23,6 +24,7 @@ $(document).ready(function () {
     $('input[type=tel]').attr('name', 'phone');
     SetInitSkillContent();
     SetInitSummaryContent();
+
     // getCVCard();
 })
 
@@ -252,6 +254,7 @@ function getFormBasedOnStep(step_num) {
         return document.getElementById('cv_heading_form');
     }
     if (step_num === 1) {
+        SetWorksContent();
         return document.getElementById('work_history_form');
     }
     if (step_num === 2) {
@@ -280,6 +283,19 @@ function SetSkillsContent(){
 }
 function SetSummaryContent(){
     $('input[name=summary_content]').val(tinymce.get('wpforms-614-field_1').getContent());
+}
+function SetWorksContent(){
+    $("form#work_history_form").find('textarea').each(function(){
+        this_id=$(this).attr('id');
+            alert(this_id);
+            $(this).html(tinymce.get(this_id).getContent());
+    });
+        // $('#work_history_form').find('textarea.works_textarea').each(function(){
+        //     this_id=$(this).attr('id');
+        //     alert(this_id);
+        //     $(this).html(tinymce.get(this_id).getContent());
+        // });
+
 }
 function storeCVData(step_num) {
     var valid = true;

@@ -1,7 +1,6 @@
 <section data-particle_enable="false" data-particle-mobile-disabled="false"
          class="skills_tab_container elementor-454 width100 section-tab elementor-section elementor-inner-section elementor-element elementor-element-15352d99 exad-glass-effect-yes elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-sticky-section-no"
-         data-id="15352d99" data-element_type="section"
-         data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+         data-id="15352d99" data-element_type="section">
     <x-cv.tips_and_preview_area :ctemplate="$chosen_template" :addedItem="$addedItem" :lang="$cv_lang">
         {{--Custom  Tips Area--}}
         <div class="tips_area elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-5f785b4 exad-glass-effect-no exad-sticky-section-no"
@@ -10,7 +9,6 @@
                 <div
                     class="elementor-element elementor-element-98451db exad-sticky-section-no exad-glass-effect-no hello-element elementor-invisible elementor-widget elementor-widget-heading"
                     data-id="98451db" data-element_type="widget"
-                    data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
                     data-widget_type="heading.default" current_tab="5">
                     <div class="elementor-widget-container">
                         <h4 class="elementor-heading-title elementor-size-default">{{__("Next, let’s take care of your")}}
@@ -19,7 +17,6 @@
                 <div
                     class="elementor-element elementor-element-e0edac4 exad-sticky-section-no exad-glass-effect-no hello-element elementor-invisible elementor-widget elementor-widget-heading"
                     data-id="e0edac4" data-element_type="widget"
-                    data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
                     data-widget_type="heading.default" current_tab="5">
                     <div class="elementor-widget-container">
                         <h3 class="elementor-heading-title elementor-size-default">{{__('Skills')}}</h3>
@@ -28,7 +25,6 @@
                 <div
                     class="elementor-element elementor-element-8fc8c3e exad-sticky-section-no exad-glass-effect-no hello-element elementor-invisible elementor-widget elementor-widget-heading"
                     data-id="8fc8c3e" data-element_type="widget"
-                    data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
                     data-widget_type="heading.default" current_tab="5">
                     <div class="elementor-widget-container">
                         <h6 class="elementor-heading-title elementor-size-default">{{__("Add four to eight skills from your previous jobs relevant to the job you want. We’ll suggest ones with keywords employers look for based on your title. Don’t have previous experience in the job you’re applying for? Try adding some of the skills suggested for that job title to show you can do it.")}}</h6></div>
@@ -59,14 +55,12 @@
             <div class="elementor-widget-wrap elementor-element-populated">
                 <div class="elementor-element elementor-element-20126956 exad-sticky-section-no exad-glass-effect-no hello-element elementor-invisible elementor-widget elementor-widget-heading"
                      data-id="20126956" data-element_type="widget"
-                     data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
                      data-widget_type="heading.default" current_tab="5">
                     <div class="elementor-widget-container">
                         <h4 class="elementor-heading-title elementor-size-default">{{__('Highlight relevant skills for the job you want')}}</h4></div>
                 </div>
                 <div class="elementor-element elementor-element-4a953a8c exad-sticky-section-no exad-glass-effect-no hello-element elementor-invisible elementor-widget elementor-widget-heading"
                      data-id="4a953a8c" data-element_type="widget"
-                     data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
                      data-widget_type="heading.default" current_tab="5">
                     <div class="elementor-widget-container">
                         <h6 class="elementor-heading-title elementor-size-default">{{__('Start with our

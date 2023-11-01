@@ -327,6 +327,7 @@ class CVService
     }
     public static function storeWorkHistory($data)
     {
+
         $data = self::getDataArraysFromRequest($data);
         $cvItem = self::getCVItem();
         $customer_cv=CustomerCv::find($cvItem->id);

@@ -104,8 +104,7 @@
                                                     .elementor-widget-heading .elementor-heading-title.elementor-size-xxl {
                                                         font-size: 59px
                                                     }</style>
-                                                <h4 class="elementor-heading-title elementor-size-default">Create a new
-                                                    CV</h4></div>
+                                                <h4 class="elementor-heading-title elementor-size-default">{{__('Please Choose CV Language')}}</h4></div>
                                         </div>
                                     </div>
                                 </div>
@@ -169,8 +168,7 @@
                                             <div class="elementor-widget-container">
 {{--                                                    <input type="hidden" name="item_hash" value="{{$addedItem->get('hash')}}"/>--}}
                                                 <select class="form-control text-center" name="cv_language">
-                                                    <option value="en" selected>{{__('Please Choose CV Language')}}</option>
-                                                    <option value="en">{{__('English')}}</option>
+                                                    <option value="en" selected>{{__('English')}}</option>
                                                     <option value="ar">{{__('Arabic')}}</option>
                                                     <option value="en">{{__('Both')}}</option>
                                                 </select>
