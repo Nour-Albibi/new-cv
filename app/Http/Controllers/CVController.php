@@ -100,10 +100,12 @@ class CVController extends Controller
     public function FinaliseCVApplication(Request $request){
         try{
             if($request->step==8){
-                if(!Auth::guard('customer')->user()->has_active_subscription())
-                    //Auth::guard('customer')->user()->is_exceeded_subscription_limit()
-                    //And must check if there is still avalaiblr cv counts if he has active subscription
+                //Case 1 New Customer or to Upgrade
+                if(!Auth::guard('customer')->user()->has_active_subscription() || Auth::guard('customer')->user()->exceeded_subscription_limit()){
                     return redirect()->route('getCustomerPackagesPricing');
+                }else{
+                    //redirect customer to his dashboard
+                }
             }
         }catch (\Exception $exception){
             return response()->json(['error' => $exception->getMessage()], 500);
