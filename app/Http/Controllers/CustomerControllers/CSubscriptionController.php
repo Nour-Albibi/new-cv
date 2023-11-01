@@ -18,5 +18,11 @@ class CSubscriptionController extends AdminController
         // dd($subscriptions);
         return view('customer-cp.subscriptions.index',compact('subscriptions'));
     }
+    public function showsubscription(Subscription $subscription)
+     {
+        $user_id= Auth::guard('customer')->user()->id;
+        //dd ($user_id);
+        return view('customer-cp.subscriptions.show',compact('subscription'));
+    }
 
 }

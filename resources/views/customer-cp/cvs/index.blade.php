@@ -45,9 +45,6 @@
                                                 <th scope="col">    CV Template</th>
                                                 <th scope="col">    Date</th>
                                                 <th scope="">       PDF</th>
-                                                <th scope="col">    Action</th>
-
-
 
                                         </tr>
                                 </thead>
@@ -57,23 +54,19 @@
 
                                     <tr>
 
-                                    <td>
-                                    </td>
+
                                                             <td>
                                                                 @php
                                                                     // dd ($cv->template());
                                                                 @endphp
-                                                                <img src="{{ $cv->template->image }}" alt="" class="" style="width: 150px;">
+                                                                <img src="{{ asset("files/".$cv->template->image) }}" alt="" class="" style="width: 150px;">
                                                             </td>
                                                             <td>{{date('d/m/Y', strtotime($cv->created_at))  }}</td>
                                                             <td>
-                                                                <button type="button" class="btn btn-primary waves-effect waves-light">Download <i class="fas fa-arrow-down"></i></button>
+                                                                <button type="button" class="btn btn-primary waves-effect waves-light" onclick="window.location.href='{{ route('customer.downloadCV',$cv) }}';">Download <i class="fas fa-arrow-down" ></i></button>
                                                             </td>
 
-                                                            <td>
-                                                                <i class="fas fa-pen"></i>
-                                                                <i class="fas fa-trash-alt text-danger"></i>
-                                                            </td>
+
 
 
                                                         </tr>

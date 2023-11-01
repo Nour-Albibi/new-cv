@@ -15,6 +15,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::post('/doLogin', [AuthController::class, 'doLogin'])->name('customer.doLogin');
         Route::get('/', [CustomerController::class, 'dashboard'])->name('customer.dashboard');
         Route::get('/subscriptions', [CSubscriptionController::class, 'subscriptions'])->name('customer.subscriptions');
+        Route::get('/subscriptions/{subscription}', [CSubscriptionController::class, 'showsubscription'])->name('customer.subscriptions.show');
         Route::get('/cvs', [CustomerCvController::class, 'CVs'])->name('customer.CVs');
         Route::get('/downloadcv/{cv}', [CVController::class, 'DownloadCV'])->name('customer.downloadCV');
 });
