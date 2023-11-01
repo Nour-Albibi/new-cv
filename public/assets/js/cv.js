@@ -23,6 +23,7 @@ $(document).ready(function () {
     $('input[type=tel]').attr('name', 'phone');
     SetInitSkillContent();
     SetInitSummaryContent();
+    // getCVCard();
 })
 
 function CheckWordDates() {
@@ -430,6 +431,22 @@ function previewCV(){
         cache: false,
         success: function (data) {
             $('#preview_cv_modal_content').html(data);
+        },
+        error: function (data) {
+            console.log(data);
+            valid = false;
+        }
+    });
+}
+function getCVCard(){
+    alert('test');
+    cv_id=$('input[name=customer_cv_id]').val();
+    $.ajax({
+        method: "post",
+        url: main_path + "cv-builder/getCVCard/"+cv_id,
+        cache: false,
+        success: function (data) {
+            $('#exad-card-thumb').html(data);
         },
         error: function (data) {
             console.log(data);

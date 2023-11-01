@@ -146,6 +146,9 @@ class CVController extends Controller
     public function PreviewCV(CustomerCv $cv){
         return view('cv.ajax.cv_modal',['cv'=>$cv])->render();
     }
+    public function getCVCard(CustomerCv $cv){
+        return view('cv.ajax.cv_card_preview',['cv'=>$cv])->render();
+    }
     function screenshotCV() {
         Browsershot::url(url('cv-builder/PreviewCVinPage/32'))
             ->setOption('landscape', true)

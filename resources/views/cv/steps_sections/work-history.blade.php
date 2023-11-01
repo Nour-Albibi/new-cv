@@ -2,7 +2,7 @@
          class="work_history_tab_container  elementor-454 width100 section-tab elementor-section elementor-inner-section elementor-element elementor-element-675b6c06 exad-glass-effect-yes elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-sticky-section-no"
          data-id="675b6c06" data-element_type="section"
          data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-    <x-cv.tips_and_preview_area :ctemplate="$chosen_template">
+    <x-cv.tips_and_preview_area :ctemplate="$chosen_template" :addedItem="$addedItem" :lang="$cv_lang">
         {{--Custom  Tips Area--}}
         <div class="tips_area elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-5f785b4 exad-glass-effect-no exad-sticky-section-no"
              data-id="5f785b4" data-element_type="column">

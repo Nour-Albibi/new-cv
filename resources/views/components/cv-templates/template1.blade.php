@@ -438,7 +438,7 @@
     </defs>
     <g id="surface2">
         <path id="sidebar_color" style=" stroke:none;fill-rule:evenodd;fill:rgb(73,98,103);fill-opacity:1;" d="M 0 0 L 96.992188 0 L 96.992188 341.234375 L 0 341.234375 Z M 0 0 "/>
-        <use xlink:href="#image5" transform="matrix(0.384894,0,0,0.383837,15.371694,11.011336)"/>
+        <use xlink:href="#image5" transform="matrix(0.384894,0,0,0.383837,15.371694,11.011336)" id="template_profile_image"/>
         <g style="fill:rgb(100%,100%,100%);fill-opacity:1;">
             <use xlink:href="#glyph0-1" x="15.15625" y="108.325936"/>
             <use xlink:href="#glyph0-2" x="19.604704" y="108.325936"/>
