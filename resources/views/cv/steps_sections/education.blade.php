@@ -1,8 +1,59 @@
 <section data-particle_enable="false" data-particle-mobile-disabled="false"
-         class="width100 section-tab elementor-section elementor-inner-section elementor-element elementor-element-6266f929 exad-glass-effect-yes elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-sticky-section-no"
+         class="education_tab_container elementor-454 width100 section-tab elementor-section elementor-inner-section elementor-element elementor-element-6266f929 exad-glass-effect-yes elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-sticky-section-no"
          data-id="6266f929" data-element_type="section"
          data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-    <div class="elementor-container elementor-column-gap-custom">
+    <x-cv.tips_and_preview_area :ctemplate="$chosen_template">
+        {{--Custom  Tips Area--}}
+        <div class="tips_area elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-5f785b4 exad-glass-effect-no exad-sticky-section-no"
+             data-id="5f785b4" data-element_type="column">
+            <div class="elementor-widget-wrap elementor-element-populated">
+                <div
+                    class="elementor-element elementor-element-98451db exad-sticky-section-no exad-glass-effect-no hello-element elementor-invisible elementor-widget elementor-widget-heading"
+                    data-id="98451db" data-element_type="widget"
+                    data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
+                    data-widget_type="heading.default" current_tab="3">
+                    <div class="elementor-widget-container">
+                        <h4 class="elementor-heading-title elementor-size-default">{{__("Great, let’s work on your")}}
+                        </h4></div>
+                </div>
+                <div
+                    class="elementor-element elementor-element-e0edac4 exad-sticky-section-no exad-glass-effect-no hello-element elementor-invisible elementor-widget elementor-widget-heading"
+                    data-id="e0edac4" data-element_type="widget"
+                    data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
+                    data-widget_type="heading.default" current_tab="3">
+                    <div class="elementor-widget-container">
+                        <h3 class="elementor-heading-title elementor-size-default">{{__('Education')}}</h3>
+                    </div>
+                </div>
+                <div
+                    class="elementor-element elementor-element-8fc8c3e exad-sticky-section-no exad-glass-effect-no hello-element elementor-invisible elementor-widget elementor-widget-heading"
+                    data-id="8fc8c3e" data-element_type="widget"
+                    data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
+                    data-widget_type="heading.default" current_tab="3">
+                    <div class="elementor-widget-container">
+                        <h6 class="elementor-heading-title elementor-size-default">{{__("Start with your most recent qualification and work backwards.")}}</h6></div>
+                </div>
+                <div
+                    class="elementor-element elementor-element-e0e8c31 elementor-icon-list--layout-traditional elementor-list-item-link-full_width exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon-list"
+                    data-id="e0e8c31" data-element_type="widget"
+                    data-widget_type="icon-list.default">
+                    <div class="elementor-widget-container">
+                        <ul class="elementor-icon-list-items">
+                            <li class="elementor-icon-list-item">
+                                <a href="javascript:void(0)" onclick="$('.tips_area').css('visibility','hidden')">
+                                        <span class="elementor-icon-list-icon">
+                                            <i aria-hidden="true" class="fas fa-chevron-right"></i>
+                                        </span>
+                                    <span class="elementor-icon-list-text">{{__("Don't show me tips anymore")}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </x-cv.tips_and_preview_area>
+    <div class="education_s_tab elementor-container elementor-column-gap-custom">
         <div
             class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-6cb5930a exad-glass-effect-no exad-sticky-section-no"
             data-id="6cb5930a" data-element_type="column">

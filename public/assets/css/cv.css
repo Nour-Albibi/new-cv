@@ -556,16 +556,19 @@
     margin-bottom: 0px;
 }
 
-.work_history_tab{
+.work_history_tab,.education_s_tab,.skills_tab,.cv_summaries_tab,.language_s_tab{
     backdrop-filter: blur(7px);
     box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.1);
     transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
     padding: 50px 50px 50px 50px;
     background:#FFFFFF45;
 }
-.work_history_tab_container{
+.work_history_tab_container,.education_tab_container,.skills_tab_container,.summary_tab_container,.languages_tab_container{
     box-shadow:none !important;
 }
 .preview_cv_im_card{
     border-radius: 5px 5px 5px 5px;
+}
+.projects_tab,.training_courses_tab{
+    background: #FFFFFF45;
 }

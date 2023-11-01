@@ -1,5 +1,5 @@
 <section data-particle_enable="false" data-particle-mobile-disabled="false"
-         class="width100 section-tab elementor-section elementor-inner-section elementor-element elementor-element-5e93ec0f exad-glass-effect-yes elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-sticky-section-no"
+         class="training_courses_tab width100 section-tab elementor-section elementor-inner-section elementor-element elementor-element-5e93ec0f exad-glass-effect-yes elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-sticky-section-no"
          data-id="5e93ec0f" data-element_type="section"
          data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
     <div class="elementor-container elementor-column-gap-custom">
