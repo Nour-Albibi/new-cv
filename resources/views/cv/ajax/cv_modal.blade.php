@@ -1,4 +1,9 @@
 <link rel="stylesheet" href="{{asset('cv-templates/css/preview_modern_cv.css')}}" defer/>
+<style>
+    :root {
+        --primary1: {{$cv->template_color ?? "#496267"}} !important;
+    }
+</style>
 <div class="Home">
 <div class="row">
     <div class="col-personal">

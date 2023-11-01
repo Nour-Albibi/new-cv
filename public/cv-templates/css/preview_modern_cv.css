@@ -1,13 +1,8 @@
 :root {
     --white: #FFFFFF;
     --black: #000000;
-    --Gray-300: #BBBBBB;
-    --Gray-400: #5D5E5F;
     --primary1: #496267;
     --primary2: #FF5722;
-    --secondary1: #BBBBBB;
-    --secondary2: #5D5E5F;
-    --text-color: #000000;
 }
 ul.contact-list, ul.skills-list, ul.work-duties{
     padding-left:0;
