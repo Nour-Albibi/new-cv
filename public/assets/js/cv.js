@@ -422,8 +422,9 @@ function SetInitSummaryContent(){
     $('#wpforms-614-field_1').html($('input[name=summary_content]').val());
 }
 function previewCV(){
-    storeCVData(currentTab)
+    $('#preview_cv_modal_content').html('<i class="fas fa fa-spinner"></i>');
     $('.preview_cv_modal').addClass('show');
+    storeCVData(currentTab)
     cv_id=$('input[name=customer_cv_id]').val();
     $.ajax({
         method: "post",
@@ -439,7 +440,6 @@ function previewCV(){
     });
 }
 function getCVCard(){
-    alert('test');
     cv_id=$('input[name=customer_cv_id]').val();
     $.ajax({
         method: "post",
