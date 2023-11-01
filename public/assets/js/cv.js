@@ -19,6 +19,7 @@ $(document).ready(function () {
     $('.continue_create_cv').on('click', function () {
         $('.modal.cv_steps_modal').removeClass('show');
     });
+    animateTabsElem(currentTab);
     $('input[type=tel]').attr('name', 'phone');
     SetInitSkillContent();
     SetInitSummaryContent();
@@ -420,6 +421,7 @@ function SetInitSummaryContent(){
     $('#wpforms-614-field_1').html($('input[name=summary_content]').val());
 }
 function previewCV(){
+    storeCVData(currentTab)
     $('.preview_cv_modal').addClass('show');
     cv_id=$('input[name=customer_cv_id]').val();
     $.ajax({

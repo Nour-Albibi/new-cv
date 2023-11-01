@@ -504,3 +504,68 @@
 .summaries_data.checked{
     color: #aeacac;
 }
+.elementor-454 .elementor-element.elementor-element-deb6ef1 .exad-card {
+    padding: 0;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #e5e5e5;
+}
+@media (min-width: 768px) {
+    .elementor-454 .elementor-element.elementor-element-8c3e7a1 {
+        width: 17.685%;
+    }
+}
+@media (min-width: 768px){
+    .elementor-454 .elementor-element.elementor-element-60deac1 {
+        width: 19.111%;
+    }
+}
+@media (min-width: 768px){
+    .elementor-454 .elementor-element.elementor-element-5f785b4 {
+        width: 62.013%;
+    }
+}
+/*Work History*/
+@media (min-width: 768px) {
+    .elementor-454 .elementor-element.elementor-element-5f785b4 {
+        width: 62.013%;
+    }
+
+    .elementor-454 .elementor-element.elementor-element-60deac1 {
+        width: 19.111%;
+    }
+
+    .elementor-454 .elementor-element.elementor-element-8c3e7a1 {
+        width: 17.685%;
+    }
+}
+.elementor-bc-flex-widget .elementor-454 .elementor-element.elementor-element-5f785b4.elementor-column .elementor-widget-wrap {
+    align-items: center;
+}
+
+.elementor-454 .elementor-element.elementor-element-5f785b4.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated {
+    align-content: center;
+    align-items: center;
+}
+
+.elementor-454 .elementor-element.elementor-element-5f785b4.elementor-column > .elementor-widget-wrap {
+    justify-content: center;
+}
+
+.elementor-454 .elementor-element.elementor-element-5f785b4 > .elementor-widget-wrap > .elementor-widget:not(.elementor-widget__width-auto):not(.elementor-widget__width-initial):not(:last-child):not(.elementor-absolute) {
+    margin-bottom: 0px;
+}
+
+.work_history_tab{
+    backdrop-filter: blur(7px);
+    box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    padding: 50px 50px 50px 50px;
+    background:#FFFFFF45;
+}
+.work_history_tab_container{
+    box-shadow:none !important;
+}
+.preview_cv_im_card{
+    border-radius: 5px 5px 5px 5px;
+}

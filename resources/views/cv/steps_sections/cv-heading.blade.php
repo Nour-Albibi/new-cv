@@ -230,7 +230,7 @@
                             <div class="exad-card-thumb">
                                 <img width="595" height="842"
                                      src="{{asset('files/'.$chosen_template->image)}}"
-                                     class="attachment-full size-full wp-image-247" alt=""
+                                     class="attachment-full size-full wp-image-247 preview_cv_im_card" alt=""
                                      decoding="async"></div>
                             <div class="exad-card-body"></div>
                         </div>

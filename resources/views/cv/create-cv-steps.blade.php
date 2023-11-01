@@ -24,18 +24,18 @@
     <link rel="stylesheet" href="{{asset('assets/css/cv.css')}}" defer/>
     <link rel="stylesheet" id="wpforms-smart-phone-field-css"
           href="{{asset('assets/plugins/wpforms/pro/assets/css/vendor/intl-tel-input.min.css?ver=17.0.5')}}"
-          media="all">
+          media="all" defer>
     <link rel="stylesheet" id="wpforms-full-css"
           href="{{asset('assets/plugins/wpforms/assets/css/wpforms-full.min.css?ver=1.6.7')}}"
-          media="all">
+          media="all" defer>
     <link rel="stylesheet" id="wpforms-dropzone-css"
           href="{{asset('assets/plugins/wpforms/pro/assets/css/dropzone.min.css?ver=5.7.2')}}"
-          media="all">
-    <link rel="stylesheet" href="{{asset('assets/uploads/elementor/css/post-36.css?ver=1695906899')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/DragAndDropUploadFile.css')}}"/>
-    <link rel="stylesheet" id="elementor-post-619-css"
-          href="{{asset('assets/css/post-619.css?ver=1696705965')}}"
           media="all" defer>
+    <link rel="stylesheet" href="{{asset('assets/uploads/elementor/css/post-36.css?ver=1695906899')}}" defer />
+    <link rel="stylesheet" href="{{asset('assets/css/DragAndDropUploadFile.css')}}" defer/>
+    <link rel="stylesheet" id="elementor-post-619-css" href="{{asset('assets/css/post-619.css?ver=1696705965')}}" media="all" defer>
+    <link rel="stylesheet" id="exad-main-style-css"
+          href="{{asset('assets/css/exad-styles.min.css?ver=6.3.1')}}" media="all" defer>
     <link rel="stylesheet" href="{{asset('assets/css/languages.css')}}"/>
     <script src="https://cdn.tiny.cloud/1/8gvsyw0ovfyq7awcszb8qt4133wzpzvgr4mp1f5yg09jq23f/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
