@@ -124,7 +124,7 @@
                         <div class="exad-card left text_on_image yes">
                             <div class="exad-card-thumb">
                                 <img decoding="async"
-                                     src="https://projects.datatime4it.com/chtml/wp-content/uploads/2023/09/jtv21-cv9.svg"
+                                     src="{{asset('files/'.$chosen_template->image)}}"
                                      title="jtv21-cv9" alt="jtv21-cv9" loading="lazy"></div>
                             <div class="exad-card-body">
                             </div>
