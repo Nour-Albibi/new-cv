@@ -9,4 +9,14 @@ class Template extends Model
 {
     use HasFactory;
     protected $table="templetes";
+
+    protected $fillable = [
+        'name_en',
+        'name_ar',
+        'image',
+    ];
+
+    public function customer_cvs(){
+        return $this->hasMany('App\Models\CustomerCv','template_id');
+    }
 }

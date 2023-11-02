@@ -16,7 +16,7 @@ class CustomerCv extends Model implements UseCartable
         'address_ar','address_en','city_town_ar','city_town_en','country_ar','country_en','postcode',
         'website','driving_licence','nationality','skills_content_en','skills_content_ar','summary_content_en','summary_content_ar'];
     public function template(){
-        return $this->belongsTo('App\Models\Template');
+        return $this->belongsTo('App\Models\Template','template_id');
     }
     public function customer(){
         return $this->belongsTo('App\Models\Customer','customer_id');

@@ -21,4 +21,5 @@ class Subscription extends Model
     public function cancel(){
         Subscription::where('id',$this->id)->update(['status',3]);
     }
+
 }
