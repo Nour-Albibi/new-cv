@@ -355,11 +355,16 @@ class CVService
         return true;
     }
     public static function updatePersonalInformation($id,$data){
+        $subscription_id=0;
+        if(Auth::guard('customer')->user()->getActiveSubscription()!=null){
+            $subscription_id= Auth::guard('customer')->user()->getActiveSubscription()->id;
+        }
       return CustomerCv::where('id',$id)->update([
             'template_id' => session('chosen_template_id'),
             'template_color' => session('chosen_cv_color'),
             'cv_language' => session('chosen_cv_language'),
             'customer_id' => Auth::guard('customer')->user()->id,
+            'subscription_id'=>$subscription_id,
             'first_name' => $data['first_name'],
             'first_name_ar' => $data['first_name_ar'] ?? '',
             'surename' => $data['surename'],
@@ -384,8 +389,12 @@ class CVService
     public static function storePersonalInformation($data)
     {
         $customer_id = 0;
+        $subscription_id=0;
         if (Auth::guard('customer')->check()) {
             $customer_id = Auth::guard('customer')->user()->id;
+            if(Auth::guard('customer')->user()->getActiveSubscription()!=null){
+                $subscription_id= Auth::guard('customer')->user()->getActiveSubscription()->id;
+            }
         }
         if (self::checkChosenCVSetting()) {
             $customerCV = CustomerCv::create([
@@ -393,6 +402,7 @@ class CVService
                 'template_color' => session('chosen_cv_color'),
                 'cv_language' => session('chosen_cv_language'),
                 'customer_id' => $customer_id,
+                'subscription_id'=>$subscription_id,
                 'first_name' => $data['first_name'],
                 'first_name_ar' => $data['first_name_ar'] ?? '',
                 'surename' => $data['surename'],
@@ -412,6 +422,7 @@ class CVService
                 'website' => $data['website'] ?? '',
                 'driving_licence' => $data['driving_licence'] ?? '',
                 'nationality' => $data['nationality'] ?? '',
+                'stopped_on_step'=>0
             ]);
             return $customerCV;
         }

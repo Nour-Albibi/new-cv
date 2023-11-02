@@ -10,7 +10,7 @@
                 <div class="modal-body"><h2 class="modal-title-primary">{{__('Welcome back')}} {{auth()->guard('customer')->user()->first_name }}!</h2>
                     <p class="modal-subtitle-primary">{!! __('Continue and finalise the CV you started, or <br> create a brand
                         new one') !!}</p></div>
-                <form name="confirm_form" action="{{route('cv.resetDataAndCreateNewCV')}}" method="post" id="confirm_form">
+                <form name="confirm_form" action="{{route('cv.resetDataAndCreateNewCV')}}" method="get" id="confirm_form">
                     @csrf
                     <input type="hidden" name="cv_reset_data" value="create_new">
                     <div class="modal-footer">

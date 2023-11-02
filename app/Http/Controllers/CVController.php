@@ -43,11 +43,15 @@ class CVController extends Controller
         }
         $addedItem=CVService::getCVItem();
         if (Auth::guard('customer')->check() && empty($addedItem)) {
-            $customerCV = CustomerCv::where('customer_id', Auth::guard('customer')->user()->id)
-                ->where('cv_status', 0)->where('subscription_id',0)->latest()->first();
+            if(!Auth::guard('customer')->user()->has_active_subscription()){
+                $subscription_id=0;
+            }else{
+                $subscription_id=Auth::guard('customer')->user()->getActiveSubscription()->id;
+            }
+            $customerCV = Auth::guard('customer')->user()->getLatestStoredCV($subscription_id);
              CVService::addStoredCVinCart($customerCV);
-            $addedItem=CVService::getCVItem();
-            Session::put('show_confirm',1);
+             $addedItem=CVService::getCVItem();
+             if(!empty($addedItem)) Session::put('show_confirm',1);
         }
         $chosen_template = CVTemplateService::getChosenTemplate();
         return view('cv.create-cv-steps', compact('chosen_template','addedItem'));
@@ -56,6 +60,9 @@ class CVController extends Controller
         try{
             if (Auth::guard('customer')->check()) {
                 CVService::ResetCVDataForCreateNew();
+                if(!Auth::guard('customer')->user()->has_active_subscription()){
+                    Auth::guard('customer')->user()->deleteFakedCVs();
+                }
                 $chosen_template = CVTemplateService::getChosenTemplate();
                 $addedItem=null;
                 return view('cv.create-cv-steps', compact('chosen_template','addedItem'));

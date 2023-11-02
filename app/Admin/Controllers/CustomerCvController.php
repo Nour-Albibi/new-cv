@@ -47,7 +47,7 @@ class CustomerCvController extends AdminController
         $grid->column('phone', __('Phone'));
         $grid->column('email', __('Email'));
         $grid->column('image', __('Image'))->display(function () {
-            return '<img src="' . asset('files/' . $this->image) . '" style="width:200px;"/>';
+            return '<img src="' . asset('files/uploads/' . $this->image) . '" style="width:200px;"/>';
         });
         $grid->column('created_at', __('Created at'))->display(function (){
             return date_create($this->created_at)->format('Y-m-d H:i:s');

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 
 class Customer  extends Authenticatable
@@ -42,7 +43,7 @@ class Customer  extends Authenticatable
         CustomerCv::where('id',$cv_id)->update(['customer_id'=>$this->id]);
     }
     public function has_active_subscription(){
-        $check_res=Subscription::where('user_id',$this->id)->where('status',1)->whereDate('end_date','<',Carbon::today())->count();
+        $check_res=Subscription::where('user_id',$this->id)->where('status',1)->whereDate('end_date','>=',Carbon::today())->count();
         if($check_res) return true;
         else return false;
     }
@@ -68,5 +69,45 @@ class Customer  extends Authenticatable
             }
         }
         return true;
+    }
+    public function getLatestStoredCV($subscription_id){
+        if($subscription_id==0){
+           return  CustomerCv::where('customer_id', $this->id)
+                ->where('cv_status', 0)->where('subscription_id',0)->latest()->first();
+        }else{
+            return CustomerCv::where('customer_id', $this->id)
+                ->where('stopped_on_step','<', 8)->where('subscription_id',$subscription_id)->latest()->first();
+        }
+    }
+    public function deleteFakedCVs(){
+        $cvs=CustomerCv::where('customer_id', $this->id)
+            ->where('cv_status', 0)->where('subscription_id',0)->get();
+//       CustomerCvWorkHistory::where('customer_cv_id',$cv->id)
+//           ->delete();
+//        CustomerCvEducation::where('customer_cv_id',$cv->id)
+//            ->delete();
+//        CustomerCvCourse::where('customer_cv_id',$cv->id)
+//            ->delete();
+//        CustomerCvSkill::where('customer_cv_id',$cv->id)
+//            ->delete();
+//        CustomerCvLanguage::where('customer_cv_id',$cv->id)
+//            ->delete();
+//        CustomerCvSummery::where('customer_cv_id',$cv->id)
+//            ->delete();
+//        CustomerCvProject::where('customer_cv_id',$cv->id)
+//            ->delete();
+//        $cv->delete();
+        foreach($cvs as $cv){
+            $cv->customer_cv_work_history()->delete();
+            $cv->customer_cv_project()->delete();
+            $cv->customer_cv_education()->delete();
+            $cv->customer_cv_course()->delete();
+            $cv->customer_cv_skill()->delete();
+            $cv->customer_cv_summery()->delete();
+            $cv->customer_cv_language()->delete();
+            $cv->delete();
+        }
+
+
     }
 }
