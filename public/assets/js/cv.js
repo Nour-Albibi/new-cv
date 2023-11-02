@@ -25,9 +25,18 @@ $(document).ready(function () {
     SetInitSkillContent();
     SetInitSummaryContent();
 
-    // getCVCard();
-})
-
+//
+    $('.first_name').on('change',function(){
+       first_name=$(this).val();
+       surename=$('.surename').val();
+       $('#cv_template_name').html(first_name+' '+surename);
+    });
+    $('.surename').on('change',function(){
+        surename=$(this).val();
+        first_name=$('.first_name').val();
+        $('#cv_template_name').html(first_name+' '+surename);
+    });
+});
 function CheckWordDates() {
     var valid=true;
     $('input[input_name=work_start_date]').each(function () {
@@ -287,7 +296,7 @@ function SetSummaryContent(){
 function SetWorksContent(){
     $("form#work_history_form").find('textarea').each(function(){
         this_id=$(this).attr('id');
-            alert(this_id);
+            // alert(this_id);
             $(this).html(tinymce.get(this_id).getContent());
     });
         // $('#work_history_form').find('textarea.works_textarea').each(function(){
@@ -314,6 +323,9 @@ function storeCVData(step_num) {
             cache: false,
             processData: false,
             success: function (data) {
+                if(step_num==0){
+                    console.log(data);
+                }
                 redirect = JSON.parse(data).redirect;
                 if (redirect != "" && typeof redirect !== 'undefined') {
                     return location.href = data.redirect;

@@ -111,7 +111,7 @@
                                                                             </ul>
                                                                         </div>
                                                                         <div class="pricingTable-signup">
-                                                                            <a href="javascript:void(0)" onclick="selectPacakge('{{$pkg->id}}')">{{__('SELECT')}}</a>
+                                                                            <a href="javascript:void(0)" class="se_package_pl" onclick="selectPacakge('{{$pkg->id}}')">{{__('SELECT')}}</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -192,7 +192,11 @@
     </div>
 @stop
 @section('custom_js')
-<script>
+{{--    <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js"--}}
+{{--            integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>--}}
+    <script>
+
+
     function selectPacakge(package_id){
         var inputF = document.getElementById("package_id");
         inputF.value = package_id;

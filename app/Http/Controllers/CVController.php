@@ -44,9 +44,10 @@ class CVController extends Controller
         $addedItem=CVService::getCVItem();
         if (Auth::guard('customer')->check() && empty($addedItem)) {
             $customerCV = CustomerCv::where('customer_id', Auth::guard('customer')->user()->id)
-                ->where('cv_status', 0)->latest()->first();
+                ->where('cv_status', 0)->where('subscription_id',0)->latest()->first();
              CVService::addStoredCVinCart($customerCV);
             $addedItem=CVService::getCVItem();
+            Session::put('show_confirm',1);
         }
         $chosen_template = CVTemplateService::getChosenTemplate();
         return view('cv.create-cv-steps', compact('chosen_template','addedItem'));
@@ -56,7 +57,8 @@ class CVController extends Controller
             if (Auth::guard('customer')->check()) {
                 CVService::ResetCVDataForCreateNew();
                 $chosen_template = CVTemplateService::getChosenTemplate();
-                return view('cv.create-cv-steps', compact('chosen_template'));
+                $addedItem=null;
+                return view('cv.create-cv-steps', compact('chosen_template','addedItem'));
             }else{
                 abort(404);
             }
@@ -149,7 +151,10 @@ class CVController extends Controller
         return view('cv-templates.'.$cvFileName,['cv' => $cv]);
     }
     public function PreviewCV(CustomerCv $cv){
-        return view('cv.ajax.cv_modal',['cv'=>$cv])->render();
+        if(!empty($cv->id)){
+            return view('cv.ajax.cv_modal',['cv'=>$cv])->render();
+        }
+        return view('components.cv-templates.modern_example')->render();
     }
     public function getCVCard(CustomerCv $cv){
         return view('cv.ajax.cv_card_preview',['cv'=>$cv])->render();

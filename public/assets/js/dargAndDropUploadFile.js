@@ -115,6 +115,7 @@
                             $('input[name=image_file]').val(data.data);
                             $('#uploaded_im').removeClass('d-none');
                             $("#uploaded_im").attr('src',"http://localhost/cv/public/files/uploads/"+data.data);
+                            $("#image5").attr('xlink:href',"http://localhost/cv/public/files/uploads/"+data.data);
                             // console.log(JSON.stringify(data));
                             $form.addClass( data.success == true ? 'is-success' : 'is-error' );
                             if( !data.success ) $errorMsg.text( data.error );

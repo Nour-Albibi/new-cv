@@ -77,7 +77,7 @@
                                   action="/"
                                   data-token="bd03f5379139322e31b053c6ab97fff9">
                                 @csrf
-                                <input name="skills_content" type="hidden" value="{{$addedItem->model->{"skills_content_".$cv_lang} }}">
+                                <input name="skills_content" type="hidden" value="@if(!empty($addedItem)){{$addedItem->model->{"skills_content_".$cv_lang} }}@endif">
                                 <noscript class="wpforms-error-noscript">{{__('Please enable JavaScript in your browser to complete this form.')}}</noscript>
                                 <div class="wpforms-field-container">
                                     <div id="wpforms-591-field_2-container"

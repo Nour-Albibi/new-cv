@@ -73,7 +73,8 @@
                 {{$cv->first_name_ar.' '.$cv->surename_ar}}
             @endif
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="458" height="8" viewBox="0 0 458 8" fill="none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="458" height="8" viewBox="0 0 458 8" fill="none" style="border: 2px solid #333;
+    background: #333;">
             <path d="M0.732506 3.87695H457.931" stroke="black" stroke-width="6.66665" stroke-miterlimit="10"/>
         </svg>
         @if(!empty($cv->{"summary_content_".$cv_lang}))
@@ -91,23 +92,23 @@
                 <h3 class="section-title text-left">{{__('EXPERIENCE')}}</h3>
                 @foreach($cv->customer_cv_work_history as $work)
                     <div class="section-description mt-15 experience-item">
-                        <div style="display:flex;/*justify-content: space-between;*/ margin-bottom: 4px;">
+                        <div style="display:flex;justify-content: space-between; margin-bottom: 4px;">
                             <p class="strong" style="max-width:285px">{{$work->{"job_title_".$cv_lang} }}</p>
-                            <p class="strong">09/2015 to 02/2019</p>
+                            <p class="strong">{{ date("m-Y",strtotime($work->start_date))}} {{__('to')}} {{ date("m-Y",strtotime($work->end_date))}}</p>
                         </div>
                         <p class="strong">{{$work->{"employeer_".$cv_lang} }}</p>
-                        {{--                    <p>{!! $work->{"experience_description_".$lang } !!}</p>--}}
-                        <ul class="work-duties mt-16 main-list">
-                            <li>Led operations involved in running the brand including Marketing,
-                                IT, HR/training, development/construction, property and P&L for 200
-                                store locations.
-                            </li>
-                            <li>Oversaw operations for all regional company and franchise locations.</li>
-                            <li>
-                                Assessed profitability of existing company processes to determine
-                                optimum organisational structure for maximum revenue growth.
-                            </li>
-                        </ul>
+                         {!! $work->{"experience_description_".$lang } !!}
+{{--                        <ul class="work-duties mt-16 main-list">--}}
+{{--                            <li>Led operations involved in running the brand including Marketing,--}}
+{{--                                IT, HR/training, development/construction, property and P&L for 200--}}
+{{--                                store locations.--}}
+{{--                            </li>--}}
+{{--                            <li>Oversaw operations for all regional company and franchise locations.</li>--}}
+{{--                            <li>--}}
+{{--                                Assessed profitability of existing company processes to determine--}}
+{{--                                optimum organisational structure for maximum revenue growth.--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
                     </div>
                 @endforeach
             </div>

@@ -113,9 +113,18 @@ h3.section-title{
 p.strong{
     font-weight: bold;
 }
+.experience-item ul li{
+    color: #000;
+    /*font-family: 'CenturyGothic';*/
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 15px;
+}
 ul.main-list li{
     color: #000;
-    font-family: 'CenturyGothic';
+    /*font-family: 'CenturyGothic';*/
     font-size: 13.333px;
     font-style: normal;
     font-weight: 400;

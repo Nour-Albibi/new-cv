@@ -251,9 +251,10 @@
                                             <div class="elementor-widget-container">
                                                 <div class="exad-card left text_on_image yes">
                                                     <div class="exad-card-thumb">
-                                                        @if($i==0)
-                                                            <x-cv-templates.template1></x-cv-templates.template1>
-                                                            @else
+                                                        @if(!empty($template->template_data))
+{{--                                                            <x-cv-templates.template1></x-cv-templates.template1>--}}
+                                                            {!! $template->template_data !!}
+                                                        @else
                                                         <img width="700" height="990"
                                                              src="{{asset('files/'.$template->image)}}"
                                                              class="attachment-full size-full wp-image-211" alt=""
