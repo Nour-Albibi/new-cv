@@ -3,7 +3,7 @@
         selector: 'textarea#{{$selector}}',
         plugins: 'codesample lists  wordcount',
         menubar: '',
-        toolbar: 'fontfamily | fontsize | bold italic underline  | align lineheight | numlist bullist indent outdent',
+        toolbar: 'fontfamily | fontsize | forecolor backcolor  ltr rtl|  bold italic underline  | align lineheight | numlist bullist indent outdent',
     });
 </script>
 <style>

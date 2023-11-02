@@ -36,5 +36,9 @@ class AppServiceProvider extends ServiceProvider
                 if($siteSetting!=null) return $siteSetting->toArray();
             });
         });
+        \View::composer(
+            ['cv.*'],
+            'App\Composers\ViewComposer'
+        );
     }
 }

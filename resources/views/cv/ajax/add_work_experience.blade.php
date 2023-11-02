@@ -27,7 +27,7 @@
         <label class="wpforms-field-label"
                for="wpforms-488-field_1">{{__('JOB TITLE')}}</label><input
             type="text" id="wpforms-488-field_1"
-            class="wpforms-field-large" name="work_{{$new_work_num}}[job_title_{{$lang}}]"
+            class="wpforms-field-large" name="work_{{$new_work_num}}[job_title_{{$cv_lang}}]"
             placeholder="JOB TITLE">
     </div>
     <div id="wpforms-488-field_2-container"
@@ -36,7 +36,7 @@
         <label class="wpforms-field-label"
                for="wpforms-488-field_2">{{__('EMPLOYER')}}</label><input
             type="text" id="wpforms-488-field_2"
-            class="wpforms-field-large" name="work_{{$new_work_num}}[employeer_{{$lang}}]"
+            class="wpforms-field-large" name="work_{{$new_work_num}}[employeer_{{$cv_lang}}]"
             placeholder="EMPLOYER">
     </div>
     <div id="wpforms-488-field_3-container"
@@ -45,7 +45,7 @@
         <label class="wpforms-field-label"
                for="wpforms-488-field_3">{{__('CITY/TOWN')}}</label><input
             type="text" id="wpforms-488-field_3"
-            class="wpforms-field-large" name="work_{{$new_work_num}}[city_{{$lang}}]"
+            class="wpforms-field-large" name="work_{{$new_work_num}}[city_{{$cv_lang}}]"
             placeholder="CITY/TOWN">
     </div>
     <div id="wpforms-488-field_4-container"
@@ -55,7 +55,7 @@
                for="wpforms-488-field_4">{{__('COUNTY')}}</label>
         <input
             type="text" id="wpforms-488-field_4"
-            class="wpforms-field-large" name="work_{{$new_work_num}}[country_{{$lang}}]"
+            class="wpforms-field-large" name="work_{{$new_work_num}}[country_{{$cv_lang}}]"
             placeholder="COUNTY">
     </div>
     <div id="wpforms-488-field_5-container"
@@ -104,7 +104,7 @@
     <div class="wpforms-field wpforms-field-text">
         <label class="wpforms-field-label"
                for="wpforms-488-field_4">{{__('Job Description')}}</label>
-        <textarea class="wpforms-field-large" name="work_{{$new_work_num}}[experience_description_{{$lang}}]" placeholder="{{__('Job Description')}}"></textarea>
+        <textarea class="wpforms-field-large" name="work_{{$new_work_num}}[experience_description_{{$cv_lang}}]" placeholder="{{__('Job Description')}}"></textarea>
     </div>
 </div>
 </div>

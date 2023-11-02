@@ -7,11 +7,14 @@ use App\Services\CVService;
 use App\Services\CVTemplateService;
 use App\Services\PackageService;
 use App\Services\UploadService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Spatie\Browsershot\Browsershot;
+
 class CVController extends Controller
 {
     public function index(Request $request)
@@ -97,8 +100,12 @@ class CVController extends Controller
     public function FinaliseCVApplication(Request $request){
         try{
             if($request->step==8){
-                if(!Auth::guard('customer')->user()->has_active_subscription()) //And must check if there is still avalaiblr cv counts if he has active subscription
+                //Case 1 New Customer or to Upgrade
+                if(!Auth::guard('customer')->user()->has_active_subscription() || Auth::guard('customer')->user()->exceeded_subscription_limit()){
                     return redirect()->route('getCustomerPackagesPricing');
+                }else{
+                    //redirect customer to his dashboard
+                }
             }
         }catch (\Exception $exception){
             return response()->json(['error' => $exception->getMessage()], 500);
@@ -136,5 +143,23 @@ class CVController extends Controller
         $pdf = Pdf::loadView('cv-templates.'.$cvFileName.'2',['cv' => $cv]);
         return $pdf->download('CV.pdf');
 //        return $pdf->stream('CV.pdf');
+    }
+    public function PreviewCVinPage(CustomerCv $cv){
+        $cvFileName=$cv->template->file_name;
+        return view('cv-templates.'.$cvFileName,['cv' => $cv]);
+    }
+    public function PreviewCV(CustomerCv $cv){
+        return view('cv.ajax.cv_modal',['cv'=>$cv])->render();
+    }
+    public function getCVCard(CustomerCv $cv){
+        return view('cv.ajax.cv_card_preview',['cv'=>$cv])->render();
+    }
+    function screenshotCV() {
+        Browsershot::url(url('cv-builder/PreviewCVinPage/32'))
+            ->setOption('landscape', true)
+            ->windowSize(3840, 2160)
+            ->waitUntilNetworkIdle()
+            ->setNodeBinary('C:\\nodejs\\node.exe')
+            ->save("storage/". 'googlescreenshot.jpg');
     }
 }

@@ -1,5 +1,5 @@
 @if(\Illuminate\Support\Facades\Auth::guard('customer')->check() && !empty(session('show_confirm')))
-<div class="modal direction-ltr">
+<div class="modal cv_steps_modal direction-ltr">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal_container">
             <div class="modal-content" aria-modal="true">

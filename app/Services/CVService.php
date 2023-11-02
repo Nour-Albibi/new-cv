@@ -10,6 +10,7 @@ use App\Models\CustomerCvProject;
 use App\Models\CustomerCvSkill;
 use App\Models\CustomerCvSummery;
 use App\Models\CustomerCvWorkHistory;
+use App\Models\ProfessionalSummary;
 use App\Models\Skill;
 use App\Models\Template;
 use Carbon\Carbon;
@@ -60,6 +61,32 @@ class CVService
                 }
             }else{
                 $related_skills=Skill::where('is_general',1)->get();
+            }
+        }
+
+        return $related_skills;
+    }
+    public static function getSummariesSuggestions($possible_keys){
+        $related_skills=null;
+        if(isset($possible_keys['search_keys']) && !empty($possible_keys['search_keys'])){
+            $related_skills=ProfessionalSummary::select('professional_summaries.*')->join('job_titles','job_titles.id','professional_summaries.job_title_id')
+                ->where('job_titles.name_ar','like','%'.$possible_keys['search_keys'].'%')
+                ->orwhere('job_titles.name_en','like','%'.$possible_keys['search_keys'].'%')
+                ->get();
+
+        }else{
+            $cvItem=self::getCVItem();
+            $newest_work=CustomerCvWorkHistory::select('id','job_title_ar','job_title_en','job_title_id')
+                ->where('customer_cv_id',$cvItem->id)->latest()->first();
+            if(!empty($newest_work)){
+                if(!empty($newest_work->job_title_id)){
+                    $related_skills=ProfessionalSummary::where('job_title_id',$newest_work->job_title_id)->get();
+                }else{
+                    $related_skills=ProfessionalSummary::select('professional_summaries.*')->join('job_titles','job_titles.id','professional_summaries.job_title_id')
+                        ->where('job_titles.name_ar','like','%'.$newest_work->job_title_ar.'%')
+                        ->orwhere('job_titles.name_en','like','%'.$newest_work->job_title_en.'%')
+                        ->get();
+                }
             }
         }
 
@@ -130,32 +157,76 @@ class CVService
         }
         return true;
     }
+    public static function deleteOldSummaries($cv){
+        if(count($cv->customer_cv_summery)){
+            $cv->customer_cv_summery()->delete();
+        }
+    }
+    public static function updateSummaryContent($cv,$content){
+        $cv->summary_content_en=$content;
+        $cv->summary_content_ar=$content;
+        $cv->save();
+    }
     public static function storeSummary($data)
     {
         $cvItem = self::getCVItem();
         if (!empty($cvItem)) {
-            CustomerCvSummery::create([
-                'customer_cv_id' => $cvItem->id,
-                'content_ar' => $data['content_ar'] ?? '',
-                'content_en' => $data['content_en'] ?? '',
-            ]);
+            $customer_cv=CustomerCv::find($cvItem->id);
+            if(!empty($customer_cv)){
+                self::updateSummaryContent($customer_cv,$data['summary_content'] ?? '');
+                self::deleteOldSummaries($customer_cv);
+                if(isset($data['summaries_ids'])){
+                    foreach ($data['summaries_ids'] as $summary) {
+                        if($summary!=null){
+                            $selected_summary=ProfessionalSummary::find($summary);
+                            if(!empty($selected_summary)){
+                                CustomerCvSummery::create([
+                                    'customer_cv_id' => $cvItem->id,
+                                    'content_ar' => $selected_summary->content_ar ?? '',
+                                    'content_en' => $selected_summary->content_en ?? '',
+                                    'summary_id' => $selected_summary->id ?? '',
+                                ]);
+                            }
+                        }
+                    }
+                }
+            }
         }
         return true;
     }
-
+    public static function deleteOldSkills($cv){
+        if(count($cv->customer_cv_skill)){
+            $cv->customer_cv_skill()->delete();
+        }
+    }
+    public static function updateSkillsContent($cv,$content){
+        $cv->skills_content_en=$content;
+        $cv->skills_content_ar=$content;
+        $cv->save();
+    }
     public static function storeSkills($data)
     {
-        $data = self::getDataArraysFromRequest($data);
         $cvItem = self::getCVItem();
         if (!empty($cvItem)) {
-            foreach ($data as $skill) {
-                $selected_skill=Skill::where('id',$skill)->get();
-                CustomerCvSkill::create([
-                    'customer_cv_id' => $cvItem->id,
-                    'content_ar' => $selected_skill->name_ar ?? '',
-                    'content_en' => $selected_skill->name_en ?? '',
-                    'skill_id' => $selected_skill->id ?? '',
-                ]);
+            $customer_cv=CustomerCv::find($cvItem->id);
+            if(!empty($customer_cv)){
+                self::updateSkillsContent($customer_cv,$data['skills_content'] ?? '');
+                self::deleteOldSkills($customer_cv);
+                if(isset($data['skills_ids'])){
+                    foreach ($data['skills_ids'] as $skill) {
+                        if($skill!=null){
+                            $selected_skill=Skill::find($skill);
+                           if(!empty($selected_skill)){
+                               CustomerCvSkill::create([
+                                   'customer_cv_id' => $cvItem->id,
+                                   'content_ar' => $selected_skill->name_ar ?? '',
+                                   'content_en' => $selected_skill->name_en ?? '',
+                                   'skill_id' => $selected_skill->id ?? '',
+                               ]);
+                           }
+                        }
+                    }
+                }
             }
         }
         return true;
@@ -256,6 +327,7 @@ class CVService
     }
     public static function storeWorkHistory($data)
     {
+
         $data = self::getDataArraysFromRequest($data);
         $cvItem = self::getCVItem();
         $customer_cv=CustomerCv::find($cvItem->id);

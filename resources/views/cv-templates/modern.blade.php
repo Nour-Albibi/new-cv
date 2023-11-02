@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{asset('cv-templates/css/modern.css')}}" rel="stylesheet"/>
+    <link href="{{asset('cv-templates/css/new_modern.css')}}" rel="stylesheet"/>
     <!--Custom CSS-->
 </head>
 <body>
@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-personal">
             @if(!empty($cv->image))
-                <img class="personal-image" src="{{asset('uploads/'.$cv->image)}}" width="168" height="168"
+                <img class="personal-image" src="{{asset('files/uploads/'.$cv->image)}}" width="168" height="168"
                      loading="lazy"/>
             @endif
             <div class="space-49"></div>
@@ -40,7 +40,7 @@
                     <div class="personal-info-description mt-10">
                         <ul class="skills-list">
                             @foreach($cv->customer_cv_skill as $skill)
-                                <li>{{$skill->{"content_".$lang} }}}</li>
+                                <li>{{$skill->{"content_".$lang} }}</li>
                             @endforeach
                         </ul>
                     </div>
@@ -85,13 +85,6 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="458" height="8" viewBox="0 0 458 8" fill="none">
                 <path d="M0.732506 3.87695H457.931" stroke="black" stroke-width="6.66665" stroke-miterlimit="10"/>
             </svg>
-            <div class="space-45"></div>
-            <div class="objective-section section">
-                <h3 class="section-title text-left">{{__('OBJECTIVE')}}</h3>
-                <div class="section-description mt-7">
-                    <p>To find a fulfilling position where I can apply my skills and knowledge. </p>
-                </div>
-            </div>
             @if(!empty($cv->customer_cv_professional_summary()))
                 <div class="space-45"></div>
                 <div class="summery-section section">

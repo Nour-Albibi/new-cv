@@ -1,0 +1,212 @@
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --Gray-300: #BBBBBB;
+    --Gray-400: #5D5E5F;
+    --primary1: #496267;
+    --primary2: #FF5722;
+    --secondary1: #BBBBBB;
+    --secondary2: #5D5E5F;
+    --text-color: #000000;
+}
+ul.contact-list, ul.skills-list, ul.work-duties{
+    padding-left:0;
+}
+.personal-info-description ul{
+    padding-left:0;
+}
+.personal-info-description ul li{
+    /*color: #FFF;*/
+    font-size: 13.333px;
+    font-style: normal;
+    font-weight: 400;
+    /*line-height: normal;*/
+    line-height: 1.5;
+    margin-left: 14px;
+}
+.Home {
+    width: 100%;
+    height:100%;
+    position: relative;
+    max-width: 816px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+}
+.text-left{
+    text-align: left !important;
+}
+.row{
+    display: flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    justify-content: center;
+    align-items: center;
+}
+.col-personal{
+    width:301px;
+    display: flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    flex-direction: column;
+    padding-top:28px;
+    padding-bottom:28px;
+    padding-left: 46px;
+    padding-right:26px;
+    height: 1056.308px;
+    flex-shrink: 0;
+    background-color: var(--primary1);
+}
+.col-main{
+    width: 520px;
+    padding-top:28px;
+    padding-bottom:28px;
+    padding-left: 31.4px;
+    padding-right:31.4px;
+    display: flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    flex-direction: column;
+    height: 1056.308px;
+    flex-shrink: 0;
+}
+.main-title{
+    color: #496267;
+    font-family: 'CenturyGothic';
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.space-45{
+    width: 100%;
+    height:45.33px;
+}
+.space-41{
+    width: 100%;
+    height: 41px;
+}
+h3.section-title{
+    color: #000;
+    font-family: 'CenturyGothic';
+    font-size: 18.667px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.mt-7{
+    margin-top:7px;
+}
+.section-description p{
+    color: #000;
+    font-family: 'CenturyGothic';
+    font-size: 13.333px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.section{
+    border-top:1.333px solid #000;
+}
+.mt-15{
+    margin-top:15px;
+}
+.mt-16{
+    margin-top:16px;
+}
+p.strong{
+    font-weight: bold;
+}
+ul.main-list li{
+    color: #000;
+    font-family: 'CenturyGothic';
+    font-size: 13.333px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 15px;
+}
+.personal-image{
+    width:224px;
+    height:224px;
+    object-fit: cover;
+}
+.space-49{
+    width: 100%;
+    height:49.7px;
+}
+.personal-info-section{
+    border-top:1.333px solid #FFF;
+}
+.personal-info-title{
+    color: #FFF;
+    font-family: 'CenturyGothic';
+    font-size: 18.667px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.personal-info-description p, .personal-info-description ul li p{
+    color:#FFF;
+    font-size: 13.333px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.mt-10{
+    margin-top:10px;
+}
+.contact-list{
+    list-style: none;
+}
+.contact-list li{
+    margin-bottom:9px;
+}
+.skills-list li{
+    color: #FFF;
+    font-family: 'CenturyGothic';
+    font-size: 13.333px;
+    font-style: normal;
+    font-weight: 400;
+    /*line-height: normal;*/
+    line-height: 1.5;
+    margin-left: 14px;
+}
+.rating-bar:before {
+    content: '';
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    height: 100%;
+}
+::marker {
+    font-weight: bolder;
+    font-size: 14px;
+}
+.rating-bar {
+    background: rgba(255,255,255,.25);
+    width: 100%;
+    clear: both;
+    margin-top: 3px;
+    position: relative;
+    page-break-inside: avoid;
+}
+.inner-rating {
+    background-color: #fff;
+    height: 4px;
+    position: relative;
+    width: 60%;
+}
+.field * {
+    display: inline;
+}
+.field-ratt,.field{
+    color:#fff;
+    font-size:12px;
+}
+.txt-bold{
+    font-weight: bold;
+}

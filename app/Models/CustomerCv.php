@@ -14,7 +14,7 @@ class CustomerCv extends Model implements UseCartable
     protected $fillable=['template_id','template_color','cv_language','customer_id','first_name',
         'surename','first_name_ar','surename_ar','phone','email','image','open_for_remote','linkedlin_url',
         'address_ar','address_en','city_town_ar','city_town_en','country_ar','country_en','postcode',
-        'website','driving_licence','nationality'];
+        'website','driving_licence','nationality','skills_content_en','skills_content_ar','summary_content_en','summary_content_ar'];
     public function template(){
         return $this->belongsTo('App\Models\Template','template_id');
     }
