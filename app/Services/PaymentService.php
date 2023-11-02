@@ -19,6 +19,12 @@ class PaymentService
         $cart=Cart::name('cv');
        $invoice=DB::transaction(function () use($data,$cart) {
             $package=Package::find($data['package_id']);
+            //Check id to upgrade then we have to cancel current active subscription
+            //and subscribe with new one
+           if(Auth::guard('customer')->user()->has_active_subscription()){
+               //Cancel current it
+               Auth::guard('customer')->user()->getActiveSubscription()->cancel();
+           }
             $subscription=Subscription::create(['user_id'=>Auth::guard('customer')->user()->id,
                 'package_id'=>$package->id,
                 'package_type'=>$package->type,

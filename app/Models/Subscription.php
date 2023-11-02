@@ -15,4 +15,9 @@ class Subscription extends Model
     public function package(){
         return $this->belongsTo('App\Models\Package','package_id');
     }
+    public function cancel(){
+        Subscription::where('id',$this->id)->update(['status',3]);
+//        $this->status=3;
+//        $this->save();
+    }
 }
