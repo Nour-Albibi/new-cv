@@ -142,7 +142,11 @@ class CVService
         $data = self::getDataArraysFromRequest($data);
         $cvItem = self::getCVItem();
         if (!empty($cvItem)) {
-            foreach ($data as $language) {
+            $customer_cv=CustomerCv::find($cvItem->id);
+            if(!empty($customer_cv)){
+                $customer_cv->stopped_on_step=7;
+                $customer_cv->save();
+                foreach ($data as $language) {
                 CustomerCvLanguage::create([
                     'customer_cv_id' => $cvItem->id,
                     'language_ar' => $language['language_ar'] ?? '',
@@ -153,6 +157,7 @@ class CVService
                     'information_ar' => $language['information_ar'] ?? '',
                     'information_en' => $language['information_en'] ?? '',
                 ]);
+            }
             }
         }
         return true;
@@ -173,6 +178,8 @@ class CVService
         if (!empty($cvItem)) {
             $customer_cv=CustomerCv::find($cvItem->id);
             if(!empty($customer_cv)){
+                $customer_cv->stopped_on_step=6;
+                $customer_cv->save();
                 self::updateSummaryContent($customer_cv,$data['summary_content'] ?? '');
                 self::deleteOldSummaries($customer_cv);
                 if(isset($data['summaries_ids'])){
@@ -210,6 +217,8 @@ class CVService
         if (!empty($cvItem)) {
             $customer_cv=CustomerCv::find($cvItem->id);
             if(!empty($customer_cv)){
+                $customer_cv->stopped_on_step=5;
+                $customer_cv->save();
                 self::updateSkillsContent($customer_cv,$data['skills_content'] ?? '');
                 self::deleteOldSkills($customer_cv);
                 if(isset($data['skills_ids'])){
@@ -243,6 +252,8 @@ class CVService
         if (!empty($cvItem)) {
             $customer_cv=CustomerCv::find($cvItem->id);
             if(!empty($customer_cv)) {
+                $customer_cv->stopped_on_step=4;
+                $customer_cv->save();
                 self::deleteOldCourses($customer_cv);
                 foreach ($data as $course) {
                     CustomerCvCourse::create([
@@ -271,6 +282,8 @@ class CVService
         if (!empty($cvItem)) {
             $customer_cv=CustomerCv::find($cvItem->id);
             if(!empty($customer_cv)) {
+                $customer_cv->stopped_on_step=3;
+                $customer_cv->save();
                 self::deleteOldCEducations($customer_cv);
                 foreach ($data as $education) {
                     CustomerCvEducation::create([
@@ -304,6 +317,8 @@ class CVService
         if (!empty($cvItem)) {
             $customer_cv=CustomerCv::find($cvItem->id);
             if(!empty($customer_cv)){
+                $customer_cv->stopped_on_step=2;
+                $customer_cv->save();
                 self::deleteOldCProjects($customer_cv);
                 foreach ($data as $project) {
                     CustomerCvProject::create([
@@ -332,6 +347,8 @@ class CVService
         $cvItem = self::getCVItem();
         $customer_cv=CustomerCv::find($cvItem->id);
         if(!empty($customer_cv)){
+            $customer_cv->stopped_on_step=1;
+            $customer_cv->save();
             self::deleteOldCVWorkHistory($customer_cv);
             foreach ($data as $work) {
                 CustomerCvWorkHistory::create([

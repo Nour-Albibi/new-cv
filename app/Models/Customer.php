@@ -80,8 +80,8 @@ class Customer  extends Authenticatable
         }
     }
     public function deleteFakedCVs(){
-        $cvs=CustomerCv::where('customer_id', $this->id)
-            ->where('cv_status', 0)->where('subscription_id',0)->get();
+        $cv=CustomerCv::where('customer_id', $this->id)
+            ->where('cv_status', 0)->where('subscription_id',0)->first();
 //       CustomerCvWorkHistory::where('customer_cv_id',$cv->id)
 //           ->delete();
 //        CustomerCvEducation::where('customer_cv_id',$cv->id)
@@ -97,7 +97,6 @@ class Customer  extends Authenticatable
 //        CustomerCvProject::where('customer_cv_id',$cv->id)
 //            ->delete();
 //        $cv->delete();
-        foreach($cvs as $cv){
             $cv->customer_cv_work_history()->delete();
             $cv->customer_cv_project()->delete();
             $cv->customer_cv_education()->delete();
@@ -106,8 +105,5 @@ class Customer  extends Authenticatable
             $cv->customer_cv_summery()->delete();
             $cv->customer_cv_language()->delete();
             $cv->delete();
-        }
-
-
     }
 }

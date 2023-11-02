@@ -35,6 +35,7 @@ class CVController extends Controller
     public function create(Request $request)
     {
         //resetAllSessions();
+
         if ($request->isMethod('post')) {
             $request->validate([
                 'cv_language' => ['required'],
@@ -42,6 +43,7 @@ class CVController extends Controller
             Session::put('chosen_cv_language', $request->cv_language);
         }
         $addedItem=CVService::getCVItem();
+
         if (Auth::guard('customer')->check() && empty($addedItem)) {
             if(!Auth::guard('customer')->user()->has_active_subscription()){
                 $subscription_id=0;
@@ -49,9 +51,11 @@ class CVController extends Controller
                 $subscription_id=Auth::guard('customer')->user()->getActiveSubscription()->id;
             }
             $customerCV = Auth::guard('customer')->user()->getLatestStoredCV($subscription_id);
-             CVService::addStoredCVinCart($customerCV);
-             $addedItem=CVService::getCVItem();
-             if(!empty($addedItem)) Session::put('show_confirm',1);
+            if($customerCV!=null){
+                CVService::addStoredCVinCart($customerCV);
+                $addedItem=CVService::getCVItem();
+                Session::put('show_confirm',1);
+            }
         }
         $chosen_template = CVTemplateService::getChosenTemplate();
         return view('cv.create-cv-steps', compact('chosen_template','addedItem'));
@@ -63,9 +67,10 @@ class CVController extends Controller
                 if(!Auth::guard('customer')->user()->has_active_subscription()){
                     Auth::guard('customer')->user()->deleteFakedCVs();
                 }
-                $chosen_template = CVTemplateService::getChosenTemplate();
-                $addedItem=null;
-                return view('cv.create-cv-steps', compact('chosen_template','addedItem'));
+                return redirect()->route('cv.create');
+//                $chosen_template = CVTemplateService::getChosenTemplate();
+//                $addedItem=null;
+//                return view('cv.create-cv-steps', compact('chosen_template','addedItem'));
             }else{
                 abort(404);
             }

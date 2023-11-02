@@ -1,3 +1,4 @@
+<x-cv.tiny_editor_js></x-cv.tiny_editor_js>
 <div id="added_work_{{$new_work_num}}">
 <div id="wpforms-626-field_5-container" class="wpforms-field wpforms-field-html wpforms-two-thirds wpforms-first" data-field-id="5">
     <div id="wpforms-626-field_5">
@@ -104,7 +105,11 @@
     <div class="wpforms-field wpforms-field-text">
         <label class="wpforms-field-label"
                for="wpforms-488-field_4">{{__('Job Description')}}</label>
-        <textarea class="wpforms-field-large" name="work_{{$new_work_num}}[experience_description_{{$cv_lang}}]" placeholder="{{__('Job Description')}}"></textarea>
+{{--        <textarea class="wpforms-field-large" name="work_{{$new_work_num}}[experience_description_{{$cv_lang}}]" placeholder="{{__('Job Description')}}"></textarea>--}}
+        @php($editor_id="work_".$new_work_num."_editor")
+        <x-cv.tiny_works_editor id="work_{{$new_work_num}}_editor" class="wpforms-field-large works_textarea"
+                                name="work_{{$new_work_num}}[experience_description_{{$cv_lang}}]" :i="$new_work_num"
+                                :selector="$editor_id"></x-cv.tiny_works_editor>
     </div>
 </div>
 </div>
