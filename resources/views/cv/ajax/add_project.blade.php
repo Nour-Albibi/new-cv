@@ -27,14 +27,14 @@
         <label class="wpforms-field-label"
                for="wpforms-519-field_1">{{__('PROJECT NAME')}}</label><input
             type="text" id="wpforms-519-field_1"
-            class="wpforms-field-large" name="project_{{$new_project_num}}[project_name_{{$lang}}]"
+            class="wpforms-field-large" name="project_{{$new_project_num}}[project_name_{{$cv_lang}}]"
             placeholder="{{__('PROJECT NAME')}}">
     </div>
     <div id="wpforms-519-field_3-container"
          class="wpforms-field wpforms-field-text" data-field-id="3">
         <label class="wpforms-field-label"
                for="wpforms-519-field_3">{{__('DESCRIPTION OF WORK ON THE PROJECT')}}</label>
-        <textarea name="project_{{$new_project_num}}[description_{{$lang}}]"  class="wpforms-field-large"
+        <textarea name="project_{{$new_project_num}}[description_{{$cv_lang}}]"  class="wpforms-field-large"
          placeholder="{{__('DESCRIPTION OF WORK ON THE PROJECT')}}"></textarea>
     </div>
     <div id="wpforms-519-field_4-container"

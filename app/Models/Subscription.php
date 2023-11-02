@@ -18,4 +18,8 @@ class Subscription extends Model
     public function invoice(){
         return $this->hasOne(Invoice::class);
     }
+    public function cancel(){
+        Subscription::where('id',$this->id)->update(['status',3]);
+    }
+
 }

@@ -24,24 +24,26 @@
     <link rel="stylesheet" href="{{asset('assets/css/cv.css')}}" defer/>
     <link rel="stylesheet" id="wpforms-smart-phone-field-css"
           href="{{asset('assets/plugins/wpforms/pro/assets/css/vendor/intl-tel-input.min.css?ver=17.0.5')}}"
-          media="all">
+          media="all" defer>
     <link rel="stylesheet" id="wpforms-full-css"
           href="{{asset('assets/plugins/wpforms/assets/css/wpforms-full.min.css?ver=1.6.7')}}"
-          media="all">
+          media="all" defer>
     <link rel="stylesheet" id="wpforms-dropzone-css"
           href="{{asset('assets/plugins/wpforms/pro/assets/css/dropzone.min.css?ver=5.7.2')}}"
-          media="all">
-    <link rel="stylesheet" href="{{asset('assets/uploads/elementor/css/post-36.css?ver=1695906899')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/DragAndDropUploadFile.css')}}"/>
-    <link rel="stylesheet" id="elementor-post-619-css"
-          href="{{asset('assets/css/post-619.css?ver=1696705965')}}"
           media="all" defer>
+    <link rel="stylesheet" href="{{asset('assets/uploads/elementor/css/post-36.css?ver=1695906899')}}" defer />
+    <link rel="stylesheet" href="{{asset('assets/css/DragAndDropUploadFile.css')}}" defer/>
+    <link rel="stylesheet" id="elementor-post-619-css" href="{{asset('assets/css/post-619.css?ver=1696705965')}}" media="all" defer>
+    <link rel="stylesheet" id="exad-main-style-css"
+          href="{{asset('assets/css/exad-styles.min.css?ver=6.3.1')}}" media="all" defer>
     <link rel="stylesheet" href="{{asset('assets/css/languages.css')}}"/>
     <script src="https://cdn.tiny.cloud/1/8gvsyw0ovfyq7awcszb8qt4133wzpzvgr4mp1f5yg09jq23f/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
 @endsection
 @section('main_content')
     <input type="hidden" name="customer" value="{{auth()->guard('customer')->user()->id ?? ''}}"/>
+    <input type="hidden" name="customer_cv_id" value="{{$addedItem->id ?? ''}}"/>
+    <input type="hidden" name="cv_lang" value="{{session('chosen_cv_language') ?? ''}}"/>
     <div data-elementor-type="wp-page" data-elementor-id="380" class="wp-page-el elementor elementor-380"
          data-elementor-post-type="page">
         <section data-particle_enable="false" data-particle-mobile-disabled="false"
@@ -137,7 +139,7 @@
             </div>
             <div class="cv-container">
                 {{--Wizard Footer--}}
-                <div class="row width100 cv-footer-wizard mt-15">
+                <div class=" width100 cv-footer-wizard mt-15">
                     <div id="prevBtn" class="back-btn cv-btn elementor-button elementor-button-link elementor-size-sm elementor-animation-float" onclick="nextPrev(-1)">{{__('Back')}}</div>
                     <div id="nextBtn" class="next-btn cv-btn elementor-button elementor-button-link elementor-size-sm elementor-animation-float" onclick="nextPrev(1)">{{__('Next')}}</div>
                 </div>
@@ -145,6 +147,7 @@
         </section>
     </div>
 @include('cv.modal')
+  <x-cv.cv_modal></x-cv.cv_modal>
 @endsection
 @section('custom_js')
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=62e3f93cf0ce683fcdd5ff7d" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>

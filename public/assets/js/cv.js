@@ -4,12 +4,13 @@ var current_project = 1;
 var button_indecator = 0;
 var current_edu = 1;
 var current_language = 1;
+var current_course=1;
+var main_path = "http://localhost/cv/public/";
 showTab(currentTab); // Display the current tab
 openModal();
-var main_path = "http://localhost/cv/public/";
 
 function openModal() {
-    $('.modal').toggleClass('show');
+    $('.modal.cv_steps_modal').toggleClass('show');
 }
 
 $(document).ready(function () {
@@ -17,12 +18,25 @@ $(document).ready(function () {
         $('.modal').removeClass('show');
     });
     $('.continue_create_cv').on('click', function () {
-        $('.modal').removeClass('show');
+        $('.modal.cv_steps_modal').removeClass('show');
     });
+    animateTabsElem(currentTab);
     $('input[type=tel]').attr('name', 'phone');
+    SetInitSkillContent();
+    SetInitSummaryContent();
 
-})
-
+//
+    $('.first_name').on('change',function(){
+       first_name=$(this).val();
+       surename=$('.surename').val();
+       $('#cv_template_name').html(first_name+' '+surename);
+    });
+    $('.surename').on('change',function(){
+        surename=$(this).val();
+        first_name=$('.first_name').val();
+        $('#cv_template_name').html(first_name+' '+surename);
+    });
+});
 function CheckWordDates() {
     var valid=true;
     $('input[input_name=work_start_date]').each(function () {
@@ -164,6 +178,9 @@ function showTab(n) {
         next_step_title = $('.cv-step-box[num=' + (n + 1) + ']').attr('step_title');
         document.getElementById("nextBtn").innerHTML = "Next: " + next_step_title;
     }
+    if(n==5){
+        getAllSkillRelatedToJobTitle();
+    }
     //... and run a function that will display the correct step indicator:
     //fixStepIndicator(n)
 }
@@ -194,9 +211,9 @@ function nextPrev(n) {
     }
     showTab(currentTab);
     animateTabsElem(currentTab)
-    if (currentTab == 5) {
-        getAllSkillRelatedToJobTitle();
-    }
+    // if (currentTab == 5) {
+    //     getAllSkillRelatedToJobTitle();
+    // }
 }
 function animateTabsElem(currentTab){
     $('.hello-element').removeClass('animate_text');
@@ -246,6 +263,7 @@ function getFormBasedOnStep(step_num) {
         return document.getElementById('cv_heading_form');
     }
     if (step_num === 1) {
+        SetWorksContent();
         return document.getElementById('work_history_form');
     }
     if (step_num === 2) {
@@ -258,16 +276,36 @@ function getFormBasedOnStep(step_num) {
         return document.getElementById('courses_form');
     }
     if (step_num === 5) {
+        SetSkillsContent();
         return document.getElementById('skills_form');
     }
     if (step_num === 6) {
+        SetSummaryContent();
         return document.getElementById('summary_form');
     }
     if (step_num === 7) {
         return document.getElementById('languages_form');
     }
 }
+function SetSkillsContent(){
+    $('input[name=skills_content]').val(tinymce.get('wpforms-591-field_1').getContent());
+}
+function SetSummaryContent(){
+    $('input[name=summary_content]').val(tinymce.get('wpforms-614-field_1').getContent());
+}
+function SetWorksContent(){
+    $("form#work_history_form").find('textarea').each(function(){
+        this_id=$(this).attr('id');
+            // alert(this_id);
+            $(this).html(tinymce.get(this_id).getContent());
+    });
+        // $('#work_history_form').find('textarea.works_textarea').each(function(){
+        //     this_id=$(this).attr('id');
+        //     alert(this_id);
+        //     $(this).html(tinymce.get(this_id).getContent());
+        // });
 
+}
 function storeCVData(step_num) {
     var valid = true;
     var loggedCustomer = $('input[name=customer]').val();
@@ -285,6 +323,9 @@ function storeCVData(step_num) {
             cache: false,
             processData: false,
             success: function (data) {
+                if(step_num==0){
+                    console.log(data);
+                }
                 redirect = JSON.parse(data).redirect;
                 if (redirect != "" && typeof redirect !== 'undefined') {
                     return location.href = data.redirect;
@@ -353,19 +394,91 @@ function getAllSkillRelatedToJobTitle() {
         }
     });
 }
+function getAllSummariesRelatedToJobTitle() {
+    $('#skills_suggestions').html('<i class="fa fa-spinner"></i>');
+    var search_keys=$('input[name=search_summaries_job_title]').val();
+    $.ajax({
+        method: "post",
+        url: main_path + "cv-builder/getAllSummariesRelatedToJobTitle",
+        data:{search_keys:search_keys},
+        cache: false,
+        success: function (data) {
+            $('#summaries_suggestions').html(data);
+        },
+        error: function (data) {
+            console.log(data);
+            valid = false;
+        }
+    });
+}
+function addSummaryData(id,content){
+    $('#summary_form').append('<input type="hidden" class="summaries_idss a_summary_id_'+id+'" name="summaries_ids[]" value="' + id + '"/>');
+    var el = tinymce.get("wpforms-614-field_1").dom.create('p', {id: id, 'class': 'myclass'}, content);
+    tinymce.get("wpforms-614-field_1").selection.setNode(el);
+    $('.summaries_data[summary_id=' + id + ']').addClass('checked');
+    $('.summaries_data[summary_id=' + id + ']').find("span.add-remove").html('<i class="fas fa-minus-circle"></i>');
+    $('.summaries_data[summary_id=' + id + ']').attr('onclick','removeSummaryDate("'+id+'","'+content+'")')
 
+}
+function removeSummaryDate(id,content){
+    tinymce.get("wpforms-614-field_1").dom.remove(id);
+    $('.a_summary_id_'+id).remove();
+    $('.summaries_data[summary_id=' + id + ']').removeClass('checked');
+    $('.summaries_data[summary_id=' + id + ']').find("span.add-remove").html('<i class="fas fa-plus-circle"></i>');
+    $('.summaries_data[summary_id=' + id + ']').attr('onclick','addSummaryData("'+id+'","'+content+'")')
+}
 function addSkillData(skill_id, skill_content) {
     $('#skills_form').append('<input type="hidden" class="skills_idss a_skill_id_'+skill_id+'" name="skills_ids[]" value="' + skill_id + '"/>');
-    $('.skill_content').append(skill_content +'\r\n');
-    var el = tinymce.activeEditor.dom.create('p', {id: skill_id, 'class': 'myclass'}, skill_content);
-    tinymce.activeEditor.selection.setNode(el);
+    var el = tinymce.get("wpforms-591-field_1").dom.create('p', {id: skill_id, 'class': 'myclass'}, skill_content);
+    tinymce.get("wpforms-591-field_1").selection.setNode(el);
+    $('.skills_data[skill_id=' + skill_id + ']').addClass('checked');
     $('.skills_data[skill_id=' + skill_id + ']').find("span.add-remove").html('<i class="fas fa-minus-circle"></i>');
     $('.skills_data[skill_id=' + skill_id + ']').attr('onclick','removeSkillDate("'+skill_id+'","'+skill_content+'")')
 }
 function removeSkillDate(skill_id,skill_content){
-    tinymce.activeEditor.dom.remove(skill_id);
+    tinymce.get("wpforms-591-field_1").dom.remove(skill_id);
     $('.a_skill_id_'+skill_id).remove();
+    $('.skills_data[skill_id=' + skill_id + ']').removeClass('checked');
     $('.skills_data[skill_id=' + skill_id + ']').find("span.add-remove").html('<i class="fas fa-plus-circle"></i>');
     $('.skills_data[skill_id=' + skill_id + ']').attr('onclick','addSkillData("'+skill_id+'","'+skill_content+'")')
 
+}
+function SetInitSkillContent(){
+    $('#wpforms-591-field_1').html($('input[name=skills_content]').val());
+}
+function SetInitSummaryContent(){
+    $('#wpforms-614-field_1').html($('input[name=summary_content]').val());
+}
+function previewCV(){
+    $('#preview_cv_modal_content').html('<i class="fas fa fa-spinner"></i>');
+    $('.preview_cv_modal').addClass('show');
+    storeCVData(currentTab)
+    cv_id=$('input[name=customer_cv_id]').val();
+    $.ajax({
+        method: "post",
+        url: main_path + "cv-builder/PreviewCV/"+cv_id,
+        cache: false,
+        success: function (data) {
+            $('#preview_cv_modal_content').html(data);
+        },
+        error: function (data) {
+            console.log(data);
+            valid = false;
+        }
+    });
+}
+function getCVCard(){
+    cv_id=$('input[name=customer_cv_id]').val();
+    $.ajax({
+        method: "post",
+        url: main_path + "cv-builder/getCVCard/"+cv_id,
+        cache: false,
+        success: function (data) {
+            $('#exad-card-thumb').html(data);
+        },
+        error: function (data) {
+            console.log(data);
+            valid = false;
+        }
+    });
 }

@@ -34,7 +34,7 @@
                                         <label class="wpforms-field-label"
                                                for="wpforms-412-field_2">{{__('FIRST NAME')}}</label><input
                                             type="text" id="wpforms-412-field_2"
-                                            class="wpforms-field-large input_required" required name="first_name"
+                                            class="wpforms-field-large first_name input_required" required name="first_name"
                                             placeholder="{{__('FIRST NAME')}}"
                                             value="{{$addedItem->model->first_name ?? ''}}">
                                     </div>
@@ -44,7 +44,7 @@
                                         <label class="wpforms-field-label"
                                                for="wpforms-412-field_3">{{__('SURNAME')}}</label><input
                                             type="text" id="wpforms-412-field_3"
-                                            class="wpforms-field-large input_required" required name="surename"
+                                            class="wpforms-field-large surename input_required" required name="surename"
                                             placeholder="{{__('SURNAME')}}"
                                             value="{{$addedItem->model->surename ?? ''}}">
                                     </div>
@@ -102,9 +102,9 @@
                                             type="text"
                                             id="wpforms-412-field_13"
                                             class="wpforms-field-large"
-                                            name="address_{{$lang}}"
+                                            name="address_{{$cv_lang}}"
                                             placeholder="{{__('STREET ADDRESS')}}"
-                                            value="{{$addedItem->model->{"address_".$lang} ?? ''}}">
+                                            value="{{$addedItem->model->{"address_".$cv_lang} ?? ''}}">
                                     </div>
                                     <div id="wpforms-412-field_14-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half"
@@ -112,9 +112,9 @@
                                         <label class="wpforms-field-label"
                                                for="wpforms-412-field_14">{{__('CITY/TOWN')}}</label><input
                                             type="text" id="wpforms-412-field_14"
-                                            class="wpforms-field-large" name="city_town_{{$lang}}"
+                                            class="wpforms-field-large" name="city_town_{{$cv_lang}}"
                                             placeholder="{{__('CITY/TOWN')}}"
-                                            value="{{$addedItem->model->{"city_town_".$lang} ?? ''}}">
+                                            value="{{$addedItem->model->{"city_town_".$cv_lang} ?? ''}}">
                                     </div>
                                     <div id="wpforms-412-field_15-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half wpforms-first"
@@ -122,9 +122,9 @@
                                         <label class="wpforms-field-label"
                                                for="wpforms-412-field_15">{{__('COUNTRY')}}</label><input
                                             type="text" id="wpforms-412-field_15"
-                                            class="wpforms-field-large" name="country_{{$lang}}"
+                                            class="wpforms-field-large" name="country_{{$cv_lang}}"
                                             placeholder="{{__('COUNTRY')}}"
-                                            value="{{$addedItem->model->{"country_".$lang} ?? ''}}">
+                                            value="{{$addedItem->model->{"country_".$cv_lang} ?? ''}}">
                                     </div>
                                     <div id="wpforms-412-field_16-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half"
@@ -149,7 +149,7 @@
                                     </div>
                                     <div id="wpforms-412-field_18-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half wpforms-first"
-                                         data-field-id="18">
+                                         data-field-id="18" style="position:relative;z-index:2">
                                         <label class="wpforms-field-label"
                                                for="wpforms-412-field_18">{{__('LINKEDIN')}}</label><input
                                             type="text" id="wpforms-412-field_18"
@@ -159,7 +159,7 @@
                                     </div>
                                     <div id="wpforms-412-field_20-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half"
-                                         data-field-id="20">
+                                         data-field-id="20" style="position:relative;z-index:2">
                                         <label class="wpforms-field-label"
                                                for="wpforms-412-field_20">{{__('WEBSITE')}}</label><input
                                             type="text" id="wpforms-412-field_20"
@@ -169,7 +169,7 @@
                                     </div>
                                     <div id="wpforms-412-field_21-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half wpforms-first"
-                                         data-field-id="21">
+                                         data-field-id="21" style="position:relative;z-index:2">
                                         <label class="wpforms-field-label"
                                                for="wpforms-412-field_21">{{__('DRIVING LICENCE')}}</label>
                                         <input type="text"
@@ -180,7 +180,7 @@
                                     </div>
                                     <div id="wpforms-412-field_22-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half"
-                                         data-field-id="22">
+                                         data-field-id="22" style="position:relative;z-index:2">
                                         <label class="wpforms-field-label"
                                                for="wpforms-412-field_22">{{__('NATIONALITY')}}</label><input
                                             type="text" id="wpforms-412-field_22"
@@ -212,7 +212,7 @@
                     <div class="elementor-widget-container">
                         <ul class="elementor-icon-list-items elementor-inline-items">
                             <li class="elementor-icon-list-item elementor-inline-item">
-                                <a href="#"><span class="elementor-icon-list-icon">
+                                <a href="javascript:void(0)" onclick="previewCV()"><span class="elementor-icon-list-icon">
 							            <i aria-hidden="true" class="far fa-eye"></i>
                                     </span>
                                     <span class="elementor-icon-list-text">{{__('preview')}}</span>
@@ -228,10 +228,12 @@
                     <div class="elementor-widget-container">
                         <div class="exad-card left text_on_image yes">
                             <div class="exad-card-thumb">
-                                <img width="595" height="842"
-                                     src="{{asset('files/'.$chosen_template->image)}}"
-                                     class="attachment-full size-full wp-image-247" alt=""
-                                     decoding="async"></div>
+{{--                                <img width="595" height="842"--}}
+{{--                                     src="{{asset('files/'.$chosen_template->image)}}"--}}
+{{--                                     class="attachment-full size-full wp-image-247 preview_cv_im_card" alt=""--}}
+{{--                                     decoding="async">--}}
+                                <x-cv.cv_template_modern_card :addedItem="$addedItem" :lang="$cv_lang"></x-cv.cv_template_modern_card>
+                            </div>
                             <div class="exad-card-body"></div>
                         </div>
                     </div>

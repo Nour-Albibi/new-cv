@@ -10,6 +10,7 @@ class CartService
      public static function AddToCart($customerCV){
         $cart=Cart::name('cv');
          $cv = Template::find(session('chosen_template_id')?? $customerCV->template_id);
+//         dd($cv);
          if ($cv != null) {
              $addedItem = $cart->addItem(array(
                  'id' => $customerCV->id,

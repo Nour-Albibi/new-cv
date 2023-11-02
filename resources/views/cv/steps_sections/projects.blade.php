@@ -1,5 +1,5 @@
 <section data-particle_enable="false" data-particle-mobile-disabled="false"
-         class="width100 section-tab elementor-section elementor-inner-section elementor-element elementor-element-38bf725a exad-glass-effect-yes elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-sticky-section-no"
+         class="projects_tab width100 section-tab elementor-section elementor-inner-section elementor-element elementor-element-38bf725a exad-glass-effect-yes elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-sticky-section-no"
          data-id="38bf725a" data-element_type="section"
          data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
     <div class="elementor-container elementor-column-gap-custom">
