@@ -4,21 +4,21 @@
 
                <!-- LOGO -->
          <div class="navbar-brand-box">
-            <a href="index.html" class="logo logo-dark">
+            <a href="{{route('customer.dashboard')}}" class="logo logo-dark">
                 <span class="logo-sm">
-                    <img src="/customer-assets/images/b-logo.png"  alt="" height="22">
+                    <img src="{{asset('customer-assets/images/b-logo.png')}}"  alt="" height="22">
                 </span>
                 <span class="logo-lg">
-                    <img src="/customer-assets/images/b-logo.png" alt="" height="20">
+                    <img src="{{asset('customer-assets/images/b-logo.png')}}" alt="" height="20">
                 </span>
             </a>
 
             <a href="index.html" class="logo logo-light">
                 <span class="logo-sm">
-                    <img src="/customer-assets/images/b-logo.png" alt="" height="22">
+                    <img src="{{asset('customer-assets/images/b-logo.png')}}" alt="" height="22">
                 </span>
                 <span class="logo-lg">
-                    <img src="/customer-assets/images/b-logo.png" alt="" height="20">
+                    <img src="{{asset('customer-assets/images/b-logo.png')}}" alt="" height="20">
                 </span>
             </a>
         </div>
@@ -53,41 +53,15 @@
 
             <div class="dropdown d-none d-md-block ms-2">
                 <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="me-2" src="/customer-assets/images/flags/us.jpg" alt="Header Language" height="16"> English <span class="mdi mdi-chevron-down"></span>
+                    <img class="me-2" src="{{asset('customer-assets/images/flags/us.jpg')}}" alt="Header Language" height="16"> English <span class="mdi mdi-chevron-down"></span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
-
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="/customer-assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle"> German </span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="/customer-assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle"> Italian </span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="/customer-assets/images/flags/french.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle"> French </span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="/customer-assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle"> Spanish </span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="/customer-assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle"> Russian </span>
+                        <img src="{{asset('customer-assets/images/flags/russia.jpg')}}" alt="user-image" class="me-1" height="12"> <span class="align-middle"> {{__('Arabic')}} </span>
                     </a>
                 </div>
             </div>
-
-
-
-
-
 
             <div class="dropdown d-none d-lg-inline-block ms-1">
                 <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
@@ -132,7 +106,7 @@
                         </a>
                         <a href="" class="text-reset notification-item">
                             <div class="media">
-                                <img src="/customer-assets/images/users/avatar-3.jpg"
+                                <img src="{{asset('customer-assets/images/users/avatar-3.jpg')}}"
                                     class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                 <div class="media-body">
                                     <h6 class="mt-0 mb-1">James Lemire</h6>
@@ -160,19 +134,6 @@
                             </div>
                         </a>
 
-                        <a href="" class="text-reset notification-item">
-                            <div class="media">
-                                <img src="/customer-assets/images/users/avatar-4.jpg"
-                                    class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                <div class="media-body">
-                                    <h6 class="mt-0 mb-1">Salena Layfield</h6>
-                                    <div class="font-size-13 text-muted">
-                                        <p class="mb-1">As a skeptical Cambridge friend of mine occidental.</p>
-                                        <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 1 hours ago</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
                     </div>
                     <div class="p-2 border-top">
                         <a class="btn btn-sm btn-link font-size-14 w-100 text-center" href="javascript:void(0)">
@@ -185,13 +146,8 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="
-
-                    @if(auth()->guard('customer')->check())
-                    {{Auth::guard('customer')->user()->avatar}}
-
-                @endif"
-                        alt="Header Avatar">
+                    <img class="rounded-circle header-profile-user" src="@if(auth()->guard('customer')->check()){{Auth::guard('customer')->user()->avatar}}@endif"
+                        alt="{{Auth::guard('customer')->user()->username}}">
                     <span class="d-none d-xl-inline-block ms-1">
                         @if(auth()->guard('customer')->check())
                             <li class="elementor-icon-list-item elementor-inline-item">
