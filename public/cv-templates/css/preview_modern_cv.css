@@ -37,7 +37,7 @@ ul.contact-list, ul.skills-list, ul.work-duties{
     display: -moz-flex;
     display: -ms-flex;
     justify-content: center;
-    align-items: center;
+    /*align-items: center;*/
 }
 .col-personal{
     width:301px;

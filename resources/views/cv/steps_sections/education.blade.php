@@ -122,9 +122,9 @@
                                                            for="wpforms-535-field_3">{{__('QUALIFICATION')}}</label><select
                                                         id="wpforms-535-field_3" class="wpforms-field-large"
                                                         name="education_{{$i}}[qualification_id]">
-                                                        <option value="1" selected>First Choice</option>
-                                                        <option value="2">Second Choice</option>
-                                                        <option value="3">Third Choice</option>
+                                                        @foreach($qualifications as $qualification)
+                                                            <option value="{{$qualification->id}}" >{{$qualification->{"name_".$cv_lang} }}</option>
+                                                         @endforeach
                                                     </select>
                                                 </div>
                                                 <div id="wpforms-535-field_4-container"
@@ -220,9 +220,9 @@
                                                        for="wpforms-535-field_3">{{__('QUALIFICATION')}}</label><select
                                                     id="wpforms-535-field_3" class="wpforms-field-large"
                                                     name="education_1[qualification_id]">
-                                                    <option value="1" selected>First Choice</option>
-                                                    <option value="2">Second Choice</option>
-                                                    <option value="3">Third Choice</option>
+                                                    @foreach($qualifications as $qualification)
+                                                        <option value="{{$qualification->id}}" >{{$qualification->{"name_".$cv_lang} }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div id="wpforms-535-field_4-container"

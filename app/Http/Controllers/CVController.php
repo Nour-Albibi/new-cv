@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CustomerCv;
+use App\Models\Qualification;
 use App\Services\CVService;
 use App\Services\CVTemplateService;
 use App\Services\PackageService;
@@ -59,8 +60,9 @@ class CVController extends Controller
                 Session::put('show_confirm',1);
             }
         }
+        $qualifications=Qualification::all();
         $chosen_template = CVTemplateService::getChosenTemplate();
-        return view('cv.create-cv-steps', compact('chosen_template','addedItem'));
+        return view('cv.create-cv-steps', compact('chosen_template','addedItem','qualifications'));
     }
     public function resetDataAndCreateNewCV(Request $request){
         try{

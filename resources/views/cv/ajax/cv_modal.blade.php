@@ -6,7 +6,7 @@
 </style>
 <div class="Home">
 <div class="row">
-    <div class="col-personal">
+    <div class="col-personal" id="col-personal">
         @if(!empty($cv->image))
             <img class="personal-image" src="{{asset('files/uploads/'.$cv->image)}}" width="168" height="168"
                  loading="lazy"/>
@@ -65,7 +65,7 @@
             </div>
         @endif
     </div>
-    <div class="col-main">
+    <div class="col-main" id="col-main">
         <div class="main-title">
             @if($cv_lang=="en")
                 {{$cv->first_name.' '.$cv->surename}}
@@ -174,8 +174,15 @@
     </div>
 </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
-        integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
-<script>
-    $('.col-personal').height($('.col-main').height());
-</script>
+{{--<script src="https://code.jquery.com/jquery-3.6.3.slim.min.js"--}}
+{{--        integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>--}}
+{{--<script>--}}
+{{--    // objectHeight=document.getElementById('col-main').offsetHeight;--}}
+{{--    // alert(objectHeight);--}}
+{{--    // document.getElementById("col-personal").style.height = objectHeight+"px !important";--}}
+{{--    $(document).ready(function(){--}}
+
+{{--        alert($('.col-main').height());--}}
+{{--        $('.col-personal').height($('.col-main').height());--}}
+{{--    });--}}
+{{--</script>--}}
