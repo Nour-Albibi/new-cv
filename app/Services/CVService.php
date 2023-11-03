@@ -463,5 +463,19 @@ class CVService
         unset($data['step']);
         return $data;
     }
-
+    public static function deleteAllRelatedDataToCV($cv){
+        try{
+            $cv->customer_cv_work_history()->delete();
+            $cv->customer_cv_project()->delete();
+            $cv->customer_cv_education()->delete();
+            $cv->customer_cv_course()->delete();
+            $cv->customer_cv_skill()->delete();
+            $cv->customer_cv_summery()->delete();
+            $cv->customer_cv_language()->delete();
+            return true;
+        }catch (\Exception $exception){
+//            return $exception->getMessage();
+            return false;
+        }
+    }
 }

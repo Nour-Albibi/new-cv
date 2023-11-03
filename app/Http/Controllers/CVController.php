@@ -43,7 +43,9 @@ class CVController extends Controller
             Session::put('chosen_cv_language', $request->cv_language);
         }
         $addedItem=CVService::getCVItem();
-
+        if (Auth::guard('customer')->check() && !empty($addedItem)) {
+            Auth::guard('customer')->user()->deleteLatestFakeAttemptCreatedCV($addedItem->id);
+        }
         if (Auth::guard('customer')->check() && empty($addedItem)) {
             if(!Auth::guard('customer')->user()->has_active_subscription()){
                 $subscription_id=0;
