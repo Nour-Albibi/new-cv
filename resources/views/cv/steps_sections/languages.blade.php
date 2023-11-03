@@ -204,21 +204,6 @@
                                         <div id="languages_section">
                                             @if(!empty($addedItem) && count($addedItem->model->customer_cv_language))
                                                 @php $i=1; @endphp
-                                                <div id="wpforms-626-field_1-container"
-                                                     class="wpforms-field wpforms-field-checkbox"
-                                                     data-field-id="1">
-                                                    <label class="wpforms-field-label"
-                                                           for="wpforms-626-field_1">{{__('Select between infographic or text format')}}</label>
-                                                    <ul id="wpforms-626-field_1">
-                                                        <li class="choice-1 depth-1">
-                                                            <input type="checkbox" id="wpforms-626-field_1_1"
-                                                                   name="wpforms[fields][1][]"
-                                                                   value="DISPLAY OPTIONS FOR YOUR LANGUAGE SKILLS"><label
-                                                                class="wpforms-field-label-inline"
-                                                                for="wpforms-626-field_1_1">{{__('DISPLAY OPTIONS FOR YOUR LANGUAGE SKILLS')}}</label>
-                                                        </li>
-                                                    </ul>
-                                                </div>
                                                 @foreach($addedItem->model->customer_cv_language as $language)
                                                     <div class="wpforms-field-container">
                                                         <div id="wpforms-626-field_2-container"
@@ -228,9 +213,10 @@
                                                                    for="wpforms-626-field_2">{{__('LANGUAGES')}}</label><select
                                                                 id="wpforms-626-field_2" class="wpforms-field-large"
                                                                 name="language_{{$i}}[language_id]">
-                                                                <option value="1" selected>English</option>
-                                                                <option value="2">Arabic</option>
-                                                                <option value="3">Frensh</option>
+                                                                <option value="">{{__('Select Language')}}</option>
+                                                                @foreach($alanguages as $alanguage)
+                                                                    <option value="{{$alanguage->id}}">{{$alanguage->{"name_".$cv_lang} }}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                         <div id="wpforms-626-field_3-container"
@@ -240,9 +226,14 @@
                                                                    for="wpforms-626-field_3">{{__('LEVEL')}}</label><select
                                                                 id="wpforms-626-field_3" class="wpforms-field-large"
                                                                 name="language_{{$i}}[level_{{$cv_lang}}]">
-                                                                <option value="1" selected>First Choice</option>
-                                                                <option value="2">Second Choice</option>
-                                                                <option value="3">Third Choice</option>
+                                                                <option value="">{{__('Select Level')}}</option>
+                                                                <option value="1">{{__('Beginner')}}</option>
+                                                                <option value="2">{{__('Elementary')}}</option>
+                                                                <option value="3">{{__('Intermediate')}}</option>
+                                                                <option value="4">{{__('Upper intermediate')}}</option>
+                                                                <option value="5">{{__('Advanced')}}</option>
+                                                                <option value="6">{{__('Fluent')}}</option>
+                                                                <option value="7">{{__('Native')}}</option>
                                                             </select>
                                                         </div>
                                                         <div id="wpforms-626-field_4-container"
@@ -260,21 +251,6 @@
                                                 @endforeach
                                             @else
                                                 <div class="wpforms-field-container">
-                                                    <div id="wpforms-626-field_1-container"
-                                                         class="wpforms-field wpforms-field-checkbox"
-                                                         data-field-id="1">
-                                                        <label class="wpforms-field-label"
-                                                               for="wpforms-626-field_1">{{__('Select between infographic or text format')}}</label>
-                                                        <ul id="wpforms-626-field_1">
-                                                            <li class="choice-1 depth-1">
-                                                                <input type="checkbox" id="wpforms-626-field_1_1"
-                                                                       name="wpforms[fields][1][]"
-                                                                       value="DISPLAY OPTIONS FOR YOUR LANGUAGE SKILLS"><label
-                                                                    class="wpforms-field-label-inline"
-                                                                    for="wpforms-626-field_1_1">{{__('DISPLAY OPTIONS FOR YOUR LANGUAGE SKILLS')}}</label>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
                                                     <div id="wpforms-626-field_2-container"
                                                          class="wpforms-field wpforms-field-select wpforms-field-select-style-classic"
                                                          data-field-id="2">
@@ -282,9 +258,9 @@
                                                                for="wpforms-626-field_2">{{__('LANGUAGES')}}</label><select
                                                             id="wpforms-626-field_2" class="wpforms-field-large"
                                                             name="language_1[language_id]">
-                                                            <option value="1">English</option>
-                                                            <option value="2">Arabic</option>
-                                                            <option value="3">Frensh</option>
+                                                            @foreach($alanguages as $alanguage)
+                                                            <option value="{{$alanguage->id}}">{{$alanguage->{"name_".$cv_lang} }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <div id="wpforms-626-field_3-container"

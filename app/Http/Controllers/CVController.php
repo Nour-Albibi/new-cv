@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CustomerCv;
+use App\Models\Language;
 use App\Models\Qualification;
 use App\Services\CVService;
 use App\Services\CVTemplateService;
@@ -62,7 +63,8 @@ class CVController extends Controller
         }
         $qualifications=Qualification::all();
         $chosen_template = CVTemplateService::getChosenTemplate();
-        return view('cv.create-cv-steps', compact('chosen_template','addedItem','qualifications'));
+        $alanguages=Language::all();
+        return view('cv.create-cv-steps', compact('chosen_template','addedItem','qualifications','alanguages'));
     }
     public function resetDataAndCreateNewCV(Request $request){
         try{
