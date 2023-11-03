@@ -29,6 +29,6 @@
     <h1 class="mb-2" style="text-align: center">{{ __("Thank you") }}</h1>
     <h4 class="text-muted mb-2" style="text-align: center">{!! __("Your Order sent successfully") !!} </h4>
         <p class="mb-5" style="text-align: center">{{__("Please visit your control panel in order to Download your CV")}}
-        <a href="#">{{__('Click here')}}</a></p>
+        <a href="{{route('customer.CVs')}}">{{__('Click here')}}</a></p>
     </div>
 @endsection

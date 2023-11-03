@@ -258,6 +258,7 @@
                                                                for="wpforms-626-field_2">{{__('LANGUAGES')}}</label><select
                                                             id="wpforms-626-field_2" class="wpforms-field-large"
                                                             name="language_1[language_id]">
+                                                            <option value="">{{__('Select Language')}}</option>
                                                             @foreach($alanguages as $alanguage)
                                                             <option value="{{$alanguage->id}}">{{$alanguage->{"name_".$cv_lang} }}</option>
                                                             @endforeach
@@ -270,9 +271,14 @@
                                                                for="wpforms-626-field_3">{{__('LEVEL')}}</label><select
                                                             id="wpforms-626-field_3" class="wpforms-field-large"
                                                             name="language_1[level_{{$cv_lang}}]">
-                                                            <option value="1">First Choice</option>
-                                                            <option value="2">Second Choice</option>
-                                                            <option value="3">Third Choice</option>
+                                                            <option value="">{{__('Select Level')}}</option>
+                                                            <option value="1">{{__('Beginner')}}</option>
+                                                            <option value="2">{{__('Elementary')}}</option>
+                                                            <option value="3">{{__('Intermediate')}}</option>
+                                                            <option value="4">{{__('Upper intermediate')}}</option>
+                                                            <option value="5">{{__('Advanced')}}</option>
+                                                            <option value="6">{{__('Fluent')}}</option>
+                                                            <option value="7">{{__('Native')}}</option>
                                                         </select>
                                                     </div>
                                                     <div id="wpforms-626-field_4-container"
