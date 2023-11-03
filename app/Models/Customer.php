@@ -109,10 +109,12 @@ class Customer extends Authenticatable
 
     public function deleteFakedCVs()
     {
-        $cv = CustomerCv::where('customer_id', $this->id)
-            ->where('cv_status', 0)->where('subscription_id', 0)->first();
-        if(CVService::deleteAllRelatedDataToCV($cv)){
-            $cv->delete();
+        $cvs = CustomerCv::where('customer_id', $this->id)
+            ->where('cv_status', 0)->where('subscription_id', 0)->get();
+        foreach ($cvs as $cv){
+            if(CVService::deleteAllRelatedDataToCV($cv)){
+                $cv->delete();
+            }
         }
     }
     public function deleteLatestFakeAttemptCreatedCV($current_cv_id){

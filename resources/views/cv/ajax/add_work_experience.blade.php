@@ -105,11 +105,30 @@
     <div class="wpforms-field wpforms-field-text">
         <label class="wpforms-field-label"
                for="wpforms-488-field_4">{{__('Job Description')}}</label>
-{{--        <textarea class="wpforms-field-large" name="work_{{$new_work_num}}[experience_description_{{$cv_lang}}]" placeholder="{{__('Job Description')}}"></textarea>--}}
-        @php($editor_id="work_".$new_work_num."_editor")
-        <x-cv.tiny_works_editor id="work_{{$new_work_num}}_editor" class="wpforms-field-large works_textarea"
-                                name="work_{{$new_work_num}}[experience_description_{{$cv_lang}}]" :i="$new_work_num"
-                                :selector="$editor_id"></x-cv.tiny_works_editor>
+        <script>
+            tinymce.init({
+                selector: '{{"work_".$new_work_num."_editor"}}',
+                plugins: 'codesample lists  wordcount advlist fullscreen',
+                menubar: '',
+                toolbar: 'undo redo | fontfamily | fontsize | forecolor backcolor  ltr rtl|  bold italic underline  | align lineheight | numlist bullist indent outdent',
+            });
+        </script>
+        <style>
+            .tox .tox-edit-area__iframe {
+                background-color: #fff !important;
+            }
+
+            .tox-statusbar {
+                display: none !important;
+            }
+
+            .tox-toolbar__primary {
+                justify-content: space-around;
+            }
+        </style>
+        <textarea id="{{"work_".$new_work_num."_editor"}}" class="wpforms-field-large work_ed works_textarea"
+                  name="work_{{$new_work_num}}[experience_description_{{$cv_lang}}]"></textarea>
+
     </div>
 </div>
 </div>

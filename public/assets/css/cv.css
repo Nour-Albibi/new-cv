@@ -556,7 +556,7 @@
     margin-bottom: 0px;
 }
 
-.work_history_tab,.education_s_tab,.skills_tab,.cv_summaries_tab,.language_s_tab{
+.work_history_tab,.education_s_tab,.skills_tab,.cv_summaries_tab,.language_s_tab,.projects_tab{
     backdrop-filter: blur(7px);
     box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.1);
     transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;

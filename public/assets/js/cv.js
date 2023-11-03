@@ -294,16 +294,10 @@ function SetSummaryContent(){
     $('input[name=summary_content]').val(tinymce.get('wpforms-614-field_1').getContent());
 }
 function SetWorksContent(){
-    $("form#work_history_form").find('textarea').each(function(){
-        this_id=$(this).attr('id');
-            // alert(this_id);
-            $(this).html(tinymce.get(this_id).getContent());
-    });
-        // $('#work_history_form').find('textarea.works_textarea').each(function(){
-        //     this_id=$(this).attr('id');
-        //     alert(this_id);
-        //     $(this).html(tinymce.get(this_id).getContent());
-        // });
+        $('#work_history_form').find('textarea.works_textarea').each(function(){
+            this_id=$(this).attr('id');
+            tinyMCE.get(this_id).save()
+        });
 
 }
 function storeCVData(step_num) {

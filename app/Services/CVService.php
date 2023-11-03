@@ -465,12 +465,19 @@ class CVService
     }
     public static function deleteAllRelatedDataToCV($cv){
         try{
+            if(count($cv->customer_cv_work_history))
             $cv->customer_cv_work_history()->delete();
+            if(count($cv->customer_cv_project))
             $cv->customer_cv_project()->delete();
+            if(count($cv->customer_cv_education))
             $cv->customer_cv_education()->delete();
+            if(count($cv->customer_cv_course))
             $cv->customer_cv_course()->delete();
+            if(count($cv->customer_cv_skill))
             $cv->customer_cv_skill()->delete();
+            if(count($cv->customer_cv_summery))
             $cv->customer_cv_summery()->delete();
+            if(count($cv->customer_cv_language))
             $cv->customer_cv_language()->delete();
             return true;
         }catch (\Exception $exception){
