@@ -1,8 +1,57 @@
 <section data-particle_enable="false" data-particle-mobile-disabled="false"
-         class="projects_tab width100 section-tab elementor-section elementor-inner-section elementor-element elementor-element-38bf725a exad-glass-effect-yes elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-sticky-section-no"
+         class="work_history_tab_container elementor-495 width100 section-tab elementor-section elementor-inner-section elementor-element elementor-element-38bf725a exad-glass-effect-yes elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-sticky-section-no"
          data-id="38bf725a" data-element_type="section"
          data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-    <div class="elementor-container elementor-column-gap-custom">
+    <section data-particle_enable="false" data-particle-mobile-disabled="false"
+             class="elementor-section elementor-inner-section elementor-element elementor-element-458cbab4 elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-glass-effect-no exad-sticky-section-no"
+             data-id="458cbab4" data-element_type="section">
+        <div class="elementor-container elementor-column-gap-custom">
+            <div
+                class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-69a3316 exad-glass-effect-no exad-sticky-section-no"
+                data-id="69a3316" data-element_type="column">
+                <div class="elementor-widget-wrap">
+                </div>
+            </div>
+            <div
+                class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-486005a4 exad-glass-effect-no exad-sticky-section-no"
+                data-id="486005a4" data-element_type="column">
+                <div class="elementor-widget-wrap">
+                </div>
+            </div>
+            <div
+                class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-67914a2c exad-glass-effect-no exad-sticky-section-no"
+                data-id="67914a2c" data-element_type="column">
+                <div class="elementor-widget-wrap elementor-element-populated">
+                    <div
+                        class="elementor-element elementor-element-31a8d5a7 elementor-align-center elementor-icon-list--layout-inline elementor-list-item-link-full_width exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon-list"
+                        data-id="31a8d5a7" data-element_type="widget"
+                        data-widget_type="icon-list.default">
+                        <div class="elementor-widget-container">
+                            <ul class="elementor-icon-list-items elementor-inline-items" style="justify-content: flex-end">
+                                <li class="elementor-icon-list-item elementor-inline-item">
+                                    <a href="javascript:void(0)" onclick="previewCV()">
+
+												<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="far fa-eye"></i>						</span>
+                                        <span class="elementor-icon-list-text">{{__('Preview')}}</span>
+                                    </a>
+                                </li>
+                                <li class="elementor-icon-list-item elementor-inline-item">
+                                    <a href="#">
+                                        <span class="elementor-icon-list-icon">
+							                <i aria-hidden="true" class="far fa-eye"></i>
+                                        </span>
+                                        <span class="elementor-icon-list-text">{{__('See example')}}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="projects_tab elementor-container elementor-column-gap-custom">
         <div
             class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-12633ce2 exad-glass-effect-no exad-sticky-section-no"
             data-id="12633ce2" data-element_type="column">
@@ -52,7 +101,8 @@
                                                         type="text" id="wpforms-519-field_1"
                                                         class="wpforms-field-large"
                                                         name="project_{{$i}}[project_name_{{$lang}}]"
-                                                        placeholder="{{__('PROJECT NAME')}}" value="{{$project->{"project_name_".$lang } }}">
+                                                        placeholder="{{__('PROJECT NAME')}}"
+                                                        value="{{$project->{"project_name_".$lang } }}">
                                                 </div>
                                                 <div id="wpforms-519-field_3-container"
                                                      class="wpforms-field wpforms-field-text" data-field-id="3">
@@ -74,7 +124,8 @@
                                                                data-disable-past-dates="0" data-input="true"
                                                                input_name="project_start_date"
                                                                project_num="{{$i}}"
-                                                               name="project_{{$i}}[start_date]" value="{{Illuminate\Support\Carbon::parse($project->start_date)->toDateString()}}">
+                                                               name="project_{{$i}}[start_date]"
+                                                               value="{{Illuminate\Support\Carbon::parse($project->start_date)->toDateString()}}">
                                                     </div>
                                                 </div>
                                                 <div id="wpforms-519-field_5-container"
@@ -89,7 +140,8 @@
                                                                data-disable-past-dates="0" data-input="true"
                                                                input_name="project_end_date"
                                                                project_num="{{$i}}"
-                                                               name="project_{{$i}}[end_date]" value="{{Illuminate\Support\Carbon::parse($project->end_date)->toDateString()}}">
+                                                               name="project_{{$i}}[end_date]"
+                                                               value="{{Illuminate\Support\Carbon::parse($project->end_date)->toDateString()}}">
                                                     </div>
                                                 </div>
                                             </div>

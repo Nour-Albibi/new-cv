@@ -6,7 +6,7 @@
         <div class="user-sidebar text-center">
             <div class="dropdown">
                 <div class="user-img">
-                    <img src="/customer-assets/images/users/avatar-7.jpg" alt="" class="rounded-circle">
+                    <img src="{{asset('customer-assets/images/users/avatar-7.jpg')}}" alt="" class="rounded-circle">
                     <span class="avatar-online bg-success"></span>
                 </div>
                 <div class="user-info">
@@ -35,7 +35,7 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title">Menu</li>
+                <li class="menu-title">{{__('Menu')}}</li>
 
                 <li>
                     <a href="{{ route('customer.dashboard') }}" class="waves-effect">
@@ -69,34 +69,6 @@
                         <span style="font-size: small;">Viewed my CV</span>
                     </a>
                 </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </ul>
         </div>
         <!-- Sidebar -->

@@ -1,6 +1,6 @@
 <script>
     tinymce.init({
-        selector: 'textarea#{{$selector}}',
+        selector: '#{{$selector}}',
         plugins: 'codesample lists  wordcount advlist fullscreen',
         menubar: '',
         toolbar: 'undo redo | fontfamily | fontsize | forecolor backcolor  ltr rtl|  bold italic underline  | align lineheight | numlist bullist indent outdent',
@@ -19,7 +19,7 @@
         justify-content: space-around;
     }
 </style>
-<textarea id="{{$selector}}" class="wpforms-field-large"
+<textarea id="{{$selector}}" class="wpforms-field-large work_ed works_textarea"
           name="work_{{$i}}[experience_description_{{$lang}}]">
   {!! $slot ?? '' !!}
 </textarea>

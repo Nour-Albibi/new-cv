@@ -11,10 +11,11 @@ class CustomerCv extends Model implements UseCartable
 {
     use HasFactory;
     use CanUseCart;
-    protected $fillable=['template_id','template_color','cv_language','customer_id','first_name',
+    protected $fillable=['template_id','template_color','cv_language','customer_id','subscription_id','first_name',
         'surename','first_name_ar','surename_ar','phone','email','image','open_for_remote','linkedlin_url',
         'address_ar','address_en','city_town_ar','city_town_en','country_ar','country_en','postcode',
-        'website','driving_licence','nationality','skills_content_en','skills_content_ar','summary_content_en','summary_content_ar'];
+        'website','driving_licence','nationality','skills_content_en','skills_content_ar','summary_content_en','summary_content_ar'
+        ,'stopped_on_step'];
     public function template(){
         return $this->belongsTo('App\Models\Template','template_id');
     }

@@ -43,7 +43,7 @@
                                       href="https://projects.datatime4it.com/chtml/wp-content/plugins/elementor-pro/assets/css/widget-animated-headline.min.css">
                                 <h2 class="elementor-headline">
                                     <span class="elementor-headline-dynamic-wrapper elementor-headline-text-wrapper">
-                                        <span class="elementor-headline-dynamic-text elementor-headline-text-active">Upgrade for instant access to all features
+                                        <span class="elementor-headline-dynamic-text elementor-headline-text-active">{{__('Upgrade for instant access to all features')}}
                                         </span>
                                     </span>
                                 </h2>
@@ -127,15 +127,18 @@
                                                                                     </li>
                                                                                 </ul>
                                                                             </div>
-                                                                            @if(auth()->guard('customer')->check() && auth()->guard('customer')->user()->getActiveSubscription()->package_id==$pkg->id)
-                                                                                <div class="pricingTable-signup">
-                                                                                    {{__("Package is Active now")}}
-                                                                                </div>
+                                                                            @if(auth()->guard('customer')->check() && auth()->guard('customer')->user()->has_active_subscription())
+                                                                                @if( auth()->guard('customer')->user()->getActiveSubscription()->package_id==$pkg->id)
+                                                                                    <div class="pricingTable-signup">
+                                                                                        {{__("Package is Active now")}}
+                                                                                    </div>
+                                                                                @endif
                                                                             @else
-                                                                                <div class="pricingTable-signup " >
+                                                                                <div class="pricingTable-signup ">
                                                                                     <a href="javascript:void(0)"
                                                                                        class="se_package_pl"
-                                                                                       onclick="selectPacakge('{{$pkg->id}}');this.innerHTML = 'SELECTED';" id="se_package_pl">{{__('SELECT')}}</a>
+                                                                                       onclick="selectPacakge('{{$pkg->id}}');this.innerHTML = 'SELECTED';"
+                                                                                       id="se_package_pl">{{__('SELECT')}}</a>
                                                                                 </div>
                                                                             @endif
                                                                         </div>

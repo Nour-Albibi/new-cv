@@ -47,29 +47,28 @@
          class="wpforms-field wpforms-field-select wpforms-one-half wpforms-first wpforms-field-select-style-classic"
          data-field-id="3">
         <label class="wpforms-field-label"
-               for="wpforms-535-field_3">QUALIFICATION</label><select
+               for="wpforms-535-field_3">{{__('QUALIFICATION')}}</label><select
             id="wpforms-535-field_3" class="wpforms-field-large"
             name="education_{{$new_edu_num}}['qualification_id']">
-            <option value="First Choice">First Choice</option>
-            <option value="Second Choice">Second Choice</option>
-            <option value="Third Choice">Third Choice</option>
+            @foreach($qualifications as $qualification)
+                <option value="{{$qualification->id}}" >{{$qualification->{"name_".$cv_lang} }}</option>
+            @endforeach
         </select>
     </div>
     <div id="wpforms-535-field_4-container"
          class="wpforms-field wpforms-field-text wpforms-one-half"
          data-field-id="4">
         <label class="wpforms-field-label"
-               for="wpforms-535-field_4">FIELD OF
-            STUDY</label><input type="text" id="wpforms-535-field_4"
+               for="wpforms-535-field_4">{{__('FIELD OF STUDY')}}</label><input type="text" id="wpforms-535-field_4"
                                 class="wpforms-field-large"
                                 name="education_{{$new_edu_num}}['field_study_{{$lang}}']"
-                                value="FIELD OF STUDY">
+                                placeholder="{{__('FIELD OF STUDY')}}">
     </div>
     <div id="wpforms-535-field_5-container"
          class="wpforms-field wpforms-field-number"
          data-field-id="5">
         <label class="wpforms-field-label"
-               for="wpforms-535-field_5">HONOURS(optional)</label><input
+               for="wpforms-535-field_5">{{__('HONOURS(optional)')}}</label><input
             type="number" pattern="\d*" id="wpforms-535-field_5"
             class="wpforms-field-large" name="education_{{$new_edu_num}}['honours_{{$lang}}']">
     </div>
@@ -77,7 +76,7 @@
          class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
          data-field-id="6">
         <label class="wpforms-field-label"
-               for="wpforms-535-field_6">START DATE</label>
+               for="wpforms-535-field_6">{{__('START DATE')}}</label>
         <div class="wpforms-datepicker-wrap">
             <input type="date" id="wpforms-535-field_6"
                    class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
@@ -92,7 +91,7 @@
          class="wpforms-field wpforms-field-date-time wpforms-one-half"
          data-field-id="7">
         <label class="wpforms-field-label"
-               for="wpforms-535-field_7">END DATE</label>
+               for="wpforms-535-field_7">{{__('END DATE')}}</label>
         <div class="wpforms-datepicker-wrap">
             <input type="date" id="wpforms-535-field_7"
                    class="end_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"

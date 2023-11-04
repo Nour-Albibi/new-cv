@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\CustomerCv;
+use App\Models\Language;
+use App\Models\Qualification;
 use App\Services\CVService;
 use App\Services\CVTemplateService;
 use App\Services\PackageService;
@@ -35,6 +37,7 @@ class CVController extends Controller
     public function create(Request $request)
     {
         //resetAllSessions();
+
         if ($request->isMethod('post')) {
             $request->validate([
                 'cv_language' => ['required'],
@@ -42,23 +45,38 @@ class CVController extends Controller
             Session::put('chosen_cv_language', $request->cv_language);
         }
         $addedItem=CVService::getCVItem();
+//        if (Auth::guard('customer')->check() && !empty($addedItem)) {
+//            Auth::guard('customer')->user()->deleteLatestFakeAttemptCreatedCV($addedItem->id);
+//        }
         if (Auth::guard('customer')->check() && empty($addedItem)) {
-            $customerCV = CustomerCv::where('customer_id', Auth::guard('customer')->user()->id)
-                ->where('cv_status', 0)->where('subscription_id',0)->latest()->first();
-             CVService::addStoredCVinCart($customerCV);
-            $addedItem=CVService::getCVItem();
-            Session::put('show_confirm',1);
+            if(!Auth::guard('customer')->user()->has_active_subscription()){
+                $subscription_id=0;
+            }else{
+                $subscription_id=Auth::guard('customer')->user()->getActiveSubscription()->id;
+            }
+            $customerCV = Auth::guard('customer')->user()->getLatestStoredCV($subscription_id);
+            if($customerCV!=null){
+                CVService::addStoredCVinCart($customerCV);
+                $addedItem=CVService::getCVItem();
+                Session::put('show_confirm',1);
+            }
         }
+        $qualifications=Qualification::all();
         $chosen_template = CVTemplateService::getChosenTemplate();
-        return view('cv.create-cv-steps', compact('chosen_template','addedItem'));
+        $alanguages=Language::all();
+        return view('cv.create-cv-steps', compact('chosen_template','addedItem','qualifications','alanguages'));
     }
     public function resetDataAndCreateNewCV(Request $request){
         try{
             if (Auth::guard('customer')->check()) {
                 CVService::ResetCVDataForCreateNew();
-                $chosen_template = CVTemplateService::getChosenTemplate();
-                $addedItem=null;
-                return view('cv.create-cv-steps', compact('chosen_template','addedItem'));
+                if(!Auth::guard('customer')->user()->has_active_subscription()){
+                    Auth::guard('customer')->user()->deleteFakedCVs();
+                }
+                return redirect()->route('cv.create');
+//                $chosen_template = CVTemplateService::getChosenTemplate();
+//                $addedItem=null;
+//                return view('cv.create-cv-steps', compact('chosen_template','addedItem'));
             }else{
                 abort(404);
             }

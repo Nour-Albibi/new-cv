@@ -142,7 +142,11 @@ class CVService
         $data = self::getDataArraysFromRequest($data);
         $cvItem = self::getCVItem();
         if (!empty($cvItem)) {
-            foreach ($data as $language) {
+            $customer_cv=CustomerCv::find($cvItem->id);
+            if(!empty($customer_cv)){
+                $customer_cv->stopped_on_step=7;
+                $customer_cv->save();
+                foreach ($data as $language) {
                 CustomerCvLanguage::create([
                     'customer_cv_id' => $cvItem->id,
                     'language_ar' => $language['language_ar'] ?? '',
@@ -153,6 +157,7 @@ class CVService
                     'information_ar' => $language['information_ar'] ?? '',
                     'information_en' => $language['information_en'] ?? '',
                 ]);
+            }
             }
         }
         return true;
@@ -173,6 +178,8 @@ class CVService
         if (!empty($cvItem)) {
             $customer_cv=CustomerCv::find($cvItem->id);
             if(!empty($customer_cv)){
+                $customer_cv->stopped_on_step=6;
+                $customer_cv->save();
                 self::updateSummaryContent($customer_cv,$data['summary_content'] ?? '');
                 self::deleteOldSummaries($customer_cv);
                 if(isset($data['summaries_ids'])){
@@ -210,6 +217,8 @@ class CVService
         if (!empty($cvItem)) {
             $customer_cv=CustomerCv::find($cvItem->id);
             if(!empty($customer_cv)){
+                $customer_cv->stopped_on_step=5;
+                $customer_cv->save();
                 self::updateSkillsContent($customer_cv,$data['skills_content'] ?? '');
                 self::deleteOldSkills($customer_cv);
                 if(isset($data['skills_ids'])){
@@ -243,6 +252,8 @@ class CVService
         if (!empty($cvItem)) {
             $customer_cv=CustomerCv::find($cvItem->id);
             if(!empty($customer_cv)) {
+                $customer_cv->stopped_on_step=4;
+                $customer_cv->save();
                 self::deleteOldCourses($customer_cv);
                 foreach ($data as $course) {
                     CustomerCvCourse::create([
@@ -271,6 +282,8 @@ class CVService
         if (!empty($cvItem)) {
             $customer_cv=CustomerCv::find($cvItem->id);
             if(!empty($customer_cv)) {
+                $customer_cv->stopped_on_step=3;
+                $customer_cv->save();
                 self::deleteOldCEducations($customer_cv);
                 foreach ($data as $education) {
                     CustomerCvEducation::create([
@@ -304,6 +317,8 @@ class CVService
         if (!empty($cvItem)) {
             $customer_cv=CustomerCv::find($cvItem->id);
             if(!empty($customer_cv)){
+                $customer_cv->stopped_on_step=2;
+                $customer_cv->save();
                 self::deleteOldCProjects($customer_cv);
                 foreach ($data as $project) {
                     CustomerCvProject::create([
@@ -332,6 +347,8 @@ class CVService
         $cvItem = self::getCVItem();
         $customer_cv=CustomerCv::find($cvItem->id);
         if(!empty($customer_cv)){
+            $customer_cv->stopped_on_step=1;
+            $customer_cv->save();
             self::deleteOldCVWorkHistory($customer_cv);
             foreach ($data as $work) {
                 CustomerCvWorkHistory::create([
@@ -355,11 +372,16 @@ class CVService
         return true;
     }
     public static function updatePersonalInformation($id,$data){
+        $subscription_id=0;
+        if(Auth::guard('customer')->user()->getActiveSubscription()!=null){
+            $subscription_id= Auth::guard('customer')->user()->getActiveSubscription()->id;
+        }
       return CustomerCv::where('id',$id)->update([
             'template_id' => session('chosen_template_id'),
             'template_color' => session('chosen_cv_color'),
             'cv_language' => session('chosen_cv_language'),
             'customer_id' => Auth::guard('customer')->user()->id,
+            'subscription_id'=>$subscription_id,
             'first_name' => $data['first_name'],
             'first_name_ar' => $data['first_name_ar'] ?? '',
             'surename' => $data['surename'],
@@ -384,8 +406,12 @@ class CVService
     public static function storePersonalInformation($data)
     {
         $customer_id = 0;
+        $subscription_id=0;
         if (Auth::guard('customer')->check()) {
             $customer_id = Auth::guard('customer')->user()->id;
+            if(Auth::guard('customer')->user()->getActiveSubscription()!=null){
+                $subscription_id= Auth::guard('customer')->user()->getActiveSubscription()->id;
+            }
         }
         if (self::checkChosenCVSetting()) {
             $customerCV = CustomerCv::create([
@@ -393,6 +419,7 @@ class CVService
                 'template_color' => session('chosen_cv_color'),
                 'cv_language' => session('chosen_cv_language'),
                 'customer_id' => $customer_id,
+                'subscription_id'=>$subscription_id,
                 'first_name' => $data['first_name'],
                 'first_name_ar' => $data['first_name_ar'] ?? '',
                 'surename' => $data['surename'],
@@ -412,6 +439,7 @@ class CVService
                 'website' => $data['website'] ?? '',
                 'driving_licence' => $data['driving_licence'] ?? '',
                 'nationality' => $data['nationality'] ?? '',
+                'stopped_on_step'=>0
             ]);
             return $customerCV;
         }
@@ -435,5 +463,26 @@ class CVService
         unset($data['step']);
         return $data;
     }
-
+    public static function deleteAllRelatedDataToCV($cv){
+        try{
+            if(count($cv->customer_cv_work_history))
+            $cv->customer_cv_work_history()->delete();
+            if(count($cv->customer_cv_project))
+            $cv->customer_cv_project()->delete();
+            if(count($cv->customer_cv_education))
+            $cv->customer_cv_education()->delete();
+            if(count($cv->customer_cv_course))
+            $cv->customer_cv_course()->delete();
+            if(count($cv->customer_cv_skill))
+            $cv->customer_cv_skill()->delete();
+            if(count($cv->customer_cv_summery))
+            $cv->customer_cv_summery()->delete();
+            if(count($cv->customer_cv_language))
+            $cv->customer_cv_language()->delete();
+            return true;
+        }catch (\Exception $exception){
+//            return $exception->getMessage();
+            return false;
+        }
+    }
 }
