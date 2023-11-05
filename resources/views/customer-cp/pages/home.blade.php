@@ -16,7 +16,7 @@
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
-                  <h5>MY CVs</h5>
+                  <h5>My latest cvs</h5>
                         <div class="table-responsive">
                             <table class="table table-centered table-nowrap mb-0">
                                 <thead>

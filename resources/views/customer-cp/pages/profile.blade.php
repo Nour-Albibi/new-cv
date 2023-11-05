@@ -13,7 +13,7 @@
 
 
     <div class="row">
-        <div class="col-lg-10">
+        <div class="col-lg-8 center">
             <div class="card">
                 <div class="card-body">
                     <div class="px-2 py-3">
@@ -21,33 +21,39 @@
                             <a href="{{url('/')}}">
                                 <img src="{{asset('customers-auth/assets/images/b-logo.png')}}" height="22" alt="logo" loading="lazy">
                             </a>
-                            <h5 class="text-primary2 mb-2 mt-4">Free Register!</h5>
-                            <p class="text-muted">Get your free Nfbaitc account now.</p>
+                            <h5 class="text-primary2 mb-2 mt-4">My profile</h5>
+
                             @if($errors->any())
-                                <h4>{{$errors->first()}}</h4>
+                            <div class="alert alert-danger">
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                            </div>
                             @endif
                         </div>
-                        <form class="form-horizontal mt-4 pt-2" action="{{route('customer.signup')}}" method="post">
+                        <form class="form-horizontal mt-4 pt-2" action="{{route('customer.update_profile')}}" method='post'>
                             @csrf
+                            @method('put')
                             <div class="mb-3">
+
                                 <label for="first_name">First Name</label>
-                                <input type="text" class="form-control" id="first_name" placeholder="First Name" name="first_name">
+                                <input type="text" class="form-control" value="{{ old('first_name', Auth::guard('customer')->user()->first_name) }}" id="first_name" placeholder="First Name" name="first_name">
                             </div>
                             <div class="mb-3">
                                 <label for="last_name">Last Name</label>
-                                <input type="text" class="form-control" id="last_name" placeholder="Last Name" name="last_name">
+                                <input type="text" value="{{ old('last_name', Auth::guard('customer')->user()->last_name) }}" class="form-control" id="last_name" placeholder="Last Name" name="last_name">
                             </div>
                             <div class="mb-3">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                                <input type="email" value="{{ old('email', Auth::guard('customer')->user()->email) }}" class="form-control" id="email" placeholder="Enter email" name="email">
                             </div>
                             <div class="mb-3">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
+                                <input type="text" value="{{old('username', Auth::guard('customer')->user()->username) }}" class="form-control" id="username" placeholder="Enter username" name="username">
                             </div>
                             <div class="mb-3">
                                 <label for="userpassword">Password</label>
-                                <input type="password" class="form-control" id="userpassword" placeholder="Enter password" name="password">
+                                <input type="password"  class="form-control" id="userpassword" placeholder="new password?" name="password">
                             </div>
                             <div class="mb-3">
                                 <label for="userpassword">Confirm Password</label>
@@ -55,21 +61,11 @@
                             </div>
 
                             <div class="mt-4">
-                                <button class="btn btn-primary2 w-100 waves-effect waves-light" type="submit">Register</button>
+                                <button class="btn btn-primary2 w-100 waves-effect waves-light" type="submit">Save</button>
                             </div>
-                            <div class="mt-4 text-center">
-                                <p class="mb-0">By registering you agree to the Nfbaitc <a href="#" class="text-primary2">Terms of Use</a></p>
-                                <!---->
-                                <div class="seperator"><b>or</b></div>
-                                <p style="text-align: center;">Sign Up with your social media account</p>
-                                <!-- Social login buttons -->
-                                <div class="social-icon">
-                                    <button type="button" style="background-color: #024a53;"><i class="fa fa-google" ></i></button>
-                                    <button type="button" style="background-color: #024a53;"><i class="fa fa-facebook"></i></button>
-                                </div>
-                            </div>
+
                         </form>
-                        <p style="text-align: center;margin-top: 1rem;">{{__('you have an account ?')}} <a href="{{route('customer.login')}}" class="fw-bold text-primary2"> {{__('Sign in')}}</a> </p>
+
                     </div>
                 </div>
             </div>

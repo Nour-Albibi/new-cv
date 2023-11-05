@@ -18,5 +18,6 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/subscriptions/{subscription}', [CSubscriptionController::class, 'showsubscription'])->name('customer.subscriptions.show');
         Route::get('/cvs', [CustomerCvController::class, 'CVs'])->name('customer.CVs');
         Route::get('/downloadcv/{cv}', [CVController::class, 'DownloadCV'])->name('customer.downloadCV');
-        Route::get('/{customer}', [CustomerController::class, 'edit'])->name('customer.myprofile');
+        Route::get('/profile', [CustomerController::class, 'profile'])->name('customer.myprofile');
+        Route::put('/profile', [CustomerController::class, 'update_profile'])->name('customer.update_profile');
 });
