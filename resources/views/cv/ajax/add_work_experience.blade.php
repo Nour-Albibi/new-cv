@@ -1,4 +1,4 @@
-<x-cv.tiny_editor_js></x-cv.tiny_editor_js>
+{{--<x-cv.tiny_editor_js></x-cv.tiny_editor_js>--}}
 <div id="added_work_{{$new_work_num}}">
 <div id="wpforms-626-field_5-container" class="wpforms-field wpforms-field-html wpforms-two-thirds wpforms-first" data-field-id="5">
     <div id="wpforms-626-field_5">
@@ -105,27 +105,27 @@
     <div class="wpforms-field wpforms-field-text">
         <label class="wpforms-field-label"
                for="wpforms-488-field_4">{{__('Job Description')}}</label>
-        <script>
-            tinymce.init({
-                selector: '{{"work_".$new_work_num."_editor"}}',
-                plugins: 'codesample lists  wordcount advlist fullscreen',
-                menubar: '',
-                toolbar: 'undo redo | fontfamily | fontsize | forecolor backcolor  ltr rtl|  bold italic underline  | align lineheight | numlist bullist indent outdent',
-            });
-        </script>
-        <style>
-            .tox .tox-edit-area__iframe {
-                background-color: #fff !important;
-            }
+{{--        <script>--}}
+{{--            tinymce.init({--}}
+{{--                selector: '{{"work_".$new_work_num."_editor"}}',--}}
+{{--                plugins: 'codesample lists  wordcount advlist fullscreen',--}}
+{{--                menubar: '',--}}
+{{--                toolbar: 'undo redo | fontfamily | fontsize | forecolor backcolor  ltr rtl|  bold italic underline  | align lineheight | numlist bullist indent outdent',--}}
+{{--            });--}}
+{{--        </script>--}}
+{{--        <style>--}}
+{{--            .tox .tox-edit-area__iframe {--}}
+{{--                background-color: #fff !important;--}}
+{{--            }--}}
 
-            .tox-statusbar {
-                display: none !important;
-            }
+{{--            .tox-statusbar {--}}
+{{--                display: none !important;--}}
+{{--            }--}}
 
-            .tox-toolbar__primary {
-                justify-content: space-around;
-            }
-        </style>
+{{--            .tox-toolbar__primary {--}}
+{{--                justify-content: space-around;--}}
+{{--            }--}}
+{{--        </style>--}}
         <textarea id="{{"work_".$new_work_num."_editor"}}" class="wpforms-field-large work_ed works_textarea"
                   name="work_{{$new_work_num}}[experience_description_{{$cv_lang}}]"></textarea>
 

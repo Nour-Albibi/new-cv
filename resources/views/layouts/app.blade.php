@@ -267,11 +267,6 @@
 <script src="{{asset('assets/js/underscore.min.js?ver=1.13.4')}}"
         id="underscore-js"></script>
 <script src="{{asset('assets/js/wp-util.min.js?ver=6.3.1')}}" id="wp-util-js"></script>
-{{--<script id="wp-util-js-extra">var _wpUtilSettings = {"ajax": {"url":"http://localhost/cv/public/cv-builder/uploadFile"}};</script>--}}
-{{--<script id="wpforms-elementor-js-extra">var wpformsElementorVars = {--}}
-{{--        "captcha_provider": "recaptcha",--}}
-{{--        "recaptcha_type": "v2"--}}
-{{--    };</script>--}}
 <script
     src="{{asset('assets/plugins/wpforms/assets/js/integrations/elementor/frontend.min.js?ver=1.6.7')}}"
     id="wpforms-elementor-js"></script>

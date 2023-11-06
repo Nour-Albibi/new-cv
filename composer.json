@@ -13,6 +13,7 @@
         "intervention/image": "^2.7",
         "irisvn/media-manager": "dev-master",
         "jackiedo/cart": "^3.0",
+        "laravel-admin-ext/chartjs": "^1.0",
         "laravel-admin-ext/helpers": "1.*",
         "laravel-admin-ext/log-viewer": "^1.0",
         "laravel-admin-ext/scheduling": "^1.2",

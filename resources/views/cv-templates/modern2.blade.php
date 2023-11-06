@@ -9,6 +9,14 @@
     <link href="{{asset('cv-templates/css/modern.css')}}" rel="stylesheet"/>
     <!--Custom CSS-->
 </head>
+<style>
+    .col-personal{
+        background-color: {{$cv->template_color ?? "#496267"}} !important;
+    }
+    .main-title{
+        color:{{$cv->template_color ?? "#496267"}} !important;
+    }
+</style>
 <body>
 <div class="Home">
     <table class="width100">
@@ -20,7 +28,7 @@
                     @if(!empty($cv->image))
                         <tr>
                             <td>
-                                <img class="personal-image" src="{{asset('uploads/'.$cv->image)}}" width="168"
+                                <img class="personal-image" src="{{asset('files/uploads/'.$cv->image)}}" width="168"
                                      height="168"
                                      loading="lazy"/>
                             </td>
@@ -95,7 +103,7 @@
                     @endif
                 </table>
             </td>
-            <td class="col-main" style="width:76%;border:1px solid red;height:100%;">
+            <td class="col-main" style="width:76%;height:100%;">
                 <table class="width100">
                     <tr class="width100">
                         <td class="width100">
@@ -151,15 +159,15 @@
                                         <div class="section-description mt-15 experience-item">
                                             <div
                                                 style="display:flex;/*justify-content: space-between;*/ margin-bottom: 4px;">
-                                                <table class="" style="width: 95%">
+                                                <table class="" style=" width: 95%">
                                                     <tr class="width100">
                                                         <td>
                                                             <p class="strong"
                                                                style="max-width:285px">{{$work->{"job_title_".$lang} }}</p>
                                                         </td>
-                                                        <td style="width: 50%">
+                                                        <td style="width: 50%;">
                                                             <p class="strong"
-                                                               style=";text-align:right;;">{{ date("m-Y",strtotime($work->start_date))}} {{__('to')}}
+                                                               style=";text-align:center;">{{ date("m-Y",strtotime($work->start_date))}} {{__('to')}}
                                                                 {{date("m-Y",strtotime($work->end_date))}}
                                                             </p>
                                                         </td>
@@ -167,20 +175,20 @@
                                                 </table>
                                             </div>
 
-                                            {{--                    <p>{!! $work->{"experience_description_".$lang } !!}</p>--}}
-                                            <ul class="work-duties mt-16 main-list ">
-                                                <li>Led operations involved in running the brand including Marketing,
-                                                    IT, HR/training, development/construction, property and P&L for 200
-                                                    store locations.
-                                                </li>
-                                                <li>Oversaw operations for all regional company and franchise
-                                                    locations.
-                                                </li>
-                                                <li>
-                                                    Assessed profitability of existing company processes to determine
-                                                    optimum organisational structure for maximum revenue growth.
-                                                </li>
-                                            </ul>
+                                            <p>{!! $work->{"experience_description_".$lang } !!}</p>
+{{--                                            <ul class="work-duties mt-16 main-list ">--}}
+{{--                                                <li>Led operations involved in running the brand including Marketing,--}}
+{{--                                                    IT, HR/training, development/construction, property and P&L for 200--}}
+{{--                                                    store locations.--}}
+{{--                                                </li>--}}
+{{--                                                <li>Oversaw operations for all regional company and franchise--}}
+{{--                                                    locations.--}}
+{{--                                                </li>--}}
+{{--                                                <li>--}}
+{{--                                                    Assessed profitability of existing company processes to determine--}}
+{{--                                                    optimum organisational structure for maximum revenue growth.--}}
+{{--                                                </li>--}}
+{{--                                            </ul>--}}
                                         </div>
                                     </td>
                                 </tr>
@@ -203,7 +211,7 @@
                                             </td>
                                             <td style="width: 50%">
                                                 <p class="strong"
-                                                   style="text-align: right">@if(!empty($project->start_date)){{ date("m-Y",strtotime($project->start_date))}}  @endif
+                                                   style="text-align: center">@if(!empty($project->start_date)){{ date("m-Y",strtotime($project->start_date))}}  @endif
                                                     @if(!empty($project->end_date)) {{__('to')}} {{date("m-Y",strtotime($project->end_date))}} @endif</p>
                                             </td>
                                         </tr>

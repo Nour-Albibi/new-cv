@@ -57,7 +57,7 @@
                                             class="wpforms-field-large wpforms-smart-phone-field input_required"
                                             data-rule-smart-phone-field="true" required
                                             name="phone" placeholder="{{__('Phone')}}"
-                                            value="{{$addedItem->model->phone ?? ''}}">
+                                            value="{{$addedItem->model->phone ?? '+966'}}">
                                     </div>
                                     <div id="wpforms-412-field_5-container"
                                          class="wpforms-field wpforms-field-email wpforms-one-half"

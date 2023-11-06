@@ -294,10 +294,12 @@ function SetSummaryContent(){
     $('input[name=summary_content]').val(tinymce.get('wpforms-614-field_1').getContent());
 }
 function SetWorksContent(){
-        $('#work_history_form').find('textarea.works_textarea').each(function(){
+        /*$('#work_history_form').find('textarea.works_textarea').each(function(){
             this_id=$(this).attr('id');
             tinyMCE.get(this_id).save()
-        });
+        });*/
+	
+	$('#work_1_editor').html(tinymce.get('work_1_editor').getContent());
 
 }
 function storeCVData(step_num) {

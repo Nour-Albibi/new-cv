@@ -36,7 +36,7 @@ class CVController extends Controller
 
     public function create(Request $request)
     {
-        //resetAllSessions();
+//        resetAllSessions();
 
         if ($request->isMethod('post')) {
             $request->validate([
