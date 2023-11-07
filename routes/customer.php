@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerControllers\CSubscriptionController;
+use App\Http\Controllers\CustomerControllers\CustomerController;
 use App\Http\Controllers\CustomerControllers\CustomerCvController;
 use App\Http\Controllers\CVController;
 use Illuminate\Support\Facades\Route;
@@ -18,4 +18,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/subscriptions/{subscription}', [CSubscriptionController::class, 'showsubscription'])->name('customer.subscriptions.show');
         Route::get('/cvs', [CustomerCvController::class, 'CVs'])->name('customer.CVs');
         Route::get('/downloadcv/{cv}', [CVController::class, 'DownloadCV'])->name('customer.downloadCV');
+        Route::get('/views', [CustomerController::class, 'viewedmyCV'])->name('customer.viewedmyCV');
+        Route::get('/profile', [CustomerController::class, 'profile'])->name('customer.myprofile');
+        Route::put('/profile', [CustomerController::class, 'update_profile'])->name('customer.update_profile');
 });

@@ -16,7 +16,7 @@
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
-                  <h5>MY CVs</h5>
+                  <h5>My latest cvs</h5>
                         <div class="table-responsive">
                             <table class="table table-centered table-nowrap mb-0">
                                 <thead>
@@ -47,10 +47,7 @@
                                                                 <button type="button" class="btn btn-primary waves-effect waves-light" onclick="window.location.href='{{ route('customer.downloadCV',$cv) }}';">Download <i class="fas fa-arrow-down"></i></button>
                                                             </td>
 
-                                                            <td>
-                                                                <i class="fas fa-pen"></i>
-                                                                <i class="fas fa-trash-alt text-danger"></i>
-                                                            </td>
+
 
 
                                                         </tr>

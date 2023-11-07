@@ -64,7 +64,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="view-cv.html" class=" waves-effect">
+                    <a href="{{ route('customer.viewedmyCV') }}" class=" waves-effect">
                         <i class="dripicons-calendar"></i>
                         <span style="font-size: small;">Viewed my CV</span>
                     </a>
