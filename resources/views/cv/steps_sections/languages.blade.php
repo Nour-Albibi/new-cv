@@ -114,52 +114,52 @@
             </div>
         </div>
     </section>
-    <section data-particle_enable="false" data-particle-mobile-disabled="false"
-             class="elementor-section elementor-inner-section elementor-element elementor-element-5a200ce elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-glass-effect-no exad-sticky-section-no"
-             data-id="5a200ce" data-element_type="section"
-             data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-        <div class="elementor-container elementor-column-gap-custom">
-            <div
-                class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-0385184 exad-glass-effect-no exad-sticky-section-no"
-                data-id="0385184" data-element_type="column">
-                <div class="elementor-widget-wrap elementor-element-populated">
-                    <div
-                        class="elementor-element elementor-element-63f1253 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-progress"
-                        data-id="63f1253" data-element_type="widget"
-                        data-widget_type="progress.default">
-                        <div class="elementor-widget-container">
-                            <span class="elementor-title">English</span>
-                            <div class="elementor-progress-wrapper" role="progressbar" aria-valuemin="0"
-                                 aria-valuemax="100" aria-valuenow="50"
-                                 aria-valuetext="50% (Elementary)">
-                                <div class="elementor-progress-bar" data-max="50">
-                                    <span class="elementor-progress-text">Elementary</span>
-                                    <span class="elementor-progress-percentage">50%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div
-                class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-46e1689 exad-glass-effect-no exad-sticky-section-no"
-                data-id="46e1689" data-element_type="column">
-                <div class="elementor-widget-wrap elementor-element-populated">
-                    <div
-                        class="elementor-element elementor-element-856cf9a elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
-                        data-id="856cf9a" data-element_type="widget" data-widget_type="icon.default">
-                        <div class="elementor-widget-container">
-                            <div class="elementor-icon-wrapper">
-                                <div class="elementor-icon elementor-animation-bounce-in">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+{{--    <section data-particle_enable="false" data-particle-mobile-disabled="false"--}}
+{{--             class="elementor-section elementor-inner-section elementor-element elementor-element-5a200ce elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-glass-effect-no exad-sticky-section-no"--}}
+{{--             data-id="5a200ce" data-element_type="section"--}}
+{{--             data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">--}}
+{{--        <div class="elementor-container elementor-column-gap-custom">--}}
+{{--            <div--}}
+{{--                class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-0385184 exad-glass-effect-no exad-sticky-section-no"--}}
+{{--                data-id="0385184" data-element_type="column">--}}
+{{--                <div class="elementor-widget-wrap elementor-element-populated">--}}
+{{--                    <div--}}
+{{--                        class="elementor-element elementor-element-63f1253 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-progress"--}}
+{{--                        data-id="63f1253" data-element_type="widget"--}}
+{{--                        data-widget_type="progress.default">--}}
+{{--                        <div class="elementor-widget-container">--}}
+{{--                            <span class="elementor-title">English</span>--}}
+{{--                            <div class="elementor-progress-wrapper" role="progressbar" aria-valuemin="0"--}}
+{{--                                 aria-valuemax="100" aria-valuenow="50"--}}
+{{--                                 aria-valuetext="50% (Elementary)">--}}
+{{--                                <div class="elementor-progress-bar" data-max="50">--}}
+{{--                                    <span class="elementor-progress-text">Elementary</span>--}}
+{{--                                    <span class="elementor-progress-percentage">50%</span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div--}}
+{{--                class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-46e1689 exad-glass-effect-no exad-sticky-section-no"--}}
+{{--                data-id="46e1689" data-element_type="column">--}}
+{{--                <div class="elementor-widget-wrap elementor-element-populated">--}}
+{{--                    <div--}}
+{{--                        class="elementor-element elementor-element-856cf9a elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"--}}
+{{--                        data-id="856cf9a" data-element_type="widget" data-widget_type="icon.default">--}}
+{{--                        <div class="elementor-widget-container">--}}
+{{--                            <div class="elementor-icon-wrapper">--}}
+{{--                                <div class="elementor-icon elementor-animation-bounce-in">--}}
+{{--                                    <i class="fa fa-pencil" aria-hidden="true"></i>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
     <section data-particle_enable="false" data-particle-mobile-disabled="false"
              class="language_s_tab elementor-section elementor-inner-section elementor-element elementor-element-1fa1ff15 exad-glass-effect-yes elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-sticky-section-no"
              data-id="1fa1ff15" data-element_type="section"
@@ -227,13 +227,13 @@
                                                                 id="wpforms-626-field_3" class="wpforms-field-large"
                                                                 name="language_{{$i}}[level_{{$cv_lang}}]">
                                                                 <option value="">{{__('Select Level')}}</option>
-                                                                <option value="1">{{__('Beginner')}}</option>
-                                                                <option value="2">{{__('Elementary')}}</option>
-                                                                <option value="3">{{__('Intermediate')}}</option>
-                                                                <option value="4">{{__('Upper intermediate')}}</option>
-                                                                <option value="5">{{__('Advanced')}}</option>
-                                                                <option value="6">{{__('Fluent')}}</option>
-                                                                <option value="7">{{__('Native')}}</option>
+                                                                <option value="Beginner">{{__('Beginner')}}</option>
+                                                                <option value="Elementary">{{__('Elementary')}}</option>
+                                                                <option value="Intermediate">{{__('Intermediate')}}</option>
+                                                                <option value="UpperIntermediate">{{__('Upper intermediate')}}</option>
+                                                                <option value="Advanced">{{__('Advanced')}}</option>
+                                                                <option value="Fluent">{{__('Fluent')}}</option>
+                                                                <option value="Native">{{__('Native')}}</option>
                                                             </select>
                                                         </div>
                                                         <div id="wpforms-626-field_4-container"
