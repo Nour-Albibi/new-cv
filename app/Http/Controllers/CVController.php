@@ -27,6 +27,7 @@ class CVController extends Controller
                 'cvTemplate' => ['required'],
             ]);
             Session::put(['chosen_template_id' => $request->cvTemplate, 'chosen_cv_color' => $request->cvColor]);
+            CVService::syncColorAndTemplateToCurrentCV();
             return view('cv.start2');
         } else {
             $cvTemplates = CVService::getCVTemplates();
@@ -48,6 +49,9 @@ class CVController extends Controller
 //        if (Auth::guard('customer')->check() && !empty($addedItem)) {
 //            Auth::guard('customer')->user()->deleteLatestFakeAttemptCreatedCV($addedItem->id);
 //        }
+        if(!empty($addedItem)){
+            CVService::syncCVLanguage($addedItem->id);
+        }
         if (Auth::guard('customer')->check() && empty($addedItem)) {
             if(!Auth::guard('customer')->user()->has_active_subscription()){
                 $subscription_id=0;
@@ -56,6 +60,10 @@ class CVController extends Controller
             }
             $customerCV = Auth::guard('customer')->user()->getLatestStoredCV($subscription_id);
             if($customerCV!=null){
+                if(!empty(session('chosen_cv_language'))){
+                    $customerCV->cv_language=session('chosen_cv_language');
+                    $customerCV->save();
+                }
                 CVService::addStoredCVinCart($customerCV);
                 $addedItem=CVService::getCVItem();
                 Session::put('show_confirm',1);

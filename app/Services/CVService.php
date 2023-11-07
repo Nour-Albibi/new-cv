@@ -32,6 +32,16 @@ class CVService
         CustomerCv::where('id',$cvItem->id)->update(['customer_id'=>Auth::guard('customer')->user()->id]);
         Session::forget('redirect_after_login');
     }
+    public static function syncColorAndTemplateToCurrentCV(){
+        $cvItem=self::getCVItem();
+        if(!empty($cvItem)){
+            CustomerCv::where('id',$cvItem->id)->update(['template_color'=>session('chosen_cv_color')
+                ,'template_id'=>session('chosen_template_id')]);
+        }
+    }
+    public static function syncCVLanguage($id){
+        CustomerCv::where('id',$id)->update(['cv_language'=>session('chosen_cv_language')]);
+    }
     public static function ResetCVDataForCreateNew(){
         session('current_step_num',0);
         Session::forget('customer_cv_data');
