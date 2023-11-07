@@ -13,7 +13,7 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5>Viewed MY CV</h5>
+                            <h5>MY CVs</h5>
                             <div class="table-responsive">
                                 <table class="table table-centered table-nowrap mb-0">
                                     <thead>

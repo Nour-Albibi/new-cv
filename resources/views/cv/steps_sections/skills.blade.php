@@ -84,7 +84,7 @@
                                          class="wpforms-field wpforms-field-text wpforms-one-half wpforms-first"
                                          data-field-id="2">
                                         <label class="wpforms-field-label"
-                                               for="wpforms-591-field_2">{{_('Search for pre-written examples')}}</label>
+                                               for="wpforms-591-field_2">{{__('Search for pre-written examples')}}</label>
                                         <input type="text" id="wpforms-591-field_2" class="wpforms-field-large"
                                                                    name="search_skills_job_title"
                                                                    placeholder="{{__('Search Skills for Specific Job Title')}}">

@@ -46,4 +46,7 @@ class CustomerCv extends Model implements UseCartable
     public function customer_cv_professional_summary(){
         return CustomerCvSummery::where('customer_cv_id',$this->id)->latest()->first();
     }
+    public function views(){
+        return $this->hasMany('App\Models\View','cv_id');
+    }
 }

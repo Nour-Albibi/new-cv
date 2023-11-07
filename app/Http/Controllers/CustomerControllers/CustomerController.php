@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\Customer;
 use App\Models\CustomerCv;
+use App\Models\Subscription;
+use Encore\Admin\Form\Builder;
+use Illuminate\Contracts\Database\Query\Builder as QueryBuilder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -16,9 +19,17 @@ class CustomerController extends Controller
 {
     public function dashboard(){
 
-        $user_id=Auth::guard('customer')->user()->id;
-        //dd ($user_id);
-
+        $user_id=Auth::guard('customer')->user()->count();
+        $allcvs =CustomerCv::where('customer_id',$user_id)->get();
+        // dd (count(CustomerCv::where('customer_id',$user_id)->where('views','>','0')->get()));
+        if(count(CustomerCv::where('customer_id',$user_id)->where('views','>','0')->get())>=1)
+        {
+            // dd('hi');
+            $cvs =CustomerCv::where('customer_id',$user_id)->where('views','>','0')->orderByDesc('views')->take(3)->get();
+            $subscription=Subscription::where('user_id',$user_id)->where('status','2')->first();
+            // dd ($subscription);
+            return view('customer-cp.cvs.viewdmyCV',compact('cvs','subscription'));
+        }
         $cvs =CustomerCv::where('customer_id',$user_id)->orderBy('created_at')->take(3)->get();
         return view('customer-cp.pages.home',compact('cvs'));
     }
@@ -49,7 +60,9 @@ class CustomerController extends Controller
      public function viewedmyCV(){
 
         $user_id=Auth::guard('customer')->user()->id;
-        $cvs =CustomerCv::where('customer_id',$user_id)->get();
-        return view('customer-cp.pages.viewdmyCV',compact('cvs'));
+        $cvs =CustomerCv::where('customer_id',$user_id)->where('views','>','0')->get();
+        return view('customer-cp.cvs.viewdmyCV',compact('cvs'));
     }
+
+
 }

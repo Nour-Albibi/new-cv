@@ -50,6 +50,10 @@ class Customer extends Authenticatable
         return $this->hasMany('App\Models\Invoice', 'customer_id');
     }
 
+    public function views(){
+        return $this->hasMany('App\Models\View','customer_id');
+    }
+
     public function syncCV($cv_id)
     {
         CustomerCv::where('id', $cv_id)->update(['customer_id' => $this->id]);

@@ -47,10 +47,7 @@
                                                                 <button type="button" class="btn btn-primary waves-effect waves-light" onclick="window.location.href='{{ route('customer.downloadCV',$cv) }}';">Download <i class="fas fa-arrow-down"></i></button>
                                                             </td>
 
-                                                            <td>
-                                                                <i class="fas fa-pen"></i>
-                                                                <i class="fas fa-trash-alt text-danger"></i>
-                                                            </td>
+
 
 
                                                         </tr>
