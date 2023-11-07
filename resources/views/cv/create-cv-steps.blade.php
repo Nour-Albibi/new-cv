@@ -234,6 +234,10 @@
     </script>
     <script>
         var currentTab = {{session('current_step_num') ?? 0}};
+        @if(!empty($addedItem) && count($addedItem->model->customer_cv_work_history)) var current_workExperience={{count($addedItem->model->customer_cv_work_history)}};
+            @else
+        var  current_workExperience=1;
+        @endif
     </script>
     <script src="{{asset('assets/js/cv.js')}}"></script>
 

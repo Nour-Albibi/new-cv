@@ -37,22 +37,23 @@
         <textarea name="project_{{$new_project_num}}[description_{{$cv_lang}}]"  class="wpforms-field-large"
          placeholder="{{__('DESCRIPTION OF WORK ON THE PROJECT')}}"></textarea>
     </div>
-    <div id="wpforms-519-field_4-container"
-         class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
-         data-field-id="4">
-        <label class="wpforms-field-label"
-               for="wpforms-519-field_4">START DATE</label>
-        <div class="wpforms-datepicker-wrap">
-            <input type="date" id="wpforms-519-field_4"
-                   class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
-                   data-date-format="m/d/Y"
-                   data-disable-past-dates="0" data-input="true"
-                   input_name="project_start_date"
-                   project_num="{{$new_project_num}}"
-                   name="project_{{$new_project_num}}[start_date]">
+    <div class="dates_container">
+        <div id="wpforms-519-field_4-container"
+             class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
+             data-field-id="4">
+            <label class="wpforms-field-label"
+                   for="wpforms-519-field_4">{{__('START DATE')}}</label>
+            <div class="wpforms-datepicker-wrap">
+                <input type="date" id="wpforms-519-field_4"
+                       class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                       data-date-format="m/d/Y"
+                       data-disable-past-dates="0" data-input="true"
+                       input_name="project_start_date"
+                       project_num="{{$new_project_num}}"
+                       name="project_{{$new_project_num}}[start_date]">
+            </div>
         </div>
-    </div>
-    <div id="wpforms-519-field_5-container"
+        <div id="wpforms-519-field_5-container"
          class="wpforms-field wpforms-field-date-time wpforms-one-half"
          data-field-id="5">
         <label class="wpforms-field-label"
@@ -66,6 +67,7 @@
                    project_num="{{$new_project_num}}"
                    name="project_{{$new_project_num}}[end_date]">
         </div>
+    </div>
     </div>
 </div>
 </div>

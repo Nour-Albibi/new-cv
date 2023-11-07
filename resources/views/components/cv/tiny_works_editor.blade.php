@@ -4,6 +4,7 @@
         plugins: 'codesample lists  wordcount advlist fullscreen',
         menubar: '',
         toolbar: 'undo redo | fontfamily | fontsize | forecolor backcolor  ltr rtl|  bold italic underline  | align lineheight | numlist bullist indent outdent',
+        // inline:true
     });
 </script>
 <style>

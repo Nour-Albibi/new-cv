@@ -60,6 +60,7 @@
                                                            name="course_{{$i}}[trainer_{{$cv_lang}}]"
                                                            placeholder="{{__('The entity responsible for the course')}}" value="{{$course->{"trainer_".$cv_lang } }}">
                                                 </div>
+                                                <div class="dates_container">
                                                 <div id="wpforms-568-field_3-container"
                                                      class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
                                                      data-field-id="3">
@@ -90,6 +91,7 @@
                                                                name="course_{{$i}}[end_date]" value="{{Illuminate\Support\Carbon::parse($course->end_date)->toDateString()}}">
                                                     </div>
                                                 </div>
+                                                </div>
                                             </div>
                                             @php $i++; @endphp
                                         @endforeach
@@ -111,22 +113,23 @@
                                                                              name="course_1[trainer_{{$cv_lang}}]"
                                                                              placeholder="The entity responsible for the course">
                                             </div>
-                                            <div id="wpforms-568-field_3-container"
-                                                 class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
-                                                 data-field-id="3">
-                                                <label class="wpforms-field-label"
-                                                       for="wpforms-568-field_3">{{__('START DATE')}}</label>
-                                                <div class="wpforms-datepicker-wrap">
-                                                    <input type="date" id="wpforms-568-field_3"
-                                                           class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
-                                                           data-date-format="m/d/Y"
-                                                           data-disable-past-dates="0" data-input="true"
-                                                           input_name="course_start_date"
-                                                           course_num="1"
-                                                           name="course_1[start_date]">
+                                            <div class="dates_container">
+                                                <div id="wpforms-568-field_3-container"
+                                                     class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
+                                                     data-field-id="3">
+                                                    <label class="wpforms-field-label"
+                                                           for="wpforms-568-field_3">{{__('START DATE')}}</label>
+                                                    <div class="wpforms-datepicker-wrap">
+                                                        <input type="date" id="wpforms-568-field_3"
+                                                               class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                               data-date-format="m/d/Y"
+                                                               data-disable-past-dates="0" data-input="true"
+                                                               input_name="course_start_date"
+                                                               course_num="1"
+                                                               name="course_1[start_date]">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div id="wpforms-568-field_4-container"
+                                                <div id="wpforms-568-field_4-container"
                                                  class="wpforms-field wpforms-field-date-time wpforms-one-half"
                                                  data-field-id="4">
                                                 <label class="wpforms-field-label"
@@ -140,6 +143,7 @@
                                                            course_num="1"
                                                            name="course_1[end_date]">
                                                 </div>
+                                            </div>
                                             </div>
                                         </div>
                                     @endif

@@ -1,4 +1,7 @@
-{{--<x-cv.tiny_editor_js></x-cv.tiny_editor_js>--}}
+<script src="https://cdn.tiny.cloud/1/8gvsyw0ovfyq7awcszb8qt4133wzpzvgr4mp1f5yg09jq23f/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
+
+<x-cv.tiny_editor_js></x-cv.tiny_editor_js>
 <div id="added_work_{{$new_work_num}}">
 <div id="wpforms-626-field_5-container" class="wpforms-field wpforms-field-html wpforms-two-thirds wpforms-first" data-field-id="5">
     <div id="wpforms-626-field_5">
@@ -59,6 +62,7 @@
             class="wpforms-field-large" name="work_{{$new_work_num}}[country_{{$cv_lang}}]"
             placeholder="COUNTY">
     </div>
+    <div class="dates_container">
     <div id="wpforms-488-field_5-container"
          class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
          data-field-id="5">
@@ -89,6 +93,7 @@
                    name="work_{{$new_work_num}}[end_date]">
         </div>
     </div>
+    </div>
     <div id="wpforms-488-field_7-container"
          class="wpforms-field wpforms-field-checkbox"
          data-field-id="7">
@@ -105,30 +110,24 @@
     <div class="wpforms-field wpforms-field-text">
         <label class="wpforms-field-label"
                for="wpforms-488-field_4">{{__('Job Description')}}</label>
-{{--        <script>--}}
-{{--            tinymce.init({--}}
-{{--                selector: '{{"work_".$new_work_num."_editor"}}',--}}
-{{--                plugins: 'codesample lists  wordcount advlist fullscreen',--}}
-{{--                menubar: '',--}}
-{{--                toolbar: 'undo redo | fontfamily | fontsize | forecolor backcolor  ltr rtl|  bold italic underline  | align lineheight | numlist bullist indent outdent',--}}
-{{--            });--}}
-{{--        </script>--}}
-{{--        <style>--}}
-{{--            .tox .tox-edit-area__iframe {--}}
-{{--                background-color: #fff !important;--}}
-{{--            }--}}
-
-{{--            .tox-statusbar {--}}
-{{--                display: none !important;--}}
-{{--            }--}}
-
-{{--            .tox-toolbar__primary {--}}
-{{--                justify-content: space-around;--}}
-{{--            }--}}
-{{--        </style>--}}
-        <textarea id="{{"work_".$new_work_num."_editor"}}" class="wpforms-field-large work_ed works_textarea"
-                  name="work_{{$new_work_num}}[experience_description_{{$cv_lang}}]"></textarea>
+        @php($editor_id="work_".$new_work_num."_editor")
+        @php($i=$new_work_num)
+        <x-cv.tiny_works_editor id="work_{{$new_work_num}}_editor"
+                                class="wpforms-field-large works_textarea"
+                                name="work_{{$new_work_num}}[experience_description_{{$cv_lang}}]"
+                                :i="$i"
+                                :selector="$editor_id"></x-cv.tiny_works_editor>
 
     </div>
 </div>
 </div>
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+</script>
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>--}}
+<script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=62e3f93cf0ce683fcdd5ff7d" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
