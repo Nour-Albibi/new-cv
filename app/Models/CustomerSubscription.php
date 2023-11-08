@@ -20,6 +20,6 @@ class CustomerSubscription extends Model
         return $this->hasOne(Invoice::class);
     }
     public function cancel(){
-        Subscription::where('id',$this->id)->update(['status',3]);
+        Subscription::where('id',$this->id)->update(['status'=>3]);
     }
 }

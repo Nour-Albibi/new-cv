@@ -153,9 +153,9 @@
                                         <label class="wpforms-field-label"
                                                for="wpforms-412-field_18">{{__('LINKEDIN')}}</label><input
                                             type="text" id="wpforms-412-field_18"
-                                            class="wpforms-field-large" name="linkedin"
+                                            class="wpforms-field-large" name="linkedlin_url"
                                             placeholder="{{__('LINKEDIN')}}"
-                                            value="{{$addedItem->model->linkedin ?? ''}}">
+                                            value="{{$addedItem->model->linkedlin_url ?? ''}}">
                                     </div>
                                     <div id="wpforms-412-field_20-container"
                                          class="wpforms-field wpforms-field-text wpforms-one-half"
