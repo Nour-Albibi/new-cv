@@ -19,19 +19,21 @@ class CustomerController extends Controller
 {
     public function dashboard(){
 
-        $user_id=Auth::guard('customer')->user()->count();
-        $allcvs =CustomerCv::where('customer_id',$user_id)->get();
+        $user_id=Auth::guard('customer')->user()->id;
+        $allcvs =CustomerCv::where('customer_id',$user_id)->count();
+        // dd($allcvs);
         // dd (count(CustomerCv::where('customer_id',$user_id)->where('views','>','0')->get()));
+        $subscription=Subscription::where('user_id',$user_id)->where('status','1')->first();
         if(count(CustomerCv::where('customer_id',$user_id)->where('views','>','0')->get())>=1)
         {
-            // dd('hi');
             $cvs =CustomerCv::where('customer_id',$user_id)->where('views','>','0')->orderByDesc('views')->take(3)->get();
-            $subscription=Subscription::where('user_id',$user_id)->where('status','2')->first();
-            // dd ($subscription);
-            return view('customer-cp.cvs.viewdmyCV',compact('cvs','subscription'));
+
+            return view('customer-cp.cvs.viewdmyCV',compact('cvs','subscription','allcvs'));
         }
+
+        // dd ($subscription);
         $cvs =CustomerCv::where('customer_id',$user_id)->orderBy('created_at')->take(3)->get();
-        return view('customer-cp.pages.home',compact('cvs'));
+        return view('customer-cp.pages.home',compact('cvs','subscription','allcvs'));
     }
 
     public function profile(){
@@ -61,7 +63,9 @@ class CustomerController extends Controller
 
         $user_id=Auth::guard('customer')->user()->id;
         $cvs =CustomerCv::where('customer_id',$user_id)->where('views','>','0')->get();
-        return view('customer-cp.cvs.viewdmyCV',compact('cvs'));
+        $allcvs =CustomerCv::where('customer_id',$user_id)->count();
+        $subscription=Subscription::where('user_id',$user_id)->where('status','1')->first();
+        return view('customer-cp.cvs.viewdmyCV',compact('cvs','allcvs','subscription'));
     }
 
 
