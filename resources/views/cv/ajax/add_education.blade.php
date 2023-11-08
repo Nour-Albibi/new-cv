@@ -110,8 +110,7 @@
         <ul id="wpforms-488-field_7">
             <li class="choice-1 depth-1">
                 <input type="checkbox" id="wpforms-488-field_7_1"
-                       name="education_{{$new_edu_num}}[current]"
-                       value="I currently work here"><label
+                       name="education_{{$new_edu_num}}[current]"><label
                     class="wpforms-field-label-inline"
                     for="wpforms-488-field_7_1">{{__('Current')}}</label>
             </li>

@@ -205,7 +205,6 @@
                                                                 <li class="choice-1 depth-1">
                                                                     <input type="checkbox" id="wpforms-488-field_7_1"
                                                                            name="work_{{$i}}[current]"
-                                                                           value="I currently work here"
                                                                            @if($work->current) checked @endif><label
                                                                         class="wpforms-field-label-inline"
                                                                         for="wpforms-488-field_7_1">{{__('I currently work here')}}</label>
@@ -308,8 +307,7 @@
                                                 <ul id="wpforms-488-field_7">
                                                     <li class="choice-1 depth-1">
                                                         <input type="checkbox" id="wpforms-488-field_7_1"
-                                                               name="work_1[current]"
-                                                               value="I currently work here"><label
+                                                               name="work_1[current]"><label
                                                             class="wpforms-field-label-inline"
                                                             for="wpforms-488-field_7_1">{{__('I currently work here')}}</label>
                                                     </li>
@@ -319,8 +317,6 @@
                                                  class="wpforms-field wpforms-field-text">
                                                 <label class="wpforms-field-label"
                                                        for="wpforms-488-field_4">{{__('Job Description')}}</label>
-                                                <textarea class="wpforms-field-large" name="work_1[experience_description_{{$cv_lang}}]"
-                                                          placeholder="{{__('Job Description')}}"></textarea>
                                                 @php($editor_id="work_1_editor")
                                                 @php($i=1)
                                                 <x-cv.tiny_works_editor id="work_1_editor"

@@ -295,8 +295,10 @@ class CVService
             if(!empty($customer_cv)) {
                 $customer_cv->stopped_on_step=3;
                 $customer_cv->save();
+                $current=0;
                 self::deleteOldCEducations($customer_cv);
                 foreach ($data as $education) {
+                    if(isset($education['current']))$current=1;
                     CustomerCvEducation::create([
                         'customer_cv_id' => $cvItem->id,
                         'institution_name_en' => $education['institution_name_en'] ?? '',
@@ -308,8 +310,9 @@ class CVService
                         'field_study_en' => $education['field_study_en'] ?? '',
                         'honours_ar' => $education['honours_ar'] ?? '',
                         'honours_en' => $education['honours_en'] ?? '',
-                        'start_date' => $education['start_date'] ?? '',
-                        'end_date' => $education['end_date'] ?? '',
+                        'start_date' => $education['start_date'] ?? null,
+                        'end_date' => $education['end_date'] ?? null,
+                        'current'=>$current
                     ]);
                 }
             }
@@ -361,7 +364,9 @@ class CVService
             $customer_cv->stopped_on_step=1;
             $customer_cv->save();
             self::deleteOldCVWorkHistory($customer_cv);
+            $current=0;
             foreach ($data as $work) {
+                if(isset($work['current']))$current=1;
                 CustomerCvWorkHistory::create([
                     'customer_cv_id' => $cvItem->id,
                     'job_title_ar' => $work['job_title_ar'] ?? '',
@@ -374,7 +379,7 @@ class CVService
                     'country_en' => $work['country_en'] ?? '',
                     'start_date' => $work['start_date'] ?? null,
                     'end_date' => $work['end_date'] ?? null,
-                    'current' => $work['current'] ?? 0,
+                    'current' => $current,
                     'experience_description_ar' => $work['experience_description_ar'] ?? '',
                     'experience_description_en' => $work['experience_description_en'] ?? ''
                 ]);
