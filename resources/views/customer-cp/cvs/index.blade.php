@@ -30,11 +30,8 @@
                                     @foreach ($cvs as $cv )
                                         <tr>
                                             <td>
-                                                @php
-                                                    // dd ($cv->template());
-                                                @endphp
-                                                <img src="{{ asset("files/".$cv->template->image) }}" alt="" class=""
-                                                     style="width: 150px;">
+                                                 <x-customer-cp.cv_template_modern_card :cv="$cv" :lang="$cv->cv_language"></x-customer-cp.cv_template_modern_card>
+
                                             </td>
                                             <td>{{date('d/m/Y', strtotime($cv->created_at))  }}</td>
                                             <td>

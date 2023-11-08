@@ -575,10 +575,10 @@
             </symbol>
         </g>
         @if(!empty($cv->image))
-            <image id="image5" width="189" height="189"
+            <image id="image{{$cv->id}}" width="189" height="189"
                    xlink:href="{{asset('files/uploads/'.$cv->image)}}"/>
         @else
-            <image id="image5" width="189" height="189"
+            <image id="image{{$cv->id}}" width="189" height="189"
                    xlink:href="{{asset('cv-templates/images/NoImage.avif')}}"/>
         @endif
     </defs>
@@ -586,7 +586,7 @@
         <path id="sidebar_color"
               style=" stroke:none;fill-rule:evenodd;@if(!empty($cv->template_color)) fill:{{$cv->template_color}}; @elseif(!empty(session('chosen_cv_color'))) fill:{{session('chosen_cv_color')}}; @else fill:rgb(73,98,103); @endif fill-opacity:1;"
               d="M 0 0 L 96.992188 0 L 96.992188 341.234375 L 0 341.234375 Z M 0 0 "/>
-        <use xlink:href="#image5" transform="matrix(0.384894,0,0,0.383837,15.371694,11.011336)"
+        <use xlink:href="#image{{$cv->id}}" transform="matrix(0.384894,0,0,0.383837,15.371694,11.011336)"
              id="template_profile_image"/>
         <g style="fill:rgb(100%,100%,100%);fill-opacity:1;">
             <use xlink:href="#glyph0-1" x="15.15625" y="108.325936"/>
