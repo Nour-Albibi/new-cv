@@ -272,13 +272,13 @@
                                                             id="wpforms-626-field_3" class="wpforms-field-large"
                                                             name="language_1[level_{{$cv_lang}}]">
                                                             <option value="">{{__('Select Level')}}</option>
-                                                            <option value="1">{{__('Beginner')}}</option>
-                                                            <option value="2">{{__('Elementary')}}</option>
-                                                            <option value="3">{{__('Intermediate')}}</option>
-                                                            <option value="4">{{__('Upper intermediate')}}</option>
-                                                            <option value="5">{{__('Advanced')}}</option>
-                                                            <option value="6">{{__('Fluent')}}</option>
-                                                            <option value="7">{{__('Native')}}</option>
+                                                            <option value="Beginner">{{__('Beginner')}}</option>
+                                                            <option value="Elementary">{{__('Elementary')}}</option>
+                                                            <option value="Intermediate">{{__('Intermediate')}}</option>
+                                                            <option value="UpperIntermediate">{{__('Upper intermediate')}}</option>
+                                                            <option value="Advanced">{{__('Advanced')}}</option>
+                                                            <option value="Fluent">{{__('Fluent')}}</option>
+                                                            <option value="Native">{{__('Native')}}</option>
                                                         </select>
                                                     </div>
                                                     <div id="wpforms-626-field_4-container"

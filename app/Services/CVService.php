@@ -156,13 +156,14 @@ class CVService
             if(!empty($customer_cv)){
                 $customer_cv->stopped_on_step=7;
                 $customer_cv->save();
+                //dd($data);
                 foreach ($data as $language) {
                 CustomerCvLanguage::create([
                     'customer_cv_id' => $cvItem->id,
                     'language_ar' => $language['language_ar'] ?? '',
                     'language_en' => $language['language_en'] ?? '',
                     'language_id' => $language['language_id'] ?? '',
-                    'level_ar' => $language['level_ar'] ?? '',
+                    'level_ar' => $language['level_ar'] ??  $language['level_en'],
                     'level_en' => $language['level_en'] ?? '',
                     'information_ar' => $language['information_ar'] ?? '',
                     'information_en' => $language['information_en'] ?? '',
