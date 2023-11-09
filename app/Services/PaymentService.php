@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\CustomerCv;
 use App\Models\Invoice;
 use App\Models\InvoiceDetail;
 use App\Models\Package;
@@ -9,6 +10,7 @@ use App\Models\Subscription;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Jackiedo\Cart\Facades\Cart;
 
 class PaymentService
@@ -31,6 +33,9 @@ class PaymentService
                 'start_date'=>Carbon::now()->toDateTimeString(),
                 'end_date'=>Carbon::now()->addDays(($package->duration*30)),
                 'status'=>1]);
+           $cvItem=$cart->getDetails()->get('items')->first();
+           if(!empty($cvItem))
+            CustomerCv::where('id',$cvItem->id)->update(['subscription_id'=>$subscription->id]);
         //Create Invoice
             $invoice_id=(Invoice::select('id')->latest()->first()->id ?? 1)+1;
             $invoice_no="INV000".$invoice_id;
@@ -58,8 +63,12 @@ class PaymentService
             return $invoice;
         });
         //Destroy Cart
-        if(!empty($invoice))
+        if(!empty($invoice)){
+            session('current_step_num',0);
+            Session::forget('customer_cv_data');
+            Session::forget('show_confirm');
             $cart->destroy();
+        }
         return true;
     }
 }
