@@ -106,3 +106,6 @@ function getLanguageLevel($level_name){
         case "Native": return 100;
     }
 }
+function getTotalCreatedCVBySubscriptionId($subscription_id){
+  return   \App\Models\CustomerCv::where('subscription_id',$subscription_id)->count();
+}

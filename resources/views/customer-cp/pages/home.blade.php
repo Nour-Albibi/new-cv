@@ -63,7 +63,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <p class="font-size-16">Subscription</p>
+                                        <p class="font-size-16">{{__('Active Subscription')}}</p>
                                         <div class="mini-stat-icon mx-auto mb-4 mt-3">
                                     <span class="avatar-title rounded-circle bg-soft-success">
 
@@ -71,17 +71,23 @@
 
                                         </span>
                                         </div>
-                                        <h5 class="font-size-22">5$</h5>
+                                        @if(auth()->guard('customer')->user()->has_active_subscription())
+                                            <h5 class="font-size-22">{{auth()->guard('customer')->user()->getActiveSubscription()->package->total_price}}
+                                                SAR</h5>
 
-                                        <p class="text-muted">Monthly</p>
+                                            <p class="text-muted">{{auth()->guard('customer')->user()->getActiveSubscription()->package->name_en}}</p>
 
-                                        <div class="progress mt-3" style="height: 4px;">
-                                            <div class="progress-bar progress-bar bg-soft-success" role="progressbar"
-                                                 style="width: 70%" aria-valuenow="70" aria-valuemin="0"
-                                                 aria-valuemax="70">
+                                            <div class="progress mt-3" style="height: 4px;">
+                                                <div class="progress-bar progress-bar bg-soft-success"
+                                                     role="progressbar"
+                                                     style="width: 70%" aria-valuenow="70" aria-valuemin="0"
+                                                     aria-valuemax="70">
+                                                </div>
+
                                             </div>
-
-                                        </div>
+                                        @else
+                                            {{__('No Active Subscription')}}
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -93,24 +99,31 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <p class="font-size-16">Template</p>
+                                        <p class="font-size-16">{{__('CVs in Active Subscription')}}</p>
                                         <div class="mini-stat-icon mx-auto mb-4 mt-3">
                                     <span class="avatar-title rounded-circle bg-soft-success">
 
                                             <i class="fa-solid fa-clipboard" style="color: #fff;font-size: 20px;"></i>
                                         </span>
                                         </div>
-                                        <h5 class="font-size-22">4</h5>
+                                        @if(auth()->guard('customer')->user()->has_active_subscription())
+                                            @php $countCV=getTotalCreatedCVBySubscriptionId(auth()->guard('customer')->user()->getActiveSubscription()->id)
+                                            @endphp
+                                            <h5 class="font-size-22">{{$countCV}}</h5>
+                                            @php
+                                                $max_limit=auth()->guard('customer')->user()->getActiveSubscription()->max_cv_limit;
+                                                $avarage=($countCV/$max_limit)*100;
+                                                @endphp
+                                            <p class="text-muted">{{intval($avarage)}}% Used</p>
 
-                                        <p class="text-muted">89% Residual</p>
+                                            <div class="progress mt-3" style="height: 4px;">
+                                                <div class="progress-bar progress-bar bg-success" role="progressbar"
+                                                     style="width:{{intval($avarage)}}%" aria-valuenow="80" aria-valuemin="0"
+                                                     aria-valuemax="80">
+                                                </div>
 
-                                        <div class="progress mt-3" style="height: 4px;">
-                                            <div class="progress-bar progress-bar bg-success" role="progressbar"
-                                                 style="width: 80%" aria-valuenow="80" aria-valuemin="0"
-                                                 aria-valuemax="80">
                                             </div>
-
-                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

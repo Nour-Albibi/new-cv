@@ -5,26 +5,6 @@
 @endsection
 
 @section('content')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
@@ -54,7 +34,7 @@
                                 <th>Status	</th>
 
 
-                                <th style="width: 120px;">Action</th>
+{{--                                <th style="width: 120px;">Action</th>--}}
                             </tr>
                         </thead>
                         <tbody>
@@ -69,7 +49,7 @@
                                     </div>
                                 </td>
                                 <td><a href="{{ route('customer.subscriptions.show',$subscription) }}" class="text-dark fw-bold">{{ $subscription->package->{"name_".$lang} ?? '' }}</a> </td>
-                                <td>{{ $subscription->package->total_price }}$</td>
+                                <td>{{ $subscription->package->total_price }} SAR</td>
                                 <td>
                                     {{ $subscription->start_date }}
                                 </td>
@@ -77,14 +57,13 @@
 
 
                                 <td>
-                                    <div class=@if ($subscription->status == '1')
-                                            "badge badge-soft-success font-size-12">Paid</div>
+                                    <div class=@if ($subscription->status == '1')"badge badge-soft-success font-size-12">Paid</div>
                                     @else   "badge badge-soft-danger font-size-12">Expire</div>
                                     @endif
                                 </td>
                                 <td id="tooltip-container1">
-                                    <a href="javascript:void(0);" class="me-3 text-primary" data-bs-container="#tooltip-container1" data-bs-toggle="tooltip" data-bs-placement="top" title="Update"><i class="mdi mdi-pencil font-size-18"></i></a>
-                                    <a href="javascript:void(0);" class="text-danger" data-bs-container="#tooltip-container1" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
+{{--                                    <a href="javascript:void(0);" class="me-3 text-primary" data-bs-container="#tooltip-container1" data-bs-toggle="tooltip" data-bs-placement="top" title="Update"><i class="mdi mdi-pencil font-size-18"></i></a>--}}
+{{--                                    <a href="javascript:void(0);" class="text-danger" data-bs-container="#tooltip-container1" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>--}}
                                 </td>
                             </tr>
 

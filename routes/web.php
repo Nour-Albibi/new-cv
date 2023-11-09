@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CVController;
 use App\Http\Controllers\CVCourseController;
@@ -58,4 +59,6 @@ Route::group(['middleware' => 'language'], function () {
         Route::match(['post','get'],'checkout',[PaymentController::class,'checkout'])->name('payment.checkout');
         Route::get('Confirmation',[PaymentController::class,'order_confirmed'])->name('order_confirmed');
     });
+    Route::get('Contact-us',[ContactUsController::class,'index'])->name('contact.index');
+    Route::post('ContactSendEmail',[ContactUsController::class,'sendEmail'])->name('contact.sendEmail');
 });

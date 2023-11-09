@@ -61,7 +61,8 @@ class CustomerController extends Controller
 
         $user_id=Auth::guard('customer')->user()->id;
         $cvs =CustomerCv::where('customer_id',$user_id)->where('views','>','0')->get();
-        return view('customer-cp.cvs.viewdmyCV',compact('cvs'));
+        $subscription=auth()->guard('customer')->user()->getActiveSubscription();
+        return view('customer-cp.cvs.viewdmyCV',compact('cvs','subscription'));
     }
 
 
