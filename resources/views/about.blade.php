@@ -5,7 +5,7 @@
 @stop
 @section('custom_css')
     <link rel="stylesheet" id="elementor-post-745-css"
-          href="https://projects.datatime4it.com/c/wp-content/uploads/elementor/css/post-745.css?ver=1698944575"
+          href="{{asset('assets/css/post-745.css?ver=1698944575')}}"
           media="all">
     <link rel="stylesheet" id="elementor-post-36-css"
           href="{{asset('assets/uploads/elementor/css/post-36.css?ver=1695906899')}}"
@@ -16,6 +16,9 @@
     <link rel="stylesheet" id="elementor-post-55-css"
           href="{{asset('assets/uploads/elementor/css/post-55.css?ver=1695921314')}}"
           media="all" defer />
+    <link rel="stylesheet" id="elementor-post-59-css"
+          href="{{asset('assets/uploads/elementor/css/post-59.css?ver=1696668000')}}"
+          media="all" defer>
     <link rel="stylesheet" href="{{asset('assets/css/widget-animated-headline.min.css')}}" defer />
     <link rel="stylesheet" href="{{asset('assets/css/widget-icon-box.min.css')}}" defer />
     <link rel="stylesheet" href="{{asset('assets/css/about_us.css')}}" defer/>
@@ -395,44 +398,7 @@
                                         <section data-particle_enable="false" data-particle-mobile-disabled="false"
                                                  class="elementor-section elementor-inner-section elementor-element elementor-element-c407ccd elementor-section-boxed elementor-section-height-default elementor-section-height-default exad-glass-effect-no exad-sticky-section-no"
                                                  data-id="c407ccd" data-element_type="section">
-                                            <div class="elementor-container elementor-column-gap-default">
-                                                <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-44e39790 exad-glass-effect-no exad-sticky-section-no"
-                                                     data-id="44e39790" data-element_type="column">
-                                                    <div class="elementor-widget-wrap elementor-element-populated">
-                                                        <div class="elementor-element elementor-element-3ac93523 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-image"
-                                                             data-id="3ac93523" data-element_type="widget"
-                                                             data-widget_type="image.default">
-                                                            <div class="elementor-widget-container">
-                                                                <a href="#">
-                                                                    <img decoding="async" width="570" height="174"
-                                                                         src="https://projects.datatime4it.com/c/wp-content/uploads/2023/09/google-play-badge-e1668473418681.png"
-                                                                         class="elementor-animation-float attachment-large size-large wp-image-45"
-                                                                         alt=""
-                                                                         srcset="https://projects.datatime4it.com/c/wp-content/uploads/2023/09/google-play-badge-e1668473418681.png 570w, https://projects.datatime4it.com/c/wp-content/uploads/2023/09/google-play-badge-e1668473418681-300x92.png 300w"
-                                                                         sizes="(max-width: 570px) 100vw, 570px"> </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-28560c00 exad-glass-effect-no exad-sticky-section-no"
-                                                     data-id="28560c00" data-element_type="column">
-                                                    <div class="elementor-widget-wrap elementor-element-populated">
-                                                        <div class="elementor-element elementor-element-13ab2028 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-image"
-                                                             data-id="13ab2028" data-element_type="widget"
-                                                             data-widget_type="image.default">
-                                                            <div class="elementor-widget-container">
-                                                                <a href="#">
-                                                                    <img decoding="async" width="498" height="167"
-                                                                         src="https://projects.datatime4it.com/c/wp-content/uploads/2023/09/5a902db97f96951c82922874.png"
-                                                                         class="elementor-animation-float attachment-large size-large wp-image-46"
-                                                                         alt=""
-                                                                         srcset="https://projects.datatime4it.com/c/wp-content/uploads/2023/09/5a902db97f96951c82922874.png 498w, https://projects.datatime4it.com/c/wp-content/uploads/2023/09/5a902db97f96951c82922874-300x101.png 300w"
-                                                                         sizes="(max-width: 498px) 100vw, 498px"> </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                         </section>
                                     </div>
                                 </div>
@@ -442,6 +408,8 @@
                 </div>
             </div>
         </section>
+        <div class="elementor-background-overlay"></div>
+       <div style="padding-top:100px;padding-bottom: 100px;width:100%"></div>
     </div>
 @endsection
 @section('custom_js')

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c134ffea7ecdd6947cfd37f9abb0dd8",
+    "content-hash": "81e5c2fdf0a6db1d241ade43bf807585",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -138,6 +138,70 @@
                 }
             ],
             "time": "2023-01-12T15:12:49+00:00"
+        },
+        {
+            "name": "barryvdh/laravel-translation-manager",
+            "version": "v0.6.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-translation-manager.git",
+                "reference": "cfa0484084b5372f52d208bfa6f13aaaa11afaa5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-translation-manager/zipball/cfa0484084b5372f52d208bfa6f13aaaa11afaa5",
+                "reference": "cfa0484084b5372f52d208bfa6f13aaaa11afaa5",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^9|^10",
+                "illuminate/translation": "^9|^10",
+                "php": ">=7.2",
+                "symfony/finder": "^6"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^7|^8"
+            },
+            "suggest": {
+                "tanmuhittin/laravel-google-translate": "If you want to translate using Google API"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.6-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Barryvdh\\TranslationManager\\ManagerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\TranslationManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "Manage Laravel Translations",
+            "keywords": [
+                "laravel",
+                "translations",
+                "translator"
+            ],
+            "support": {
+                "issues": "https://github.com/barryvdh/laravel-translation-manager/issues",
+                "source": "https://github.com/barryvdh/laravel-translation-manager/tree/v0.6.5"
+            },
+            "time": "2023-06-05T10:20:47+00:00"
         },
         {
             "name": "brick/math",
@@ -1925,6 +1989,65 @@
                 "source": "https://github.com/laravel-admin-extensions/chartjs/tree/master"
             },
             "time": "2018-09-16T17:28:26+00:00"
+        },
+        {
+            "name": "laravel-admin-ext/grid-sortable",
+            "version": "v1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-admin-extensions/grid-sortable.git",
+                "reference": "d7245c250dbfa1d712fdad93dbf435514713a717"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-admin-extensions/grid-sortable/zipball/d7245c250dbfa1d712fdad93dbf435514713a717",
+                "reference": "d7245c250dbfa1d712fdad93dbf435514713a717",
+                "shasum": ""
+            },
+            "require": {
+                "encore/laravel-admin": ">=1.7.2",
+                "php": ">=7.0.0",
+                "spatie/eloquent-sortable": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Encore\\Admin\\GridSortable\\GridSortableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Encore\\Admin\\GridSortable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "z-song",
+                    "email": "zsong@126.com"
+                }
+            ],
+            "description": "Sort the grid data by drag and drop rows",
+            "homepage": "https://github.com/laravel-admin-ext/grid-sortable",
+            "keywords": [
+                "extension",
+                "grid",
+                "laravel-admin",
+                "sortable"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel-admin-extensions/grid-sortable/issues",
+                "source": "https://github.com/laravel-admin-extensions/grid-sortable/tree/master"
+            },
+            "time": "2020-02-18T03:06:20+00:00"
         },
         {
             "name": "laravel-admin-ext/helpers",
@@ -4621,6 +4744,80 @@
             "time": "2023-10-09T12:59:37+00:00"
         },
         {
+            "name": "spatie/eloquent-sortable",
+            "version": "4.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/eloquent-sortable.git",
+                "reference": "74994d10a17d15d2cdb319d6b2ad7cb6fa067c0a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/eloquent-sortable/zipball/74994d10a17d15d2cdb319d6b2ad7cb6fa067c0a",
+                "reference": "74994d10a17d15d2cdb319d6b2ad7cb6fa067c0a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^9.0|^10.0",
+                "illuminate/support": "^9.0|^10.0",
+                "nesbot/carbon": "^2.63",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.9"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^7.0|^8.0",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\EloquentSortable\\EloquentSortableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\EloquentSortable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be"
+                }
+            ],
+            "description": "Sortable behaviour for eloquent models",
+            "homepage": "https://github.com/spatie/eloquent-sortable",
+            "keywords": [
+                "behaviour",
+                "eloquent",
+                "laravel",
+                "model",
+                "sort",
+                "sortable"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/eloquent-sortable/issues",
+                "source": "https://github.com/spatie/eloquent-sortable/tree/4.0.2"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-01-23T08:34:14+00:00"
+        },
+        {
             "name": "spatie/image",
             "version": "2.2.7",
             "source": {
@@ -4743,6 +4940,66 @@
                 "source": "https://github.com/spatie/image-optimizer/tree/1.7.2"
             },
             "time": "2023-11-03T10:08:02+00:00"
+        },
+        {
+            "name": "spatie/laravel-package-tools",
+            "version": "1.16.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "cc7c991555a37f9fa6b814aa03af73f88026a83d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/cc7c991555a37f9fa6b814aa03af73f88026a83d",
+                "reference": "cc7c991555a37f9fa6b814aa03af73f88026a83d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^9.28|^10.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "orchestra/testbench": "^7.7|^8.0",
+                "pestphp/pest": "^1.22",
+                "phpunit/phpunit": "^9.5.24",
+                "spatie/pest-plugin-test-time": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelPackageTools\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tools for creating Laravel packages",
+            "homepage": "https://github.com/spatie/laravel-package-tools",
+            "keywords": [
+                "laravel-package-tools",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-package-tools/issues",
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.16.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-08-23T09:04:39+00:00"
         },
         {
             "name": "spatie/temporary-directory",

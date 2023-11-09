@@ -37,4 +37,7 @@ Route::group([
     $router->resource('customer-cv-work-histories', CustomerCvWorkHistoryController::class);
     $router->resource('coupons', CouponController::class);
     $router->resource('site-settings', SiteSettingController::class);
+    $router->resource('home-hero-sections', HomeHeroSectionController::class);
+    $router->resource('home-section-clients', HomeClientsController::class);
+    $router->resource('home-section-steps', HomeSectionStepsController::class);
 });

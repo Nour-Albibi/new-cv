@@ -128,7 +128,7 @@
                                                            class="elementor-item elementor-item-anchor">{{__('CV Templates')}}</a>
                                                     </li>
                                                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-99">
-                                                        <a href="#"
+                                                        <a href="{{route('about.index')}}"
                                                            class="elementor-item elementor-item-anchor">{{__('About us')}}</a>
                                                     </li>
                                                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-97">
@@ -155,7 +155,7 @@
                                                         <a href="#" class="elementor-item elementor-item-anchor"
                                                            tabindex="-1">{{__('CV Templates')}}</a></li>
                                                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-99">
-                                                        <a href="#" class="elementor-item elementor-item-anchor"
+                                                        <a href="{{route('about.index')}}" class="elementor-item elementor-item-anchor"
                                                            tabindex="-1">{{__('About us')}}</a></li>
                                                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-97">
                                                         <a href="{{route('contact.index')}}" class="elementor-item elementor-item-anchor"

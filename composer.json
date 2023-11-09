@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.0",
         "barryvdh/laravel-dompdf": "^2.0",
+        "barryvdh/laravel-translation-manager": "^0.6.5",
         "encore/laravel-admin": "^1.8",
         "fruitcake/laravel-cors": "^2.0.5",
         "guzzlehttp/guzzle": "^7.2",
@@ -14,6 +15,7 @@
         "irisvn/media-manager": "dev-master",
         "jackiedo/cart": "^3.0",
         "laravel-admin-ext/chartjs": "^1.0",
+        "laravel-admin-ext/grid-sortable": "^1.1",
         "laravel-admin-ext/helpers": "1.*",
         "laravel-admin-ext/log-viewer": "^1.0",
         "laravel-admin-ext/scheduling": "^1.2",
