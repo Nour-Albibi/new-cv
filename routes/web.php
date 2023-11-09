@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\CustomerController;
@@ -61,4 +62,6 @@ Route::group(['middleware' => 'language'], function () {
     });
     Route::get('Contact-us',[ContactUsController::class,'index'])->name('contact.index');
     Route::post('ContactSendEmail',[ContactUsController::class,'sendEmail'])->name('contact.sendEmail');
+    /***/
+    Route::get('About-us',[AboutUsController::class,'index'])->name('about.index');
 });

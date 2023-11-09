@@ -28,12 +28,12 @@ class HomeController extends Controller
                 ->row(function (Row $row) {
                     $row->column(4, function (Column $column) {
                         $customers = Customer::where('customer_type', '1')->count();
-                        $infoBox = new InfoBox('Customers', 'home', 'aqua', '/admin/customers', $customers);
+                        $infoBox = new InfoBox('Customers', 'home', 'aqua', url('/admin/customers'), $customers);
                         $column->append($infoBox->render());
                     });
                     $row->column(4, function (Column $column) {
                         $companies = Customer::where('customer_type', '2')->count();
-                        $infoBox = new InfoBox('Companies', 'Companies', 'aqua', '/admin/companies', $companies);
+                        $infoBox = new InfoBox('Companies', 'Companies', 'aqua', url('/admin/companies'), $companies);
                         $column->append($infoBox->render());
 
                     });
@@ -43,7 +43,7 @@ class HomeController extends Controller
                             ->where('invoice_date', '>', now()->subDays(30)->endOfDay())
                             ->sum('total_amount');
                         // dd($income);
-                        $infoBox = new InfoBox('income', 'tests', 'aqua', '/admin/invoices', $income);
+                        $infoBox = new InfoBox('income', 'tests', 'aqua', url('/admin/invoices'), $income);
                         $column->append($infoBox->render());
                     });
                 });

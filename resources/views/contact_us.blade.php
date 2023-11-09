@@ -139,7 +139,7 @@
                                                         </span>
                                                         </h5>
                                                         <p class="elementor-icon-box-description">
-                                                            Saudi Arabia </p>
+                                                            {{company('address_'.$lang)}} </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -187,7 +187,7 @@
                                                            </span>
                                                         </h5>
                                                         <p class="elementor-icon-box-description">
-                                                          <a href="tel:{{company('company_phone1')}}">{{company('company_phone1')}}</a></p>
+                                                          <a href="tel:+966{{company('company_phone1')}}">(+966) {{company('company_phone1')}}</a></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -341,7 +341,7 @@
                             <div class="elementor-widget-container">
                                 <div class="elementor-custom-embed">
                                     <iframe loading="lazy"
-                                            src="https://maps.google.com/maps?q=Saudi%20Arabia&#038;t=m&#038;z=10&#038;output=embed&#038;iwloc=near"
+                                            src="{{company('map_link')}}"
                                             title="Saudi Arabia" aria-label="Saudi Arabia"></iframe>
                                 </div>
                             </div>

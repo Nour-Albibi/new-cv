@@ -26,18 +26,19 @@ class SiteSettingController extends AdminController
     {
         $grid = new Grid(new SiteSetting());
 
-        $grid->column('name_en', __('My Company Name'));
-        $grid->column('logo', __('Logo'));
-        $grid->column('site_title_en', __('Site English main title '));
+        $grid->column('name_en', __('Site Name'));
+        $grid->column('logo', __('Logo'))->image();
+        $grid->column('site_title_en', __('Site title '));
         $grid->column('slogan_en', __('English Slogan'));
         $grid->column('company_email', __('Main Email'));
-        $grid->column('company_phone1', __('My Company phone1'));
-        $grid->column('comapny_phone2', __('My Company phone2'));
+        $grid->column('company_phone1', __('Phone1'));
+        $grid->column('comapny_phone2', __('Phone2'));
         $grid->column('address_en', __('Address'));
         $grid->column('facebook_link', __('Facebook link'));
         $grid->column('twitter_link', __('Twitter link'));
         $grid->column('linkedin_link', __('Linkedin link'));
-//        $grid->disableCreateButton();
+        $grid->disableCreateButton();
+        $grid->disableFilter();
         return $grid;
     }
 
@@ -87,14 +88,14 @@ class SiteSettingController extends AdminController
         $form->textarea('slogan_ar', __('Arabic Slogan'));
         $form->textarea('slogan_en', __('English Slogan'));
         $form->email('company_email', __('Company email'));
-        $form->mobile('company_phone1', __('Company phone1'))->options(['mask' => '999 9999 9999']);
-        $form->mobile('comapny_phone2', __('Comapny phone2'))->options(['mask' => '999 9999 9999']);
+        $form->mobile('company_phone1', __('Company phone1'))->options(['mask' => '999 999 999']);
+        $form->mobile('comapny_phone2', __('Comapny phone2'))->options(['mask' => '999 999 999']);
         $form->text('address_ar', __('Arabic Address'));
         $form->text('address_en', __('English Address'));
         $form->url('facebook_link', __('Facebook link'));
         $form->url('twitter_link', __('Twitter link'));
         $form->url('linkedin_link', __('Linkedin link'));
-        $form->url('map_link', __('Map link'));
+        $form->text('map_link', __('Map link'));
         return $form;
     }
 }
