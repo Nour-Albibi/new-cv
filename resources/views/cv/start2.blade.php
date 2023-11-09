@@ -170,7 +170,6 @@
                                                 <select class="form-control text-center" name="cv_language">
                                                     <option value="en" selected>{{__('English')}}</option>
                                                     <option value="ar">{{__('Arabic')}}</option>
-                                                    <option value="en">{{__('Both')}}</option>
                                                 </select>
 
                                             </div>

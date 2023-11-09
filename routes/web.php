@@ -35,7 +35,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::match(['post','get'],'/',[CVController::class,'index'])->name('cv.start');
         Route::post('create',[CVController::class,'create'])->name('cv.create');
         Route::get('/create',[CVController::class,'create']);
-        Route::post('/create_new',[CVController::class,'resetDataAndCreateNewCV'])->name('cv.resetDataAndCreateNewCV');
+        Route::match(['post','get'],'/create_new',[CVController::class,'resetDataAndCreateNewCV'])->name('cv.resetDataAndCreateNewCV');
         Route::post('uploadFile',[CVController::class,'uploadFile'])->name('cv.upload');
         Route::post('saveCV',[CVController::class,'store'])->name('cv.store');
         Route::post('FinaliseCVApplication',[CVController::class,'FinaliseCVApplication'])->name('FinaliseCVApplication');

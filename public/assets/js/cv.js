@@ -328,7 +328,13 @@ function storeCVData(step_num) {
             processData: false,
             success: function (data) {
                 if(step_num==0){
-                    console.log(data);
+                    customerCV_data = JSON.parse(data);
+                    // console.log(customerCV_data['customerCV']);
+                    console.log(customerCV_data.customerCV);
+                    if (customerCV_data != "" && typeof customerCV_data !== 'undefined') {
+                       $('input[name=customer_cv_id]').val(customerCV_data.customerCV.id);
+                    }
+                    //customer_cv_id
                 }
                 redirect = JSON.parse(data).redirect;
                 if (redirect != "" && typeof redirect !== 'undefined') {
