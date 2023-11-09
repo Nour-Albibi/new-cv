@@ -47,26 +47,6 @@ class HomeController extends Controller
                         $column->append($infoBox->render());
                     });
                 });
-        } else {
-            if (\Admin::user()->isRole('catalog-owner')) {
-                return $content
-                    ->title(__('Dashboard'))
-                    ->row(function (Row $row) {
-                        $row->column(3, function (Column $column) {
-                            $visitors = Visit::where('restaurant_id', \Admin::user()->catalog_id)->count();
-                            $infoBox = new InfoBox(__('Total Visitors'), 'users', 'olive', '#', $visitors);
-                            $column->append($infoBox->render());
-                        });
-                        $row->column(3, function (Column $column) {
-                            $total_products = CatalogService::getTotalProducts(\Admin::user()->catalog_id);
-                            $infoBox = new InfoBox(__('Total Products'), 'products', 'blue', '/admin/catalog-products', $total_products);
-                            $column->append($infoBox->render());
-                        });
-                    });
-            } else {
-                return $content
-                    ->title(__('Dashboard'));
-            }
         }
     }
 }

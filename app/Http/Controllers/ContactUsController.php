@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ContactUsController extends Controller
 {
-    public function index(){
+    public function index(){;
         return view('contact_us');
     }
     public function sendEmail(Request $request){

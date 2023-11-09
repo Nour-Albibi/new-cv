@@ -12,15 +12,15 @@ use Illuminate\Queue\SerializesModels;
 class ContactEmail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $data;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($args)
     {
-        //
+        $this->data = $args;
     }
 
     /**
@@ -43,7 +43,7 @@ class ContactEmail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'view.name',
+            view: 'contact_send_email_form',
         );
     }
 

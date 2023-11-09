@@ -59,9 +59,9 @@
                             <div class="elementor-widget-container">
                                 <h2 class="elementor-headline">
                                     <span
-                                        class="elementor-headline-plain-text elementor-headline-text-wrapper">Contact</span>
+                                        class="elementor-headline-plain-text elementor-headline-text-wrapper">{{__('Contact')}}</span>
                                     <span class="elementor-headline-dynamic-wrapper elementor-headline-text-wrapper">
-				                	<span class="elementor-headline-dynamic-text elementor-headline-text-active">Us</span>
+				                	<span class="elementor-headline-dynamic-text elementor-headline-text-active">{{__('Us')}}</span>
 				                </span>
                                 </h2>
                             </div>
@@ -118,8 +118,7 @@
                                             data-id="2db41f73" data-element_type="widget"
                                             data-widget_type="text-editor.default">
                                             <div class="elementor-widget-container">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                                                    tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                                                <p>{{__('contact.message')}}</p>
                                             </div>
                                         </div>
                                         <div
@@ -163,7 +162,9 @@
                                                     </span>
                                                         </h5>
                                                         <p class="elementor-icon-box-description">
-                                                            info@nfbatic.com </p>
+{{--                                                            info@nfbatic.com --}}
+                                                            <a href="mailto:{{company('company_email')}}">{{company('company_email')}}</a>
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -186,7 +187,7 @@
                                                            </span>
                                                         </h5>
                                                         <p class="elementor-icon-box-description">
-                                                            ( + 966 ) 123 456 789 </p>
+                                                          <a href="tel:{{company('company_phone1')}}">{{company('company_phone1')}}</a></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -212,7 +213,7 @@
                                                             data-widget_type="heading.default">
                                                             <div class="elementor-widget-container">
                                                                 <h4 class="elementor-heading-title elementor-size-default">
-                                                                    Leave a Message</h4></div>
+                                                                    {{__('Leave a Message')}}</h4></div>
                                                         </div>
                                                         <div
                                                             class="elementor-element elementor-element-348f6f86 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor"
@@ -247,12 +248,12 @@
                                                                             class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-50">
                                                                             <label for="form-field-name"
                                                                                    class="elementor-field-label">
-                                                                                {{__('First Name')}} </label>
+                                                                                {{__('Full Name')}} </label>
                                                                             <input size="1" type="text"
-                                                                                   name="first_name"
+                                                                                   name="full_name"
                                                                                    id="form-field-name"
                                                                                    class="elementor-field elementor-size-sm  elementor-field-textual"
-                                                                                   placeholder="{{__('First Name')}}">
+                                                                                   placeholder="{{__('Full Name')}}">
                                                                         </div>
                                                                         <div
                                                                             class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_8b12e32 elementor-col-50">

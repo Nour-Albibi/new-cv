@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class UsersMessage extends Model
 {
     use HasFactory;
+    protected $fillable=['full_name','message','phone_number','subject','email'];
 }
