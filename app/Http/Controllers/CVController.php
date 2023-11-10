@@ -166,7 +166,8 @@ class CVController extends Controller
         }
     }
     public function DownloadCV(CustomerCv $cv){
-        $cvFileName=$cv->template->file_name;
+
+//        $cvFileName=$cv->template->file_name;
 //        $pdf = Pdf::loadView('cv-templates.'.$cvFileName.'2',['cv' => $cv]);
         $pdf = Pdf::loadView('cv-templates.modern2_test',['cv' => $cv]);
         return $pdf->download('CV.pdf');

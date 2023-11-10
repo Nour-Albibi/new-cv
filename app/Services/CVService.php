@@ -29,7 +29,9 @@ class CVService
 
     public static function syncCustomer(){
         $cvItem=self::getCVItem();
-        CustomerCv::where('id',$cvItem->id)->update(['customer_id'=>Auth::guard('customer')->user()->id]);
+        if(!empty($cvItem)){
+            CustomerCv::where('id',$cvItem->id)->update(['customer_id'=>Auth::guard('customer')->user()->id]);
+        }
         Session::forget('redirect_after_login');
     }
     public static function syncColorAndTemplateToCurrentCV(){

@@ -28,6 +28,8 @@ Route::group([
     $router->resource('cities', CityController::class);
     $router->resource('countries', CountryController::class);
     $router->resource('customer-cvs', CustomerCvController::class);
+    $router->get('/view_cv/{cv}', 'CustomerCvController@PreviewCVinPage')->name('admin.view_cv');
+
     $router->resource('customer-cv-courses', CustomerCvCourseController::class);
     $router->resource('customer-cv-educations', CustomerCvEducationController::class);
     $router->resource('customer-cv-languages', CustomerCvLanguageController::class);
@@ -40,4 +42,5 @@ Route::group([
     $router->resource('home-hero-sections', HomeHeroSectionController::class);
     $router->resource('home-section-clients', HomeClientsController::class);
     $router->resource('home-section-steps', HomeSectionStepsController::class);
+
 });

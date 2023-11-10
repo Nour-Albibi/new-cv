@@ -2,12 +2,14 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Actions\DownloadCV;
 use App\Admin\Extensions\Tools\AddCustomerCV;
 use App\Models\Customer;
 use App\Models\CustomerCv;
 use App\Models\EducationLevel;
 use App\Models\JobTitle;
 use App\Models\Template;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -59,6 +61,7 @@ class CustomerCvController extends AdminController
                 $tools->append(new AddCustomerCV());
             });
         }
+
         return $grid;
     }
 
@@ -70,25 +73,29 @@ class CustomerCvController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(CustomerCv::findOrFail($id));
-
-        $show->field('id', __('Id'));
-        $show->field('template_id', __('Template id'));
-        $show->field('template_color', __('Template color'));
-        $show->field('customer_id', __('Customer id'));
-        $show->field('first_name', __('First name'));
-        $show->field('surename', __('Surename'));
-        $show->field('first_name_ar', __('First name ar'));
-        $show->field('surename_ar', __('Surename ar'));
-        $show->field('phone', __('Phone'));
-        $show->field('email', __('Email'));
-        $show->field('image', __('Image'));
-        $show->field('open_for_remote', __('Open for remote'));
-        $show->field('linkedlin_url', __('Linkedlin url'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
-
-        return $show;
+        $cv=CustomerCv::findorFail($id);
+        $cvFileName=$cv->template->file_name;
+        $lang=$cv->cv_language;
+        return view('cv-templates.'.$cvFileName,['cv' => $cv,'lang'=>$lang]);
+//        $show = new Show(CustomerCv::findOrFail($id));
+//
+//        $show->field('id', __('Id'));
+//        $show->field('template_id', __('Template id'));
+//        $show->field('template_color', __('Template color'));
+//        $show->field('customer_id', __('Customer id'));
+//        $show->field('first_name', __('First name'));
+//        $show->field('surename', __('Surename'));
+//        $show->field('first_name_ar', __('First name ar'));
+//        $show->field('surename_ar', __('Surename ar'));
+//        $show->field('phone', __('Phone'));
+//        $show->field('email', __('Email'));
+//        $show->field('image', __('Image'));
+//        $show->field('open_for_remote', __('Open for remote'));
+//        $show->field('linkedlin_url', __('Linkedlin url'));
+//        $show->field('created_at', __('Created at'));
+//        $show->field('updated_at', __('Updated at'));
+//
+//        return $show;
     }
 
     /**
@@ -206,5 +213,10 @@ class CustomerCvController extends AdminController
             });
         });
         return $form;
+    }
+    public function PreviewCVinPage(CustomerCv $cv){
+        $cvFileName=$cv->template->file_name;
+        $lang=$cv->cv_language;
+        return view('cv-templates.'.$cvFileName,['cv' => $cv,'lang'=>$lang]);
     }
 }
