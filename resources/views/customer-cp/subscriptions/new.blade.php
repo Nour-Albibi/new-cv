@@ -1,7 +1,7 @@
 @extends('customer-cp.layouts.app')
 
 @section('title')
-    Subscriptions
+    New Subscription
 @endsection
 
 @section('content')
@@ -31,14 +31,9 @@
             <div class="card-body  pt-0">
                 <ul class="nav nav-tabs nav-tabs-custom mb-4">
                     <li class="nav-item" >
-                        <a class="nav-link fw-bold p-3 active" href="#">Subscription Managment</a>
+                        <a class="nav-link fw-bold p-3 active" href="#">New subscription</a>
                     </li>
-                    @if (!$currentsubscription)
 
-                    <li class="nav-item">
-                        <a class="nav-link  fw-bold p-3 active" href="{{ route('customer.subscriptions.add') }}">New package</a>
-                    </li>
-                    @endif
                 </ul>
                 <div class="table-responsive">
 
@@ -52,16 +47,17 @@
                                         <label class="form-check-label" for="ordercheck">&nbsp;</label>
                                     </div>
                                 </th>
-                                <th>PLAN</th>
-                                <th>price</th>
-                                <th>Subscrip Date</th>
-                                <th>Expire Date</th>
-                                <th>Status</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>duaration</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @foreach ($subscriptions as $subscription )
+                            @foreach ($packages as $package )
 
                             <tr>
                                 <td>
@@ -70,20 +66,15 @@
                                         <label class="form-check-label" for="ordercheck1">&nbsp;</label>
                                     </div>
                                 </td>
-                                <td><a href="{{ route('customer.subscriptions.show',$subscription) }}" class="text-dark fw-bold">{{ $subscription->package->{"name_".$lang} ?? '' }}</a> </td>
-                                <td>{{ $subscription->package->total_price }}$</td>
+                                <td>{{ $package->{"name_".$lang} ?? '' }}</td>
+                                <td>{{ $package-> {"description_".$lang} ?? '' }}</td>
+                                <td>{{ $package->quantity }}$</td>
+                                <td>{{ $package->total_price }}$</td>
                                 <td>
-                                    {{ $subscription->start_date }}
+                                    <a href="">Buy</a>
                                 </td>
-                                <td>{{ $subscription->end_date }}</td>
 
 
-                                <td>
-                                    <div class=@if ($subscription->status == '1')
-                                            "badge badge-soft-success font-size-12">Paid</div>
-                                    @else   "badge badge-soft-danger font-size-12">Expire</div>
-                                    @endif
-                                </td>
                             </tr>
 
 
