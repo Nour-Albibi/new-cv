@@ -23,17 +23,17 @@
 <body>
 <div class="Home">
     <div class="row">
-        <div class="col-main">
-            <div class="header">
-                <div class="main-title pt-50"><h3>
-                        @if($lang=="en")
-                            {{$cv->first_name.' '.$cv->surename}}
-                        @else
-                            {{$cv->first_name_ar.' '.$cv->surename_ar}}
-                        @endif
-                    </h3></div>
-                <div class="row contact_info">
-                    <ul class="contact_info_list ">
+        <div class="header">
+            <div class="main-title pt-50"><h3>
+                    @if($lang=="en")
+                        {{$cv->first_name.' '.$cv->surename}}
+                    @else
+                        {{$cv->first_name_ar.' '.$cv->surename_ar}}
+                    @endif
+                </h3></div>
+            <div class="row contact_info" style="text-align:center">
+                <center>
+                    <ul class="contact_info_list " >
                         @if(!empty($cv->{"address_".$lang }))
                             <li class="address">{{$cv->{"address_".$lang } }}</li>
                         @endif
@@ -44,8 +44,10 @@
                             <li class="email">{{$cv->email}}</li>
                         @endif
                     </ul>
-                </div>
+                </center>
             </div>
+        </div>
+        <div class="col-main">
             <div class="space-30"></div>
             @if(!empty($cv->{"summary_content_".$lang}))
                 <div class="space-30 bordered"></div>
