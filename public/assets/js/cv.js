@@ -464,6 +464,23 @@ function previewCV(){
     $('#preview_cv_modal_content').html('<i class="fas fa fa-spinner"></i>');
     $('.preview_cv_modal').addClass('show');
     storeCVData(currentTab)
+    $.ajax({
+        method: "post",
+        url: main_path + "cv-builder/PreviewCVNew",
+        cache: false,
+        success: function (data) {
+            $('#preview_cv_modal_content').html(data);
+        },
+        error: function (data) {
+            console.log(data);
+            valid = false;
+        }
+    });
+}
+function previewCVOld(){
+    $('#preview_cv_modal_content').html('<i class="fas fa fa-spinner"></i>');
+    $('.preview_cv_modal').addClass('show');
+    storeCVData(currentTab)
     cv_id=$('input[name=customer_cv_id]').val();
     $.ajax({
         method: "post",

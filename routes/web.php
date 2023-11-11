@@ -48,6 +48,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::post('getSkillsRelatedToJobTitle',[CVSkillsController::class,'getSkillRelatedToJobTitle']);
         Route::post('getAllSummariesRelatedToJobTitle',[CVSummaryController::class,'getAllSummariesRelatedToJobTitle']);
         Route::get('DownloadCV/{cv}',[CVController::class,'DownloadCV']);
+        Route::post('PreviewCVNew',[CVController::class,'PreviewCVNew'])->name('PreviewCVNew');
         Route::post('PreviewCV/{cv}',[CVController::class,'PreviewCV'])->name('PreviewCV');
         Route::get('PreviewCV',[CVController::class,'PreviewCV'])->name('PreviewCV');
         Route::get('PreviewCVinPage/{cv}',[CVController::class,'PreviewCVinPage']);

@@ -28,12 +28,12 @@ class CSubscriptionController extends AdminController
         return view('customer-cp.subscriptions.show',compact('subscription'));
     }
 
-    // public function newsubscription()
-    //  {
-    //     dd('hi');
-    //     $user_id= Auth::guard('customer')->user()->id;
-    //     $packages =Package::where('type','1')->get();
-    //     dd($packages);
-    //     return view('customer-cp.subscriptions.new',compact('packages'));
-    // }
+     public function newsubscription()
+      {
+         dd('hi');
+         $user_id= Auth::guard('customer')->user()->id;
+         $packages =Package::where('type','1')->get();
+         dd($packages);
+         return view('customer-cp.subscriptions.new',compact('packages'));
+     }
 }
