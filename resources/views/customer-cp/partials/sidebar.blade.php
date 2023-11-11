@@ -6,7 +6,7 @@
         <div class="user-sidebar text-center">
             <div class="dropdown">
                 <div class="user-img">
-                    <img src="{{asset('customer-assets/images/users/avatar-7.jpg')}}" alt="" class="rounded-circle">
+                    <img src="@if(auth()->guard('customer')->check()){{asset('files/images/'.Auth::guard('customer')->user()->avatar)}}@endif" alt="" class="rounded-circle">
                     <span class="avatar-online bg-success"></span>
                 </div>
                 <div class="user-info">

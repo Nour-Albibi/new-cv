@@ -181,6 +181,7 @@
         <div class="rightbar-overlay"></div>
 
         <!-- JAVASCRIPT -->
+
         <script src="{{asset('customer-assets/libs/jquery/jquery.min.js')}}"></script>
         <script src="{{asset('customer-assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
         <script src="{{asset('customer-assets/libs/metismenu/metisMenu.min.js')}}"></script>
@@ -188,6 +189,5 @@
         <script src="{{asset('customer-assets/libs/node-waves/waves.min.js')}}"></script>
 
         <script src="{{asset('customer-assets/js/app.js')}}"></script>
-
     </body>
 </html>

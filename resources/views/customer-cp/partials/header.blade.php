@@ -146,7 +146,7 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="@if(auth()->guard('customer')->check()){{asset('files/'.Auth::guard('customer')->user()->avatar)}}@endif"
+                    <img class="rounded-circle header-profile-user" src="@if(auth()->guard('customer')->check()){{asset('files/images/'.Auth::guard('customer')->user()->avatar)}}@endif"
                         alt="{{Auth::guard('customer')->user()->username}}">
                     <span class="d-none d-xl-inline-block ms-1">
                         @if(auth()->guard('customer')->check())

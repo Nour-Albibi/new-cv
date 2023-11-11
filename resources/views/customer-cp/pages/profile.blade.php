@@ -31,7 +31,7 @@
                             </div>
                             @endif
                         </div>
-                        <form class="form-horizontal mt-4 pt-2" action="{{route('customer.update_profile')}}" method='post'>
+                        <form class="form-horizontal mt-4 pt-2" action="{{route('customer.update_profile')}}" method='post' enctype="multipart/form-data">
                             @csrf
                             @method('put')
                             <div class="mb-3">
@@ -59,6 +59,20 @@
                                 <label for="userpassword">Confirm Password</label>
                                 <input type="password" class="form-control" id="password_confirmation" placeholder="Confirm password" name="password_confirmation">
                             </div>
+                            <div class="mb-3">
+                                <span class="inner_input"></span>
+                                <div class="box__input">
+                                    <img src="@if(!empty($addedItem)){{asset('files/uploads/'.$Auth::guard('customer')->user()->username->avatar)}}@endif"  @if(empty($addedItem) || empty($addedItem->model->image)) class="d-none" @endif id="uploaded_im" width="100" height="100"/>
+                                    @csrf
+                                    <div class="upload_icon"></div>
+                                    <input class="box__file" type="file" name="avatar" id="file"/>
+                                    <label class="file" for="file">{{__('Choose a file or Drag it here to upload it')}}</label>
+                                </div>
+                                <div class="box__uploading">Uploading…</div>
+                                <div class="box__success alert-success"><p>{{__('Uploaded Successfully')}}</p></div>
+                                <div class="box__error">Error! <span></span>.</div>
+                            </div>
+
 
                             <div class="mt-4">
                                 <button class="btn btn-primary2 w-100 waves-effect waves-light" type="submit">Save</button>

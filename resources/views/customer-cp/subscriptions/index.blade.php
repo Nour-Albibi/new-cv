@@ -94,6 +94,7 @@
                 </div>
             </div>
         </div>
+        {!! $subscriptions->links() !!}
     </div>
 
     @endsection

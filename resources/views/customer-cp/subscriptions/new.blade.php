@@ -41,12 +41,7 @@
                     <table class="table table-centered datatable dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead class="thead-light">
                             <tr>
-                                <th style="width: 20px;">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="ordercheck">
-                                        <label class="form-check-label" for="ordercheck">&nbsp;</label>
-                                    </div>
-                                </th>
+
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Quantity</th>
@@ -60,18 +55,15 @@
                             @foreach ($packages as $package )
 
                             <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="ordercheck1">
-                                        <label class="form-check-label" for="ordercheck1">&nbsp;</label>
-                                    </div>
-                                </td>
+
                                 <td>{{ $package->{"name_".$lang} ?? '' }}</td>
                                 <td>{{ $package-> {"description_".$lang} ?? '' }}</td>
-                                <td>{{ $package->quantity }}$</td>
+                                <td>{{ $package->quantity }}</td>
                                 <td>{{ $package->total_price }}$</td>
+                                <td>{{ $package->duration }}&nbspMonth</td>
+
                                 <td>
-                                    <a href="">Buy</a>
+                                    <a href="{{ route('customer.subscriptions.buy',$package) }}">Buy</a>
                                 </td>
 
 
