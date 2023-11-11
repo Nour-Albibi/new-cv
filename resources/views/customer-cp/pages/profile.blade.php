@@ -8,12 +8,8 @@
 <div class="container-fluid">
 
     <div class="page-content-wrapper">
-
-
-
-
     <div class="row">
-        <div class="col-lg-8 center">
+        <div class="col-lg-10 center">
             <div class="card">
                 <div class="card-body">
                     <div class="px-2 py-3">
@@ -74,8 +70,8 @@
                             </div>
 
 
-                            <div class="mt-4">
-                                <button class="btn btn-primary2 w-100 waves-effect waves-light" type="submit">Save</button>
+                            <div class="mt-4" style="display:flex;justify-content: center">
+                                <button class="btn btn-primary2 w-50  waves-effect waves-light" type="submit">Save</button>
                             </div>
 
                         </form>

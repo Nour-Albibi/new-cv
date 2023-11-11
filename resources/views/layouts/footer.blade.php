@@ -55,26 +55,18 @@
                                             <ul class="elementor-icon-list-items">
                                                 <li class="elementor-icon-list-item">
                                                     <a href="#">
-
 												<span class="elementor-icon-list-icon">
-							<i aria-hidden="true" class="fas fa-caret-right"></i>						</span>
+							                    <i aria-hidden="true" class="fas fa-caret-right"></i>
+                                                </span>
                                                         <span class="elementor-icon-list-text">CV builder</span>
                                                     </a>
                                                 </li>
                                                 <li class="elementor-icon-list-item">
                                                     <a href="#">
-
 												<span class="elementor-icon-list-icon">
-							<i aria-hidden="true" class="fas fa-caret-right"></i>						</span>
+							                    <i aria-hidden="true" class="fas fa-caret-right"></i>
+                                                </span>
                                                         <span class="elementor-icon-list-text">CV templates</span>
-                                                    </a>
-                                                </li>
-                                                <li class="elementor-icon-list-item">
-                                                    <a href="#">
-
-												<span class="elementor-icon-list-icon">
-							<i aria-hidden="true" class="fas fa-caret-right"></i>						</span>
-                                                        <span class="elementor-icon-list-text">CV formats</span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -114,14 +106,6 @@
 												<span class="elementor-icon-list-icon">
 							<i aria-hidden="true" class="fas fa-caret-right"></i>						</span>
                                                         <span class="elementor-icon-list-text">Contact Us</span>
-                                                    </a>
-                                                </li>
-                                                <li class="elementor-icon-list-item">
-                                                    <a href="#">
-
-												<span class="elementor-icon-list-icon">
-							<i aria-hidden="true" class="fas fa-caret-right"></i>						</span>
-                                                        <span class="elementor-icon-list-text">FAQ</span>
                                                     </a>
                                                 </li>
                                             </ul>

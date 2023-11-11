@@ -437,6 +437,9 @@ return [
             // Editor configuration
             'config' => [
                 'height' => 200,
+            ],
+            'chartjs' => [
+                'enable' => true,
             ]
         ]
     ],

@@ -1,5 +1,5 @@
 // var currentTab = 0; // Current tab is set to be the first tab (0)
-var current_workExperience = 1;
+// var current_workExperience = 1;
 var current_project = 1;
 var button_indecator = 0;
 var current_edu = 1;
@@ -43,7 +43,8 @@ function CheckWordDates() {
         work_num = $(this).attr('work_num');
         this_val = new Date($(this).val());
         if (this_val != "") {
-            end_date_val = new Date($('input.end_date[work_num=' + work_num + ']').val());
+            to_compare_end_date=$(this).closest('.dates_container').find('input.end_date[work_num=' + work_num + ']').val();
+            end_date_val = new Date(to_compare_end_date);
             if (this_val > end_date_val) {
                 $(this).parent().append('<label class="wpforms-error" >Start Date must be minimum than end date</label>');
                 $(this).css('border', '1px solid red');
@@ -56,7 +57,8 @@ function CheckWordDates() {
         work_num = $(this).attr('work_num');
         this_val = new Date($(this).val());
         if (this_val != "") {
-            start_date_val = new Date($('input.start_date[work_num=' + work_num + ']').val());
+            to_compare_start_date=$(this).closest('.dates_container').find('input.start_date[work_num=' + work_num + ']').val();
+            start_date_val = new Date(to_compare_start_date);
             if (this_val < start_date_val) {
                 $(this).parent().append('<label class="wpforms-error" >End Date must be maximum than end date</label>');
                 $(this).css('border', '1px solid red');
@@ -73,7 +75,8 @@ function CheckProjectDates() {
         project_num = $(this).attr('project_num');
         this_val = new Date($(this).val());
         if (this_val != "") {
-            end_date_val = new Date($('input.end_date[project_num=' + project_num + ']').val());
+            to_compare_end_date=$(this).closest('.dates_container').find('input.end_date[project_num=' + project_num + ']').val();
+            end_date_val = new Date(to_compare_end_date);
             if (this_val > end_date_val) {
                 $(this).parent().append('<label class="wpforms-error" >Start Date must be minimum than end date</label>');
                 $(this).css('border', '1px solid red');
@@ -86,7 +89,8 @@ function CheckProjectDates() {
         project_num = $(this).attr('project_num');
         this_val = new Date($(this).val());
         if (this_val != "") {
-            start_date_val = new Date($('input.start_date[project_num=' + project_num + ']').val());
+            to_compare_start_date=$(this).closest('.dates_container').find('input.start_date[project_num=' + project_num + ']').val();
+            start_date_val = new Date(to_compare_start_date);
             if (this_val < start_date_val) {
                 $(this).parent().append('<label class="wpforms-error" >End Date must be maximum than end date</label>');
                 $(this).css('border', '1px solid red');
@@ -103,7 +107,8 @@ function CheckEducationDates(){
         education_num = $(this).attr('education_num');
         this_val = new Date($(this).val());
         if (this_val != "") {
-            end_date_val = new Date($('input.end_date[education_num=' + education_num + ']').val());
+            to_compare_end_date=$(this).closest('.dates_container').find('input.end_date[education_num=' + education_num + ']').val();
+            end_date_val = new Date(to_compare_end_date);
             if (this_val > end_date_val) {
                 $(this).parent().append('<label class="wpforms-error" >Start Date must be minimum than end date</label>');
                 $(this).css('border', '1px solid red');
@@ -116,7 +121,8 @@ function CheckEducationDates(){
         education_num = $(this).attr('education_num');
         this_val = new Date($(this).val());
         if (this_val != "") {
-            start_date_val = new Date($('input.start_date[education_num=' + education_num + ']').val());
+            to_compare_start_date=$(this).closest('.dates_container').find('input.start_date[education_num=' + education_num + ']').val();
+            start_date_val = new Date(to_compare_start_date);
             if (this_val < start_date_val) {
                 $(this).parent().append('<label class="wpforms-error" >End Date must be maximum than end date</label>');
                 $(this).css('border', '1px solid red');
@@ -133,7 +139,8 @@ function CheckCourseDates(){
         course_num = $(this).attr('course_num');
         this_val = new Date($(this).val());
         if (this_val != "") {
-            end_date_val = new Date($('input.end_date[course_num=' + course_num + ']').val());
+            to_compare_end_date=$(this).closest('.dates_container').find('input.end_date[course_num=' + course_num + ']').val();
+            end_date_val = new Date(to_compare_end_date);
             if (this_val > end_date_val) {
                 $(this).parent().append('<label class="wpforms-error" >Start Date must be minimum than end date</label>');
                 $(this).css('border', '1px solid red');
@@ -146,7 +153,8 @@ function CheckCourseDates(){
         education_num = $(this).attr('education_num');
         this_val = new Date($(this).val());
         if (this_val != "") {
-            start_date_val = new Date($('input.start_date[course_num=' + course_num + ']').val());
+            to_compare_start_date=$(this).closest('.dates_container').find('input.start_date[course_num=' + course_num + ']').val();
+            start_date_val = new Date(to_compare_start_date);
             if (this_val < start_date_val) {
                 $(this).parent().append('<label class="wpforms-error" >End Date must be maximum than end date</label>');
                 $(this).css('border', '1px solid red');
@@ -263,7 +271,7 @@ function getFormBasedOnStep(step_num) {
         return document.getElementById('cv_heading_form');
     }
     if (step_num === 1) {
-        SetWorksContent();
+      SetWorksContent();
         return document.getElementById('work_history_form');
     }
     if (step_num === 2) {
@@ -294,11 +302,13 @@ function SetSummaryContent(){
     $('input[name=summary_content]').val(tinymce.get('wpforms-614-field_1').getContent());
 }
 function SetWorksContent(){
-        $('#work_history_form').find('textarea.works_textarea').each(function(){
-            this_id=$(this).attr('id');
-            tinyMCE.get(this_id).save()
-        });
-
+    // alert(current_workExperience);
+    tinymce.triggerSave();
+    // for(let i=current_workExperience ; i>0 ; i--){
+    //     alert(i);
+    //     alert(tinymce.get('work_'+i+'_editor').getContent());
+    //     $('#work_'+i+'_editor').html(tinymce.get('work_'+i+'_editor').getContent());
+    // }
 }
 function storeCVData(step_num) {
     var valid = true;
@@ -318,7 +328,13 @@ function storeCVData(step_num) {
             processData: false,
             success: function (data) {
                 if(step_num==0){
-                    console.log(data);
+                    customerCV_data = JSON.parse(data);
+                    // console.log(customerCV_data['customerCV']);
+                    console.log(customerCV_data.customerCV);
+                    if (customerCV_data != "" && typeof customerCV_data !== 'undefined') {
+                       $('input[name=customer_cv_id]').val(customerCV_data.customerCV.id);
+                    }
+                    //customer_cv_id
                 }
                 redirect = JSON.parse(data).redirect;
                 if (redirect != "" && typeof redirect !== 'undefined') {
@@ -341,6 +357,7 @@ function AddWorkExperience() {
     });
 }
 function RemoveAddedItem(Id){
+    current_workExperience--;
     $("#"+Id).remove();
 }
 function AddProject() {
@@ -444,6 +461,23 @@ function SetInitSummaryContent(){
     $('#wpforms-614-field_1').html($('input[name=summary_content]').val());
 }
 function previewCV(){
+    $('#preview_cv_modal_content').html('<i class="fas fa fa-spinner"></i>');
+    $('.preview_cv_modal').addClass('show');
+    storeCVData(currentTab)
+    $.ajax({
+        method: "post",
+        url: main_path + "cv-builder/PreviewCVNew",
+        cache: false,
+        success: function (data) {
+            $('#preview_cv_modal_content').html(data);
+        },
+        error: function (data) {
+            console.log(data);
+            valid = false;
+        }
+    });
+}
+function previewCVOld(){
     $('#preview_cv_modal_content').html('<i class="fas fa fa-spinner"></i>');
     $('.preview_cv_modal').addClass('show');
     storeCVData(currentTab)

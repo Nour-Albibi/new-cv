@@ -146,22 +146,23 @@
                                                         class="wpforms-field-large"
                                                         name="education_{{$i}}[honours_{{$cv_lang}}]" value="{{$education->{"honours_".$cv_lang} }}">
                                                 </div>
-                                                <div id="wpforms-535-field_6-container"
-                                                     class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
-                                                     data-field-id="6">
-                                                    <label class="wpforms-field-label"
-                                                           for="wpforms-535-field_6">{{__('START DATE')}}</label>
-                                                    <div class="wpforms-datepicker-wrap">
-                                                        <input type="date" id="wpforms-535-field_6"
-                                                               class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
-                                                               data-date-format="m/d/Y"
-                                                               data-disable-past-dates="0" data-input="true"
-                                                               input_name="education_start_date"
-                                                               education_num="{{$i}}"
-                                                               name="education_{{$i}}[start_date]" value="{{Illuminate\Support\Carbon::parse($education->start_date)->toDateString()}}">
+                                                <div class="dates_container">
+                                                    <div id="wpforms-535-field_6-container"
+                                                         class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
+                                                         data-field-id="6">
+                                                        <label class="wpforms-field-label"
+                                                               for="wpforms-535-field_6">{{__('START DATE')}}</label>
+                                                        <div class="wpforms-datepicker-wrap">
+                                                            <input type="date" id="wpforms-535-field_6"
+                                                                   class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                                   data-date-format="m/d/Y"
+                                                                   data-disable-past-dates="0" data-input="true"
+                                                                   input_name="education_start_date"
+                                                                   education_num="{{$i}}"
+                                                                   name="education_{{$i}}[start_date]" value="{{Illuminate\Support\Carbon::parse($education->start_date)->toDateString()}}">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div id="wpforms-535-field_7-container"
+                                                    <div id="wpforms-535-field_7-container"
                                                      class="wpforms-field wpforms-field-date-time wpforms-one-half"
                                                      data-field-id="7">
                                                     <label class="wpforms-field-label"
@@ -176,14 +177,14 @@
                                                                name="education_{{$i}}[end_date]" value="{{Illuminate\Support\Carbon::parse($education->end_date)->toDateString()}}">
                                                     </div>
                                                 </div>
+                                                </div>
                                                 <div id="wpforms-488-field_7-container"
                                                      class="wpforms-field wpforms-field-checkbox"
                                                      data-field-id="7">
                                                     <ul id="wpforms-488-field_7">
                                                         <li class="choice-1 depth-1">
                                                             <input type="checkbox" id="wpforms-488-field_7_1"
-                                                                   name="education_{{$i}}[current]"
-                                                                   value="{{__('I currently work here')}}" @if($education->current) checked @endif>
+                                                                   name="education_{{$i}}[current]" @if($education->current) checked @endif>
                                                             <label class="wpforms-field-label-inline" for="wpforms-488-field_7_1">{{__('Current')}}</label>
                                                         </li>
                                                     </ul>
@@ -243,22 +244,23 @@
                                                     type="text" pattern="\d*" id="wpforms-535-field_5"
                                                     class="wpforms-field-large" name="education_1[honours_{{$cv_lang}}]">
                                             </div>
-                                            <div id="wpforms-535-field_6-container"
-                                                 class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
-                                                 data-field-id="6">
-                                                <label class="wpforms-field-label"
-                                                       for="wpforms-535-field_6">{{__('START DATE')}}</label>
-                                                <div class="wpforms-datepicker-wrap">
-                                                    <input type="date" id="wpforms-535-field_6"
-                                                           class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
-                                                           data-date-format="m/d/Y"
-                                                           data-disable-past-dates="0" data-input="true"
-                                                           input_name="education_start_date"
-                                                           education_num="1"
-                                                           name="education_1[start_date]">
+                                            <div class="dates_container">
+                                                <div id="wpforms-535-field_6-container"
+                                                     class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
+                                                     data-field-id="6">
+                                                    <label class="wpforms-field-label"
+                                                           for="wpforms-535-field_6">{{__('START DATE')}}</label>
+                                                    <div class="wpforms-datepicker-wrap">
+                                                        <input type="date" id="wpforms-535-field_6"
+                                                               class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                               data-date-format="m/d/Y"
+                                                               data-disable-past-dates="0" data-input="true"
+                                                               input_name="education_start_date"
+                                                               education_num="1"
+                                                               name="education_1[start_date]">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div id="wpforms-535-field_7-container"
+                                                <div id="wpforms-535-field_7-container"
                                                  class="wpforms-field wpforms-field-date-time wpforms-one-half"
                                                  data-field-id="7">
                                                 <label class="wpforms-field-label"
@@ -273,14 +275,14 @@
                                                            name="education_1[end_date]">
                                                 </div>
                                             </div>
+                                            </div>
                                             <div id="wpforms-488-field_7-container"
                                                  class="wpforms-field wpforms-field-checkbox"
                                                  data-field-id="7">
                                                 <ul id="wpforms-488-field_7">
                                                     <li class="choice-1 depth-1">
                                                         <input type="checkbox" id="wpforms-488-field_7_1"
-                                                               name="education_1[current]"
-                                                               value="I currently work here"><label
+                                                               name="education_1[current]"><label
                                                             class="wpforms-field-label-inline"
                                                             for="wpforms-488-field_7_1">{{__('Current')}}</label>
                                                     </li>

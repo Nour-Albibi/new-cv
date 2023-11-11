@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CVController;
 use App\Http\Controllers\CVCourseController;
@@ -33,7 +35,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::match(['post','get'],'/',[CVController::class,'index'])->name('cv.start');
         Route::post('create',[CVController::class,'create'])->name('cv.create');
         Route::get('/create',[CVController::class,'create']);
-        Route::post('/create_new',[CVController::class,'resetDataAndCreateNewCV'])->name('cv.resetDataAndCreateNewCV');
+        Route::match(['post','get'],'/create_new',[CVController::class,'resetDataAndCreateNewCV'])->name('cv.resetDataAndCreateNewCV');
         Route::post('uploadFile',[CVController::class,'uploadFile'])->name('cv.upload');
         Route::post('saveCV',[CVController::class,'store'])->name('cv.store');
         Route::post('FinaliseCVApplication',[CVController::class,'FinaliseCVApplication'])->name('FinaliseCVApplication');
@@ -46,6 +48,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::post('getSkillsRelatedToJobTitle',[CVSkillsController::class,'getSkillRelatedToJobTitle']);
         Route::post('getAllSummariesRelatedToJobTitle',[CVSummaryController::class,'getAllSummariesRelatedToJobTitle']);
         Route::get('DownloadCV/{cv}',[CVController::class,'DownloadCV']);
+        Route::post('PreviewCVNew',[CVController::class,'PreviewCVNew'])->name('PreviewCVNew');
         Route::post('PreviewCV/{cv}',[CVController::class,'PreviewCV'])->name('PreviewCV');
         Route::get('PreviewCV',[CVController::class,'PreviewCV'])->name('PreviewCV');
         Route::get('PreviewCVinPage/{cv}',[CVController::class,'PreviewCVinPage']);
@@ -58,4 +61,8 @@ Route::group(['middleware' => 'language'], function () {
         Route::match(['post','get'],'checkout',[PaymentController::class,'checkout'])->name('payment.checkout');
         Route::get('Confirmation',[PaymentController::class,'order_confirmed'])->name('order_confirmed');
     });
+    Route::get('Contact-us',[ContactUsController::class,'index'])->name('contact.index');
+    Route::post('ContactSendEmail',[ContactUsController::class,'sendEmail'])->name('contact.sendEmail');
+    /***/
+    Route::get('About-us',[AboutUsController::class,'index'])->name('about.index');
 });

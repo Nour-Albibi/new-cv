@@ -98,17 +98,6 @@
                         </div>
                         <p class="strong">{{$work->{"employeer_".$cv_lang} }}</p>
                          {!! $work->{"experience_description_".$lang } !!}
-{{--                        <ul class="work-duties mt-16 main-list">--}}
-{{--                            <li>Led operations involved in running the brand including Marketing,--}}
-{{--                                IT, HR/training, development/construction, property and P&L for 200--}}
-{{--                                store locations.--}}
-{{--                            </li>--}}
-{{--                            <li>Oversaw operations for all regional company and franchise locations.</li>--}}
-{{--                            <li>--}}
-{{--                                Assessed profitability of existing company processes to determine--}}
-{{--                                optimum organisational structure for maximum revenue growth.--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
                     </div>
                 @endforeach
             </div>
@@ -174,15 +163,3 @@
     </div>
 </div>
 </div>
-{{--<script src="https://code.jquery.com/jquery-3.6.3.slim.min.js"--}}
-{{--        integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>--}}
-{{--<script>--}}
-{{--    // objectHeight=document.getElementById('col-main').offsetHeight;--}}
-{{--    // alert(objectHeight);--}}
-{{--    // document.getElementById("col-personal").style.height = objectHeight+"px !important";--}}
-{{--    $(document).ready(function(){--}}
-
-{{--        alert($('.col-main').height());--}}
-{{--        $('.col-personal').height($('.col-main').height());--}}
-{{--    });--}}
-{{--</script>--}}

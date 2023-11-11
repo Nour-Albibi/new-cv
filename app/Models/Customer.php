@@ -129,4 +129,5 @@ class Customer extends Authenticatable
             $cv->delete();
         }
     }
+
 }

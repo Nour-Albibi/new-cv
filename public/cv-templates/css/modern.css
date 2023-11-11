@@ -171,6 +171,19 @@ ul.main-list li{
     font-weight: 700;
     line-height: normal;
 }
+.personal-info-description ul{
+    padding-left:0;
+}
+.personal-info-description ul li{
+    /*color: #FFF;*/
+    font-family: 'CenturyGothic';
+    font-size: 13.333px;
+    font-style: normal;
+    font-weight: 400;
+    /*line-height: normal;*/
+    line-height: 1.5;
+    margin-left: 14px;
+}
 .mt-10{
     margin-top:10px;
 }

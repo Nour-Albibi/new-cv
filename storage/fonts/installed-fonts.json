@@ -1,5 +1,10 @@
 {
     "centurygothic": {
-        "normal": "centurygothic_normal_ade8becdbaeacbdb60057ac11d2ac6ba"
+        "normal": "centurygothic_normal_82cfec9bdf1c93f905a8923e2df16d3f"
+    },
+    "inter": {
+        "normal": "C:\\xampp\\htdocs\\cv\\storage\\fonts\/inter_normal_3ba32a48b7860dfb008d0b1457da683a",
+        "500": "C:\\xampp\\htdocs\\cv\\storage\\fonts\/inter_500_5227956572435006df168ae4e07c5148",
+        "bold": "inter_bold_868976cd8a549429e4b1d38e6b1b6bed"
     }
 }

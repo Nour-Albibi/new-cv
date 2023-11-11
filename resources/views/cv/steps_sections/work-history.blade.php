@@ -164,23 +164,24 @@
                                                                 placeholder="COUNTY"
                                                                 value="{{$work->{"country_".$cv_lang } }}">
                                                         </div>
-                                                        <div id="wpforms-488-field_5-container"
-                                                             class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
-                                                             data-field-id="5">
-                                                            <label class="wpforms-field-label"
-                                                                   for="wpforms-488-field_5">{{__('START DATE')}}</label>
-                                                            <div class="wpforms-datepicker-wrap">
-                                                                <input type="date" id="wpforms-488-field_5"
-                                                                       class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
-                                                                       data-date-format="m/d/Y"
-                                                                       data-disable-past-dates="0" data-input="true"
-                                                                       work_num="{{$i}}"
-                                                                       input_name="work_start_date"
-                                                                       name="work_{{$i}}[start_date]"
-                                                                       value="{{Illuminate\Support\Carbon::parse($work->start_date)->toDateString()}}">
+                                                        <div class="dates_container">
+                                                            <div id="wpforms-488-field_5-container"
+                                                                 class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
+                                                                 data-field-id="5">
+                                                                <label class="wpforms-field-label"
+                                                                       for="wpforms-488-field_5">{{__('START DATE')}}</label>
+                                                                <div class="wpforms-datepicker-wrap">
+                                                                    <input type="date" id="wpforms-488-field_5"
+                                                                           class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                                           data-date-format="m/d/Y"
+                                                                           data-disable-past-dates="0" data-input="true"
+                                                                           work_num="{{$i}}"
+                                                                           input_name="work_start_date"
+                                                                           name="work_{{$i}}[start_date]"
+                                                                           value="{{Illuminate\Support\Carbon::parse($work->start_date)->toDateString()}}">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div id="wpforms-488-field_6-container"
+                                                            <div id="wpforms-488-field_6-container"
                                                              class="wpforms-field wpforms-field-date-time wpforms-one-half"
                                                              data-field-id="6">
                                                             <label class="wpforms-field-label"
@@ -196,6 +197,7 @@
                                                                        value="{{Illuminate\Support\Carbon::parse($work->end_date)->toDateString()}}">
                                                             </div>
                                                         </div>
+                                                        </div>
                                                         <div id="wpforms-488-field_7-container"
                                                              class="wpforms-field wpforms-field-checkbox"
                                                              data-field-id="7">
@@ -203,7 +205,6 @@
                                                                 <li class="choice-1 depth-1">
                                                                     <input type="checkbox" id="wpforms-488-field_7_1"
                                                                            name="work_{{$i}}[current]"
-                                                                           value="I currently work here"
                                                                            @if($work->current) checked @endif><label
                                                                         class="wpforms-field-label-inline"
                                                                         for="wpforms-488-field_7_1">{{__('I currently work here')}}</label>
@@ -214,6 +215,8 @@
                                                              class="wpforms-field wpforms-field-text">
                                                             <label class="wpforms-field-label"
                                                                    for="wpforms-488-field_4">{{__('Job Description')}}</label>
+{{--                                                            <textarea class="wpforms-field-large" name="work_{{$i}}[experience_description_{{$cv_lang}}]"--}}
+{{--                                                                      placeholder="{{__('Job Description')}}"></textarea>--}}
                                                             @php($editor_id="work_".$i."_editor")
                                                             <x-cv.tiny_works_editor id="work_{{$i}}_editor"
                                                                                     class="wpforms-field-large works_textarea"
@@ -266,6 +269,7 @@
                                                     class="wpforms-field-large" name="work_1[country_{{$cv_lang}}]"
                                                     placeholder="COUNTY">
                                             </div>
+                                            <div class="dates_container">
                                             <div id="wpforms-488-field_5-container"
                                                  class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
                                                  data-field-id="5">
@@ -296,14 +300,14 @@
                                                            name="work_1[end_date]">
                                                 </div>
                                             </div>
+                                            </div>
                                             <div id="wpforms-488-field_7-container"
                                                  class="wpforms-field wpforms-field-checkbox"
                                                  data-field-id="7">
                                                 <ul id="wpforms-488-field_7">
                                                     <li class="choice-1 depth-1">
                                                         <input type="checkbox" id="wpforms-488-field_7_1"
-                                                               name="work_1[current]"
-                                                               value="I currently work here"><label
+                                                               name="work_1[current]"><label
                                                             class="wpforms-field-label-inline"
                                                             for="wpforms-488-field_7_1">{{__('I currently work here')}}</label>
                                                     </li>
@@ -313,9 +317,6 @@
                                                  class="wpforms-field wpforms-field-text">
                                                 <label class="wpforms-field-label"
                                                        for="wpforms-488-field_4">{{__('Job Description')}}</label>
-                                                {{--                                                <textarea class="wpforms-field-large"--}}
-                                                {{--                                                          name="work_1[experience_description_{{$cv_lang}}]"--}}
-                                                {{--                                                          placeholder="{{__('Job Description')}}"></textarea>--}}
                                                 @php($editor_id="work_1_editor")
                                                 @php($i=1)
                                                 <x-cv.tiny_works_editor id="work_1_editor"

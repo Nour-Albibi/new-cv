@@ -37,8 +37,10 @@ class AuthController extends Controller
     }
     public function doSignupold(RegisterRequest $request){
         try{
-            if(AuthService::createCustomerAndAutoLogin($request->all()))
+            if(AuthService::createCustomerAndAutoLogin($request->all())){
+                CVService::syncCustomer();
                 return redirect(RouteServiceProvider::HOME);
+            }
         }catch (\Exception $exception){
                 return redirect()->back()->withErrors(['msg' =>$exception->getMessage()]);
         }
@@ -64,5 +66,5 @@ class AuthController extends Controller
     public function logout(){
         Session::flush();Auth::guard('customer')->logout();
         return view('home');
-}
+    }
 }

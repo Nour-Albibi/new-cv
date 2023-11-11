@@ -516,3 +516,85 @@ body .is-layout-grid > * {
     display: inline-block
 }
 
+.languages.dropdown {
+    position: relative;
+    /*display: inline-block;*/
+}
+
+.languages.dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 2;
+    left: 0;
+}
+.languages.dropdown .dropdown-content.show {
+    display: block;
+}
+.company-info {
+    justify-content: inherit;
+}
+.languages_list{
+    list-style: none
+}
+.languages_list li{
+    margin-bottom: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+.languages_list li:hover{
+    background: #eee;
+}
+.dropdown-item.active{
+    background: #eee;
+}
+.languages_list li:last-child{
+    border:none;
+}
+/******************************************/
+.languages.dropdown {
+    position: relative;
+    /*display: inline-block;*/
+}
+
+.profile.dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 2;
+    left: 0;
+}
+.profile.dropdown .dropdown-content.show {
+    display: block;
+}
+.profile.dropdown:hover .dropdown-content {
+    display: block;
+}
+.company-info {
+    justify-content: inherit;
+}
+.profile_list{
+    list-style: none
+}
+.profile_list li{
+    margin-bottom: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+.profile_list li:hover{
+    background: #eee;
+}
+.dropdown-item.active{
+    background: #eee;
+}
+.profile_list li:last-child{
+    border:none;
+}

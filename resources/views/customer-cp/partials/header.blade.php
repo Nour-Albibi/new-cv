@@ -13,7 +13,7 @@
                 </span>
             </a>
 
-            <a href="index.html" class="logo logo-light">
+            <a href="{{route('customer.dashboard')}}" class="logo logo-light">
                 <span class="logo-sm">
                     <img src="{{asset('customer-assets/images/b-logo.png')}}" alt="" height="22">
                 </span>
@@ -45,12 +45,6 @@
         </div>
 
         <div class="d-flex">
-            <div class="dropdown d-none d-lg-inline-block">
-                <button type="button" class="btn header-item toggle-search noti-icon waves-effect" data-target="#search-wrap">
-                    <i class="mdi mdi-magnify"></i>
-                </button>
-            </div>
-
             <div class="dropdown d-none d-md-block ms-2">
                 <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="me-2" src="{{asset('customer-assets/images/flags/us.jpg')}}" alt="Header Language" height="16"> English <span class="mdi mdi-chevron-down"></span>
@@ -165,15 +159,10 @@
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
                     <a class="dropdown-item" href="{{ route('customer.myprofile') }}"><i class="mdi mdi-account-circle-outline font-size-16 align-middle me-1"></i> Profile</a>
-                    <a class="dropdown-item" href="#"><i class="mdi mdi-wallet-outline font-size-16 align-middle me-1"></i> My Wallet</a>
-                    <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline font-size-16 align-middle me-1"></i> Lock screen</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="{{ route('customer.logout') }}"><i class="mdi mdi-power font-size-16 align-middle me-1 text-danger"></i> Logout</a>
                 </div>
             </div>
-
-
-
         </div>
     </div>
 </header>

@@ -112,23 +112,24 @@
                                                               class="wpforms-field-large"
                                                               placeholder="{{__('DESCRIPTION OF WORK ON THE PROJECT')}}">{!! $project->{"description_".$lang} !!}</textarea>
                                                 </div>
-                                                <div id="wpforms-519-field_4-container"
-                                                     class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
-                                                     data-field-id="4">
-                                                    <label class="wpforms-field-label"
-                                                           for="wpforms-519-field_4">{{__('START DATE')}}</label>
-                                                    <div class="wpforms-datepicker-wrap">
-                                                        <input type="date" id="wpforms-519-field_4"
-                                                               class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
-                                                               data-date-format="m/d/Y"
-                                                               data-disable-past-dates="0" data-input="true"
-                                                               input_name="project_start_date"
-                                                               project_num="{{$i}}"
-                                                               name="project_{{$i}}[start_date]"
-                                                               value="{{Illuminate\Support\Carbon::parse($project->start_date)->toDateString()}}">
+                                                <div class="dates_container">
+                                                    <div id="wpforms-519-field_4-container"
+                                                         class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
+                                                         data-field-id="4">
+                                                        <label class="wpforms-field-label"
+                                                               for="wpforms-519-field_4">{{__('START DATE')}}</label>
+                                                        <div class="wpforms-datepicker-wrap">
+                                                            <input type="date" id="wpforms-519-field_4"
+                                                                   class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                                   data-date-format="m/d/Y"
+                                                                   data-disable-past-dates="0" data-input="true"
+                                                                   input_name="project_start_date"
+                                                                   project_num="{{$i}}"
+                                                                   name="project_{{$i}}[start_date]"
+                                                                   value="{{Illuminate\Support\Carbon::parse($project->start_date)->toDateString()}}">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div id="wpforms-519-field_5-container"
+                                                    <div id="wpforms-519-field_5-container"
                                                      class="wpforms-field wpforms-field-date-time wpforms-one-half"
                                                      data-field-id="5">
                                                     <label class="wpforms-field-label"
@@ -143,6 +144,7 @@
                                                                name="project_{{$i}}[end_date]"
                                                                value="{{Illuminate\Support\Carbon::parse($project->end_date)->toDateString()}}">
                                                     </div>
+                                                </div>
                                                 </div>
                                             </div>
                                             @php $i++; @endphp
@@ -166,22 +168,23 @@
                                                           class="wpforms-field-large"
                                                           placeholder="{{__('DESCRIPTION OF WORK ON THE PROJECT')}}"></textarea>
                                             </div>
-                                            <div id="wpforms-519-field_4-container"
-                                                 class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
-                                                 data-field-id="4">
-                                                <label class="wpforms-field-label"
-                                                       for="wpforms-519-field_4">START DATE</label>
-                                                <div class="wpforms-datepicker-wrap">
-                                                    <input type="date" id="wpforms-519-field_4"
-                                                           class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
-                                                           data-date-format="m/d/Y"
-                                                           data-disable-past-dates="0" data-input="true"
-                                                           input_name="project_start_date"
-                                                           project_num="1"
-                                                           name="project_1[start_date]">
+                                            <div class="dates_container">
+                                                <div id="wpforms-519-field_4-container"
+                                                     class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
+                                                     data-field-id="4">
+                                                    <label class="wpforms-field-label"
+                                                           for="wpforms-519-field_4">{{__('START DATE')}}</label>
+                                                    <div class="wpforms-datepicker-wrap">
+                                                        <input type="date" id="wpforms-519-field_4"
+                                                               class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                                                               data-date-format="m/d/Y"
+                                                               data-disable-past-dates="0" data-input="true"
+                                                               input_name="project_start_date"
+                                                               project_num="1"
+                                                               name="project_1[start_date]">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div id="wpforms-519-field_5-container"
+                                                <div id="wpforms-519-field_5-container"
                                                  class="wpforms-field wpforms-field-date-time wpforms-one-half"
                                                  data-field-id="5">
                                                 <label class="wpforms-field-label"
@@ -195,6 +198,7 @@
                                                            project_num="1"
                                                            name="project_1[end_date]">
                                                 </div>
+                                            </div>
                                             </div>
                                         </div>
                                     @endif

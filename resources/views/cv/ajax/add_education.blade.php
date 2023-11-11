@@ -72,22 +72,23 @@
             type="number" pattern="\d*" id="wpforms-535-field_5"
             class="wpforms-field-large" name="education_{{$new_edu_num}}['honours_{{$lang}}']">
     </div>
-    <div id="wpforms-535-field_6-container"
-         class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
-         data-field-id="6">
-        <label class="wpforms-field-label"
-               for="wpforms-535-field_6">{{__('START DATE')}}</label>
-        <div class="wpforms-datepicker-wrap">
-            <input type="date" id="wpforms-535-field_6"
-                   class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
-                   data-date-format="m/d/Y"
-                   data-disable-past-dates="0" data-input="true"
-                   input_name="education_start_date"
-                   education_num="{{$new_edu_num}}"
-                   name="education_{{$new_edu_num}}['start_date']">
+    <div class="dates_container">
+        <div id="wpforms-535-field_6-container"
+             class="wpforms-field wpforms-field-date-time wpforms-one-half wpforms-first"
+             data-field-id="6">
+            <label class="wpforms-field-label"
+                   for="wpforms-535-field_6">{{__('START DATE')}}</label>
+            <div class="wpforms-datepicker-wrap">
+                <input type="date" id="wpforms-535-field_6"
+                       class="start_date wpforms-field-date-time-date wpforms-datepicker wpforms-field-large"
+                       data-date-format="m/d/Y"
+                       data-disable-past-dates="0" data-input="true"
+                       input_name="education_start_date"
+                       education_num="{{$new_edu_num}}"
+                       name="education_{{$new_edu_num}}['start_date']">
+            </div>
         </div>
-    </div>
-    <div id="wpforms-535-field_7-container"
+        <div id="wpforms-535-field_7-container"
          class="wpforms-field wpforms-field-date-time wpforms-one-half"
          data-field-id="7">
         <label class="wpforms-field-label"
@@ -102,14 +103,14 @@
                    name="education_{{$new_edu_num}}['end_date']">
         </div>
     </div>
+    </div>
     <div id="wpforms-488-field_7-container"
          class="wpforms-field wpforms-field-checkbox"
          data-field-id="7">
         <ul id="wpforms-488-field_7">
             <li class="choice-1 depth-1">
                 <input type="checkbox" id="wpforms-488-field_7_1"
-                       name="education_{{$new_edu_num}}[current]"
-                       value="I currently work here"><label
+                       name="education_{{$new_edu_num}}[current]"><label
                     class="wpforms-field-label-inline"
                     for="wpforms-488-field_7_1">{{__('Current')}}</label>
             </li>

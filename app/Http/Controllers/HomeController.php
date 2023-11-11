@@ -8,6 +8,7 @@ class HomeController extends Controller
 {
 
     public function index(){
+//        resetAllSessions();
         $bodyClass="home";
         return view('home',compact('bodyClass'));
     }

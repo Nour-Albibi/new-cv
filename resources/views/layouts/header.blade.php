@@ -37,18 +37,40 @@
                                                     </a>
                                                 </li>
                                                 @if(auth()->guard('customer')->check())
-                                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                                        <a href="#">
+                                                    @if(auth()->guard('customer')->user()->has_active_subscription())
+                                                    <li class="elementor-icon-list-item elementor-inline-item  profile dropdown " style="position:relative;">
+                                                        <a class="dropdown-toggle" href="{{route('customer.dashboard')}}" role="button" id="profile_dropdown_list" data-toggle="dropdown"
+                                                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                             <span
                                                                 class="elementor-icon-list-text">{{__('My Profile')}}</span>
                                                         </a>
                                                     </li>
+                                                    @else
+                                                        <li class="elementor-icon-list-item elementor-inline-item  profile dropdown " style="position:relative;">
+                                                            <a class="dropdown-toggle" href="{{route('customer.logout')}}" role="button"  data-toggle="dropdown"
+                                                               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <span
+                                                                class="elementor-icon-list-text">{{__('Logout')}}</span>
+                                                            </a>
+                                                        </li>
+                                                 @endif
                                                 @elseif(auth()->guard('company')->check())
-                                                    <li class="elementor-icon-list-item elementor-inline-item">
-                                                        <a href="#">
+                                                    <li class="elementor-icon-list-item elementor-inline-item  profile dropdown ">
+                                                        <a class="dropdown-toggle" href="#" role="button" id="profile_dropdown_list" data-toggle="dropdown"
+                                                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                             <span
                                                                 class="elementor-icon-list-text">{{__('My Profile')}}</span>
                                                         </a>
+                                                        <div class="dropdown-content" aria-labelledby="profile_dropdown_list">
+                                                                <ul class="profile_list">
+                                                                        <li class="dropdown-item">
+                                                                            <a href="{{route('customer.dashboard')}}"><span>{{__('Dashboard')}}</span></a>
+                                                                        </li>
+                                                                        <li class="dropdown-item">
+                                                                            <a href="{{route('customer.logout')}}"><span>{{__('Logout')}}</span></a>
+                                                                        </li>
+                                                                </ul>
+                                                        </div>
                                                     </li>
                                                 @else
                                                     <li class="elementor-icon-list-item elementor-inline-item">
@@ -116,11 +138,11 @@
                                                            class="elementor-item elementor-item-anchor">{{__('CV Templates')}}</a>
                                                     </li>
                                                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-99">
-                                                        <a href="#"
+                                                        <a href="{{route('about.index')}}"
                                                            class="elementor-item elementor-item-anchor">{{__('About us')}}</a>
                                                     </li>
                                                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-97">
-                                                        <a href="#"
+                                                        <a href="{{route('contact.index')}}"
                                                            class="elementor-item elementor-item-anchor">{{__('Contact us')}}</a>
                                                     </li>
                                                 </ul>
@@ -143,10 +165,10 @@
                                                         <a href="#" class="elementor-item elementor-item-anchor"
                                                            tabindex="-1">{{__('CV Templates')}}</a></li>
                                                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-99">
-                                                        <a href="#" class="elementor-item elementor-item-anchor"
+                                                        <a href="{{route('about.index')}}" class="elementor-item elementor-item-anchor"
                                                            tabindex="-1">{{__('About us')}}</a></li>
                                                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-97">
-                                                        <a href="#" class="elementor-item elementor-item-anchor"
+                                                        <a href="{{route('contact.index')}}" class="elementor-item elementor-item-anchor"
                                                            tabindex="-1">{{__('Contact us')}}</a></li>
                                                 </ul>
                                             </nav>

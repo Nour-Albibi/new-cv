@@ -7,6 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{asset('cv-templates/css/new_modern.css')}}" rel="stylesheet"/>
     <!--Custom CSS-->
+    <style>
+        .col-personal {
+            background-color: {{$cv->template_color ?? "#496267"}}  !important;
+        }
+
+        .main-title {
+            color: {{$cv->template_color ?? "#496267"}}  !important;
+        }
+    </style>
 </head>
 <body>
 <div class="Home">
@@ -85,12 +94,12 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="458" height="8" viewBox="0 0 458 8" fill="none">
                 <path d="M0.732506 3.87695H457.931" stroke="black" stroke-width="6.66665" stroke-miterlimit="10"/>
             </svg>
-            @if(!empty($cv->customer_cv_professional_summary()))
+            @if(!empty($cv->{"summary_content_".$lang}))
                 <div class="space-45"></div>
                 <div class="summery-section section">
                     <h3 class="section-title text-left">{{__('PROFESSIONAL SUMMARY')}}</h3>
                     <div class="section-description mt-15">
-                        <p>{!! $cv->customer_cv_professional_summary()->{"content_".$lang} !!}</p>
+                        <p>{!! $cv->{"summary_content_".$lang} !!}</p>
                     </div>
                 </div>
             @endif
@@ -100,23 +109,12 @@
                     <h3 class="section-title text-left">{{__('EXPERIENCE')}}</h3>
                     @foreach($cv->customer_cv_work_history as $work)
                         <div class="section-description mt-15 experience-item">
-                            <div style="display:flex;/*justify-content: space-between;*/ margin-bottom: 4px;">
+                            <div style="display:flex;justify-content: space-between; margin-bottom: 4px;">
                                 <p class="strong" style="max-width:285px">{{$work->{"job_title_".$lang} }}</p>
-                                <p class="strong">09/2015 to 02/2019</p>
+                                <p class="strong">{{ date("m-Y",strtotime($work->start_date))}} {{__('to')}} {{ date("m-Y",strtotime($work->end_date))}}</p>
                             </div>
                             <p class="strong">{{$work->{"employeer_".$lang} }}</p>
-                            {{--                    <p>{!! $work->{"experience_description_".$lang } !!}</p>--}}
-                            <ul class="work-duties mt-16 main-list">
-                                <li>Led operations involved in running the brand including Marketing,
-                                    IT, HR/training, development/construction, property and P&L for 200
-                                    store locations.
-                                </li>
-                                <li>Oversaw operations for all regional company and franchise locations.</li>
-                                <li>
-                                    Assessed profitability of existing company processes to determine
-                                    optimum organisational structure for maximum revenue growth.
-                                </li>
-                            </ul>
+                            {!! $work->{"experience_description_".$lang } !!}
                         </div>
                     @endforeach
                 </div>

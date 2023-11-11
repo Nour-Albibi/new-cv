@@ -7,12 +7,15 @@
     "require": {
         "php": "^8.0",
         "barryvdh/laravel-dompdf": "^2.0",
+        "barryvdh/laravel-translation-manager": "^0.6.5",
         "encore/laravel-admin": "^1.8",
         "fruitcake/laravel-cors": "^2.0.5",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
         "irisvn/media-manager": "dev-master",
         "jackiedo/cart": "^3.0",
+        "laravel-admin-ext/chartjs": "^1.0",
+        "laravel-admin-ext/grid-sortable": "^1.1",
         "laravel-admin-ext/helpers": "1.*",
         "laravel-admin-ext/log-viewer": "^1.0",
         "laravel-admin-ext/scheduling": "^1.2",
@@ -20,7 +23,9 @@
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
-        "spatie/browsershot": "^3.59"
+        "spatie/browsershot": "^3.59",
+        "symfony/http-client": "^6.3",
+        "symfony/mailgun-mailer": "^6.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

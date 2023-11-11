@@ -27,6 +27,7 @@ class CVController extends Controller
                 'cvTemplate' => ['required'],
             ]);
             Session::put(['chosen_template_id' => $request->cvTemplate, 'chosen_cv_color' => $request->cvColor]);
+            CVService::syncColorAndTemplateToCurrentCV();
             return view('cv.start2');
         } else {
             $cvTemplates = CVService::getCVTemplates();
@@ -36,7 +37,7 @@ class CVController extends Controller
 
     public function create(Request $request)
     {
-        //resetAllSessions();
+//        resetAllSessions();
 
         if ($request->isMethod('post')) {
             $request->validate([
@@ -48,6 +49,9 @@ class CVController extends Controller
 //        if (Auth::guard('customer')->check() && !empty($addedItem)) {
 //            Auth::guard('customer')->user()->deleteLatestFakeAttemptCreatedCV($addedItem->id);
 //        }
+        if(!empty($addedItem)){
+            CVService::syncCVLanguage($addedItem->id);
+        }
         if (Auth::guard('customer')->check() && empty($addedItem)) {
             if(!Auth::guard('customer')->user()->has_active_subscription()){
                 $subscription_id=0;
@@ -56,6 +60,10 @@ class CVController extends Controller
             }
             $customerCV = Auth::guard('customer')->user()->getLatestStoredCV($subscription_id);
             if($customerCV!=null){
+                if(!empty(session('chosen_cv_language'))){
+                    $customerCV->cv_language=session('chosen_cv_language');
+                    $customerCV->save();
+                }
                 CVService::addStoredCVinCart($customerCV);
                 $addedItem=CVService::getCVItem();
                 Session::put('show_confirm',1);
@@ -158,11 +166,11 @@ class CVController extends Controller
         }
     }
     public function DownloadCV(CustomerCv $cv){
+
         $cvFileName=$cv->template->file_name;
-//        return view('cv-templates.'.$cvFileName,compact('cv'));
-        $pdf = Pdf::loadView('cv-templates.'.$cvFileName.'2',['cv' => $cv]);
+        $pdf = Pdf::loadView('cv-templates.'.$cvFileName.'_pdf',['cv' => $cv]);
+//        $pdf = Pdf::loadView('cv-templates.modern2_test',['cv' => $cv]);
         return $pdf->download('CV.pdf');
-//        return $pdf->stream('CV.pdf');
     }
     public function PreviewCVinPage(CustomerCv $cv){
         $cvFileName=$cv->template->file_name;
@@ -171,6 +179,16 @@ class CVController extends Controller
     public function PreviewCV(CustomerCv $cv){
         if(!empty($cv->id)){
             return view('cv.ajax.cv_modal',['cv'=>$cv])->render();
+        }
+        return view('components.cv-templates.modern_example')->render();
+    }
+    public function PreviewCVNew(){
+        $addedItem=CVService::getCVItem();
+        if(!empty($addedItem)){
+            $cv=CustomerCv::find($addedItem->id);
+            if(!empty($cv)){
+                return view('cv.ajax.cv_modal',['cv'=>$cv])->render();
+            }
         }
         return view('components.cv-templates.modern_example')->render();
     }

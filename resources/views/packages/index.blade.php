@@ -127,12 +127,12 @@
                                                                                     </li>
                                                                                 </ul>
                                                                             </div>
-                                                                            @if(auth()->guard('customer')->check() && auth()->guard('customer')->user()->has_active_subscription())
-                                                                                @if( auth()->guard('customer')->user()->getActiveSubscription()->package_id==$pkg->id)
+{{--                                                                            @if(auth()->guard('customer')->check() && auth()->guard('customer')->user()->has_active_subscription())--}}
+                                                                                @if(auth()->guard('customer')->user()->has_active_subscription() && auth()->guard('customer')->user()->getActiveSubscription()->package_id==$pkg->id)
                                                                                     <div class="pricingTable-signup">
                                                                                         {{__("Package is Active now")}}
                                                                                     </div>
-                                                                                @endif
+{{--                                                                                @endif--}}
                                                                             @else
                                                                                 <div class="pricingTable-signup ">
                                                                                     <a href="javascript:void(0)"

@@ -6,16 +6,22 @@
 @section('custom_css')
     <link rel="stylesheet" id="elementor-post-36-css"
           href="{{asset('assets/uploads/elementor/css/post-36.css?ver=1695906899')}}"
-          media="all">
+          media="all" defer>
     <link rel="stylesheet" id="elementor-post-23-css"
           href="{{asset('assets/uploads/elementor/css/post-23.css?ver=1696667947')}}"
-          media="all">
+          media="all" defer>
     <link rel="stylesheet" id="elementor-post-59-css"
           href="{{asset('assets/uploads/elementor/css/post-59.css?ver=1696668000')}}"
-          media="all">
+          media="all" defer>
     <link rel="stylesheet" id="elementor-post-55-css"
           href="{{asset('assets/uploads/elementor/css/post-55.css?ver=1695921314')}}"
-          media="all">
+          media="all" defer />
+    <link rel="stylesheet"
+          href="{{asset('assets/css/widget-icon-box.min.css')}}" defer />
+    <link rel="stylesheet" href="{{asset('assets/css/widget-animated-headline.min.css')}}" defer />
+    <link rel="stylesheet" href="{{asset('assets/css/widget-carousel.min.css')}}" defer />
+    <link rel="stylesheet"
+          href="{{asset('assets/css/home.css')}}" defer />
 @endsection
 @section('main_content')
     <div data-elementor-type="wp-page" data-elementor-id="59" class="elementor elementor-59"
@@ -36,38 +42,6 @@
                             data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
                             data-widget_type="heading.default">
                             <div class="elementor-widget-container">
-                                <style>/*! elementor - v3.16.0 - 20-09-2023 */
-                                    .elementor-heading-title {
-                                        padding: 0;
-                                        margin: 0;
-                                        line-height: 1
-                                    }
-
-                                    .elementor-widget-heading .elementor-heading-title[class*=elementor-size-] > a {
-                                        color: inherit;
-                                        font-size: inherit;
-                                        line-height: inherit
-                                    }
-
-                                    .elementor-widget-heading .elementor-heading-title.elementor-size-small {
-                                        font-size: 15px
-                                    }
-
-                                    .elementor-widget-heading .elementor-heading-title.elementor-size-medium {
-                                        font-size: 19px
-                                    }
-
-                                    .elementor-widget-heading .elementor-heading-title.elementor-size-large {
-                                        font-size: 29px
-                                    }
-
-                                    .elementor-widget-heading .elementor-heading-title.elementor-size-xl {
-                                        font-size: 39px
-                                    }
-
-                                    .elementor-widget-heading .elementor-heading-title.elementor-size-xxl {
-                                        font-size: 59px
-                                    }</style>
                                 <h2 class="elementor-heading-title elementor-size-default">Digital Bank & Invesments</h2>
                             </div>
                         </div>
@@ -77,13 +51,11 @@
                             data-settings="{&quot;highlighted_text&quot;:&quot; Perfect CV&quot;,&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;headline_style&quot;:&quot;highlight&quot;,&quot;marker&quot;:&quot;circle&quot;,&quot;loop&quot;:&quot;yes&quot;,&quot;highlight_animation_duration&quot;:1200,&quot;highlight_iteration_delay&quot;:8000}"
                             data-widget_type="animated-headline.default">
                             <div class="elementor-widget-container">
-                                <link rel="stylesheet"
-                                      href="https://projects.datatime4it.com/chtml/wp-content/plugins/elementor-pro/assets/css/widget-animated-headline.min.css">
                                 <h2 class="elementor-headline">
                                     <span class="elementor-headline-plain-text elementor-headline-text-wrapper">CV Builder to  Create</span>
                                     <span class="elementor-headline-dynamic-wrapper elementor-headline-text-wrapper">
-					<span class="elementor-headline-dynamic-text elementor-headline-text-active"> Perfect CV</span>
-				</span>
+				            	<span class="elementor-headline-dynamic-text elementor-headline-text-active"> Perfect CV</span>
+				                </span>
                                 </h2>
                             </div>
                         </div>
@@ -91,38 +63,8 @@
                             class="elementor-element elementor-element-4d0d179c exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor"
                             data-id="4d0d179c" data-element_type="widget" data-widget_type="text-editor.default">
                             <div class="elementor-widget-container">
-                                <style>/*! elementor - v3.16.0 - 20-09-2023 */
-                                    .elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
-                                        background-color: #69727d;
-                                        color: #fff
-                                    }
-
-                                    .elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap {
-                                        color: #69727d;
-                                        border: 3px solid;
-                                        background-color: transparent
-                                    }
-
-                                    .elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap {
-                                        margin-top: 8px
-                                    }
-
-                                    .elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap-letter {
-                                        width: 1em;
-                                        height: 1em
-                                    }
-
-                                    .elementor-widget-text-editor .elementor-drop-cap {
-                                        float: left;
-                                        text-align: center;
-                                        line-height: 1;
-                                        font-size: 50px
-                                    }
-
-                                    .elementor-widget-text-editor .elementor-drop-cap-letter {
-                                        display: inline-block
-                                    }</style>
-                                Create your CV online with our CV maker in just a few minutes. Learn the best way to make a
+                                Create your CV online with our CV maker in just a few minutes. Learn the best way to
+                                make a
                                 CV specific to your industry and that get you your dream job.
                             </div>
                         </div>
@@ -136,14 +78,16 @@
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div
                                             class="elementor-element elementor-element-7908336 elementor-align-left exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-button"
-                                            data-id="7908336" data-element_type="widget" data-widget_type="button.default">
+                                            data-id="7908336" data-element_type="widget"
+                                            data-widget_type="button.default">
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-button-wrapper">
                                                     <a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-float"
-                                                       href="startcv.html">
-						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-text">Start  Now</span>
-		</span>
+                                                       href="{{route('cv.start')}}">
+                                                    <span class="elementor-button-content-wrapper">
+                                                    <span class="elementor-button-text">{{__('Start  Now')}}
+                                                    </span>
+		                                                </span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -167,53 +111,9 @@
                         <div
                             class="elementor-element elementor-element-66a98036 elementor-widget__width-auto elementor-absolute exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-spacer"
                             data-id="66a98036" data-element_type="widget"
-                            data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="spacer.default">
+                            data-settings="{&quot;_position&quot;:&quot;absolute&quot;}"
+                            data-widget_type="spacer.default">
                             <div class="elementor-widget-container">
-                                <style>/*! elementor - v3.16.0 - 20-09-2023 */
-                                    .elementor-column .elementor-spacer-inner {
-                                        height: var(--spacer-size)
-                                    }
-
-                                    .e-con {
-                                        --container-widget-width: 100%
-                                    }
-
-                                    .e-con-inner > .elementor-widget-spacer, .e-con > .elementor-widget-spacer {
-                                        width: var(--container-widget-width, var(--spacer-size));
-                                        --align-self: var(--container-widget-align-self, initial);
-                                        --flex-shrink: 0
-                                    }
-
-                                    .e-con-inner > .elementor-widget-spacer > .elementor-widget-container, .e-con > .elementor-widget-spacer > .elementor-widget-container {
-                                        height: 100%;
-                                        width: 100%
-                                    }
-
-                                    .e-con-inner > .elementor-widget-spacer > .elementor-widget-container > .elementor-spacer, .e-con > .elementor-widget-spacer > .elementor-widget-container > .elementor-spacer {
-                                        height: 100%
-                                    }
-
-                                    .e-con-inner > .elementor-widget-spacer > .elementor-widget-container > .elementor-spacer > .elementor-spacer-inner, .e-con > .elementor-widget-spacer > .elementor-widget-container > .elementor-spacer > .elementor-spacer-inner {
-                                        height: var(--container-widget-height, var(--spacer-size))
-                                    }
-
-                                    .e-con-inner > .elementor-widget-spacer.elementor-widget-empty, .e-con > .elementor-widget-spacer.elementor-widget-empty {
-                                        position: relative;
-                                        min-height: 22px;
-                                        min-width: 22px
-                                    }
-
-                                    .e-con-inner > .elementor-widget-spacer.elementor-widget-empty .elementor-widget-empty-icon, .e-con > .elementor-widget-spacer.elementor-widget-empty .elementor-widget-empty-icon {
-                                        position: absolute;
-                                        top: 0;
-                                        bottom: 0;
-                                        left: 0;
-                                        right: 0;
-                                        margin: auto;
-                                        padding: 0;
-                                        width: 22px;
-                                        height: 22px
-                                    }</style>
                                 <div class="elementor-spacer">
                                     <div class="elementor-spacer-inner"></div>
                                 </div>
@@ -222,7 +122,8 @@
                         <div
                             class="elementor-element elementor-element-4ef9b87a elementor-widget__width-auto elementor-absolute exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-spacer"
                             data-id="4ef9b87a" data-element_type="widget"
-                            data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="spacer.default">
+                            data-settings="{&quot;_position&quot;:&quot;absolute&quot;}"
+                            data-widget_type="spacer.default">
                             <div class="elementor-widget-container">
                                 <div class="elementor-spacer">
                                     <div class="elementor-spacer-inner"></div>
@@ -232,7 +133,8 @@
                         <div
                             class="elementor-element elementor-element-19cf39ad elementor-widget__width-auto elementor-absolute elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
                             data-id="19cf39ad" data-element_type="widget"
-                            data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="icon.default">
+                            data-settings="{&quot;_position&quot;:&quot;absolute&quot;}"
+                            data-widget_type="icon.default">
                             <div class="elementor-widget-container">
                                 <div class="elementor-icon-wrapper">
                                     <div class="elementor-icon">
@@ -246,8 +148,7 @@
                             data-settings="{&quot;skin&quot;:&quot;coverflow&quot;,&quot;speed&quot;:200,&quot;autoplay_speed&quot;:3000,&quot;show_arrows&quot;:&quot;yes&quot;,&quot;pagination&quot;:&quot;bullets&quot;,&quot;autoplay&quot;:&quot;yes&quot;,&quot;loop&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;space_between&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:10,&quot;sizes&quot;:[]},&quot;space_between_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:10,&quot;sizes&quot;:[]},&quot;space_between_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:10,&quot;sizes&quot;:[]}}"
                             data-widget_type="media-carousel.default">
                             <div class="elementor-widget-container">
-                                <link rel="stylesheet"
-                                      href="https://projects.datatime4it.com/chtml/wp-content/plugins/elementor-pro/assets/css/widget-carousel.min.css">
+
                                 <div class="elementor-swiper">
                                     <div class="elementor-main-swiper swiper">
                                         <div class="swiper-wrapper">
@@ -255,7 +156,7 @@
                                                 <a href="#">
                                                     <div class="elementor-carousel-image" role="img"
                                                          aria-label="University-Student-Resume-Template-web1"
-                                                         style="background-image: url(wp-content/uploads/2023/09/student-resume-example.jpg)">
+                                                         style="background-image: url('{{asset('assets/uploads/student-resume-example.jpg')}}')">
 
 
                                                     </div>
@@ -264,7 +165,7 @@
                                                 <a href="#">
                                                     <div class="elementor-carousel-image" role="img"
                                                          aria-label="student-resume-example"
-                                                         style="background-image: url(wp-content/uploads/2023/09/student-resume-example.jpg)">
+                                                         style="background-image: url('{{asset('assets/uploads/student-resume-example.jpg')}}')">
 
 
                                                     </div>
@@ -273,7 +174,7 @@
                                                 <a href="#">
                                                     <div class="elementor-carousel-image" role="img"
                                                          aria-label="resume-template-with-photo"
-                                                         style="background-image: url(wp-content/uploads/2023/09/student-resume-example.jpg)">
+                                                         style="background-image: url('{{asset('assets/uploads/student-resume-example.jpg')}}')">
 
 
                                                     </div>
@@ -282,7 +183,7 @@
                                                 <a href="#">
                                                     <div class="elementor-carousel-image" role="img"
                                                          aria-label="Resume-CV-Templates-Word-doc-012"
-                                                         style="background-image: url(wp-content/uploads/2023/09/student-resume-example.jpg)">
+                                                         style="background-image: url('{{asset('assets/uploads/student-resume-example.jpg')}}')">
 
 
                                                     </div>
@@ -339,12 +240,14 @@
                                             data-widget_type="exad-logo-carousel.default">
                                             <div class="elementor-widget-container">
                                                 <div class="exad-logo-carousel">
-                                                    <div class="exad-logo-carousel-element exad-logo-carousel-max-height-no"
-                                                         data-carousel-nav="none" data-slidestoshow="4"
-                                                         data-slidestoshow-tablet="3" data-slidestoshow-mobile="2"
-                                                         data-slidestoscroll="1" data-direction="false" data-loop="true"
-                                                         data-autoplay="true" data-autoplayspeed="5000" data-smooth="true"
-                                                         data-smooth-speed="2000">
+                                                    <div
+                                                        class="exad-logo-carousel-element exad-logo-carousel-max-height-no"
+                                                        data-carousel-nav="none" data-slidestoshow="4"
+                                                        data-slidestoshow-tablet="3" data-slidestoshow-mobile="2"
+                                                        data-slidestoscroll="1" data-direction="false" data-loop="true"
+                                                        data-autoplay="true" data-autoplayspeed="5000"
+                                                        data-smooth="true"
+                                                        data-smooth-speed="2000">
                                                         <div class="exad-logo-carousel-item exad-logo-carousel-center">
 
                                                             <img width="709" height="284"
@@ -440,7 +343,8 @@
                                             data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
                                             data-widget_type="heading.default">
                                             <div class="elementor-widget-container">
-                                                <h3 class="elementor-heading-title elementor-size-default">Create your CV in
+                                                <h3 class="elementor-heading-title elementor-size-default">Create your
+                                                    CV in
                                                     3 Steps</h3></div>
                                         </div>
                                     </div>
@@ -501,33 +405,6 @@
                                                             data-id="15de41ba" data-element_type="widget"
                                                             data-widget_type="counter.default">
                                                             <div class="elementor-widget-container">
-                                                                <style>/*! elementor - v3.16.0 - 20-09-2023 */
-                                                                    .elementor-counter .elementor-counter-number-wrapper {
-                                                                        display: flex;
-                                                                        font-size: 69px;
-                                                                        font-weight: 600;
-                                                                        line-height: 1
-                                                                    }
-
-                                                                    .elementor-counter .elementor-counter-number-prefix, .elementor-counter .elementor-counter-number-suffix {
-                                                                        flex-grow: 1;
-                                                                        white-space: pre-wrap
-                                                                    }
-
-                                                                    .elementor-counter .elementor-counter-number-prefix {
-                                                                        text-align: right
-                                                                    }
-
-                                                                    .elementor-counter .elementor-counter-number-suffix {
-                                                                        text-align: left
-                                                                    }
-
-                                                                    .elementor-counter .elementor-counter-title {
-                                                                        text-align: center;
-                                                                        font-size: 19px;
-                                                                        font-weight: 400;
-                                                                        line-height: 2.5
-                                                                    }</style>
                                                                 <div class="elementor-counter">
                                                                     <div class="elementor-counter-number-wrapper">
                                                                     <span
@@ -576,125 +453,13 @@
                             class="elementor-element elementor-element-1ae3b426 elementor-widget-divider--view-line_icon elementor-widget-divider--element-align-left elementor-widget__width-initial elementor-view-default exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-divider"
                             data-id="1ae3b426" data-element_type="widget" data-widget_type="divider.default">
                             <div class="elementor-widget-container">
-                                <style>/*! elementor - v3.16.0 - 20-09-2023 */
-                                    .elementor-widget-divider {
-                                        --divider-border-style: none;
-                                        --divider-border-width: 1px;
-                                        --divider-color: #0c0d0e;
-                                        --divider-icon-size: 20px;
-                                        --divider-element-spacing: 10px;
-                                        --divider-pattern-height: 24px;
-                                        --divider-pattern-size: 20px;
-                                        --divider-pattern-url: none;
-                                        --divider-pattern-repeat: repeat-x
-                                    }
-
-                                    .elementor-widget-divider .elementor-divider {
-                                        display: flex
-                                    }
-
-                                    .elementor-widget-divider .elementor-divider__text {
-                                        font-size: 15px;
-                                        line-height: 1;
-                                        max-width: 95%
-                                    }
-
-                                    .elementor-widget-divider .elementor-divider__element {
-                                        margin: 0 var(--divider-element-spacing);
-                                        flex-shrink: 0
-                                    }
-
-                                    .elementor-widget-divider .elementor-icon {
-                                        font-size: var(--divider-icon-size)
-                                    }
-
-                                    .elementor-widget-divider .elementor-divider-separator {
-                                        display: flex;
-                                        margin: 0;
-                                        direction: ltr
-                                    }
-
-                                    .elementor-widget-divider--view-line_icon .elementor-divider-separator, .elementor-widget-divider--view-line_text .elementor-divider-separator {
-                                        align-items: center
-                                    }
-
-                                    .elementor-widget-divider--view-line_icon .elementor-divider-separator:after, .elementor-widget-divider--view-line_icon .elementor-divider-separator:before, .elementor-widget-divider--view-line_text .elementor-divider-separator:after, .elementor-widget-divider--view-line_text .elementor-divider-separator:before {
-                                        display: block;
-                                        content: "";
-                                        border-bottom: 0;
-                                        flex-grow: 1;
-                                        border-top: var(--divider-border-width) var(--divider-border-style) var(--divider-color)
-                                    }
-
-                                    .elementor-widget-divider--element-align-left .elementor-divider .elementor-divider-separator > .elementor-divider__svg:first-of-type {
-                                        flex-grow: 0;
-                                        flex-shrink: 100
-                                    }
-
-                                    .elementor-widget-divider--element-align-left .elementor-divider-separator:before {
-                                        content: none
-                                    }
-
-                                    .elementor-widget-divider--element-align-left .elementor-divider__element {
-                                        margin-left: 0
-                                    }
-
-                                    .elementor-widget-divider--element-align-right .elementor-divider .elementor-divider-separator > .elementor-divider__svg:last-of-type {
-                                        flex-grow: 0;
-                                        flex-shrink: 100
-                                    }
-
-                                    .elementor-widget-divider--element-align-right .elementor-divider-separator:after {
-                                        content: none
-                                    }
-
-                                    .elementor-widget-divider--element-align-right .elementor-divider__element {
-                                        margin-right: 0
-                                    }
-
-                                    .elementor-widget-divider:not(.elementor-widget-divider--view-line_text):not(.elementor-widget-divider--view-line_icon) .elementor-divider-separator {
-                                        border-top: var(--divider-border-width) var(--divider-border-style) var(--divider-color)
-                                    }
-
-                                    .elementor-widget-divider--separator-type-pattern {
-                                        --divider-border-style: none
-                                    }
-
-                                    .elementor-widget-divider--separator-type-pattern.elementor-widget-divider--view-line .elementor-divider-separator, .elementor-widget-divider--separator-type-pattern:not(.elementor-widget-divider--view-line) .elementor-divider-separator:after, .elementor-widget-divider--separator-type-pattern:not(.elementor-widget-divider--view-line) .elementor-divider-separator:before, .elementor-widget-divider--separator-type-pattern:not([class*=elementor-widget-divider--view]) .elementor-divider-separator {
-                                        width: 100%;
-                                        min-height: var(--divider-pattern-height);
-                                        -webkit-mask-size: var(--divider-pattern-size) 100%;
-                                        mask-size: var(--divider-pattern-size) 100%;
-                                        -webkit-mask-repeat: var(--divider-pattern-repeat);
-                                        mask-repeat: var(--divider-pattern-repeat);
-                                        background-color: var(--divider-color);
-                                        -webkit-mask-image: var(--divider-pattern-url);
-                                        mask-image: var(--divider-pattern-url)
-                                    }
-
-                                    .elementor-widget-divider--no-spacing {
-                                        --divider-pattern-size: auto
-                                    }
-
-                                    .elementor-widget-divider--bg-round {
-                                        --divider-pattern-repeat: round
-                                    }
-
-                                    .rtl .elementor-widget-divider .elementor-divider__text {
-                                        direction: rtl
-                                    }
-
-                                    .e-con-inner > .elementor-widget-divider, .e-con > .elementor-widget-divider {
-                                        width: var(--container-widget-width, 100%);
-                                        --flex-grow: var(--container-widget-flex-grow)
-                                    }</style>
                                 <div class="elementor-divider">
-			<span class="elementor-divider-separator">
-							<div class="elementor-icon elementor-divider__element">
-					<i aria-hidden="true" class="fas fa-circle"></i>
-					<i class="fa fa-eercast" aria-hidden="true"></i>
-</div>
-						</span>
+                                <span class="elementor-divider-separator">
+                                    <div class="elementor-icon elementor-divider__element">
+                                        <i aria-hidden="true" class="fas fa-circle"></i>
+                                        <i class="fa fa-eercast" aria-hidden="true"></i>
+                                    </div>
+                                </span>
                                 </div>
                             </div>
                         </div>
@@ -752,69 +517,10 @@
                                             data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
                                             data-widget_type="image-box.default">
                                             <div class="elementor-widget-container">
-                                                <style>/*! elementor - v3.16.0 - 20-09-2023 */
-                                                    .elementor-widget-image-box .elementor-image-box-content {
-                                                        width: 100%
-                                                    }
-
-                                                    @media (min-width: 768px) {
-                                                        .elementor-widget-image-box.elementor-position-left .elementor-image-box-wrapper, .elementor-widget-image-box.elementor-position-right .elementor-image-box-wrapper {
-                                                            display: flex
-                                                        }
-
-                                                        .elementor-widget-image-box.elementor-position-right .elementor-image-box-wrapper {
-                                                            text-align: right;
-                                                            flex-direction: row-reverse
-                                                        }
-
-                                                        .elementor-widget-image-box.elementor-position-left .elementor-image-box-wrapper {
-                                                            text-align: left;
-                                                            flex-direction: row
-                                                        }
-
-                                                        .elementor-widget-image-box.elementor-position-top .elementor-image-box-img {
-                                                            margin: auto
-                                                        }
-
-                                                        .elementor-widget-image-box.elementor-vertical-align-top .elementor-image-box-wrapper {
-                                                            align-items: flex-start
-                                                        }
-
-                                                        .elementor-widget-image-box.elementor-vertical-align-middle .elementor-image-box-wrapper {
-                                                            align-items: center
-                                                        }
-
-                                                        .elementor-widget-image-box.elementor-vertical-align-bottom .elementor-image-box-wrapper {
-                                                            align-items: flex-end
-                                                        }
-                                                    }
-
-                                                    @media (max-width: 767px) {
-                                                        .elementor-widget-image-box .elementor-image-box-img {
-                                                            margin-left: auto !important;
-                                                            margin-right: auto !important;
-                                                            margin-bottom: 15px
-                                                        }
-                                                    }
-
-                                                    .elementor-widget-image-box .elementor-image-box-img {
-                                                        display: inline-block
-                                                    }
-
-                                                    .elementor-widget-image-box .elementor-image-box-title a {
-                                                        color: inherit
-                                                    }
-
-                                                    .elementor-widget-image-box .elementor-image-box-wrapper {
-                                                        text-align: center
-                                                    }
-
-                                                    .elementor-widget-image-box .elementor-image-box-description {
-                                                        margin: 0
-                                                    }</style>
                                                 <div class="elementor-image-box-wrapper">
                                                     <figure class="elementor-image-box-img"><img decoding="async"
-                                                                                                 loading="lazy" width="384"
+                                                                                                 loading="lazy"
+                                                                                                 width="384"
                                                                                                  height="243"
                                                                                                  src="https://projects.datatime4it.com/chtml/wp-content/uploads/2023/09/pick-a-resume-template.webp"
                                                                                                  class="elementor-animation-float attachment-full size-full wp-image-81"
@@ -851,7 +557,8 @@
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-image-box-wrapper">
                                                     <figure class="elementor-image-box-img"><img decoding="async"
-                                                                                                 loading="lazy" width="384"
+                                                                                                 loading="lazy"
+                                                                                                 width="384"
                                                                                                  height="243"
                                                                                                  src="https://projects.datatime4it.com/chtml/wp-content/uploads/2023/09/publish-your-resume.webp"
                                                                                                  class="elementor-animation-float attachment-full size-full wp-image-120"
@@ -889,7 +596,8 @@
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-image-box-wrapper">
                                                     <figure class="elementor-image-box-img"><img decoding="async"
-                                                                                                 loading="lazy" width="384"
+                                                                                                 loading="lazy"
+                                                                                                 width="384"
                                                                                                  height="243"
                                                                                                  src="https://projects.datatime4it.com/chtml/wp-content/uploads/2023/09/make-it-yours.webp"
                                                                                                  class="elementor-animation-float attachment-full size-full wp-image-121"
@@ -898,7 +606,8 @@
                                                                                                  sizes="(max-width: 384px) 100vw, 384px">
                                                     </figure>
                                                     <div class="elementor-image-box-content">
-                                                        <h5 class="elementor-image-box-title">Download, print & apply</h5>
+                                                        <h5 class="elementor-image-box-title">Download, print &
+                                                            apply</h5>
                                                         <p class="elementor-image-box-description">Lorem ipsum dolor sit
                                                             amet, consectetur adipiscing elit.</p>
                                                     </div>
@@ -926,7 +635,8 @@
                         <div
                             class="elementor-element elementor-element-10e7641d elementor-view-stacked elementor-widget__width-auto elementor-absolute elementor-shape-circle exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon"
                             data-id="10e7641d" data-element_type="widget"
-                            data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="icon.default">
+                            data-settings="{&quot;_position&quot;:&quot;absolute&quot;}"
+                            data-widget_type="icon.default">
                             <div class="elementor-widget-container">
                                 <div class="elementor-icon-wrapper">
                                     <div class="elementor-icon">
@@ -981,17 +691,18 @@
                             data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
                             data-widget_type="heading.default">
                             <div class="elementor-widget-container">
-                                <h3 class="elementor-heading-title elementor-size-default">Insert our pre-written CV content
-
-
+                                <h3 class="elementor-heading-title elementor-size-default">Insert our pre-written CV
+                                    content
                                 </h3></div>
                         </div>
                         <div
                             class="elementor-element elementor-element-719301a exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor"
                             data-id="719301a" data-element_type="widget" data-widget_type="text-editor.default">
                             <div class="elementor-widget-container">
-                                Creating a CV with the best online CV maker in the Saudi Arabia couldn&#8217;t be easier.
-                                Get inspiration on the go with CV examples for any industry, role, or experience level. Pick
+                                Creating a CV with the best online CV maker in the Saudi Arabia couldn&#8217;t be
+                                easier.
+                                Get inspiration on the go with CV examples for any industry, role, or experience level.
+                                Pick
                                 a stunning CV template &#8211; builder-checked and ready for download
                             </div>
                         </div>
@@ -1005,14 +716,15 @@
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div
                                             class="elementor-element elementor-element-a3805ee elementor-align-left exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-button"
-                                            data-id="a3805ee" data-element_type="widget" data-widget_type="button.default">
+                                            data-id="a3805ee" data-element_type="widget"
+                                            data-widget_type="button.default">
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-button-wrapper">
                                                     <a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-float"
                                                        href="https://projects.datatime4it.com/chtml/startcv/">
-						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-text">Start  Now</span>
-		</span>
+                                                        <span class="elementor-button-content-wrapper">
+                                                        <span class="elementor-button-text">Start  Now</span>
+		                                                </span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -1066,7 +778,8 @@
                                             data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
                                             data-widget_type="heading.default">
                                             <div class="elementor-widget-container">
-                                                <h3 class="elementor-heading-title elementor-size-default">Choose Your CV
+                                                <h3 class="elementor-heading-title elementor-size-default">Choose Your
+                                                    CV
                                                     Template
                                                 </h3></div>
                                         </div>
@@ -1095,7 +808,8 @@
                                                                  class="elementor-section elementor-inner-section elementor-element elementor-element-a70578d exad-glass-effect-yes elementor-section-boxed elementor-section-height-default elementor-section-height-default exad-sticky-section-no"
                                                                  data-id="a70578d" data-element_type="section"
                                                                  data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                                                            <div class="elementor-container elementor-column-gap-custom">
+                                                            <div
+                                                                class="elementor-container elementor-column-gap-custom">
                                                                 <div
                                                                     class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-652454b exad-glass-effect-no exad-sticky-section-no"
                                                                     data-id="652454b" data-element_type="column">
@@ -1107,22 +821,6 @@
                                                                             data-settings="{&quot;slides_to_show&quot;:&quot;3&quot;,&quot;autoplay_speed&quot;:3000,&quot;navigation&quot;:&quot;both&quot;,&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500}"
                                                                             data-widget_type="image-carousel.default">
                                                                             <div class="elementor-widget-container">
-                                                                                <style>/*! elementor - v3.16.0 - 20-09-2023 */
-                                                                                    .elementor-widget-image-carousel .swiper, .elementor-widget-image-carousel .swiper-container {
-                                                                                        position: static
-                                                                                    }
-
-                                                                                    .elementor-widget-image-carousel .swiper-container .swiper-slide figure, .elementor-widget-image-carousel .swiper .swiper-slide figure {
-                                                                                        line-height: inherit
-                                                                                    }
-
-                                                                                    .elementor-widget-image-carousel .swiper-slide {
-                                                                                        text-align: center
-                                                                                    }
-
-                                                                                    .elementor-image-carousel-wrapper:not(.swiper-container-initialized):not(.swiper-initialized) .swiper-slide {
-                                                                                        max-width: calc(100% / var(--e-image-carousel-slides-to-show, 3))
-                                                                                    }</style>
                                                                                 <div
                                                                                     class="elementor-image-carousel-wrapper swiper"
                                                                                     dir="ltr">
@@ -1138,7 +836,8 @@
                                                                                                 <img decoding="async"
                                                                                                      class="swiper-slide-image"
                                                                                                      src="https://projects.datatime4it.com/chtml/wp-content/uploads/2023/09/CV_UK_7.svg"
-                                                                                                     alt="CV_UK_7"></figure>
+                                                                                                     alt="CV_UK_7">
+                                                                                            </figure>
                                                                                         </div>
                                                                                         <div class="swiper-slide"
                                                                                              role="group"
@@ -1149,7 +848,8 @@
                                                                                                 <img decoding="async"
                                                                                                      class="swiper-slide-image"
                                                                                                      src="https://projects.datatime4it.com/chtml/wp-content/uploads/2023/09/CV_UK_9.svg"
-                                                                                                     alt="CV_UK_9"></figure>
+                                                                                                     alt="CV_UK_9">
+                                                                                            </figure>
                                                                                         </div>
                                                                                         <div class="swiper-slide"
                                                                                              role="group"
@@ -1177,7 +877,8 @@
                                                                                            class="eicon-chevron-right"></i>
                                                                                     </div>
 
-                                                                                    <div class="swiper-pagination"></div>
+                                                                                    <div
+                                                                                        class="swiper-pagination"></div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1189,9 +890,9 @@
                                                                                 <div class="elementor-button-wrapper">
                                                                                     <a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-float"
                                                                                        href="#">
-						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-text">Learn More</span>
-		</span>
+                                                                                        <span class="elementor-button-content-wrapper">
+                                                                                        <span class="elementor-button-text">Learn More</span>
+                                                                                          </span>
                                                                                     </a>
                                                                                 </div>
                                                                             </div>
@@ -1267,9 +968,9 @@
 
                                                     <div class="exad-card-body">
                                                         <a class="exad-card-action" href="#" target="_blank">
-
-						<span>
-							Create This CV 						</span>
+						                                <span>
+							                              Create This CV
+                                                        </span>
 
                                                         </a>
                                                     </div>
@@ -1301,8 +1002,9 @@
                                                     <div class="exad-card-body">
                                                         <a class="exad-card-action" href="#" target="_blank">
 
-						<span>
-							Create This CV 						</span>
+						                                        <span>
+						                                	Create This CV
+                                                                </span>
 
                                                         </a>
                                                     </div>
@@ -1334,8 +1036,9 @@
                                                     <div class="exad-card-body">
                                                         <a class="exad-card-action" href="#" target="_blank">
 
-						<span>
-							Create This CV 						</span>
+                                                            <span>
+                                                                Create This CV
+                                                            </span>
 
                                                         </a>
                                                     </div>
@@ -1374,7 +1077,8 @@
                             data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
                             data-widget_type="heading.default">
                             <div class="elementor-widget-container">
-                                <h3 class="elementor-heading-title elementor-size-default">Easiest and most feature-packed
+                                <h3 class="elementor-heading-title elementor-size-default">Easiest and most
+                                    feature-packed
                                     CV builder available</h3></div>
                         </div>
                         <div
@@ -1382,7 +1086,8 @@
                             data-id="32f9c6bb" data-element_type="widget" data-widget_type="text-editor.default">
                             <div class="elementor-widget-container">
                                 Make a CV that meets all KSA standards in just a few steps using the expert-approved CV
-                                Maker. Need tips and advice specific to your profession? This CV Creator from Nfbatic has it
+                                Maker. Need tips and advice specific to your profession? This CV Creator from Nfbatic
+                                has it
                                 all!
 
                             </div>
@@ -1421,8 +1126,7 @@
                                             data-settings="{&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:-15,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}"
                                             data-widget_type="icon-box.default">
                                             <div class="elementor-widget-container">
-                                                <link rel="stylesheet"
-                                                      href="https://projects.datatime4it.com/chtml/wp-content/plugins/elementor/assets/css/widget-icon-box.min.css">
+
                                                 <div class="elementor-icon-box-wrapper">
                                                     <div class="elementor-icon-box-icon">
 				<span class="elementor-icon elementor-animation-">
@@ -1482,16 +1186,19 @@
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-icon-box-wrapper">
                                                     <div class="elementor-icon-box-icon">
-				<span class="elementor-icon elementor-animation-">
-				<i aria-hidden="true" class="remixicon ri-award-fill"></i>				</span>
+                                                    <span class="elementor-icon elementor-animation-">
+                                                    <i aria-hidden="true" class="remixicon ri-award-fill"></i>
+                                                    </span>
                                                     </div>
                                                     <div class="elementor-icon-box-content">
                                                         <h4 class="elementor-icon-box-title">
-					<span>
-						Expert tips & guidance					</span>
+					                                    <span>
+					                                	Expert tips & guidance
+                                                        </span>
                                                         </h4>
                                                         <p class="elementor-icon-box-description">
-                                                            Get detailed CV-building tips and advice every step of the way.
+                                                            Get detailed CV-building tips and advice every step of the
+                                                            way.
                                                             CV pro or beginner - we've got you covered </p>
                                                     </div>
                                                 </div>
@@ -1518,7 +1225,6 @@
                                                 <div class="elementor-icon-box-wrapper">
                                                     <div class="elementor-icon-box-icon">
 				<span class="elementor-icon elementor-animation-">
-				<?xml version = "1.0" encoding = "UTF-8"?>
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="102px"
                          height="89px" viewbox="0 0 102 89"
                          version="1.1"><title>6B51332D-73A6-4769-AC50-DEDA0A212B89</title>
@@ -1553,7 +1259,8 @@
                                                         </h4>
                                                         <p class="elementor-icon-box-description">
                                                             Make your CV more sophisticated. Select from thousands of
-                                                            pre-written bullet points for hundreds of jobs and careers </p>
+                                                            pre-written bullet points for hundreds of jobs and
+                                                            careers </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1584,7 +1291,6 @@
                                                 <div class="elementor-icon-box-wrapper">
                                                     <div class="elementor-icon-box-icon">
 				<span class="elementor-icon elementor-animation-">
-				<?xml version = "1.0" encoding = "UTF-8"?>
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="103px"
                          height="94px" viewbox="0 0 103 94"
                          version="1.1"><title>7303C82F-BFB3-48EF-9809-D4BAAB3BC4C3</title>
@@ -1602,12 +1308,14 @@
                                                     </div>
                                                     <div class="elementor-icon-box-content">
                                                         <h4 class="elementor-icon-box-title">
-					<span>
-						Unlimited CVs & Downloads					</span>
+                                                    <span>
+                                                        Unlimited CVs & Downloads
+                                                    </span>
                                                         </h4>
                                                         <p class="elementor-icon-box-description">
                                                             No limit on the number of CVs you can create. Unlimited
-                                                            printing, sharing and downloading in PDF, Word, plain text or
+                                                            printing, sharing and downloading in PDF, Word, plain text
+                                                            or
                                                             image formats. Limitless creativity. </p>
                                                     </div>
                                                 </div>
@@ -1665,7 +1373,8 @@
                                             data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
                                             data-widget_type="heading.default">
                                             <div class="elementor-widget-container">
-                                                <h3 class="elementor-heading-title elementor-size-default">Get The Latest
+                                                <h3 class="elementor-heading-title elementor-size-default">Get The
+                                                    Latest
                                                     Update</h3></div>
                                         </div>
                                         <div
@@ -1674,254 +1383,6 @@
                                             data-settings="{&quot;button_width&quot;:&quot;30&quot;,&quot;step_next_label&quot;:&quot;Next&quot;,&quot;step_previous_label&quot;:&quot;Previous&quot;,&quot;step_type&quot;:&quot;number_text&quot;,&quot;step_icon_shape&quot;:&quot;circle&quot;}"
                                             data-widget_type="form.default">
                                             <div class="elementor-widget-container">
-                                                <style>/*! elementor-pro - v3.16.0 - 20-09-2023 */
-                                                    .elementor-button.elementor-hidden, .elementor-hidden {
-                                                        display: none
-                                                    }
-
-                                                    .e-form__step {
-                                                        width: 100%
-                                                    }
-
-                                                    .e-form__step:not(.elementor-hidden) {
-                                                        display: flex;
-                                                        flex-wrap: wrap
-                                                    }
-
-                                                    .e-form__buttons {
-                                                        flex-wrap: wrap
-                                                    }
-
-                                                    .e-form__buttons, .e-form__buttons__wrapper {
-                                                        display: flex
-                                                    }
-
-                                                    .e-form__indicators {
-                                                        display: flex;
-                                                        justify-content: space-between;
-                                                        align-items: center;
-                                                        flex-wrap: nowrap;
-                                                        font-size: 13px;
-                                                        margin-bottom: var(--e-form-steps-indicators-spacing)
-                                                    }
-
-                                                    .e-form__indicators__indicator {
-                                                        display: flex;
-                                                        flex-direction: column;
-                                                        align-items: center;
-                                                        justify-content: center;
-                                                        flex-basis: 0;
-                                                        padding: 0 var(--e-form-steps-divider-gap)
-                                                    }
-
-                                                    .e-form__indicators__indicator__progress {
-                                                        width: 100%;
-                                                        position: relative;
-                                                        background-color: var(--e-form-steps-indicator-progress-background-color);
-                                                        border-radius: var(--e-form-steps-indicator-progress-border-radius);
-                                                        overflow: hidden
-                                                    }
-
-                                                    .e-form__indicators__indicator__progress__meter {
-                                                        width: var(--e-form-steps-indicator-progress-meter-width, 0);
-                                                        height: var(--e-form-steps-indicator-progress-height);
-                                                        line-height: var(--e-form-steps-indicator-progress-height);
-                                                        padding-right: 15px;
-                                                        border-radius: var(--e-form-steps-indicator-progress-border-radius);
-                                                        background-color: var(--e-form-steps-indicator-progress-color);
-                                                        color: var(--e-form-steps-indicator-progress-meter-color);
-                                                        text-align: right;
-                                                        transition: width .1s linear
-                                                    }
-
-                                                    .e-form__indicators__indicator:first-child {
-                                                        padding-left: 0
-                                                    }
-
-                                                    .e-form__indicators__indicator:last-child {
-                                                        padding-right: 0
-                                                    }
-
-                                                    .e-form__indicators__indicator--state-inactive {
-                                                        color: var(--e-form-steps-indicator-inactive-primary-color, #c2cbd2)
-                                                    }
-
-                                                    .e-form__indicators__indicator--state-inactive [class*=indicator--shape-]:not(.e-form__indicators__indicator--shape-none) {
-                                                        background-color: var(--e-form-steps-indicator-inactive-secondary-color, #fff)
-                                                    }
-
-                                                    .e-form__indicators__indicator--state-inactive object, .e-form__indicators__indicator--state-inactive svg {
-                                                        fill: var(--e-form-steps-indicator-inactive-primary-color, #c2cbd2)
-                                                    }
-
-                                                    .e-form__indicators__indicator--state-active {
-                                                        color: var(--e-form-steps-indicator-active-primary-color, #39b54a);
-                                                        border-color: var(--e-form-steps-indicator-active-secondary-color, #fff)
-                                                    }
-
-                                                    .e-form__indicators__indicator--state-active [class*=indicator--shape-]:not(.e-form__indicators__indicator--shape-none) {
-                                                        background-color: var(--e-form-steps-indicator-active-secondary-color, #fff)
-                                                    }
-
-                                                    .e-form__indicators__indicator--state-active object, .e-form__indicators__indicator--state-active svg {
-                                                        fill: var(--e-form-steps-indicator-active-primary-color, #39b54a)
-                                                    }
-
-                                                    .e-form__indicators__indicator--state-completed {
-                                                        color: var(--e-form-steps-indicator-completed-secondary-color, #fff)
-                                                    }
-
-                                                    .e-form__indicators__indicator--state-completed [class*=indicator--shape-]:not(.e-form__indicators__indicator--shape-none) {
-                                                        background-color: var(--e-form-steps-indicator-completed-primary-color, #39b54a)
-                                                    }
-
-                                                    .e-form__indicators__indicator--state-completed .e-form__indicators__indicator__label {
-                                                        color: var(--e-form-steps-indicator-completed-primary-color, #39b54a)
-                                                    }
-
-                                                    .e-form__indicators__indicator--state-completed .e-form__indicators__indicator--shape-none {
-                                                        color: var(--e-form-steps-indicator-completed-primary-color, #39b54a);
-                                                        background-color: initial
-                                                    }
-
-                                                    .e-form__indicators__indicator--state-completed object, .e-form__indicators__indicator--state-completed svg {
-                                                        fill: var(--e-form-steps-indicator-completed-secondary-color, #fff)
-                                                    }
-
-                                                    .e-form__indicators__indicator__icon {
-                                                        width: var(--e-form-steps-indicator-padding, 30px);
-                                                        height: var(--e-form-steps-indicator-padding, 30px);
-                                                        font-size: var(--e-form-steps-indicator-icon-size);
-                                                        border-width: 1px;
-                                                        border-style: solid;
-                                                        display: flex;
-                                                        justify-content: center;
-                                                        align-items: center;
-                                                        overflow: hidden;
-                                                        margin-bottom: 10px
-                                                    }
-
-                                                    .e-form__indicators__indicator__icon img, .e-form__indicators__indicator__icon object, .e-form__indicators__indicator__icon svg {
-                                                        width: var(--e-form-steps-indicator-icon-size);
-                                                        height: auto
-                                                    }
-
-                                                    .e-form__indicators__indicator__icon .e-font-icon-svg {
-                                                        height: 1em
-                                                    }
-
-                                                    .e-form__indicators__indicator__number {
-                                                        width: var(--e-form-steps-indicator-padding, 30px);
-                                                        height: var(--e-form-steps-indicator-padding, 30px);
-                                                        border-width: 1px;
-                                                        border-style: solid;
-                                                        display: flex;
-                                                        justify-content: center;
-                                                        align-items: center;
-                                                        margin-bottom: 10px
-                                                    }
-
-                                                    .e-form__indicators__indicator--shape-circle {
-                                                        border-radius: 50%
-                                                    }
-
-                                                    .e-form__indicators__indicator--shape-square {
-                                                        border-radius: 0
-                                                    }
-
-                                                    .e-form__indicators__indicator--shape-rounded {
-                                                        border-radius: 5px
-                                                    }
-
-                                                    .e-form__indicators__indicator--shape-none {
-                                                        border: 0
-                                                    }
-
-                                                    .e-form__indicators__indicator__label {
-                                                        text-align: center
-                                                    }
-
-                                                    .e-form__indicators__indicator__separator {
-                                                        width: 100%;
-                                                        height: var(--e-form-steps-divider-width);
-                                                        background-color: #babfc5
-                                                    }
-
-                                                    .e-form__indicators--type-icon, .e-form__indicators--type-icon_text, .e-form__indicators--type-number, .e-form__indicators--type-number_text {
-                                                        align-items: flex-start
-                                                    }
-
-                                                    .e-form__indicators--type-icon .e-form__indicators__indicator__separator, .e-form__indicators--type-icon_text .e-form__indicators__indicator__separator, .e-form__indicators--type-number .e-form__indicators__indicator__separator, .e-form__indicators--type-number_text .e-form__indicators__indicator__separator {
-                                                        margin-top: calc(var(--e-form-steps-indicator-padding, 30px) / 2 - var(--e-form-steps-divider-width, 1px) / 2)
-                                                    }
-
-                                                    .elementor-field-type-hidden {
-                                                        display: none
-                                                    }
-
-                                                    .elementor-field-type-html {
-                                                        display: inline-block
-                                                    }
-
-                                                    .elementor-login .elementor-lost-password, .elementor-login .elementor-remember-me {
-                                                        font-size: .85em
-                                                    }
-
-                                                    .elementor-field-type-recaptcha_v3 .elementor-field-label {
-                                                        display: none
-                                                    }
-
-                                                    .elementor-field-type-recaptcha_v3 .grecaptcha-badge {
-                                                        z-index: 1
-                                                    }
-
-                                                    .elementor-button .elementor-form-spinner {
-                                                        order: 3
-                                                    }
-
-                                                    .elementor-form .elementor-button > span {
-                                                        display: flex;
-                                                        justify-content: center;
-                                                        align-items: center
-                                                    }
-
-                                                    .elementor-form .elementor-button .elementor-button-text {
-                                                        white-space: normal;
-                                                        flex-grow: 0
-                                                    }
-
-                                                    .elementor-form .elementor-button svg {
-                                                        height: auto
-                                                    }
-
-                                                    .elementor-form .elementor-button .e-font-icon-svg {
-                                                        height: 1em
-                                                    }
-
-                                                    .elementor-select-wrapper .select-caret-down-wrapper {
-                                                        position: absolute;
-                                                        top: 50%;
-                                                        transform: translateY(-50%);
-                                                        inset-inline-end: 10px;
-                                                        pointer-events: none;
-                                                        font-size: 11px
-                                                    }
-
-                                                    .elementor-select-wrapper .select-caret-down-wrapper svg {
-                                                        display: unset;
-                                                        width: 1em;
-                                                        aspect-ratio: unset;
-                                                        fill: currentColor
-                                                    }
-
-                                                    .elementor-select-wrapper .select-caret-down-wrapper i {
-                                                        font-size: 19px;
-                                                        line-height: 2
-                                                    }
-
-                                                    .elementor-select-wrapper.remove-before:before {
-                                                        content: "" !important
-                                                    }</style>
                                                 <form class="elementor-form" method="post" name="New Form">
                                                     <input type="hidden" name="post_id" value="59">
                                                     <input type="hidden" name="form_id" value="42762fbc">
@@ -1943,14 +1404,13 @@
                                                         </div>
                                                         <div
                                                             class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-30 e-form__buttons">
-                                                            <button type="submit" class="elementor-button elementor-size-sm"
+                                                            <button type="submit"
+                                                                    class="elementor-button elementor-size-sm"
                                                                     id="sb">
-						<span>
-															<span class=" elementor-button-icon">
-																										</span>
-																						<span
-                                                                                            class="elementor-button-text">Subscribe</span>
-													</span>
+						                                    <span>
+															<span class=" elementor-button-icon"></span>
+                                                                <span class="elementor-button-text">Subscribe</span>
+													         </span>
                                                             </button>
                                                         </div>
                                                     </div>
@@ -1967,3 +1427,41 @@
         </section>
     </div>
 @endsection
+@section('custom_js')
+    <script
+        src="https://projects.datatime4it.com/chtml/wp-content/plugins/elementor-pro/assets/js/webpack-pro.runtime.min.js?ver=3.16.2"
+        id="elementor-pro-webpack-runtime-js"></script>
+    <script id="elementor-pro-frontend-js-before">var ElementorProFrontendConfig = {
+            "ajaxurl": "https:\/\/projects.datatime4it.com\/chtml\/wp-admin\/admin-ajax.php",
+            "nonce": "939c9d8457",
+            "urls": {
+                "assets": "https:\/\/projects.datatime4it.com\/chtml\/wp-content\/plugins\/elementor-pro\/assets\/",
+                "rest": "https:\/\/projects.datatime4it.com\/chtml\/wp-json\/"
+            },
+            "shareButtonsNetworks": {
+                "facebook": {"title": "Facebook", "has_counter": true},
+                "twitter": {"title": "Twitter"},
+                "linkedin": {"title": "LinkedIn", "has_counter": true},
+                "pinterest": {"title": "Pinterest", "has_counter": true},
+                "reddit": {"title": "Reddit", "has_counter": true},
+                "vk": {"title": "VK", "has_counter": true},
+                "odnoklassniki": {"title": "OK", "has_counter": true},
+                "tumblr": {"title": "Tumblr"},
+                "digg": {"title": "Digg"},
+                "skype": {"title": "Skype"},
+                "stumbleupon": {"title": "StumbleUpon", "has_counter": true},
+                "mix": {"title": "Mix"},
+                "telegram": {"title": "Telegram"},
+                "pocket": {"title": "Pocket", "has_counter": true},
+                "xing": {"title": "XING", "has_counter": true},
+                "whatsapp": {"title": "WhatsApp"},
+                "email": {"title": "Email"},
+                "print": {"title": "Print"}
+            },
+            "facebook_sdk": {"lang": "en_US", "app_id": ""},
+            "lottie": {"defaultAnimationUrl": "https:\/\/projects.datatime4it.com\/chtml\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"}
+        };</script>
+    <script
+        src="https://projects.datatime4it.com/chtml/wp-content/plugins/elementor-pro/assets/js/frontend.min.js?ver=3.16.2"
+        id="elementor-pro-frontend-js"></script>
+@stop
