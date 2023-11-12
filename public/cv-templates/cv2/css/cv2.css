@@ -1,0 +1,169 @@
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 14px;
+}
+
+html.w-mod-touch * {
+    background-attachment: scroll !important;
+}
+
+body {
+    overflow-x: hidden;
+    /*height: 100vh;*/
+    overflow-y: auto;
+    line-height: 1.4;
+}
+
+.Home {
+    width: 816px;
+    padding: 20px;
+
+    background-color: #0187de;
+}
+
+.inner_home {
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    padding-left: 36px;
+    padding-right: 36px;
+}
+
+.inner_header {
+    width: 100%;
+    display: table;
+}
+
+.display-table {
+    display: table;
+}
+
+.table-cell {
+    display: table-cell;
+}
+
+.personal_image {
+    width: 116px;
+    height: 116px;
+}
+
+.fr {
+    float: right;
+}
+
+.header_info {
+    width: 68%;
+}
+
+.header_table div.table-cell {
+    vertical-align: top;
+}
+
+.summary {
+    margin-top: 8px;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.contact_area {
+    height: 70.6px;
+    width: 100%;
+    position: relative;
+}
+
+.inner_contact_area {
+    position: absolute;
+    top: 0;
+    left: -3px;
+    width: 762.6px;
+    height: 70.6px;
+    background-color: #0187de;
+}
+.display-inline-block{
+    display:inline-block;
+}
+.position_relative{
+    position:relative;
+}
+.contact_table{
+    width:100%;
+    height:100%;
+    padding-left:15px;
+}
+.contact_table .table-cell{
+    vertical-align: middle;
+}
+.contact_table .table-cell p{
+    color:#fff;
+}
+.fl{
+    float:left;
+}
+.ml-5{
+    margin-left:5px;
+}
+.mt-5{
+    margin-top:5px;
+}
+.display-grid{
+    display:grid;
+}
+.width100{
+    width:100%;
+}
+.inner_content{
+    padding-top:30px;
+}
+.display-inline-grid{
+    display:inline-grid;
+    grid-template-columns: 1fr 1fr;
+}
+.col1 ,.col2{
+    height:100%
+}
+.col2{
+    border-left:3px solid #0187de;
+    padding-left: 36px;
+}
+h3.section-title{
+    color: #000;
+    font-family: 'Inter', sans-serif;;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+h5.section-title{
+    color: var(--primary1);
+    font-family: 'Inter', sans-serif;;
+    font-size: 16px !important;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.strong{
+    font-weight:700;
+}
+.skills_area, .description_area{
+    max-width: 300px;
+    margin-left: 25px;
+    margin-top: 10px;
+    line-height: 22px;
+}
+.skills_area ul li ,.description_area ul li{
+    line-height: 22px;
+}

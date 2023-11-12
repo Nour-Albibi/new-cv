@@ -10,7 +10,17 @@
     <link rel="stylesheet" href="{{asset('assets/plugins/elementor-pro/assets/css/widget-animated-headline.min.css')}}"
           defer>
     <link rel="stylesheet" href="{{asset('assets/css/cv.css')}}" defer/>
-
+    <style>
+        /*.exad-card:hover.yes .exad-card-thumb  c{*/
+        /*    */
+        /*}*/
+        .exad-card-thumb div.Home{
+            transition: all 0.3s ease;
+        }
+        .exad-card:hover.yes .exad-card-thumb  div.Home{
+            transform:scale(1.15);
+        }
+    </style>
 @endsection
 @section('main_content')
     <div data-elementor-type="wp-page" data-elementor-id="293" class="elementor elementor-293"
@@ -374,12 +384,28 @@
             $(this).find('.elementor-icon').addClass('active');
             if(cv_color!=="default"){
                 $('path#sidebar_color').attr('style','fill: '+cv_color +' !important');
+                $('.sidebar_color').attr('style','fill: '+cv_color +' !important');
+                $('.sidebar_color').attr('stroke',cv_color);
+                // $('.ps01').css('fill',cv_color+ ' !important');
+                // $('.ps03').css('fill',cv_color+' !important');
+                $('.ps01').attr('style','fill: '+cv_color +' !important');
+                $('.ps03').attr('style','fill: '+cv_color +' !important');
+                $('.header_color').attr('style','background-color: '+cv_color +' !important');
+                $('h5.section-title').css('color',cv_color);
+                $('.bordered').css('border-color',cv_color);
                 $('input[name=cvColor]').val(cv_color);
             }else{
                 $('.cv-template').each(function(){
+                    default_color=$(this).attr('default_color');
+                    $(this).find('path#sidebar_color').attr('style','fill: '+default_color +' !important');
+                    $(this).find('.sidebar_color').attr('style','fill: '+default_color +' !important');
+                    $(this).find('.sidebar_color').attr('stroke',default_color);
+                    $(this).find('.ps01').attr('style','fill: '+default_color +' !important');
+                    $(this).find('.ps03').attr('style','fill: '+default_color +' !important');
+                    $('.header_color').attr('style','background-color: '+default_color +' !important');
+                    $('h5.section-title').css('color',default_color);
+                    $('.bordered').css('border-color',default_color);
                    if($(this).hasClass('active')){
-                       default_color=$(this).attr('default_color');
-                       $('path#sidebar_color').attr('style','fill: '+default_color +' !important');
                       $('input[name=cvColor]').val(default_color);
                    }
                 });

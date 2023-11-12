@@ -1,0 +1,242 @@
+.Home {
+    width: 100%;
+    height:100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+.header{
+    width: 100%;
+    padding-bottom: 6px;
+    background-color: #009ACC;
+}
+.text-left{
+    text-align: left !important;
+}
+.row{
+    display: flex;
+    display: -moz-flex;
+    display: -ms-flex;
+}
+.d-flex{
+    display: flex;
+    display: -moz-flex;
+    display: -ms-flex;
+}
+.col-main{
+    padding:0;
+    display: table;
+    width:95%;
+    margin-left:auto;
+    margin-right:auto;
+}
+.ml-5{
+    margin-left:5px;
+}
+.main-title h3{
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2;
+}
+h3.section-title{
+    color: #000;
+    font-size: 6px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2;
+}
+h5.section-title{
+    color: #009ACC;
+    font-size: 6px !important;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2;
+}
+.mt-7{
+    margin-top:7px;
+}
+.section-description p{
+    color: #000;
+    font-size: 6px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.2;
+}
+.mt-15{
+    margin-top:5px;
+}
+.mt-16{
+    margin-top:6px;
+}
+p.strong{
+    font-weight: bold;
+}
+.section-description ul{
+    margin-top:6px;
+    padding-left:0;
+}
+.section-description ul li{
+    color: #000;
+    font-size: 6px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-left: 5px;
+
+}
+ul.main-list li{
+    color: #000;
+    font-size: 6px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-left: 5px;
+}
+.space-49{
+    width: 100%;
+    height:4px;
+}
+.personal-info-section{
+    border-top:1px solid #FFF;
+}
+.personal-info-title{
+    color: #FFF;
+    font-size: 6px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2;
+}
+.personal-info-description p, .personal-info-description ul li p{
+    color:#FFF;
+    font-size: 6px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2;
+}
+.mt-10{
+    margin-top:1px;
+}
+.contact-list{
+    list-style: none;
+}
+.contact-list li{
+    margin-bottom:9px;
+}
+.skills-list li{
+    color: #FFF;
+    font-size: 6px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.2;
+    /*line-height: 1.5;*/
+    margin-left: 14px;
+}
+.inner-rating {
+    background-color: #fff;
+    height: 4px;
+    position: relative;
+    width: 60%;
+}
+.field * {
+    display: inline;
+}
+.field-ratt,.field{
+    color:#fff;
+    font-size:6px;
+}
+.txt-bold{
+    font-weight: bold;
+}
+.pt-70{
+    padding-top:7px;
+}
+.pt-50{
+    padding-top:5px;
+}
+.header .main-title{
+    color: #ffffff;
+    text-align: center;
+}
+.contact_info{
+    padding-top:2px;
+    border-top:1px solid rgba(110, 193, 221, 0.9);
+}
+.contact_info_list{
+    /*gap:4px;*/
+}
+.contact_info_list li{
+    display: inline-flex;
+    color:#ffffff;
+    font-size: 6px;
+    margin-left: 1px;
+    margin-right:1px;
+}
+.space-60{
+    width: 100%;
+    height: 6px;
+}
+.section-row{
+    display: inline-table;
+}
+.section-row div.col{
+    display: table-cell;
+}
+.section-row div.col:first-child{
+    width: 30%;
+}
+.section-row div.col:last-child{
+    width: 70%;
+}
+.space-30{
+    width: 100%;
+    height:3px;
+}
+.width100{
+    width:100%;
+}
+.bordered{
+    border-bottom:1px solid #009ACC;
+}
+@media (min-width: 750px) and (max-width: 920px){
+.exad-card.left .exad-card-thumb{
+    max-height:200px;
+}
+}
+@media(max-width: 920px){
+
+    .header{
+        padding-bottom: 3px;
+
+    }
+    .main-title h3 {
+        font-size: 0.5rem;
+        padding-bottom: 0;
+        line-height: 0;
+    }
+    .contact_info_list li {
+        font-size: 4px;
+        margin-left: 1px;
+        margin-right: 1px;
+    }
+    h5.section-title {
+        font-size: 4px !important;
+        line-height: 1.1;
+    }
+    .section-description p {
+        font-size: 4px;
+        line-height: 1.1;
+    }
+}
+@media(min-width: 921px) and (max-width: 1100px){
+    .exad-card.left .exad-card-thumb{
+        max-height:250px;
+    }
+
+}
+@media(min-width: 1101px) and (max-width: 1250px){
+    .exad-card.left .exad-card-thumb{
+        max-height:288px;
+    }
+}

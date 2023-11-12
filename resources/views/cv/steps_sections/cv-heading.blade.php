@@ -232,7 +232,9 @@
 {{--                                     src="{{asset('files/'.$chosen_template->image)}}"--}}
 {{--                                     class="attachment-full size-full wp-image-247 preview_cv_im_card" alt=""--}}
 {{--                                     decoding="async">--}}
-                                <x-cv.cv_template_modern_card :addedItem="$addedItem" :lang="$cv_lang"></x-cv.cv_template_modern_card>
+
+                                @include('components.cv.cv_template_'.$chosen_template->file_name.'_card')
+{{--                                <x-cv.cv_template_{{$file_name}}_card :addedItem="$addedItem" :lang="$cv_lang"></x-cv.cv_template_modern_card>--}}
                             </div>
                             <div class="exad-card-body"></div>
                         </div>
