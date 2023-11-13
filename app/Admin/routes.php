@@ -42,5 +42,5 @@ Route::group([
     $router->resource('home-hero-sections', HomeHeroSectionController::class);
     $router->resource('home-section-clients', HomeClientsController::class);
     $router->resource('home-section-steps', HomeSectionStepsController::class);
-
+    $router->resource('home-section-boxes', HomeSectionBoxesController::class);
 });

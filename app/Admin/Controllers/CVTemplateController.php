@@ -67,6 +67,7 @@ class CVTemplateController extends AdminController
         $form->text('name_ar', __('Arabic Name'))->required();
         $form->image('image', __('Image'))->required();
         $form->color('default_color', __('Default Color'))->required();
+        $form->switch('show_in_home',__('Show in Home Page'))->options([0=>'No',1=>'Yes'])->default(0);
         return $form;
     }
 }

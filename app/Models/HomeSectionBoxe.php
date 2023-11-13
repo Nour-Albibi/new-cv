@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class HomeSectionBoxe extends Model
 {
     use HasFactory;
+    protected $table="home_section_boxes";
 }
