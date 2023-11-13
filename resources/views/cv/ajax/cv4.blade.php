@@ -1,0 +1,109 @@
+<link rel="stylesheet" href="{{asset('cv-templates/cv4/css/preview_cv4.css')}}" defer/>
+<style>
+    :root {
+        --primary1: {{$cv->template_color ?? "#496267"}}  !important;
+    }
+</style>
+<div class="Home">
+    <div class="row" style="flex-direction: column">
+        <div class="header">
+            <div class="main-title pt-50"><h3>NOUR ALBIBI</h3></div>
+            <div class="row contact_info">
+                <ul class="contact_info_list ">
+                    <li class="address">46 Roman Rd, Leeds, LS2 3ZR</li>
+                    <li class="phone">07912 345 678</li>
+                    <li class="email">dom.webster@example.co.uk</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-main">
+            <div class="space-60"></div>
+            <div class="objective-section section section-row">
+                <div class="col">
+                    <h5 class="section-title text-left">OBJECTIVE</h5>
+                </div>
+                <div class="col">
+                    <div class="section-description mt-7">
+                        <p>To find a fulfilling position where I can apply my skills and knowledge. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="space-30 bordered"></div>
+            <div class="summery-section section section-row">
+                <div class="col">
+                    <h5 class="section-title text-left">PROFESSIONAL SUMMARY</h5>
+                </div>
+                <div class="col">
+                    <div class="section-description mt-15">
+                        <p>Accomplished Operations executive with a successful track record
+                            overseeing regional Marketing, IT, HR/training and property in
+                            company and franchise operations for a large chain of restaurants.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="space-30 bordered"></div>
+            <div class="experience-section section section-row">
+                <div class="col">
+                    <h5 class="section-title text-left">EXPERIENCE</h5>
+                </div>
+                <div class="col">
+                    <div class="section-description mt-15 experience-item">
+                        <p class="strong" style="max-width:285px">Executive Vice President 09/2015 to 02/2019</p>
+                        <p class="strong">Pizza Hut UK & Ireland - St Albans, Herts</p>
+                        <ul class="work-duties mt-16 main-list">
+                            <li>Led operations involved in running the brand including Marketing,
+                                IT, HR/training, development/construction, property and P&L for 200
+                                store locations.
+                            </li>
+                            <li>Oversaw operations for all regional company and franchise locations.</li>
+                            <li>
+                                Assessed profitability of existing company processes to determine
+                                optimum organisational structure for maximum revenue growth.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="section-description mt-15 experience-item">
+                        <p class="strong" style="max-width:285px">Senior Vice President 08/2007 to 09/2015</p>
+                        <p class="strong">Café Rouge - London</p>
+                        <ul class="work-duties mt-16 main-list">
+                            <li>Led operations involved in running the brand including Marketing,
+                                IT, HR/training, development/construction, property and P&L for 200
+                                store locations.
+                            </li>
+                            <li>Oversaw operations for all regional company and franchise locations.</li>
+                            <li>
+                                Assessed profitability of existing company processes to determine
+                                optimum organisational structure for maximum revenue growth.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="space-30 bordered"></div>
+            <div class="education-section section section-row">
+                <div class="col">
+                    <h5 class="section-title text-left">EDUCATION</h5>
+                </div>
+                <div class="col">
+                    <div class="section-description mt-15 education-item">
+                        <p class="strong">BA (Hons) : Business Management, 2006</p>
+                        <p class="strong">University Of Westminster - Greater London</p>
+                    </div>
+                </div>
+            </div>
+            <div class="space-30 bordered"></div>
+            <div class="education-section section section-row">
+                <div class="col">
+                    <h5 class="section-title text-left">QUALIFICATIONS</h5>
+                </div>
+                <div class="col">
+                    <div class="section-description mt-15 education-item">
+                        <p>CGMA (Chartered Global Management Accountant) conferred by
+                            the Chartered Institute of Management Accountants (CIMA), 2010 </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

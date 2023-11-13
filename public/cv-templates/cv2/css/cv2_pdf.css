@@ -1,20 +1,39 @@
-:root {
-    --primary1: #0187de;
+*, :after, :before {
+    /*box-sizing: border-box;*/
 }
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    width:100%;
+    font-size: 14px;
+}
+body {
+    width:100%;
+    line-height: 1.3;
+}
+
 .Home {
     width:100%;
     padding: 20px;
-    background-color: var(--primary1);
+    /*max-width:790px;*/
+    background-color: #0187de;
     margin-left:auto;
     margin-right:auto;
+
 }
 
 .inner_home {
     width: 100%;
+
     background-color: #fff;
     padding: 20px;
     padding-left: 36px;
     padding-right: 36px;
+
 }
 
 .inner_header {
@@ -74,7 +93,7 @@
     right: -36px;
     width: 866.6px;
     height: 70.6px;
-    background-color: var(--primary1);
+    background-color: #0187de;
 }
 .display-inline-block{
     display:inline-block;
@@ -110,16 +129,17 @@
 }
 .inner_content{
     padding-top:30px;
+    display:grid;
 }
 .display-inline-grid{
-    display:inline-grid;
-    grid-template-columns: 1fr 1fr;
+    /*display:flex !important;*/
+    /*grid-template-columns: 1fr 1fr;*/
 }
 .col1 ,.col2{
     height:100%
 }
 .col2{
-    border-left:3px solid var(--primary1);
+    border-left:3px solid #0187de;
     padding-left: 36px;
 }
 h3.section-title{
@@ -131,7 +151,7 @@ h3.section-title{
     line-height: normal;
 }
 h5.section-title{
-    color: var(--primary1);
+    color: #0187de;
     font-family: 'Inter', sans-serif;;
     font-size: 16px !important;
     font-style: normal;
@@ -159,10 +179,10 @@ h5.section-title{
     float:left;
 }
 .iconSvg svg{
-    fill:transparent !important;
+    /*fill:transparent !important;*/
 }
 .iconSvg svg path{
-    fill:#fff !important;
+    /*fill:#fff !important;*/
 }
 .description_area p ,.section-description p{
     font-size:0.9rem;

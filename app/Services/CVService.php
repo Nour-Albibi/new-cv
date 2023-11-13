@@ -391,14 +391,14 @@ class CVService
     }
     public static function updatePersonalInformation($id,$data){
         $subscription_id=0;
-        if(Auth::guard('customer')->user()->getActiveSubscription()!=null){
+        if(Auth::guard('customer')->check() && Auth::guard('customer')->user()->getActiveSubscription()!=null){
             $subscription_id= Auth::guard('customer')->user()->getActiveSubscription()->id;
         }
       return CustomerCv::where('id',$id)->update([
             'template_id' => session('chosen_template_id'),
             'template_color' => session('chosen_cv_color'),
             'cv_language' => session('chosen_cv_language'),
-            'customer_id' => Auth::guard('customer')->user()->id,
+            'customer_id' => Auth::guard('customer')->user()->id ?? 0,
             'subscription_id'=>$subscription_id,
             'first_name' => $data['first_name'],
             'first_name_ar' => $data['first_name_ar'] ?? '',

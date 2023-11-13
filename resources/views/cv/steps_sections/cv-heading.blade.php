@@ -228,13 +228,7 @@
                     <div class="elementor-widget-container">
                         <div class="exad-card left text_on_image yes">
                             <div class="exad-card-thumb">
-{{--                                <img width="595" height="842"--}}
-{{--                                     src="{{asset('files/'.$chosen_template->image)}}"--}}
-{{--                                     class="attachment-full size-full wp-image-247 preview_cv_im_card" alt=""--}}
-{{--                                     decoding="async">--}}
-
                                 @include('components.cv.cv_template_'.$chosen_template->file_name.'_card')
-{{--                                <x-cv.cv_template_{{$file_name}}_card :addedItem="$addedItem" :lang="$cv_lang"></x-cv.cv_template_modern_card>--}}
                             </div>
                             <div class="exad-card-body"></div>
                         </div>

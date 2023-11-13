@@ -31,9 +31,9 @@
                                         <clipPath id="clp4">
                                             <path d="M212 44.999 L288 44.999 L288 80 L212 80 Z"/>
                                         </clipPath>
-                                        <g clip-path="url(#clp4)">
+                                        <g clip-path="">
                                             <g class="ps00">
-                                                <text transform="matrix(1 0 0 1 217.25 71)"  id="cv_template_name">
+                                                <text style="font: bold 1.9rem sans-serif; transform: translate(200px, 60px);fill:black;color:black" transform="matrix(1 0 0 1 217.25 71)"  id="cv_template_name">
                                                     @if(!empty($addedItem))
                                                         @if($lang=="en")
                                                             {{$addedItem->model->first_name.' '.$addedItem->model->surename}}

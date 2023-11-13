@@ -38,11 +38,7 @@
 
                         <div class="exad-card left text_on_image yes">
                             <div class="exad-card-thumb" id="exad-card-thumb">
-{{--                                <img width="595" height="842"--}}
-{{--                                     src="{{asset('files/'.$ctemplate->image)}}"--}}
-{{--                                     class="attachment-full size-full wp-image-247 preview_cv_im_card" alt=""--}}
-{{--                                     decoding="async"/>--}}
-                               @include('components.cv.cv_template_modern_card')
+                                @include('components.cv.cv_template_'.$ctemplate->file_name.'_card')
                             </div>
                             <div class="exad-card-body">
                             </div>

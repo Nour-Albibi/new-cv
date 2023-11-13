@@ -168,13 +168,15 @@ class CVController extends Controller
     public function DownloadCV(CustomerCv $cv){
 
         $cvFileName=$cv->template->file_name;
+        
         $pdf = Pdf::loadView('cv-templates.'.$cvFileName.'_pdf',['cv' => $cv]);
 //        $pdf = Pdf::loadView('cv-templates.modern2_test',['cv' => $cv]);
         return $pdf->download('CV.pdf');
     }
     public function PreviewCVinPage(CustomerCv $cv){
         $cvFileName=$cv->template->file_name;
-        return view('cv-templates.'.$cvFileName,['cv' => $cv]);
+        return view('cv-templates.'.$cvFileName.'_pdf',['cv' => $cv]);
+//        return view('cv-templates.'.$cvFileName,['cv' => $cv]);
     }
     public function PreviewCV(CustomerCv $cv){
         if(!empty($cv->id)){
@@ -187,7 +189,8 @@ class CVController extends Controller
         if(!empty($addedItem)){
             $cv=CustomerCv::find($addedItem->id);
             if(!empty($cv)){
-                return view('cv.ajax.cv_modal',['cv'=>$cv])->render();
+                $cvFileName=$cv->template->file_name;
+                return view('cv.ajax.'.$cvFileName,['cv'=>$cv])->render();
             }
         }
         return view('components.cv-templates.modern_example')->render();

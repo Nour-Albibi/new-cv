@@ -122,10 +122,7 @@
                     <div class="elementor-widget-container">
                         <div class="exad-card left text_on_image yes">
                             <div class="exad-card-thumb">
-                                <x-cv.cv_template_modern_card :addedItem="$addedItem" :lang="$cv_lang"></x-cv.cv_template_modern_card>
-{{--                                <img decoding="async"--}}
-{{--                                     src="{{asset('files/'.$chosen_template->image)}}"--}}
-{{--                                     title="jtv21-cv9" alt="jtv21-cv9" loading="lazy">--}}
+                                @include('components.cv.cv_template_'.$chosen_template->file_name.'_card')
                             </div>
                             <div class="exad-card-body">
                             </div>

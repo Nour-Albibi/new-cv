@@ -1,9 +1,29 @@
-<link rel="stylesheet" href="{{asset('cv-templates/cv2/css/preview_cv2.css')}}" defer/>
-<style>
-    :root {
-        --primary1: {{$cv->template_color ?? "#496267"}}   !important;
-    }
-</style>
+<!DOCTYPE html>
+<html lang="en" class="direction-ltr">
+<head>
+    <title>{{__('CV')}}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{asset('cv-templates/cv2/css/cv2_pdf.css')}}" defer/>
+    <!--Custom CSS-->
+    <style>
+        .Home{
+            background-color: {{$cv->template_color ?? "#0187de"}}  !important;
+        }
+        .inner_contact_area{
+            background-color: {{$cv->template_color ?? "#0187de"}}  !important;
+        }
+        .col2{
+            border-left:3px solid {{$cv->template_color ?? "#0187de"}}  !important;
+        }
+        h5.section-title{
+            color: {{$cv->template_color ?? "#0187de"}}  !important;
+        }
+    </style>
+</head>
+<body>
+@php($cv_lang=$cv->language)
 <div class="Home">
     <div class="inner_home">
         <header>
@@ -37,7 +57,7 @@
             <div class="inner_contact_area">
                 <div class="display-table contact_table">
                     <div class="table-cell" style="width:38%;">
-                        <div class="display-grid" style="grid-auto-rows: 26px;">
+                        <div class="display-grid" style="">
                             @if(!empty($cv->email))
                                 <div class="position_relative">
                                     <div class="iconSvg">
@@ -55,9 +75,9 @@
                             @if(!empty($cv->phone))
                                 <div class="position_relative mt-5">
                                     <div class="iconSvg">
-                                        <svg viewBox="0 0 42 42" style="fill: transparent">
+                                        <svg viewBox="0 0 42 42">
                                             <rect x="0" y="0" height="42" width="42"></rect>
-                                            <path style="fill:#fff" transform="translate(5,5)"
+                                            <path transform="translate(5,5)"
                                                   d="M6.067.655L1.328 5.39C-.696 7.413.196 9.679.196 9.679c2.156 4.733 5.134 9.182 9.03 13.076 3.898 3.893 8.35 6.87 13.087 9.024 0 0 2.195.964 4.293-1.132l4.739-4.736a2.229 2.229 0 0 0 0-3.156l-4.74-4.736a2.233 2.233 0 0 0-3.159 0l-2.665 2.664c-1.837-1.237-3.607-2.619-5.233-4.242-1.627-1.623-3.005-3.391-4.245-5.229l2.665-2.665a2.229 2.229 0 0 0 0-3.157L9.23.655a2.236 2.236 0 0 0-3.162 0z"></path>
                                         </svg>
                                     </div>
@@ -88,8 +108,8 @@
             </div>
         </div>
         <div class="inner_content width100">
-            <div class="display-inline-grid" style="display:grid">
-                <div class="col1">
+            <div class="" style="display:table">
+                <div class="col1" style="display:table-cell">
                     @if(count($cv->customer_cv_work_history))
                         <div class="experience-section section section-row">
                             <div class="col">
@@ -136,7 +156,7 @@
                         </div>
                 </div>
                 @endif
-                <div class="col2">
+                <div class="col2" style="display:table-cell">
                     @if(count($cv->customer_cv_project))
                         <div class="experience-section section section-row">
                             <div class="col">
@@ -146,7 +166,7 @@
                                 @foreach($cv->customer_cv_project as $project)
                                     <div class="section-description mt-15 experience-item">
                                         <div
-                                            style="display:flex;justify-content: space-between;margin-bottom: 4px;">
+                                            style="display:flex;margin-bottom: 4px;">
                                             <p class="strong" style="max-width:285px">{{__("Project Name")}}
                                                 :{{$project->{"project_name_".$cv_lang} }}</p>
                                             <p class="strong">@if(!empty($project->start_date)){{ date("m-Y",strtotime($project->start_date))}}  @endif
@@ -201,3 +221,5 @@
         </div>
     </div>
 </div>
+</body>
+</html>
