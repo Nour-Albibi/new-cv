@@ -22,4 +22,6 @@ class Subscription extends Model
         Subscription::where('id',$this->id)->update(['status',3]);
     }
 
+    protected $perPage = 5;
+
 }

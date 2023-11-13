@@ -1,7 +1,7 @@
 @extends('customer-cp.layouts.app')
 
 @section('title')
-    CVs
+cvs
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5>MY CVs</h5>
+                            <h5>My latest cvs</h5>
                             <div class="table-responsive">
                                 <table class="table table-centered table-nowrap mb-0">
                                     <thead>
@@ -52,6 +52,7 @@
 
                         </div>
                     </div>
+                    {!! $cvs->links() !!}
                 </div>
                 <div class="col-xl-4">
 
