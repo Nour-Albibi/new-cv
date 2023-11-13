@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{asset('cv-templates/cv3/css/preview_cv3.css')}}" defer/>
 <style>
     :root {
-        --primary1: {{$cv->template_color ?? "#496267"}}    !important;
+        --primary1: {{$cv->template_color ?? "#496267"}}     !important;
     }
 </style>
 <div class="Home">
@@ -16,13 +16,13 @@
                 </h3>
             </div>
             @if(!empty($cv->{"address_".$cv_lang }))
-            <p class="text-center">
-                {{$cv->{"address_".$cv_lang } }}
+                <p class="text-center">
+                    {{$cv->{"address_".$cv_lang } }}
                 </p>
             @endif
-                <p class="text-center">
-                    {{$cv->phone}}, {{$cv->email}}
-                </p>
+            <p class="text-center">
+                {{$cv->phone}}, {{$cv->email}}
+            </p>
         </div>
         <div class="col-main">
             @if(!empty($cv->{"summary_content_".$cv_lang}))
@@ -83,33 +83,33 @@
                     @endforeach
                 </div>
             @endif
-                @if(count($cv->customer_cv_education))
-            <div class="space-30"></div>
-            <div class="education-section section section-row">
-                <div class="head_title">
-                    <h5 class="section-title text-left">{{__('EDUCATION')}}</h5>
-                </div>
-                @foreach($cv->customer_cv_education as $edu)
-                <div class="section-description mt-15 education-item">
-                    <div class="col" style="max-width:90px;">
-                        {{ date("m-Y",strtotime($edu->start_date))}}
-                        - {{date("m-Y",strtotime($edu->end_date))}}
+            @if(count($cv->customer_cv_education))
+                <div class="space-30"></div>
+                <div class="education-section section section-row">
+                    <div class="head_title">
+                        <h5 class="section-title text-left">{{__('EDUCATION')}}</h5>
                     </div>
-                    <div class="col">
-                        <div style="display: flex">
-                            <p class="strong">BA (Hons) : </p>
-                            <p>{{$edu->{"field_study_".$cv_lang} }}
-                            </p>
+                    @foreach($cv->customer_cv_education as $edu)
+                        <div class="section-description mt-15 education-item">
+                            <div class="col" style="max-width:90px;">
+                                {{ date("m-Y",strtotime($edu->start_date))}}
+                                - {{date("m-Y",strtotime($edu->end_date))}}
+                            </div>
+                            <div class="col">
+                                <div style="display: flex">
+                                    <p class="strong">BA (Hons) : </p>
+                                    <p>{{$edu->{"field_study_".$cv_lang} }}
+                                    </p>
+                                </div>
+                                <div style="display: flex">
+                                    <p class="strong">{{$edu->{"institution_name_".$cv_lang} }}</p>
+                                    <p>- {{$edu->{"city_".$cv_lang} }}</p>
+                                </div>
+                            </div>
                         </div>
-                        <div style="display: flex">
-                            <p class="strong">{{$edu->{"institution_name_".$cv_lang} }}</p>
-                            <p>- {{$edu->{"city_".$cv_lang} }}</p>
-                        </div>
-                    </div>
-                </div>
                     @endforeach
-            </div>
-                @endif
+                </div>
+            @endif
             @if(!empty($cv->{"skills_content_".$cv_lang}))
                 <div class="space-30 bordered"></div>
                 <div class="education-section section section-row">
@@ -124,31 +124,31 @@
                     </div>
                 </div>
             @endif
-                @if(count($cv->customer_cv_course))
-                    <div class="space-30 bordered"></div>
-                    <div class="experience-section section section-row">
-                        <div class="head_title">
-                            <h5 class="section-title text-left">{{__('Courses')}}</h5>
-                        </div>
-                        @foreach($cv->customer_cv_course as $course)
-                            <div class="section-description mt-15 experience-item">
-                                <div class="col">
-                                    {{ date("m-Y",strtotime($course->start_date))}}
-                                    - {{date("m-Y",strtotime($course->end_date))}}
+            @if(count($cv->customer_cv_course))
+                <div class="space-30 bordered"></div>
+                <div class="experience-section section section-row">
+                    <div class="head_title">
+                        <h5 class="section-title text-left">{{__('Courses')}}</h5>
+                    </div>
+                    @foreach($cv->customer_cv_course as $course)
+                        <div class="section-description mt-15 experience-item">
+                            <div class="col">
+                                {{ date("m-Y",strtotime($course->start_date))}}
+                                - {{date("m-Y",strtotime($course->end_date))}}
+                            </div>
+                            <div class="col">
+                                <div style="display: flex">
+                                    <p class="strong">{{__('Course Name: ')}} </p>
+                                    <p>{{$course->{"course_name_".$cv_lang} }}</p>
                                 </div>
-                                <div class="col">
-                                    <div style="display: flex">
-                                        <p class="strong">{{__('Course Name: ')}} </p>
-                                        <p>{{$course->{"course_name_".$cv_lang} }}</p>
-                                    </div>
-                                    <div style="display: flex">
-                                        <p class="strong">{{__('Trainer: ')}}{{$course->{"trainer_".$cv_lang} }}</p>
-                                    </div>
+                                <div style="display: flex">
+                                    <p class="strong">{{__('Trainer: ')}}{{$course->{"trainer_".$cv_lang} }}</p>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
-                @endif
+                        </div>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 </div>

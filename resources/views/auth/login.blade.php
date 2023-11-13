@@ -91,7 +91,7 @@
 
             </form>
 
-            <p style="text-align: center;margin-top: 1rem;" id="customer_sign_up">Don't have an account ? <a href="" class="fw-bold text-primary2"> Sign up</a> </p>
+            <p style="text-align: center;margin-top: 1rem;" id="customer_sign_up">Don't have an account ? <a href="{{route('customer.register')}}" class="fw-bold text-primary2"> Sign up</a> </p>
         </div>
     </div>
 </div>
