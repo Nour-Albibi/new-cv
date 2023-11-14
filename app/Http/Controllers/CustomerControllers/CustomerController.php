@@ -51,21 +51,14 @@ class CustomerController extends Controller
             'password'      => ['confirmed', Password::defaults()],
             ]
         );
-
-        // dd($request);
         if($request->file('avatar')){
             $file= $request->file('avatar');
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('files/images/'), $filename);
-            // dd($filename);
             $validated['avatar']= $filename;}
-
         $validated['password']=Hash::make($request['password']);
         $customer->update($validated);
         return redirect()->route('customer.myprofile');
-
-
-
      }
      public function viewedmyCV(){
 
@@ -73,8 +66,6 @@ class CustomerController extends Controller
         $allcvs =CustomerCv::where('customer_id',$user_id)->count();
         $subscription=Subscription::where('user_id',$user_id)->where('status','1')->first();
         $cvs =CustomerCv::where('customer_id',$user_id)->where('views','>','0')->paginate();
-        // $cvs =CustomerCv::where('customer_id',$user_id)->where('views','>','0')->paginate();
-        // dd($cvs);
         return view('customer-cp.cvs.viewdmyCV',compact('cvs','allcvs','subscription'))->with('i', (request()->input('page', 1) - 1) * $cvs->perPage());
     }
 
