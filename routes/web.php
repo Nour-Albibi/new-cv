@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'language'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home_page');
     Route::get('/home', [HomeController::class, 'index']);
-
+    Route::post('lang/change', [HomeController::class,'setLang'])->name('lang.change');
     Route::group(['prefix' => 'cv-builder'], function () {
         Route::match(['post','get'],'/',[CVController::class,'index'])->name('cv.start');
         Route::post('create',[CVController::class,'create'])->name('cv.create');

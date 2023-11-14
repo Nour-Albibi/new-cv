@@ -598,3 +598,62 @@ body .is-layout-grid > * {
 .profile_list li:last-child{
     border:none;
 }
+.dropdown-menu {
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    min-width: 10rem;
+    padding: .5rem 0;
+    margin: 0;
+    font-size: .875rem;
+    color: #495057;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0 solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+    transform: translate3d(1px, 30px, 0px);
+    inset: 0 0 auto auto;box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+}
+.dropdown-menu.show{
+    display:block;
+    z-index: 99;
+}
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .35rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    justify-content: center !important;
+}
+.dropdown-divider {
+    border-top-color: #edf1f5;
+}
+.dropdown-divider {
+    height: 0;
+    margin: .5rem 0;
+    overflow: hidden;
+    border-top: 1px solid #edf1f5;
+}
+.prof_menu_bu:hover .dropdown-menu{
+    display:block;
+}
+.change_lang_button{
+    background: none !important;
+    color: #024a53 !important;
+    text-align: center;
+    border:none !important;
+}
+.change_lang_button:hover, .change_lang_button:checked, .change_lang_button:focus,.change_lang_button:focus-visible{
+    background: none !important;
+    border:none !important;
+    box-shadow:none !important;
+    outline: unset !important;
+}

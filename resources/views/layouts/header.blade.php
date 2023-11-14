@@ -26,34 +26,45 @@
                                         class="elementor-element elementor-element-634a914d elementor-icon-list--layout-inline elementor-align-right elementor-tablet-align-center elementor-mobile-align-center elementor-list-item-link-full_width exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon-list"
                                         data-id="634a914d" data-element_type="widget"
                                         data-widget_type="icon-list.default">
-                                        <div class="elementor-widget-container">
+                                        <div class="elementor-widget-container" style="overflow:unset">
                                             <ul class="elementor-icon-list-items elementor-inline-items">
                                                 <li class="elementor-icon-list-item elementor-inline-item">
-                                                    <a href="#">
+                                                    <a href="javascript:void(0)" onclick="OpenMenu('lang_menu')">
 												<span class="elementor-icon-list-icon">
 													<i class="fa fa-language" aria-hidden="true"></i>
 												</span>
-                                                        <span class="elementor-icon-list-text">AR</span>
+                                                        <span class="elementor-icon-list-text">{{strtoupper(app()->getLocale())}}</span>
                                                     </a>
+                                                    <div class="dropdown-menu  dropdown-menu-end" data-popper-placement="bottom-end" id="lang_menu">
+                                                        <!-- item-->
+                                                        <form action="{{route('lang.change')}}" method="post"
+                                                              enctype="multipart/form-data" id="form-language">
+                                                            @csrf
+                                                            <input type="hidden" name="sel_lang" value="{{getAnotherLanguage()}}">
+                                                            <button type="submit" class="dropdown-item change_lang_button text-danger"
+                                                               tabindex="0">{{ucfirst(getAnotherLanguage())}}</button>
+                                                        </form>
+                                                    </div>
                                                 </li>
                                                 @if(auth()->guard('customer')->check())
-                                                    @if(auth()->guard('customer')->user()->has_active_subscription())
                                                     <li class="elementor-icon-list-item elementor-inline-item  profile dropdown " style="position:relative;">
-                                                        <a class="dropdown-toggle" href="{{route('customer.dashboard')}}" role="button" id="profile_dropdown_list" data-toggle="dropdown"
-                                                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <a class="dropdown-toggle " href="javascript:void(0)" role="button" id="profile_dropdown_list" data-toggle="dropdown"
+                                                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="OpenMenu('prof_menu')">
                                                             <span
                                                                 class="elementor-icon-list-text">{{__('My Profile')}}</span>
                                                         </a>
+                                                        <div class="dropdown-menu prof_menu dropdown-menu-end" data-popper-placement="bottom-end" id="prof_menu">
+                                                            <!-- item-->
+                                                            @if(auth()->guard('customer')->user()->has_active_subscription())
+                                                            <a class="dropdown-item" href="{{route('customer.dashboard')}}">
+                                                                <i class="mdi mdi-account-circle-outline font-size-16 align-middle me-1"></i>
+                                                                {{__('My Dashboard')}}</a>
+                                                            <div class="dropdown-divider"></div>
+                                                            @endif
+                                                            <a class="dropdown-item text-danger" href="{{route('customer.logout')}}">
+                                                                <i class="mdi mdi-power font-size-16 align-middle me-1 text-danger"></i> {{__('Logout')}}</a>
+                                                        </div>
                                                     </li>
-                                                    @else
-                                                        <li class="elementor-icon-list-item elementor-inline-item  profile dropdown " style="position:relative;">
-                                                            <a class="dropdown-toggle" href="{{route('customer.logout')}}" role="button"  data-toggle="dropdown"
-                                                               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <span
-                                                                class="elementor-icon-list-text">{{__('Logout')}}</span>
-                                                            </a>
-                                                        </li>
-                                                 @endif
                                                 @elseif(auth()->guard('company')->check())
                                                     <li class="elementor-icon-list-item elementor-inline-item  profile dropdown ">
                                                         <a class="dropdown-toggle" href="#" role="button" id="profile_dropdown_list" data-toggle="dropdown"

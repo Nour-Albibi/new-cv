@@ -119,3 +119,12 @@ if (!function_exists('company')) {
         return app('settings')[$key] ?? '';
     }
 }
+if (!function_exists('getAnotherLanguage')) {
+    function getAnotherLanguage(){
+        if(app()->getLocale()=="ar"){
+            return "en";
+        }else{
+            return "ar";
+        }
+    }
+}
