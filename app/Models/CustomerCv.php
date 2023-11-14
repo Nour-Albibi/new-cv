@@ -52,6 +52,8 @@ class CustomerCv extends Model implements UseCartable
     public function views(){
         return $this->hasMany('App\Models\View','cv_id');
     }
-
+    public function subscription(){
+        return $this->belongsTo('App\Models\Subscription');
+    }
 
 }

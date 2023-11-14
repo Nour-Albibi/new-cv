@@ -24,5 +24,6 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/views', [CustomerController::class, 'viewedmyCV'])->name('customer.viewedmyCV');
         Route::get('/profile', [CustomerController::class, 'profile'])->name('customer.myprofile');
         Route::put('/profile', [CustomerController::class, 'update_profile'])->name('customer.update_profile');
+        Route::get('/editCv/{cv}', [CVController::class, 'editCV'])->name('customer.editCV');
     });
 });

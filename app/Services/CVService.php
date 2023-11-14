@@ -108,6 +108,9 @@ class CVService
     public static function addStoredCVinCart($customerCV){
         return CartService::AddToCart($customerCV);
     }
+    public static function addStoredCVinCartByName($customerCV,$cart_name){
+        return CartService::AddToCartByName($customerCV,$cart_name);
+    }
     public static function storeCVData($step_num, $data)
     {
         switch ($step_num) {
@@ -148,13 +151,14 @@ class CVService
                 self::storeLanguages($data);
                 break;
             case 8:
-                $cvItem=self::getCVItem();
-            if($cvItem->model->subscription_id==0){
-
-                return  redirect()->route('getCustomerPackagesPricing');
-            }
-             Subscription::where('id',$cvItem->model->subscription_id)->update(['current_cv_count'=>($cvItem->model->subscription->current_cv_count+1)]);
-            return redirect()->route('customer.dashboard');
+                if(isset($data['request_type']) && $data['request_type']!="customer.editCV"){
+                    $cvItem=self::getCVItem();
+                    if($cvItem->model->subscription_id==0){
+                        return  redirect()->route('getCustomerPackagesPricing');
+                    }
+                    Subscription::where('id',$cvItem->model->subscription_id)->update(['current_cv_count'=>($cvItem->model->subscription->current_cv_count+1)]);
+                }
+                return redirect()->route('customer.dashboard');
         }
     }
     public static function storeLanguages($data){

@@ -86,3 +86,12 @@
     background-color: #515151;
     border-color: #515151;
 }
+.exad-card{
+    overflow:hidden;max-width:265px;max-height:350px;
+}
+.exad-card-thumb{
+    overflow:hidden;width:100%;height:100%;
+}
+.exad-card-thumb svg, .exad-card-thumb > div.Home{
+   width:100%;height:100%;
+}

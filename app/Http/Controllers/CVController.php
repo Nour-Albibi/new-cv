@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CustomerCv;
 use App\Models\Language;
 use App\Models\Qualification;
+use App\Models\Template;
 use App\Services\CVService;
 use App\Services\CVTemplateService;
 use App\Services\PackageService;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Jackiedo\Cart\Facades\Cart;
 use Spatie\Browsershot\Browsershot;
 
 class CVController extends Controller
@@ -38,7 +40,6 @@ class CVController extends Controller
     public function create(Request $request)
     {
 //        resetAllSessions();
-
         if ($request->isMethod('post')) {
             $request->validate([
                 'cv_language' => ['required'],
@@ -125,6 +126,15 @@ class CVController extends Controller
             return response()->json(['error' => $exception->getMessage()], 500);
         }
     }
+    public function editCV(CustomerCv $cv){
+        CVService::addStoredCVinCartByName($cv,'cv_'.$cv->id);
+        $addedItem=CVService::getCVItem();
+        $qualifications=Qualification::all();
+        $chosen_template =Template::find($cv->template_id);
+        $alanguages=Language::all();
+        $editing=1;
+        return view('cv.create-cv-steps', compact('chosen_template','addedItem','qualifications','alanguages','editing'));
+    }
     public function FinaliseCVApplication(Request $request){
         try{
             if($request->step==8){
@@ -168,7 +178,7 @@ class CVController extends Controller
     public function DownloadCV(CustomerCv $cv){
 
         $cvFileName=$cv->template->file_name;
-        
+
         $pdf = Pdf::loadView('cv-templates.'.$cvFileName.'_pdf',['cv' => $cv]);
 //        $pdf = Pdf::loadView('cv-templates.modern2_test',['cv' => $cv]);
         return $pdf->download('CV.pdf');
@@ -198,6 +208,7 @@ class CVController extends Controller
     public function getCVCard(CustomerCv $cv){
         return view('cv.ajax.cv_card_preview',['cv'=>$cv])->render();
     }
+
     function screenshotCV() {
         Browsershot::url(url('cv-builder/PreviewCVinPage/32'))
             ->setOption('landscape', true)

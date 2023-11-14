@@ -13,6 +13,7 @@
                                     <thead>
                                     <tr>
                                         <th scope="col">CV Template</th>
+                                        <th>{{__('Subscription')}}</th>
                                         <th scope="col">Date</th>
                                         <th scope=""> PDF</th>
                                     </tr>
@@ -21,9 +22,14 @@
                                     @foreach ($cvs as $cv )
                                         <tr>
                                             <td>
-                                                <img src="{{ asset("files/".$cv->template->image) }}" alt="" class=""
-                                                     style="width: 150px;">
+                                                <div class="exad-card left text_on_image yes">
+                                                    <div class="exad-card-thumb">
+                                                            @include('components.cv.cv_template_'.$cv->template->file_name.'_card')
+                                                    </div>
+                                                </div>
                                             </td>
+                                            <td><a href="{{route('customer.subscriptions.show',['subscription'=>$cv->subscription_id])}}">
+                                                    {{$cv->subscription->package->{"name_".$lang} }}</a></td>
                                             <td>{{date('d/m/Y', strtotime($cv->created_at))  }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-primary waves-effect waves-light"
