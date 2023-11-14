@@ -128,12 +128,11 @@ class CVController extends Controller
     }
     public function editCV(CustomerCv $cv){
         CVService::addStoredCVinCartByName($cv,'cv_'.$cv->id);
-        $addedItem=CVService::getCVItem();
+        $addedItem=CVService::getCVItemByCartName('cv_'.$cv->id);
         $qualifications=Qualification::all();
         $chosen_template =Template::find($cv->template_id);
         $alanguages=Language::all();
-        $editing=1;
-        return view('cv.create-cv-steps', compact('chosen_template','addedItem','qualifications','alanguages','editing'));
+        return view('cv.create-cv-steps', compact('chosen_template','addedItem','qualifications','alanguages'));
     }
     public function FinaliseCVApplication(Request $request){
         try{

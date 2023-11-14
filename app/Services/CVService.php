@@ -487,7 +487,10 @@ class CVService
         $cart = Cart::name('cv');
         return $cart->getDetails()->get('items')->first();
     }
-
+    public static function getCVItemByCartName($cart_name){
+        $cart = Cart::name($cart_name);
+        return $cart->getDetails()->get('items')->first();
+    }
     public static function getDataArraysFromRequest($data)
     {
         unset($data['_token']);
