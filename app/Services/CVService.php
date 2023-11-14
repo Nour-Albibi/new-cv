@@ -12,6 +12,7 @@ use App\Models\CustomerCvSummery;
 use App\Models\CustomerCvWorkHistory;
 use App\Models\ProfessionalSummary;
 use App\Models\Skill;
+use App\Models\Subscription;
 use App\Models\Template;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -147,7 +148,13 @@ class CVService
                 self::storeLanguages($data);
                 break;
             case 8:
+                $cvItem=self::getCVItem();
+            if($cvItem->model->subscription_id==0){
+
                 return  redirect()->route('getCustomerPackagesPricing');
+            }
+             Subscription::where('id',$cvItem->model->subscription_id)->update(['current_cv_count'=>($cvItem->model->subscription->current_cv_count+1)]);
+            return redirect()->route('customer.dashboard');
         }
     }
     public static function storeLanguages($data){
@@ -427,8 +434,10 @@ class CVService
         $subscription_id=0;
         if (Auth::guard('customer')->check()) {
             $customer_id = Auth::guard('customer')->user()->id;
-            if(Auth::guard('customer')->user()->getActiveSubscription()!=null){
-                $subscription_id= Auth::guard('customer')->user()->getActiveSubscription()->id;
+            $active_subscription=Auth::guard('customer')->user()->getActiveSubscription();
+            if($active_subscription!=null){
+                if($active_subscription->current_cv_count < $active_subscription->max_cv_limit)
+                $subscription_id= $active_subscription->id;
             }
         }
         if (self::checkChosenCVSetting()) {

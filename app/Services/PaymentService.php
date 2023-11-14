@@ -32,6 +32,8 @@ class PaymentService
                 'package_type'=>$package->type,
                 'start_date'=>Carbon::now()->toDateTimeString(),
                 'end_date'=>Carbon::now()->addDays(($package->duration*30)),
+                'max_cv_limit'=>$package->quantity,
+                'current_cv_count'=>1,
                 'status'=>1]);
            $cvItem=$cart->getDetails()->get('items')->first();
            if(!empty($cvItem))
