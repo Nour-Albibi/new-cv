@@ -21,18 +21,13 @@ class CustomerController extends Controller
 
         $user_id=Auth::guard('customer')->user()->id;
         $allcvs =CustomerCv::where('customer_id',$user_id)->count();
-        // dd($allcvs);
-        // dd (count(CustomerCv::where('customer_id',$user_id)->where('views','>','0')->get()));
         $subscription=Subscription::where('user_id',$user_id)->where('status','1')->first();
         if(count(CustomerCv::where('customer_id',$user_id)->where('views','>','0')->get())>=1)
         {
             $cvs =CustomerCv::where('customer_id',$user_id)->where('views','>','0')->orderByDesc('views')->take(3)->get();
-
             return view('customer-cp.cvs.viewdmyCV',compact('cvs','subscription','allcvs'));
         }
-
-        // dd ($subscription);
-        $cvs =CustomerCv::where('customer_id',$user_id)->orderBy('created_at')->take(3)->get();
+        $cvs =CustomerCv::where('customer_id',$user_id)->orderBy('updated_at','desc')->take(3)->get();
         return view('customer-cp.pages.home',compact('cvs','subscription','allcvs'));
     }
 
