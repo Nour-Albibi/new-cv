@@ -38,15 +38,34 @@
             <div class="dropdown d-none d-md-block ms-2">
                 <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                    <img class="me-2" src="{{asset('customer-assets/images/flags/us.jpg')}}" alt="Header Language"
-                         height="16"> English <span class="mdi mdi-chevron-down"></span>
+                    @if(\Illuminate\Support\Facades\App::getLocale()=="ar")
+                        <img src="{{asset('customer-assets/images/flags/arabic.png')}}" alt="user-image"
+                             class="me-1"
+                             height="22" loading="lazy">  {{__('Arabic')}} <span class="mdi mdi-chevron-down"></span>
+                    @else
+                        <img class="me-2" src="{{asset('customer-assets/images/flags/us.jpg')}}" alt="Header Language"
+                             height="16"> English <span class="mdi mdi-chevron-down"></span>
+                    @endif
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="{{asset('customer-assets/images/flags/arabic.png')}}" alt="user-image" class="me-1"
-                             height="22" loading="lazy"> <span class="align-middle"> {{__('Arabic')}} </span>
-                    </a>
+                    <form action="{{route('lang.change')}}" method="post"
+                          enctype="multipart/form-data" id="form-language">
+                        @csrf
+                        <input type="hidden" name="sel_lang" value="{{getAnotherLanguage()}}">
+                        <a href="javascript:void(0);" class="dropdown-item notify-item"
+                           onclick="$('#form-language').submit()">
+                            @if(getAnotherLanguage()=="ar")
+                                <img src="{{asset('customer-assets/images/flags/arabic.png')}}" alt="user-image"
+                                     class="me-1"
+                                     height="22" loading="lazy"> <span class="align-middle"> {{__('Arabic')}} </span>
+                            @else
+                                <img class="me-2" src="{{asset('customer-assets/images/flags/us.jpg')}}"
+                                     alt="Header Language"
+                                     height="16"> English
+                            @endif
+                        </a>
+                    </form>
                 </div>
             </div>
 
@@ -93,7 +112,9 @@
                                             <h6 class="mt-0 mb-1">@if(isset($notification->data['company_name'])){{__('You have new view From: ').$notification->data['company_name']}} @endif</h6>
                                             <div class="font-size-13 text-muted">
                                                 <p class="mb-1">{{__(' CV: ').$notification->data['view_cv']['cv_id'] ?? ''}}</p>
-                                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i>{{ (new \DateTime($notification->data['view_cv']['created_at']))->format('Y-m-d H:i:s')}}</p>
+                                                <p class="mb-0"><i
+                                                        class="mdi mdi-clock-outline"></i>{{ (new \DateTime($notification->data['view_cv']['created_at']))->format('Y-m-d H:i:s')}}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
