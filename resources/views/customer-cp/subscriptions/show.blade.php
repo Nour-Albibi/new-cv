@@ -21,7 +21,7 @@
                                style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead class="thead-light">
                             <tr>
-                                <th>payment ID</th>
+                                <th>Invoice No#</th>
                                 <th>PLAN</th>
                                 <th>price</th>
                                 <th>start Date</th>
@@ -34,31 +34,36 @@
                             <tbody>
                             <tr>
                                 <td>
-
-                                    {{ $subscription->invoice->id }}
+                                    #{{ $subscription->invoice->invoice_no }}
                                 </td>
-                                <td><a href="{{ route('customer.subscriptions.show',$subscription) }}"
-                                       class="text-dark fw-bold">{{ $subscription->package->{"name_".$lang} ?? '' }}</a>
+                                <td>
+                                    {{ $subscription->package->{"name_".$lang} ?? '' }}
                                 </td>
-                                <td>{{ $subscription->package->total_price }}$</td>
+                                <td>{{ $subscription->package->total_price }} {{__('SAR')}}</td>
                                 <td>
                                     {{ $subscription->start_date }}
                                 </td>
-                                <td>{{ $subscription->end_date }}</td>
+                                <td>  <div class="badge badge-soft-info font-size-12">{{ $subscription->end_date }}</div></td>
                                 <td>{{ $subscription->invoice->payment_gateway }}</td>
                                 <td>
-                                    <div class=@if ($subscription->invoice->status == '1')
-                                        "badge badge-soft-success font-size-12">Paid
-                                    </div>
-                                    @else   "badge badge-soft-danger font-size-12">Expire
+                                    @if($subscription->status == 1)
+                                        <div class="badge badge-soft-success font-size-12">{{__('Active')}}</div>
+                                    @elseif($subscription->status == 2)
+                                        <div class="badge badge-soft-danger font-size-12">{{__('Expired')}}</div>
+                                    @elseif($subscription->status == 3)
+                                        <div class="badge badge-soft-danger font-size-12">{{__('Canceled')}}</div>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if(\App\Services\CustomerService::canSubscribeToNewPackage())
+                                        <a href="{{url('customer/subscriptions/create_new?package_id='.$subscription->package_id)}}"><i class="fa fa-refresh"></i></a>
+                                    @endif
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    @endif
-                    </td>
-                    </tr>
-                    </tbody>
-                    </table>
                 </div>
             </div>
         </div>
-    </div>
 @endsection

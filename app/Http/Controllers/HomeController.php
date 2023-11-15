@@ -9,6 +9,7 @@ use App\Models\HomeSectionStep;
 use App\Models\Template;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
@@ -37,5 +38,9 @@ class HomeController extends Controller
         Session::put('applocale', $lg);
         App::setLocale($lg);
         return redirect()->back();
+    }
+    public function getAllTemplates(){
+        $templates=Template::all();
+        return view('all_templates',compact('templates'));
     }
 }

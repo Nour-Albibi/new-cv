@@ -1,4 +1,4 @@
-.Home {
+.card-Home {
     width: 100%;
     height:100%;
     position: relative;
@@ -6,78 +6,78 @@
     padding: 0;
     background-color: #ffffff;
 }
-.header{
+.card-header{
     width: 100%;
     padding-bottom: 6px;
     background-color: #009ACC;
 }
-.text-left{
+.card-text-left{
     text-align: left !important;
 }
-.row{
+.card-row{
     display: flex;
     display: -moz-flex;
     display: -ms-flex;
 }
-.d-flex{
+.card-d-flex{
     display: flex;
     display: -moz-flex;
     display: -ms-flex;
 }
-.col-main{
+.card-col-main{
     padding:0;
     display: table;
     width:95%;
     margin-left:auto;
     margin-right:auto;
 }
-.ml-5{
+.card-ml-5{
     margin-left:5px;
 }
-.main-title h3{
+.card-main-title h3{
     font-size: 0.8rem;
     font-style: normal;
     font-weight: 700;
     line-height: 1.2;
 }
-h3.section-title{
+h3.card-section-title{
     color: #000;
     font-size: 6px;
     font-style: normal;
     font-weight: 700;
     line-height: 1.2;
 }
-h5.section-title{
+h5.card-section-title{
     color: #009ACC;
     font-size: 6px !important;
     font-style: normal;
     font-weight: 700;
     line-height: 1.2;
 }
-.mt-7{
+.card-mt-7{
     margin-top:7px;
 }
-.section-description p{
+.card-section-description p{
     color: #000;
     font-size: 6px;
     font-style: normal;
     font-weight: 400;
     line-height: 1.2;
 }
-.mt-15{
+.card-mt-15{
     margin-top:5px;
 }
-.mt-16{
+.card-mt-16{
     margin-top:6px;
 }
-p.strong{
+p.card-strong{
     font-weight: bold;
 }
-.section-description ul{
+.card-section-description ul{
     margin-top:6px;
     padding-left:0;
 }
-.section-description ul li{
+.card-section-description ul li{
     color: #000;
     font-size: 6px;
     font-style: normal;
@@ -86,7 +86,7 @@ p.strong{
     margin-left: 5px;
 
 }
-ul.main-list li{
+ul.card-main-list li{
     color: #000;
     font-size: 6px;
     font-style: normal;
@@ -94,37 +94,37 @@ ul.main-list li{
     line-height: 1.2;
     margin-left: 5px;
 }
-.space-49{
+.card-space-49{
     width: 100%;
     height:4px;
 }
-.personal-info-section{
+.card-personal-info-section{
     border-top:1px solid #FFF;
 }
-.personal-info-title{
+.card-personal-info-title{
     color: #FFF;
     font-size: 6px;
     font-style: normal;
     font-weight: 700;
     line-height: 1.2;
 }
-.personal-info-description p, .personal-info-description ul li p{
+.card-personal-info-description p, .card-personal-info-description ul li p{
     color:#FFF;
     font-size: 6px;
     font-style: normal;
     font-weight: 700;
     line-height: 1.2;
 }
-.mt-10{
+.card-mt-10{
     margin-top:1px;
 }
-.contact-list{
+.card-contact-list{
     list-style: none;
 }
-.contact-list li{
+.card-contact-list li{
     margin-bottom:9px;
 }
-.skills-list li{
+.card-skills-list li{
     color: #FFF;
     font-size: 6px;
     font-style: normal;
@@ -133,71 +133,85 @@ ul.main-list li{
     /*line-height: 1.5;*/
     margin-left: 14px;
 }
-.inner-rating {
+.card-inner-rating {
     background-color: #fff;
     height: 4px;
     position: relative;
     width: 60%;
 }
-.field * {
+.card-field * {
     display: inline;
 }
-.field-ratt,.field{
+.card-field-ratt,.card-field{
     color:#fff;
     font-size:6px;
 }
-.txt-bold{
+.card-txt-bold{
     font-weight: bold;
 }
-.pt-70{
+.card-pt-70{
     padding-top:7px;
 }
-.pt-50{
+.card-pt-50{
     padding-top:5px;
 }
-.header .main-title{
+.card-header .card-main-title{
     color: #ffffff;
     text-align: center;
 }
-.contact_info{
+.card-contact_info{
     padding-top:2px;
     border-top:1px solid rgba(110, 193, 221, 0.9);
 }
-.contact_info_list{
+.card-contact_info_list{
     /*gap:4px;*/
+    padding-left:0;
 }
-.contact_info_list li{
+.card-contact_info_list{
     display: inline-flex;
+    width:100%;
+    justify-content: center;
+}
+::marker {
+    font-weight: bolder;
+    font-size: 5px !important;
+}
+.card-contact_info_list li{
+
     color:#ffffff;
-    font-size: 6px;
+    font-size: 5px;
     margin-left: 1px;
     margin-right:1px;
+
 }
-.space-60{
+.card-space-60{
     width: 100%;
     height: 6px;
 }
-.section-row{
+.card-section-row{
     display: inline-table;
 }
-.section-row div.col{
+.card-section-row div.card-col{
     display: table-cell;
 }
-.section-row div.col:first-child{
+.card-section-row div.card-col:first-child{
     width: 30%;
 }
-.section-row div.col:last-child{
+.card-section-row div.card-col:last-child{
     width: 70%;
 }
-.space-30{
+.card-space-30{
     width: 100%;
     height:3px;
 }
-.width100{
+.card-width100{
     width:100%;
 }
-.bordered{
+.card-bordered{
     border-bottom:1px solid #009ACC;
+}
+.card-main-title h3{
+    color:#fff;
 }
 @media (min-width: 750px) and (max-width: 920px){
 .exad-card.left .exad-card-thumb{
@@ -206,25 +220,25 @@ ul.main-list li{
 }
 @media(max-width: 920px){
 
-    .header{
+    .card-header{
         padding-bottom: 3px;
 
     }
-    .main-title h3 {
+    .card-main-title h3 {
         font-size: 0.5rem;
         padding-bottom: 0;
         line-height: 0;
     }
-    .contact_info_list li {
+    .card-contact_info_list li {
         font-size: 4px;
         margin-left: 1px;
         margin-right: 1px;
     }
-    h5.section-title {
+    h5.card-section-title {
         font-size: 4px !important;
         line-height: 1.1;
     }
-    .section-description p {
+    .card-section-description p {
         font-size: 4px;
         line-height: 1.1;
     }

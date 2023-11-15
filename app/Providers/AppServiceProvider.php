@@ -42,5 +42,9 @@ class AppServiceProvider extends ServiceProvider
             ['cv.*'],
             'App\Composers\ViewComposer'
         );
+        \View::composer(
+            ['customer-cp.*'],
+            'App\Composers\CustomerCPComposer'
+        );
     }
 }

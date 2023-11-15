@@ -46,11 +46,10 @@ class CVService
         CustomerCv::where('id',$id)->update(['cv_language'=>session('chosen_cv_language')]);
     }
     public static function ResetCVDataForCreateNew(){
+        Cart::name('cv')->destroy();
+        Session::forget(['show_confirm','current_step_num','show_confirm']);
         session('current_step_num',0);
-        Session::forget('customer_cv_data');
-        Session::forget('show_confirm');
-        $cart=Cart::name('cv');
-        $cart->destroy();
+        self::checkChosenCVSetting();
     }
     public static function getSkillSuggestions($possible_keys){
         if(isset($possible_keys['search_keys']) && !empty($possible_keys['search_keys'])){
@@ -58,7 +57,6 @@ class CVService
                 ->where('job_titles.name_ar','like','%'.$possible_keys['search_keys'].'%')
                 ->orwhere('job_titles.name_en','like','%'.$possible_keys['search_keys'].'%')
                 ->get();
-
         }else{
             $cvItem=self::getCVItem();
             $newest_work=CustomerCvWorkHistory::select('id','job_title_ar','job_title_en','job_title_id')

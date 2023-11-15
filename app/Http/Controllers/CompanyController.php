@@ -29,8 +29,8 @@ class CompanyController extends Controller
         }
     }
     public function logout(){
-        Session::flush();Auth::guard('companies')->logout();
-        return view('home');
+        Session::flush();Auth::guard('company')->logout();
+        return redirect()->route('home_page');
     }
     public function dashboard(){
         return view('company-cp.dashboard');

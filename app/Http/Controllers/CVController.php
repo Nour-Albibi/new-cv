@@ -6,6 +6,7 @@ use App\Models\CustomerCv;
 use App\Models\Language;
 use App\Models\Qualification;
 use App\Models\Template;
+use App\Services\CustomerService;
 use App\Services\CVService;
 use App\Services\CVTemplateService;
 use App\Services\PackageService;
@@ -29,6 +30,10 @@ class CVController extends Controller
                 'cvTemplate' => ['required'],
             ]);
             Session::put(['chosen_template_id' => $request->cvTemplate, 'chosen_cv_color' => $request->cvColor]);
+            CVService::syncColorAndTemplateToCurrentCV();
+            return view('cv.start2');
+        }elseif(!empty($request->cvTemplate)){
+            Session::put(['chosen_template_id' => $request->cvTemplate, 'chosen_cv_color' => "#".$request->cvColor]);
             CVService::syncColorAndTemplateToCurrentCV();
             return view('cv.start2');
         } else {
@@ -124,21 +129,31 @@ class CVController extends Controller
         }
     }
     public function editCV(CustomerCv $cv){
-        CVService::addStoredCVinCartByName($cv,'cv_'.$cv->id);
-        $addedItem=CVService::getCVItemByCartName('cv_'.$cv->id);
-        $qualifications=Qualification::all();
-        $chosen_template =Template::find($cv->template_id);
-        $alanguages=Language::all();
-        return view('cv.create-cv-steps', compact('chosen_template','addedItem','qualifications','alanguages'));
-    }
+        if($cv->downloads==0){
+            CVService::addStoredCVinCartByName($cv,'cv_'.$cv->id);
+            $addedItem=CVService::getCVItemByCartName('cv_'.$cv->id);
+            $qualifications=Qualification::all();
+            $chosen_template =Template::find($cv->template_id);
+            $alanguages=Language::all();
+            return view('cv.create-cv-steps', compact('chosen_template','addedItem','qualifications','alanguages'));
+            }else{
+            return  redirect()->back();
+        }
+        }
     public function FinaliseCVApplication(Request $request){
         try{
+            $cvItem=CVService::getCVItem();
             if($request->step==8){
                 //Case 1 New Customer or to Upgrade
+                CustomerCv::where('id',$cvItem->id)->update(['stopped_on_step'=>8]);
                 if(!Auth::guard('customer')->user()->has_active_subscription() || Auth::guard('customer')->user()->exceeded_subscription_limit()){
                     return redirect()->route('getCustomerPackagesPricing');
                 }else{
                     //redirect customer to his dashboard
+                    CustomerCv::where('id',$cvItem->id)->update(['stopped_on_step'=>8]);
+                    CustomerService::increaseCVCountInActiveSubscription();
+                    CVService::ResetCVDataForCreateNew();
+                    return redirect()->route('customer.CVs');
                 }
             }
         }catch (\Exception $exception){

@@ -23,7 +23,12 @@ class Language
             App::setLocale(Session::get('applocale'));
         }
         $lang=App::getLocale();
-        View::share(['lang' => $lang]);
+        if($lang=="en"){
+            $direction="ltr";
+        }else{
+            $direction="rtl";
+        }
+        View::share(['lang' => $lang,'direction'=>$direction]);
         return $next($request);
     }
 }

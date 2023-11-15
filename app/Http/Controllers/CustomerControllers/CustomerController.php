@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\Customer;
 use App\Models\CustomerCv;
 use App\Models\Subscription;
+use App\Models\View;
 use Encore\Admin\Form\Builder;
 use Illuminate\Contracts\Database\Query\Builder as QueryBuilder;
 use Illuminate\Http\Request;
@@ -22,13 +23,12 @@ class CustomerController extends Controller
         $user_id=Auth::guard('customer')->user()->id;
         $allcvs =CustomerCv::where('customer_id',$user_id)->count();
         $subscription=Subscription::where('user_id',$user_id)->where('status','1')->first();
-        if(count(CustomerCv::where('customer_id',$user_id)->where('views','>','0')->get())>=1)
-        {
-            $cvs =CustomerCv::where('customer_id',$user_id)->where('views','>','0')->orderByDesc('views')->take(3)->get();
-            return view('customer-cp.cvs.viewdmyCV',compact('cvs','subscription','allcvs'));
-        }
         $cvs =CustomerCv::where('customer_id',$user_id)->orderBy('updated_at','desc')->take(3)->get();
-        return view('customer-cp.pages.home',compact('cvs','subscription','allcvs'));
+        $customer_views=View::select('views.cv_id','views.company_id','how_often')
+            ->join('customer_cvs','customer_cvs.id','views.cv_id')
+            ->where('customer_cvs.customer_id','=',$user_id)
+            ->get();
+        return view('customer-cp.pages.home',compact('cvs','subscription','allcvs','customer_views'));
     }
 
     public function profile(){
@@ -51,23 +51,23 @@ class CustomerController extends Controller
             'password'      => ['confirmed', Password::defaults()],
             ]
         );
+
         if($request->file('avatar')){
             $file= $request->file('avatar');
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('files/images/'), $filename);
             $validated['avatar']= $filename;}
+        if(isset($validated['password']))
         $validated['password']=Hash::make($request['password']);
         $customer->update($validated);
         return redirect()->route('customer.myprofile');
      }
      public function viewedmyCV(){
-
         $user_id=Auth::guard('customer')->user()->id;
-        $allcvs =CustomerCv::where('customer_id',$user_id)->count();
-        $subscription=Subscription::where('user_id',$user_id)->where('status','1')->first();
-        $cvs =CustomerCv::where('customer_id',$user_id)->where('views','>','0')->paginate();
-        return view('customer-cp.cvs.viewdmyCV',compact('cvs','allcvs','subscription'))->with('i', (request()->input('page', 1) - 1) * $cvs->perPage());
+        $customer_views=View::select('views.cv_id','views.company_id','how_often')
+         ->join('customer_cvs','customer_cvs.id','views.cv_id')
+         ->where('customer_cvs.customer_id','=',$user_id)
+            ->get();
+        return view('customer-cp.cvs.views',compact('customer_views','user_id'));
     }
-
-
 }

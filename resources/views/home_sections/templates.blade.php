@@ -218,15 +218,15 @@
                                                         <img loading="lazy" width="700" height="990"
                                                              src="{{asset('files/'.$template->image)}}"
                                                              class="attachment-full size-full wp-image-211" alt=""
-                                                             decoding="async"></div>
+                                                             decoding="async" loading="lazy"></div>
                                                     <div class="exad-card-badge">
                                                         {{$template->{"name_".$lang } }}
                                                     </div>
 
                                                     <div class="exad-card-body">
-                                                        <a class="exad-card-action" href="#" target="_blank">
+                                                        <a class="exad-card-action" href="{{url('cv-builder?cvTemplate='.$template->id.'&cvColor='.str_replace('#','',$template->default_color))}}" target="_blank">
 						                                <span>
-							                              Create This CV
+							                               {{__('Create This CV')}}
                                                         </span>
                                                         </a>
                                                     </div>

@@ -19,13 +19,6 @@ public function cv()
     return $this->belongsTo('App\Models\CustomerCv','cv_id');
 }
 
-protected $perPage = 3;
-
-
-
-
-
-
-
+protected $perPage =15;
 
 }

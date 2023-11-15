@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-md-6">
                         <div>
-                            <div class="form-check mb-3" onclick="$('#customer_sign_up').addClass('d-none');$('input[name=auth_individual]').removeAttr('checked');">
+                            <div class="form-check mb-3" onclick="$('#customer_sign_up').addClass('d-none');$('input[name=auth_individual]').removeAttr('checked');$('input[name=customer_type]').val(2);">
                                 <input class="form-check-input" type="radio" name="auth_company"
                                        id="formRadios1">
                                 <label class="form-check-label" for="formRadios1">
@@ -43,6 +43,7 @@
             </div>
             <form class="form-horizontal mt-4 pt-2" action="{{route('customer.doLogin')}}" method="post">
                @csrf
+                <input type="hidden" name="customer_type" value="1"/>
                 @if($errors->any())
                     <div class="mb-3">
                     <h6 style="color:red">{{$errors->first()}}</h6>

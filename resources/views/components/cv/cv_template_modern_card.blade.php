@@ -788,7 +788,14 @@
                 @else
                     {{$addedItem->model->first_name_ar.' '.$addedItem->model->surename_ar}}
                 @endif
-            @else {{__("Your Name")}}
+            @elseif(isset($cv) &&  !empty($cv))
+                @if($lang=="en")
+                    {{$cv->first_name.' '.$cv->surename}}
+                @else
+                    {{$cv->first_name_ar.' '.$cv->surename_ar}}
+                @endif
+            @else
+                {{__("Your Name")}}
             @endif
         </text>
         <g style="fill:rgb(100%,100%,100%);fill-opacity:1;">

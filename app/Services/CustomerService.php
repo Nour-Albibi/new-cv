@@ -17,4 +17,18 @@ class CustomerService
             }
         }
     }
+    public static function canSubscribeToNewPackage(){
+        $subscription= Auth::guard('customer')->user()->getActiveSubscription();
+        if($subscription!=null){
+            if ($subscription->current_cv_count < $subscription->max_cv_limit) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static function increaseCVCountInActiveSubscription(){
+        $subscription= Auth::guard('customer')->user()->getActiveSubscription();
+        $subscription->current_cv_count+=1;
+        $subscription->save();
+    }
 }

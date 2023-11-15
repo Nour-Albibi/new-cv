@@ -17,54 +17,69 @@ use Illuminate\Validation\Rules\Password;
 class AuthController extends Controller
 {
     //
-    public function getSignupForm(){
+    public function getSignupForm()
+    {
         return view('auth.signup');
     }
-    public function doSignup(Request $request){
-        try{
+
+    public function doSignup(Request $request)
+    {
+        try {
             $request->validate([
-                'first_name' => ['required', 'string', 'max:255'],
-                'last_name' => ['required', 'string', 'max:255'],
-                'username' => ['required', 'string', 'max:255', 'unique:'.Customer::class],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:'.Customer::class],
-                'password' => ['required', 'confirmed', Password::defaults()]]
+                    'first_name' => ['required', 'string', 'max:255'],
+                    'last_name' => ['required', 'string', 'max:255'],
+                    'username' => ['required', 'string', 'max:255', 'unique:' . Customer::class],
+                    'email' => ['required', 'string', 'email', 'max:255', 'unique:' . Customer::class],
+                    'password' => ['required', 'confirmed', Password::defaults()]]
             );
-            if(AuthService::createCustomerAndAutoLogin($request->all()))
+            if (AuthService::createCustomerAndAutoLogin($request->all()))
                 return redirect(RouteServiceProvider::HOME);
-        }catch (\Exception $exception){
-            return redirect()->back()->withErrors(['msg' =>$exception->getMessage()]);
+        } catch (\Exception $exception) {
+            return redirect()->back()->withErrors(['msg' => $exception->getMessage()]);
         }
     }
-    public function doSignupold(RegisterRequest $request){
-        try{
-            if(AuthService::createCustomerAndAutoLogin($request->all())){
+
+    public function doSignupold(RegisterRequest $request)
+    {
+        try {
+            if (AuthService::createCustomerAndAutoLogin($request->all())) {
                 CVService::syncCustomer();
                 return redirect(RouteServiceProvider::HOME);
             }
-        }catch (\Exception $exception){
-                return redirect()->back()->withErrors(['msg' =>$exception->getMessage()]);
+        } catch (\Exception $exception) {
+            return redirect()->back()->withErrors(['msg' => $exception->getMessage()]);
         }
     }
-    public function getLoginForm(){
+
+    public function getLoginForm()
+    {
         return view('auth.login');
     }
-    public function doLogin(LoginRequest $request){
-        try{
-            $request->authenticate();
+
+    public function doLogin(LoginRequest $request)
+    {
+        try {
+            $guard = "customer";
+            if (!empty($request->customer_type) && $request->customer_type == 2)
+                $guard = "company";
+            $request->authenticate($guard);
             $request->session()->regenerate();
-            if(!empty(session('redirect_after_login'))){
-                $redirect=session('redirect_after_login');
+            if (!empty(session('redirect_after_login'))) {
+                $redirect = session('redirect_after_login');
                 CVService::syncCustomer();
-                Session::put('show_confirm',1);
+                Session::put('show_confirm', 1);
                 return redirect($redirect);
             }
             return redirect()->intended(RouteServiceProvider::HOME);
-        }catch (\Exception $exception){
-            return redirect()->back()->withErrors(['msg' =>$exception->getMessage()]);
+        } catch (\Exception $exception) {
+            return redirect()->back()->withErrors(['msg' => $exception->getMessage()]);
         }
     }
-    public function logout(){
-        Session::flush();Auth::guard('customer')->logout();
-        return view('home');
+
+    public function logout()
+    {
+        Session::flush();
+        Auth::guard('customer')->logout();
+        return redirect()->route('home_page');
     }
 }

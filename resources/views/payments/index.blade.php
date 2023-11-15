@@ -110,7 +110,8 @@
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="d-flex flex-row">
-                                                                        <div class="inputbox mt-3 mr-2"><input
+                                                                        <div class="inputbox mt-3 mr-2">
+                                                                            <input
                                                                                 type="text"
                                                                                 name="expiry"
                                                                                 class="form-control"
