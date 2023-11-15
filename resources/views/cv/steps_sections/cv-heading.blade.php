@@ -227,7 +227,7 @@
                     data-widget_type="exad-exclusive-card.default">
                     <div class="elementor-widget-container">
                         <div class="exad-card left text_on_image yes">
-                            <div class="exad-card-thumb">
+                            <div class="exad-card-thumb" style="max-height:310px;">
                                 @include('components.cv.cv_template_'.$chosen_template->file_name.'_card')
                             </div>
                             <div class="exad-card-body"></div>
