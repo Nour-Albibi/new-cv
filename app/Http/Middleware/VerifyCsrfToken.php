@@ -20,6 +20,7 @@ class VerifyCsrfToken extends Middleware
         'cv-builder/uploadFile',
         'cv-builder/getSkillsRelatedToJobTitle',
         'cv-builder/PreviewCV',
-        'cv-builder/getCVCard'
+        'cv-builder/getCVCard',
+        'cv-builder/PreviewCVNew'
     ];
 }

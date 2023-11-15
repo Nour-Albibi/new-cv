@@ -12,6 +12,7 @@ use App\Models\CustomerCvSummery;
 use App\Models\CustomerCvWorkHistory;
 use App\Models\ProfessionalSummary;
 use App\Models\Skill;
+use App\Models\Subscription;
 use App\Models\Template;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -107,6 +108,9 @@ class CVService
     public static function addStoredCVinCart($customerCV){
         return CartService::AddToCart($customerCV);
     }
+    public static function addStoredCVinCartByName($customerCV,$cart_name){
+        return CartService::AddToCartByName($customerCV,$cart_name);
+    }
     public static function storeCVData($step_num, $data)
     {
         switch ($step_num) {
@@ -147,7 +151,14 @@ class CVService
                 self::storeLanguages($data);
                 break;
             case 8:
-                return  redirect()->route('getCustomerPackagesPricing');
+                if(isset($data['request_type']) && $data['request_type']!="customer.editCV"){
+                    $cvItem=self::getCVItem();
+                    if($cvItem->model->subscription_id==0){
+                        return  redirect()->route('getCustomerPackagesPricing');
+                    }
+                    Subscription::where('id',$cvItem->model->subscription_id)->update(['current_cv_count'=>($cvItem->model->subscription->current_cv_count+1)]);
+                }
+                return redirect()->route('customer.dashboard');
         }
     }
     public static function storeLanguages($data){
@@ -427,8 +438,10 @@ class CVService
         $subscription_id=0;
         if (Auth::guard('customer')->check()) {
             $customer_id = Auth::guard('customer')->user()->id;
-            if(Auth::guard('customer')->user()->getActiveSubscription()!=null){
-                $subscription_id= Auth::guard('customer')->user()->getActiveSubscription()->id;
+            $active_subscription=Auth::guard('customer')->user()->getActiveSubscription();
+            if($active_subscription!=null){
+                if($active_subscription->current_cv_count < $active_subscription->max_cv_limit)
+                $subscription_id= $active_subscription->id;
             }
         }
         if (self::checkChosenCVSetting()) {
@@ -474,7 +487,10 @@ class CVService
         $cart = Cart::name('cv');
         return $cart->getDetails()->get('items')->first();
     }
-
+    public static function getCVItemByCartName($cart_name){
+        $cart = Cart::name($cart_name);
+        return $cart->getDetails()->get('items')->first();
+    }
     public static function getDataArraysFromRequest($data)
     {
         unset($data['_token']);

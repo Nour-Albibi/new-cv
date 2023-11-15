@@ -65,12 +65,12 @@
             id="jquery-core-js"></script>
     <script src="{{asset('assets/js/jquery/jquery-migrate.min.js?ver=3.4.1')}}"
             id="jquery-migrate-js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="all" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="all" defer>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css"
           media="all" defer>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css"
-          media="all" >
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" >
+          media="all" defer>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" defer>
     <link rel="alternate" type="text/xml+oembed"
           href="https://projects.datatime4it.com/chtml/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fprojects.datatime4it.com%2Fchtml%2F#038;format=xml">
     <meta name="generator"
@@ -142,6 +142,7 @@
         id="wp-hooks-js"></script>
 <script src="{{asset('assets/js/dist/i18n.min.js?ver=7701b0c3857f914212ef')}}"
         id="wp-i18n-js"></script>
+
 <script id="wp-i18n-js-after">
     wp.i18n.setLocaleData({'text directionltr': ['ltr']});
 </script>
@@ -151,8 +152,14 @@
 <script
     src="{{asset('assets/plugins/elementor/assets/lib/waypoints/waypoints.min.js?ver=4.0.2')}}"
     id="elementor-waypoints-js"></script>
-<script src="{{asset('assets/js/jquery/ui/core.min.js?ver=1.13.2')}}"
+<script src="{{asset('assets/js/jquery/ui/core.min.js')}}"
         id="jquery-ui-core-js"></script>
+{{--<script>--}}
+{{--    $('.dropdown-toggle').on('click',function(){--}}
+{{--        alert('sadsad');--}}
+{{--        $(this).parent('.dropdown').closest('.dropdown-menu').toggleClass('show');--}}
+{{--    });--}}
+{{--</script>--}}
 <script id="elementor-frontend-js-before">var elementorFrontendConfig = {
         "environmentMode": {"edit": false, "wpPreview": false, "isScriptDebug": false},
         "i18n": {
@@ -271,6 +278,12 @@
     src="{{asset('assets/plugins/wpforms/assets/js/integrations/elementor/frontend.min.js?ver=1.6.7')}}"
     id="wpforms-elementor-js"></script>
 @yield('custom_js')
+<script>
+    function OpenMenu(menu_id){
+        var element = document.getElementById(menu_id);
+        element.classList.toggle("show");
+    }
+</script>
 <script type="text/javascript">
     $.ajaxSetup({
         headers: {
