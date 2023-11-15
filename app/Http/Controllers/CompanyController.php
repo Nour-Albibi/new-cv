@@ -15,6 +15,7 @@ class CompanyController extends Controller
         return view('auth.login');
     }
     public function doLogin(Request $request){
+        dd('hi company');
         try{
             $credentials=$request->only(['email','password']);
             if(auth()->guard('companies')->attempt($credentials)){

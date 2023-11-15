@@ -185,9 +185,20 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="{{asset('company-assets/images/users/img-7.png')}}"
-                         alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ms-1">James</span>
+                    <img class="rounded-circle header-profile-user" src="@if(auth()->guard('company')->check()){{asset('files/images/'.Auth::guard('company')->user()->avatar)}}@endif"
+                         alt="{{Auth::guard('company')->user()->username}}">
+                    <span class="d-none d-xl-inline-block ms-1">
+                        @if(auth()->guard('company')->check())
+                            <li class="elementor-icon-list-item elementor-inline-item">
+                                <a href="#">
+                                    <span
+                                        class="elementor-icon-list-text">
+                                        {{Auth::guard('company')->user()->first_name}}
+                                    </span>
+                                </a>
+                            </li>
+                        @endif
+                    </span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">

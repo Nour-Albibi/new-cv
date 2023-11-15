@@ -6,11 +6,22 @@
         <div class="user-sidebar text-center">
             <div class="dropdown">
                 <div class="user-img">
-                    <img src="{{asset('company-assets/images/users/img-7.png')}}" alt="" class="rounded-circle">
+                    <img src="@if(auth()->guard('company')->check()){{asset('files/images/'.Auth::guard('company')->user()->avatar)}}@endif" alt="" class="rounded-circle">
                     <span class="avatar-online bg-success"></span>
                 </div>
                 <div class="user-info">
-                    <h5 class="mt-3 font-size-16 text-white">James 1</h5>
+                    <h5 class="mt-3 font-size-16 text-white">
+                        @if(auth()->guard('company')->check())
+                            <li class="elementor-icon-list-item elementor-inline-item">
+                                <a href="#">
+                                    <span
+                                        class="elementor-icon-list-text">
+                                        {{Auth::guard('company')->user()->first_name.' '.Auth::guard('company')->user()->last_name  }}
+                                    </span>
+                                </a>
+                            </li>
+                        @endif
+                    </h5>
                     <span class="font-size-13 text-white-50">Company </span>
                 </div>
             </div>
