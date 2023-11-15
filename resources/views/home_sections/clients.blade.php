@@ -22,7 +22,7 @@
                                         data-id="111d0603" data-element_type="widget"
                                         data-widget_type="heading.default">
                                         <div class="elementor-widget-container">
-                                            <h4 class="elementor-heading-title elementor-size-default">{{__('Our Clients')}}
+                                            <h4 class="elementor-heading-title elementor-size-default">{{__('home.Our Clients')}}
                                             </h4></div>
                                     </div>
                                     <div
