@@ -303,7 +303,7 @@
                                                         </div>
 
                                                         <div class=" exad-card-body">
-                                                            <a class="cv-template exad-card-action" href="{{url('cv-builder?cvTemplate='.$one->id.'&cvColor='.$one->default_color)}}">
+                                                            <a class="cv-template exad-card-action" href="{{url('cv-builder?cvTemplate='.$one->id.'&cvColor='.str_replace('#','',$one->default_color))}}">
                                                         <span>
                                                             {{__('Create This CV')}}
                                                         </span>

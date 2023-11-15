@@ -33,7 +33,7 @@ class CVController extends Controller
             CVService::syncColorAndTemplateToCurrentCV();
             return view('cv.start2');
         }elseif(!empty($request->cvTemplate)){
-            Session::put(['chosen_template_id' => $request->cvTemplate, 'chosen_cv_color' => $request->cvColor]);
+            Session::put(['chosen_template_id' => $request->cvTemplate, 'chosen_cv_color' => "#".$request->cvColor]);
             CVService::syncColorAndTemplateToCurrentCV();
             return view('cv.start2');
         } else {
