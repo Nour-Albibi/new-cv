@@ -124,13 +124,17 @@ class CVController extends Controller
         }
     }
     public function editCV(CustomerCv $cv){
-        CVService::addStoredCVinCartByName($cv,'cv_'.$cv->id);
-        $addedItem=CVService::getCVItemByCartName('cv_'.$cv->id);
-        $qualifications=Qualification::all();
-        $chosen_template =Template::find($cv->template_id);
-        $alanguages=Language::all();
-        return view('cv.create-cv-steps', compact('chosen_template','addedItem','qualifications','alanguages'));
-    }
+        if($cv->downloads==0){
+            CVService::addStoredCVinCartByName($cv,'cv_'.$cv->id);
+            $addedItem=CVService::getCVItemByCartName('cv_'.$cv->id);
+            $qualifications=Qualification::all();
+            $chosen_template =Template::find($cv->template_id);
+            $alanguages=Language::all();
+            return view('cv.create-cv-steps', compact('chosen_template','addedItem','qualifications','alanguages'));
+            }else{
+            return  redirect()->back();
+        }
+        }
     public function FinaliseCVApplication(Request $request){
         try{
             if($request->step==8){
@@ -139,6 +143,8 @@ class CVController extends Controller
                     return redirect()->route('getCustomerPackagesPricing');
                 }else{
                     //redirect customer to his dashboard
+                    CVService::ResetCVDataForCreateNew();
+                    return redirect()->route('customer.CVs');
                 }
             }
         }catch (\Exception $exception){

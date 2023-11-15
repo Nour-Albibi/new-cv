@@ -46,9 +46,8 @@ class CVService
         CustomerCv::where('id',$id)->update(['cv_language'=>session('chosen_cv_language')]);
     }
     public static function ResetCVDataForCreateNew(){
-        $cart=\Jackiedo\Cart\Facades\Cart::name('cv');
-        $cart->destroy();
-        Session::flush();
+        Cart::name('cv')->destroy();
+        Session::forget(['show_confirm','current_step_num','show_confirm']);
         session('current_step_num',0);
         self::checkChosenCVSetting();
     }

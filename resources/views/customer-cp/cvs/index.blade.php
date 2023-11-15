@@ -13,7 +13,10 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5>My latest cvs</h5>
+                            <div class="d-flex" style="justify-content: space-between;margin-bottom: 8px">
+                            <h5>My CVs</h5>
+                                <a href="{{route('cv.create')}}" class=" btn btn-success">{{__('Create CV')}}</a>
+                            </div>
                             <div class="table-responsive">
                                 <table class="table table-centered table-nowrap mb-0">
                                     <thead>
