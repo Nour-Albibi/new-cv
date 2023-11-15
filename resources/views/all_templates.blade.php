@@ -271,6 +271,11 @@
                             <div class="elementor-widget-container">
                                 <h6 class="elementor-heading-title elementor-size-default">CV Templets</h6></div>
                         </div>
+                        <form name="start-cv-template" method="post" id="start-cv-template" action="{{route('cv.create')}}">
+                            @csrf
+                            <input type="hidden" name="cvColor" value="{{$templates[0]->default_color ?? ''}}"/>
+                            <input type="hidden" name="cvTemplate" value="{{$templates[0]->id ?? ''}}" />
+                        </form>
                         @foreach($templates->chunk(3) as $three)
                         <section data-particle_enable="false" data-particle-mobile-disabled="false"
                                  class="elementor-section elementor-inner-section elementor-element elementor-element-1f59029 exad-glass-effect-yes elementor-section-boxed elementor-section-height-default elementor-section-height-default exad-sticky-section-no"
@@ -297,8 +302,8 @@
                                                             {{$one->{"name_".$lang } }}
                                                         </div>
 
-                                                        <div class="exad-card-body">
-                                                            <a class="exad-card-action" href="#" target="_blank">
+                                                        <div class=" exad-card-body">
+                                                            <a class="cv-template exad-card-action" href="{{url('cv-builder?cvTemplate='.$one->id.'&cvColor='.$one->default_color)}}">
                                                         <span>
                                                             {{__('Create This CV')}}
                                                         </span>
@@ -323,5 +328,11 @@
     </div>
 @endsection
 @section('custom_js')
-
+{{--<script>--}}
+{{--    $('.cv-template').on('click',function(){--}}
+{{--        $('input[name=cvTemplate]').val($(this).attr('template_id'));--}}
+{{--        $('input[name=cvColor]').val($(this).attr('template_color'));--}}
+{{--          $('#start-cv-template').submit();--}}
+{{--    });--}}
+{{--</script>--}}
 @stop

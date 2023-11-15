@@ -145,7 +145,7 @@
                                                            class="elementor-item elementor-item-anchor">{{__('Cover Letter')}}</a>
                                                     </li>
                                                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-98">
-                                                        <a href="#"
+                                                        <a href="{{route('all_templates')}}"
                                                            class="elementor-item elementor-item-anchor">{{__('CV Templates')}}</a>
                                                     </li>
                                                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-99">

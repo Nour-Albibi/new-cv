@@ -54,7 +54,7 @@
                                         <div class="elementor-widget-container">
                                             <ul class="elementor-icon-list-items">
                                                 <li class="elementor-icon-list-item">
-                                                    <a href="#">
+                                                    <a href="{{route('cv.start')}}">
 												<span class="elementor-icon-list-icon">
 							                    <i aria-hidden="true" class="fas fa-caret-right"></i>
                                                 </span>
@@ -62,7 +62,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="elementor-icon-list-item">
-                                                    <a href="#">
+                                                    <a href="{{route('all_templates')}}">
 												<span class="elementor-icon-list-icon">
 							                    <i aria-hidden="true" class="fas fa-caret-right"></i>
                                                 </span>
@@ -93,7 +93,7 @@
                                         <div class="elementor-widget-container">
                                             <ul class="elementor-icon-list-items">
                                                 <li class="elementor-icon-list-item">
-                                                    <a href="#">
+                                                    <a href="{{route('about.index')}}">
 
 												<span class="elementor-icon-list-icon">
 							<i aria-hidden="true" class="fas fa-caret-right"></i>						</span>
@@ -101,7 +101,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="elementor-icon-list-item">
-                                                    <a href="#">
+                                                    <a href="{{route('contact.index')}}">
 
 												<span class="elementor-icon-list-icon">
 							<i aria-hidden="true" class="fas fa-caret-right"></i>						</span>
