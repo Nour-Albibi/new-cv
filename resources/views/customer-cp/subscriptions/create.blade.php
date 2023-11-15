@@ -73,13 +73,18 @@
                                                                     @endphp
                                                                {{$package->{"name_".$lang } }} </label>
                                                                 @else
-                                                            <label
-                                                                for="fullName">{{__('Please Choose Package')}}</label>
+                                                                <div class="row mt-4 mb-4 ">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label class="text-uppercase">{{__('Choose Your Package')}}</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             <div class="row" style="margin-bottom:16px;">
                                                                 @foreach($customerPackages as $pkg)
                                                                     <div class="col-md-4 col-sm-6 pacakge_box"
                                                                          package_id="{{$pkg->id}}">
-                                                                        <div class="pricingTable">
+                                                                        <div class="pricingTable" style="height: 475px;">
                                                                             <div class="pricingTable-header">
                                                                                 <h3 class="title">{{$pkg->{"name_".$lang} }}</h3>
                                                                             </div>

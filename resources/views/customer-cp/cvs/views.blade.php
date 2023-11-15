@@ -13,7 +13,6 @@
      <div class="container-fluid">
 
         <div class="page-content-wrapper">
-
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -45,7 +44,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td>{{ $view->company->first_name.' '.$view->company->last_name }}</td>
+                                                <td>{{ $view->company->company_name }}</td>
                                                 <td>
                                                     <div class="badge badge-soft-success font-size-12"> {{ $view->how_often }}</div>
                                                 </td>
