@@ -177,7 +177,7 @@
                                                 <div class="elementor-icon-box-wrapper">
                                                     <div class="elementor-icon-box-icon">
                                                         <span class="elementor-icon elementor-animation-">
-                                                        <i aria-hidden="true" class="feather icon-phone-incoming"></i>
+                                                        <i aria-hidden="true" class="feather icon-phone-incoming fa fa-phone"></i>
                                                         </span>
                                                     </div>
                                                     <div class="elementor-icon-box-content">
