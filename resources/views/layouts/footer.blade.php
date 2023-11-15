@@ -132,26 +132,27 @@
                                         <div class="elementor-widget-container">
                                             <ul class="elementor-icon-list-items">
                                                 <li class="elementor-icon-list-item">
-                                                    <a href="#">
-
+                                                    <a href="{{company('facebook_link')}}" target="_blank">
 												<span class="elementor-icon-list-icon">
-							<i aria-hidden="true" class="fab fa-facebook-square"></i>						</span>
+							                        <i aria-hidden="true" class="fab fa-facebook-square"></i>
+                                                </span>
                                                         <span class="elementor-icon-list-text">Facebook</span>
                                                     </a>
                                                 </li>
                                                 <li class="elementor-icon-list-item">
-                                                    <a href="#">
+                                                    <a href="{{company('twitter_link')}}" target="_blank">
 
 												<span class="elementor-icon-list-icon">
-							<i aria-hidden="true" class="fab fa-twitter-square"></i>						</span>
+							                    <i aria-hidden="true" class="fab fa-twitter-square"></i>
+                                                </span>
                                                         <span class="elementor-icon-list-text">Twitter</span>
                                                     </a>
                                                 </li>
                                                 <li class="elementor-icon-list-item">
-                                                    <a href="#">
-
+                                                    <a href="{{company('linkedin_link')}}" target="_blank">
 												<span class="elementor-icon-list-icon">
-							<i aria-hidden="true" class="fab fa-linkedin"></i>						</span>
+							                        <i aria-hidden="true" class="fab fa-linkedin"></i>
+                                                </span>
                                                         <span class="elementor-icon-list-text">LinkedIn</span>
                                                     </a>
                                                 </li>
