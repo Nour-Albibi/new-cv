@@ -577,6 +577,9 @@
         @if(!empty($addedItem->model->image))
             <image id="image5" width="189" height="189"
                    xlink:href="{{asset('files/uploads/'.$addedItem->model->image)}}"/>
+        @elseif(isset($cv) &&  !empty($cv) &&  !empty($cv->image))
+            <image id="image5" width="189" height="189"
+                   xlink:href="{{asset('files/uploads/'.$cv->image)}}"/>
         @else
             <image id="image5" width="189" height="189"
                    xlink:href="{{asset('cv-templates/images/NoImage.avif')}}"/>
