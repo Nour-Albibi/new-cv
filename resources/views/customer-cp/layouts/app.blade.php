@@ -24,10 +24,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" id="app-style"
           rel="stylesheet" type="text/css" defer/>
     <link href="{{asset('customer-assets/css/custom.css')}}" rel="stylesheet" type="text/css" defer/>
+    @yield('custom_css')
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;800&display=swap');
     </style>
+
 </head>
 <body>
 
@@ -89,5 +91,6 @@
 <script src="{{asset('customer-assets/libs/simplebar/simplebar.min.js')}}"></script>
 <script src="{{asset('customer-assets/libs/node-waves/waves.min.js')}}"></script>
 <script src="{{asset('customer-assets/js/app.js')}}"></script>
+@yield('custom_js')
 </body>
 </html>

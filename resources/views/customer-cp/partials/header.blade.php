@@ -4,7 +4,7 @@
 
                <!-- LOGO -->
          <div class="navbar-brand-box">
-            <a href="{{route('customer.dashboard')}}" class="logo logo-dark">
+            <a href="{{route('home_page')}}" class="logo logo-dark">
                 <span class="logo-sm">
                     <img src="{{asset('customer-assets/images/b-logo.png')}}"  alt="" height="22">
                 </span>
@@ -32,16 +32,6 @@
 
             </div>
 
-        </div>
-
-         <!-- Search input -->
-         <div class="search-wrap" id="search-wrap">
-            <div class="search-bar">
-                <input class="search-input form-control" placeholder="Search" />
-                <a href="#" class="close-search toggle-search" data-target="#search-wrap">
-                    <i class="mdi mdi-close-circle"></i>
-                </a>
-            </div>
         </div>
 
         <div class="d-flex">
@@ -77,7 +67,7 @@
                                 <h6 class="m-0"> Notifications </h6>
                             </div>
                             <div class="col-auto">
-                                <a href="#!" class="small"> View All</a>
+                                <a href="{{route('customer.viewedmyCV')}}" class="small"> View All</a>
                             </div>
                         </div>
                     </div>
@@ -130,7 +120,7 @@
 
                     </div>
                     <div class="p-2 border-top">
-                        <a class="btn btn-sm btn-link font-size-14 w-100 text-center" href="javascript:void(0)">
+                        <a class="btn btn-sm btn-link font-size-14 w-100 text-center" href="{{route('customer.viewedmyCV')}}">
                             <i class="mdi mdi-arrow-right-circle me-1"></i> View More..
                         </a>
                     </div>
@@ -140,19 +130,17 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="@if(auth()->guard('customer')->check()){{asset('files/images/'.Auth::guard('customer')->user()->avatar)}}@endif"
+                    <img class="rounded-circle header-profile-user" src="@if(!empty(Auth::guard('customer')->user()->avatar)){{asset('files/images/'.Auth::guard('customer')->user()->avatar)}} @else {{asset('customer-assets/images/avatar.png')}} @endif"
                         alt="{{Auth::guard('customer')->user()->username}}">
                     <span class="d-none d-xl-inline-block ms-1">
-                        @if(auth()->guard('customer')->check())
                             <li class="elementor-icon-list-item elementor-inline-item">
-                                <a href="#">
+                                <a href="{{route('customer.dashboard')}}">
                                     <span
                                         class="elementor-icon-list-text">
                                         {{Auth::guard('customer')->user()->first_name}}
                                     </span>
                                 </a>
                             </li>
-                        @endif
                     </span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>

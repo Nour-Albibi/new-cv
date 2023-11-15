@@ -1,6 +1,6 @@
-* {
-    font-family: 'Domine', serif;
-}
+/** {*/
+/*    font-family: 'Domine', serif;*/
+/*}*/
 .bg-primary2 {
     --bs-bg-opacity: 1;
     background-color: #024a53;

@@ -6,7 +6,7 @@
         <div class="user-sidebar text-center">
             <div class="dropdown">
                 <div class="user-img">
-                    <img src="@if(auth()->guard('customer')->check()){{asset('files/images/'.Auth::guard('customer')->user()->avatar)}}@endif" alt="" class="rounded-circle">
+                    <img src="@if(!empty(Auth::guard('customer')->user()->avatar)){{asset('files/images/'.Auth::guard('customer')->user()->avatar)}} @else {{asset('customer-assets/images/avatar.png')}} @endif" alt="" class="rounded-circle">
                     <span class="avatar-online bg-success"></span>
                 </div>
                 <div class="user-info">
@@ -14,7 +14,7 @@
 
                         @if(auth()->guard('customer')->check())
                             <li class="elementor-icon-list-item elementor-inline-item">
-                                <a href="#">
+                                <a href="{{ route('customer.dashboard') }}">
                                     <span
                                         class="elementor-icon-list-text">
                                         {{Auth::guard('customer')->user()->first_name.' '.Auth::guard('customer')->user()->last_name  }}

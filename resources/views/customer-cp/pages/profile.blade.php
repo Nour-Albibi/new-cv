@@ -55,27 +55,20 @@
                                 <label for="userpassword">Confirm Password</label>
                                 <input type="password" class="form-control" id="password_confirmation" placeholder="Confirm password" name="password_confirmation">
                             </div>
-                            <div class="mb-3">
-                                <span class="inner_input"></span>
-                                <div class="box__input">
-                                    <img src="@if(!empty($addedItem)){{asset('files/uploads/'.$Auth::guard('customer')->user()->username->avatar)}}@endif"  @if(empty($addedItem) || empty($addedItem->model->image)) class="d-none" @endif id="uploaded_im" width="100" height="100"/>
-                                    @csrf
-                                    <div class="upload_icon"></div>
-                                    <input class="box__file" type="file" name="avatar" id="file"/>
-                                    <label class="file" for="file">{{__('Choose a file or Drag it here to upload it')}}</label>
+                            <div class="row mb-3">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="website1">{{__('My Photo')}}</label>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="file" class="form-control" name="avatar" id="customFile">
+                                    </div>
                                 </div>
-                                <div class="box__uploading">Uploading…</div>
-                                <div class="box__success alert-success"><p>{{__('Uploaded Successfully')}}</p></div>
-                                <div class="box__error">Error! <span></span>.</div>
                             </div>
-
-
                             <div class="mt-4" style="display:flex;justify-content: center">
                                 <button class="btn btn-primary2 w-50  waves-effect waves-light" type="submit">Save</button>
                             </div>
-
                         </form>
-
                     </div>
                 </div>
             </div>

@@ -65,6 +65,6 @@ class AuthController extends Controller
     }
     public function logout(){
         Session::flush();Auth::guard('customer')->logout();
-        return view('home');
+        return redirect()->route('home_page');
     }
 }

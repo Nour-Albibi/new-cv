@@ -17,6 +17,8 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/', [CustomerController::class, 'dashboard'])->name('customer.dashboard');
         Route::get('/subscriptions', [CSubscriptionController::class, 'subscriptions'])->name('customer.subscriptions');
         Route::get('/subscriptions/new', [CSubscriptionController::class, 'newsubscription'])->name('customer.subscriptions.add');
+        Route::get('/subscriptions/create_new', [CSubscriptionController::class, 'create_new'])->name('customer.subscriptions.create_new');
+        Route::post('/subscriptions/store_new', [CSubscriptionController::class, 'store_new'])->name('customer.subscriptions.store_new');
         Route::get('/subscriptions/new/{package}', [CSubscriptionController::class, 'buysubscription'])->name('customer.subscriptions.buy');
         Route::get('/subscriptions/{subscription}', [CSubscriptionController::class, 'showsubscription'])->name('customer.subscriptions.show');
         Route::get('/cvs', [CustomerCvController::class, 'CVs'])->name('customer.CVs');

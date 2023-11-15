@@ -46,11 +46,11 @@ class CVService
         CustomerCv::where('id',$id)->update(['cv_language'=>session('chosen_cv_language')]);
     }
     public static function ResetCVDataForCreateNew(){
-        session('current_step_num',0);
-        Session::forget('customer_cv_data');
-        Session::forget('show_confirm');
-        $cart=Cart::name('cv');
+        $cart=\Jackiedo\Cart\Facades\Cart::name('cv');
         $cart->destroy();
+        Session::flush();
+        session('current_step_num',0);
+        self::checkChosenCVSetting();
     }
     public static function getSkillSuggestions($possible_keys){
         if(isset($possible_keys['search_keys']) && !empty($possible_keys['search_keys'])){
