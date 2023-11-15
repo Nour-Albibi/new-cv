@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{$lang}}" dir="{{$direction}}">
 
 <head>
     <meta charset="utf-8"/>
@@ -9,14 +9,19 @@
     <meta content="Themesdesign" name="author"/>
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{asset('customer-assets/images/favicon1.ico')}}">
-
     <!-- Bootstrap Css -->
-    <link href="{{asset('customer-assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet"
-          type="text/css" defer/>
     <!-- Icons Css -->
     <link href="{{asset('customer-assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" defer/>
     <!-- App Css-->
-    <link href="{{asset('customer-assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" defer/>
+    @if(app()->getLocale()=="en")
+        <link href="{{asset('customer-assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet"
+              type="text/css" defer/>
+        <link href="{{asset('customer-assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" defer/>
+    @else
+        <link href="{{asset('customer-assets/css/bootstrap-rtl.min.css')}}" id="bootstrap-style" rel="stylesheet"
+              type="text/css" defer/>
+    <link href="{{asset('customer-assets/css/app-rtl.min.css')}}" id="app-style" rel="stylesheet" type="text/css" defer/>
+    @endif
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;800&display=swap"
           rel="stylesheet" >
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" id="app-style"

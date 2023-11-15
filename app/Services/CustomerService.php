@@ -26,4 +26,9 @@ class CustomerService
         }
         return true;
     }
+    public static function increaseCVCountInActiveSubscription(){
+        $subscription= Auth::guard('customer')->user()->getActiveSubscription();
+        $subscription->current_cv_count+=1;
+        $subscription->save();
+    }
 }

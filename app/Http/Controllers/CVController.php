@@ -6,6 +6,7 @@ use App\Models\CustomerCv;
 use App\Models\Language;
 use App\Models\Qualification;
 use App\Models\Template;
+use App\Services\CustomerService;
 use App\Services\CVService;
 use App\Services\CVTemplateService;
 use App\Services\PackageService;
@@ -137,12 +138,16 @@ class CVController extends Controller
         }
     public function FinaliseCVApplication(Request $request){
         try{
+            $cvItem=CVService::getCVItem();
             if($request->step==8){
                 //Case 1 New Customer or to Upgrade
+                CustomerCv::where('id',$cvItem->id)->update(['stopped_on_step'=>8]);
                 if(!Auth::guard('customer')->user()->has_active_subscription() || Auth::guard('customer')->user()->exceeded_subscription_limit()){
                     return redirect()->route('getCustomerPackagesPricing');
                 }else{
                     //redirect customer to his dashboard
+                    CustomerCv::where('id',$cvItem->id)->update(['stopped_on_step'=>8]);
+                    CustomerService::increaseCVCountInActiveSubscription();
                     CVService::ResetCVDataForCreateNew();
                     return redirect()->route('customer.CVs');
                 }

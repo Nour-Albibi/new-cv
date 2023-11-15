@@ -57,7 +57,6 @@ class CVService
                 ->where('job_titles.name_ar','like','%'.$possible_keys['search_keys'].'%')
                 ->orwhere('job_titles.name_en','like','%'.$possible_keys['search_keys'].'%')
                 ->get();
-
         }else{
             $cvItem=self::getCVItem();
             $newest_work=CustomerCvWorkHistory::select('id','job_title_ar','job_title_en','job_title_id')
