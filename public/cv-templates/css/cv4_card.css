@@ -210,6 +210,9 @@ ul.card-main-list li{
 .card-bordered{
     border-bottom:1px solid #009ACC;
 }
+.card-main-title h3{
+    color:#fff;
+}
 @media (min-width: 750px) and (max-width: 920px){
 .exad-card.left .exad-card-thumb{
     max-height:200px;

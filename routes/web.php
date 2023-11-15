@@ -65,4 +65,5 @@ Route::group(['middleware' => 'language'], function () {
     Route::post('ContactSendEmail',[ContactUsController::class,'sendEmail'])->name('contact.sendEmail');
     /***/
     Route::get('About-us',[AboutUsController::class,'index'])->name('about.index');
+    Route::get('All-Templates',[HomeController::class, 'getAllTemplates']);
 });

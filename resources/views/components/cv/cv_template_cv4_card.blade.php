@@ -1,5 +1,16 @@
 <link href="{{asset('cv-templates/css/cv4_card.css')}}" rel="stylesheet" defer/>
+@if(isset($cv) &&  !empty($cv))
+    <style>
+        .card-header{
+            background-color: {{ $cv->template_color ?? session('chosen_cv_color')}};
+        }
+        h5.card-section-title{
+            color: {{ $cv->template_color ?? session('chosen_cv_color')}};
+        }
+    </style>
+@else
 <style>
+
     .card-header{
         background-color: {{session('chosen_cv_color')}};
     }
@@ -7,6 +18,7 @@
         color: {{session('chosen_cv_color')}};
     }
 </style>
+@endif
 <div class="card-Home">
     <div class="card-row" style="flex-direction: column">
         <div class="card-header">
@@ -18,7 +30,14 @@
                         @else
                             {{$addedItem->model->first_name_ar.' '.$addedItem->model->surename_ar}}
                         @endif
-                    @else {{__("Your Name")}}
+                    @elseif(isset($cv) &&  !empty($cv))
+                        @if($lang=="en")
+                            {{$cv->first_name.' '.$cv->surename}}
+                        @else
+                            {{$cv->first_name_ar.' '.$cv->surename_ar}}
+                        @endif
+                    @else
+                        {{__("Your Name")}}
                     @endif
                 </h3></div>
             <div class="card-row card-contact_info" style="text-align:center;">

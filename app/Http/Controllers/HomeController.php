@@ -38,4 +38,8 @@ class HomeController extends Controller
         App::setLocale($lg);
         return redirect()->back();
     }
+    public function getAllTemplates(){
+        $templates=Template::all();
+        return view('all_templates',compact('templates'));
+    }
 }
