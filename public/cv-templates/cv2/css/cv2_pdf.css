@@ -19,11 +19,10 @@ body {
 .Home {
     width:100%;
     padding: 20px;
-    /*max-width:790px;*/
+    /*max-width:750px;*/
     background-color: #0187de;
     margin-left:auto;
     margin-right:auto;
-
 }
 
 .inner_home {
@@ -35,7 +34,10 @@ body {
     padding-right: 36px;
 
 }
-
+header{
+    display:block;
+    min-height:100px;
+}
 .inner_header {
     width: 100%;
     display: table;
@@ -59,7 +61,7 @@ body {
 }
 
 .header_info {
-    width: 78%;
+    width: auto;
     font-size: 0.8rem;
     color: black;
 }
@@ -85,13 +87,15 @@ body {
     width: 100%;
     position: relative;
     overflow:hidden;
+    display:block;
 }
 
 .inner_contact_area {
     position: absolute;
     top: 0;
-    right: -36px;
-    width: 866.6px;
+    /*right: -36px;*/
+    /*width: 866.6px;*/
+    width:790px;
     height: 70.6px;
     background-color: #0187de;
 }
@@ -103,7 +107,7 @@ body {
 }
 .contact_table{
     width:100%;
-    height:100%;
+    height: 70.6px;
     padding-left:15px;
 }
 .contact_table .table-cell{
