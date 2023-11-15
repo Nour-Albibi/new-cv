@@ -9,6 +9,7 @@ use App\Models\HomeSectionStep;
 use App\Models\Template;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller

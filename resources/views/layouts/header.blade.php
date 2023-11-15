@@ -66,21 +66,22 @@
                                                         </div>
                                                     </li>
                                                 @elseif(auth()->guard('company')->check())
-                                                    <li class="elementor-icon-list-item elementor-inline-item  profile dropdown ">
-                                                        <a class="dropdown-toggle" href="#" role="button" id="profile_dropdown_list" data-toggle="dropdown"
-                                                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <li class="elementor-icon-list-item elementor-inline-item  profile dropdown " style="position:relative;">
+                                                        <a class="dropdown-toggle" href="javascript:void(0)" role="button" id="profile_dropdown_list" data-toggle="dropdown"
+                                                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="OpenMenu('company_menu')">
                                                             <span
                                                                 class="elementor-icon-list-text">{{__('My Profile')}}</span>
                                                         </a>
-                                                        <div class="dropdown-content" aria-labelledby="profile_dropdown_list">
-                                                                <ul class="profile_list">
-                                                                        <li class="dropdown-item">
-                                                                            <a href="{{route('customer.dashboard')}}"><span>{{__('Dashboard')}}</span></a>
-                                                                        </li>
-                                                                        <li class="dropdown-item">
-                                                                            <a href="{{route('customer.logout')}}"><span>{{__('Logout')}}</span></a>
-                                                                        </li>
-                                                                </ul>
+                                                        <div class="dropdown-menu prof_menu dropdown-menu-end" data-popper-placement="bottom-end" id="company_menu">
+                                                            <!-- item-->
+                                                            @if(auth()->guard('company')->user()->has_active_subscription())
+                                                                <a class="dropdown-item" href="{{route('company.dashboard')}}">
+                                                                    <i class="mdi mdi-account-circle-outline font-size-16 align-middle me-1"></i>
+                                                                    {{__('My Dashboard')}}</a>
+                                                                <div class="dropdown-divider"></div>
+                                                            @endif
+                                                            <a class="dropdown-item text-danger" href="{{route('company.logout')}}">
+                                                                <i class="mdi mdi-power font-size-16 align-middle me-1 text-danger"></i> {{__('Logout')}}</a>
                                                         </div>
                                                     </li>
                                                 @else
