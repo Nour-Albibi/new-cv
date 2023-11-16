@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Subscription extends Model
 {
     use HasFactory;
-    protected $fillable=['user_id','package_id','package_type','start_date','end_date','status'];
+    protected $fillable=['user_id','package_id','package_type','start_date','end_date','status','max_cv_limit','current_cv_count'];
     public function user(){
         return $this->belongsTo('App\Models\Customer','user_id');
     }
