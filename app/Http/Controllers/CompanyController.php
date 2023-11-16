@@ -7,7 +7,10 @@ use App\Providers\RouteServiceProvider;
 use App\Services\CVService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 
 class CompanyController extends Controller
 {
@@ -15,7 +18,7 @@ class CompanyController extends Controller
         return view('auth.login');
     }
     public function doLogin(Request $request){
-        dd('hi company');
+        // dd('hi company');
         try{
             $credentials=$request->only(['email','password']);
             if(auth()->guard('companies')->attempt($credentials)){
@@ -35,15 +38,40 @@ class CompanyController extends Controller
     public function dashboard(){
         return view('company-cp.dashboard');
     }
-    public function subscriptions(){
-        return view('company-cp.subscriptions');
-    }
+
     public function CVs(){
         return view('company-cp.find_cv');
     }
     public function profile(){
         return view('company-cp.profile');
     }
+
+    public function update_profile (Request $request)
+     {
+        // dd($request);
+        $company=Auth::guard('company')->user();
+        if($request['password']=='')
+        unset($request['password']);
+        $validated=$request->validate([
+            'company_name'  => ['required', 'string', 'max:255'],
+            'email'         => ['required', 'string', 'email', 'max:255', Rule::unique('customers')->ignore($company->id),],
+            'address'       => ['required', 'string', 'max:255'],
+            'contact_phone' => ['required', 'string', 'max:255'],
+            'password'      => ['confirmed', Password::defaults()],
+            ]
+        );
+
+        if($request->file('avatar')){
+            $file= $request->file('avatar');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('files/images/'), $filename);
+            $validated['avatar']= $filename;}
+        if(isset($validated['password']))
+        $validated['password']=Hash::make($request['password']);
+        $company->update($validated);
+        return redirect()->route('company.profile');
+     }
+
     public function chat(){
         return view('company-cp.chat');
     }

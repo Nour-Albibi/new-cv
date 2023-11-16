@@ -12,4 +12,5 @@ class Company extends Model
     public function subscription(){
         return $this->hasMany('App\Models\CompanySubscription','user_id');
     }
+
 }

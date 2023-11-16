@@ -59,7 +59,7 @@ class AuthController extends Controller
     public function doLogin(LoginRequest $request)
     {
         try {
-            $guard = "customer";
+            $guard = "company";
             if (!empty($request->customer_type) && $request->customer_type == 2)
                 $guard = "company";
             $request->authenticate($guard);
