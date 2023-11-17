@@ -17,9 +17,9 @@ Route::group(['middleware' => 'language'], function () {
     Route::post('/doLogin', [AuthController::class, 'doLogin'])->name('company.doLogin');
     Route::get('/', [CompanyController::class, 'dashboard'])->name('company.dashboard');
     Route::get('/subscriptions', [CompanySubscriptionController::class, 'subscriptions'])->name('company.subscriptions');
-    Route::get('/subscriptions/{subscription}', [CompanySubscriptionController::class, 'showsubscription'])->name('company.subscriptions.show');
-    Route::get('/subscriptions/new', [CompanySubscriptionController::class, 'newsubscription'])->name('company.subscriptions.add');
     Route::get('/subscriptions/create_new', [CompanySubscriptionController::class, 'create_new'])->name('company.subscriptions.create_new');
+    Route::get('/subscriptions/new', [CompanySubscriptionController::class, 'buysubscription'])->name('company.subscriptions.add');
+    Route::get('/subscriptions/{subscription}', [CompanySubscriptionController::class, 'showsubscription'])->name('company.subscriptions.show');
     Route::get('/find-cvs', [CompanyController::class, 'CVs'])->name('company.find_cvs');
     Route::get('/views', [CompanyController::class, 'viewedmyCV'])->name('company.viewedmyCV');
     Route::get('/profile', [CompanyController::class, 'profile'])->name('company.profile');

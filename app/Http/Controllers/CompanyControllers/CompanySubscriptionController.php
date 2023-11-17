@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\CompanyControllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Package;
 use App\Models\Subscription;
 use App\Services\CustomerService;
+use App\Services\PackageService;
 use Illuminate\Support\Facades\Auth;
 
 class CompanySubscriptionController extends Controller
@@ -24,10 +26,10 @@ class CompanySubscriptionController extends Controller
         return view('company-cp.subscriptions.show',compact('subscription'));
     }
 
-    public function newsubscription()
+    public function create_new()
      {
         $user_id= Auth::guard('company')->user()->id;
-        $packages =Package::where('type','1')->get();
+        $packages =Package::where('type','2')->where('is_active','1')->get();
         return view('company-cp.subscriptions.new',compact('packages'));
 
     }
