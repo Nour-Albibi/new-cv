@@ -57,7 +57,7 @@
                                                 <a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-float"
                                                    href="{{route('cv.start')}}">
                                                     <span class="elementor-button-content-wrapper">
-                                                        <span class="elementor-button-text">{{__('Start Now')}}</span>
+                                                        <span class="elementor-button-text">{{__('home.Start Now')}}</span>
                                                     </span>
                                                 </a>
                                             </div>

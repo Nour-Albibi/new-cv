@@ -200,6 +200,9 @@ class CVController extends Controller
         return view('cv-templates.'.$cvFileName.'_pdf',['cv' => $cv]);
 //        return view('cv-templates.'.$cvFileName,['cv' => $cv]);
     }
+    public function PreviewCVinPageTest(CustomerCv $cv){
+        return view('cv-templates.cv2_pdf',['cv' => $cv]);
+    }
     public function PreviewCV(CustomerCv $cv){
         if(!empty($cv->id)){
             return view('cv.ajax.cv_modal',['cv'=>$cv])->render();

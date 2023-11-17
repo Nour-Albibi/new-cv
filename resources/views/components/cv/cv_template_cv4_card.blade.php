@@ -1,4 +1,4 @@
-<link href="{{asset('cv-templates/css/cv4_card.css')}}" rel="stylesheet" defer/>
+<link href="{{asset('cv-templates/cv4/css/cv4_card.css')}}" rel="stylesheet" defer/>
 @if(isset($cv) &&  !empty($cv))
     <style>
         .card-header{
