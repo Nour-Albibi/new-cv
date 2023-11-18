@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Models\CustomerCv;
 use App\Providers\RouteServiceProvider;
 use App\Services\CVService;
 use Illuminate\Http\Request;
@@ -41,6 +42,11 @@ class CompanyController extends Controller
 
     public function CVs(){
         return view('company-cp.find_cv');
+    }
+
+    public function search(Request $request){
+        cvs=CustomerCv::wherehas()
+        dd($request);
     }
     public function profile(){
         return view('company-cp.profile');

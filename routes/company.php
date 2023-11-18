@@ -21,6 +21,7 @@ Route::group(['middleware' => 'language'], function () {
     Route::get('/subscriptions/new', [CompanySubscriptionController::class, 'buysubscription'])->name('company.subscriptions.add');
     Route::get('/subscriptions/{subscription}', [CompanySubscriptionController::class, 'showsubscription'])->name('company.subscriptions.show');
     Route::get('/find-cvs', [CompanyController::class, 'CVs'])->name('company.find_cvs');
+    Route::post('/find-cvs', [CompanyController::class, 'search'])->name('company.dofind_cvs');
     Route::get('/views', [CompanyController::class, 'viewedmyCV'])->name('company.viewedmyCV');
     Route::get('/profile', [CompanyController::class, 'profile'])->name('company.profile');
     Route::put('/profile', [CompanyController::class, 'update_profile'])->name('company.update_profile');
