@@ -108,7 +108,7 @@
                     <section data-particle_enable="false" data-particle-mobile-disabled="false"
                              class="elementor-section elementor-inner-section elementor-element elementor-element-59f620c4 elementor-section-full_width exad-glass-effect-yes elementor-section-height-default elementor-section-height-default exad-sticky-section-no"
                              data-id="59f620c4" data-element_type="section"
-                             data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                             data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" style="direction: ltr">
                         <div class="elementor-container elementor-column-gap-no">
                             <div
                                 class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-1a25e3d4 exad-glass-effect-no exad-sticky-section-no"
@@ -140,7 +140,7 @@
                                         <div class="elementor-widget-container">
                                             <nav
                                                 class="elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-horizontal e--pointer-underline e--animation-drop-out">
-                                                <ul id="menu-1-3cb49089" class="elementor-nav-menu">
+                                                <ul id="menu-1-3cb49089" class="elementor-nav-menu" style="">
                                                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-96">
                                                         <a href="#"
                                                            class="elementor-item elementor-item-anchor">{{__('Cover Letter')}}</a>

@@ -27,7 +27,7 @@
             <label class="wpforms-field-label"
                    for="wpforms-568-field_1">Course name</label><input
                 type="text" id="wpforms-568-field_1"
-                class="wpforms-field-large" name="course_{{$new_course_num}}['course_name_{{$cv_lang}}']"
+                class="wpforms-field-large" name="course_{{$new_course_num}}[course_name_{{$cv_lang}}]"
                 placeholder="Course name">
         </div>
         <div id="wpforms-568-field_2-container"
@@ -37,7 +37,7 @@
                 the course</label><input type="text"
                                          id="wpforms-568-field_2"
                                          class="wpforms-field-large"
-                                         name="course_{{$new_course_num}}['trainer_{{$cv_lang}}']"
+                                         name="course_{{$new_course_num}}[trainer_{{$cv_lang}}]"
                                          placeholder="The entity responsible for the course">
         </div>
         <div class="dates_container">
@@ -53,7 +53,7 @@
                            data-disable-past-dates="0" data-input="true"
                            input_name="course_start_date"
                            course_num="{{$new_course_num}}"
-                           name="course_{{$new_course_num}}['start_date']">
+                           name="course_{{$new_course_num}}[start_date]">
                 </div>
             </div>
             <div id="wpforms-568-field_4-container"
@@ -68,7 +68,7 @@
                        data-disable-past-dates="0" data-input="true"
                        input_name="course_end_date"
                        course_num="{{$new_course_num}}"
-                       name="course_{{$new_course_num}}['end_date']">
+                       name="course_{{$new_course_num}}[end_date]">
             </div>
         </div>
         </div>

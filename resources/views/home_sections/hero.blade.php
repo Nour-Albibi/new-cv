@@ -26,10 +26,6 @@
                         <div class="elementor-widget-container">
                             <h2 class="elementor-headline">
                                 {!! $hero_section->{"main_title_".$lang}  !!}
-                                {{-- <span class="elementor-headline-plain-text elementor-headline-text-wrapper">CV Builder to  Create</span>--}}
-                                {{-- <span class="elementor-headline-dynamic-wrapper elementor-headline-text-wrapper">--}}
-                                {{--<span class="elementor-headline-dynamic-text elementor-headline-text-active"> Perfect CV</span>--}}
-                                {{--</span>--}}
                             </h2>
                         </div>
                     </div>
@@ -37,7 +33,7 @@
                         class="elementor-element elementor-element-4d0d179c exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor"
                         data-id="4d0d179c" data-element_type="widget" data-widget_type="text-editor.default">
                         <div class="elementor-widget-container">
-                            {{$hero_section->{"main_title_".$lang} }}
+                            {{$hero_section->{"description_".$lang} }}
                         </div>
                     </div>
                     <section data-particle_enable="false" data-particle-mobile-disabled="false"

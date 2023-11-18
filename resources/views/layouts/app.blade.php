@@ -79,6 +79,9 @@
     <link rel="stylesheet"
           href="{{asset('assets/plugins/elementor-pro/assets/css/widget-nav-menu.min.css')}}" defer>
     <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}" defer>
+    @if(app()->getLocale()=="ar")
+        <link rel="stylesheet" href="{{asset('assets/css/rtl.css')}}" defer>
+        @endif
     @yield('custom2Css')
 </head>
 <body class="{{$bodyClass ?? ''}} page-template page-template-elementor_header_footer page page-id-59 exclusive-addons-elementor elementor-default elementor-template-full-width elementor-kit-36 elementor-page elementor-page-59">

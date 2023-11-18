@@ -16,10 +16,7 @@
         <image id="image15"
                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE8SURBVDhPfZIhTAJhFMfPSDQajUaikWg0Go1Goo1GMLAZdDPoDM4ZnAQ3DGwEApsBN4POIIiKojJPRT2U6XO/d7xPjh287e12997v3f/9v8+byNZkVM5s3MjsdjO25k2vXUum7Gsul54lsVJ3xYX8g5QagQS9X9k67chk7uofXDx8lMFIbt5GQOoMZ2j9pacqFJzbu+8jYczvtxxIE0rO29+SLrYltXMnJ60vVeVRHIz16psDgQ4uPlQFTxRQXzp6EjWHiRZ+8ONAJtNkEivNrpq1e/YegtmKrxANTDXQkkZWQObUakN/pCAvOIeDw5DVcdSMQbo7R5Yn2Mu+jcvIBcAAgiOwb0iMuwQREDMKl58K4x7nxwoE+7OKKYqAlrnjV202aDjoiQVJ5PGHuKA+ErTESa4bQ8jwnGvyB2eZP6atrai4AAAAAElFTkSuQmCC"
                width="14" height="14"></image>
-        @if(!empty($addedItem->model->image))
-            <image id="image5" width="189" height="189"
-                   xlink:href="{{asset('files/uploads/'.$addedItem->model->image)}}"/>
-        @elseif(isset($cv) &&  !empty($cv))
+        @if(isset($cv) &&  !empty($cv))
             <image id="image5" width="189" height="189"
                    xlink:href="{{asset('files/uploads/'.$cv->image)}}"/>
         @else
@@ -68,13 +65,7 @@
             <g transform="matrix(1,0,0,1,20,45)">
                 <g transform="matrix(1,0,0,1,25,0)" clip-path="url(#clip1)">
                     <text style="font: bold 1.6rem sans-serif; transform: translate(0px, 36px);" id="cv_template_name">
-                        @if(!empty($addedItem))
-                            @if($lang=="en")
-                                {{$addedItem->model->first_name.' '.$addedItem->model->surename}}
-                            @else
-                                {{$addedItem->model->first_name_ar.' '.$addedItem->model->surename_ar}}
-                            @endif
-                        @elseif(isset($cv) &&  !empty($cv))
+                      @if(isset($cv) &&  !empty($cv))
                             @if($lang=="en")
                                 {{$cv->first_name.' '.$cv->surename}}
                             @else
@@ -125,7 +116,7 @@
                     </text>
                 </g>
                 <path class="sidebar_color" d="M25,0 L35,0 L35,53 L25,53 Z" fill="#0187de"
-                      style="@if(!empty($addedItem->model->template_color)) fill:{{$addedItem->model->template_color}}; @elseif(!empty(session('chosen_cv_color'))) fill:{{session('chosen_cv_color')}}; @else fill:#0187de; @endif"
+                      style="@if(!empty($cv->template_color)) fill:{{$cv->template_color}}; @elseif(!empty(session('chosen_cv_color'))) fill:{{session('chosen_cv_color')}}; @else fill:#0187de; @endif"
                       fill-rule="evenodd"></path>
                 <g transform="matrix(1,0,0,1,25,0)" clip-path="url(#clip6)">
                     <text>
@@ -134,7 +125,7 @@
                     </text>
                 </g>
                 <path class="sidebar_color" d="M35,0 L294,0 L294,53 L35,53 Z" fill="#0187de" fill-rule="evenodd"
-                      style="@if(!empty($addedItem->model->template_color)) fill:{{$addedItem->model->template_color}}; @elseif(!empty(session('chosen_cv_color'))) fill:{{session('chosen_cv_color')}}; @else fill:#0187de; @endif"></path>
+                      style="@if(!empty($cv->template_color)) fill:{{$cv->template_color}}; @elseif(!empty(session('chosen_cv_color'))) fill:{{session('chosen_cv_color')}}; @else fill:#0187de; @endif"></path>
                 <g transform="matrix(1,0,0,1,35,0)" clip-path="url(#clip7)">
                     <g transform="matrix(1,0,0,1,18,0)">
                         <text>
@@ -152,7 +143,7 @@
                     </g>
                 </g>
                 <path class="sidebar_color" d="M294,0 L366,0 L366,53 L294,53 Z" fill="#0187de" fill-rule="evenodd"
-                      style="@if(!empty($addedItem->model->template_color)) fill:{{$addedItem->model->template_color}}; @elseif(!empty(session('chosen_cv_color'))) fill:{{session('chosen_cv_color')}}; @else fill:#0187de; @endif"></path>
+                      style="@if(!empty($cv->template_color)) fill:{{$cv->template_color}}; @elseif(!empty(session('chosen_cv_color'))) fill:{{session('chosen_cv_color')}}; @else fill:#0187de; @endif"></path>
                 <g transform="matrix(1,0,0,1,294,0)" clip-path="url(#clip8)">
                     <text>
                         <tspan x="0" y="50.798000336" font-family="Century Gothic" font-weight="normal"
@@ -160,7 +151,7 @@
                     </text>
                 </g>
                 <path class="sidebar_color" d="M366,0 L547,0 L547,53 L366,53 Z" fill="#0187de" fill-rule="evenodd"
-                      style="@if(!empty($addedItem->model->template_color)) fill:{{$addedItem->model->template_color}}; @elseif(!empty(session('chosen_cv_color'))) fill:{{session('chosen_cv_color')}}; @else fill:#0187de; @endif"></path>
+                      style="@if(!empty($cv->template_color)) fill:{{$cv->template_color}}; @elseif(!empty(session('chosen_cv_color'))) fill:{{session('chosen_cv_color')}}; @else fill:#0187de; @endif"></path>
                 <g transform="matrix(1,0,0,1,366,0)" clip-path="url(#clip9)">
                     <g transform="matrix(1,0,0,1,18,0)">
                         <text>
@@ -174,7 +165,7 @@
                     </g>
                 </g>
                 <path class="sidebar_color" d="M547,0 L572,0 L572,53 L547,53 Z" fill="#0187de" fill-rule="evenodd"
-                      style="@if(!empty($addedItem->model->template_color)) fill:{{$addedItem->model->template_color}}; @elseif(!empty(session('chosen_cv_color'))) fill:{{session('chosen_cv_color')}}; @else fill:#0187de; @endif"></path>
+                      style="@if(!empty($cv->template_color)) fill:{{$cv->template_color}}; @elseif(!empty(session('chosen_cv_color'))) fill:{{session('chosen_cv_color')}}; @else fill:#0187de; @endif"></path>
                 <g transform="matrix(1,0,0,1,547,0)" clip-path="url(#clip10)">
                     <text>
                         <tspan x="0" y="50.798000336" font-family="Century Gothic" font-weight="normal"
@@ -503,21 +494,21 @@
                 </g>
                 <path class="sidebar_color" d="M345,0 L345,487.494995117 " stroke-width="1" stroke-miterlimit="10"
                       stroke="#0187de" fill="none" fill-rule="evenodd"
-                      style="@if(!empty($addedItem->model->template_color)) fill:{{$addedItem->model->template_color}}; @elseif(!empty(session('chosen_cv_color'))) fill:{{session('chosen_cv_color')}}; @else fill:#0187de; @endif"></path>
+                      style="@if(!empty($cv->template_color)) fill:{{$cv->template_color}}; @elseif(!empty(session('chosen_cv_color'))) fill:{{session('chosen_cv_color')}}; @else fill:#0187de; @endif"></path>
             </g>
             <g transform="matrix(1,0,0,1,10,0)">
                 <path class="sidebar_color" d="M0,20 L0,770 " stroke-width="20" stroke-miterlimit="10" stroke="#0187de"
                       fill="none" fill-rule="evenodd"
-                      style="@if(!empty($addedItem->model->template_color)) stroke:{{$addedItem->model->template_color}}; @elseif(!empty(session('chosen_cv_color'))) stroke:{{session('chosen_cv_color')}}; @else stroke:#0187de; @endif"></path>
+                      style="@if(!empty($cv->template_color)) stroke:{{$cv->template_color}}; @elseif(!empty(session('chosen_cv_color'))) stroke:{{session('chosen_cv_color')}}; @else stroke:#0187de; @endif"></path>
                 <path class="sidebar_color" d="M591,20 L591,770 " stroke-width="20" stroke-miterlimit="10"
                       stroke="#0187de" fill="none" fill-rule="evenodd"
-                      style="@if(!empty($addedItem->model->template_color)) stroke:{{$addedItem->model->template_color}}; @elseif(!empty(session('chosen_cv_color'))) stroke:{{session('chosen_cv_color')}}; @else stroke:#0187de; @endif"></path>
+                      style="@if(!empty($cv->template_color)) stroke:{{$cv->template_color}}; @elseif(!empty(session('chosen_cv_color'))) stroke:{{session('chosen_cv_color')}}; @else stroke:#0187de; @endif"></path>
                 <path class="sidebar_color" d="M-10,10 L601,10 " stroke-width="20" stroke-miterlimit="10"
                       stroke="#0187de" fill="none" fill-rule="evenodd"
-                      style="@if(!empty($addedItem->model->template_color)) stroke:{{$addedItem->model->template_color}}; @elseif(!empty(session('chosen_cv_color'))) stroke:{{session('chosen_cv_color')}}; @else stroke:#0187de; @endif"></path>
+                      style="@if(!empty($cv->template_color)) stroke:{{$cv->template_color}}; @elseif(!empty(session('chosen_cv_color'))) stroke:{{session('chosen_cv_color')}}; @else stroke:#0187de; @endif"></path>
                 <path class="sidebar_color" d="M-10,780 L601,780 " stroke-width="20" stroke-miterlimit="10"
                       stroke="#0187de" fill="none" fill-rule="evenodd"
-                      style="@if(!empty($addedItem->model->template_color)) stroke:{{$addedItem->model->template_color}}; @elseif(!empty(session('chosen_cv_color'))) stroke:{{session('chosen_cv_color')}}; @else stroke:#0187de; @endif"></path>
+                      style="@if(!empty($cv->template_color)) stroke:{{$cv->template_color}}; @elseif(!empty(session('chosen_cv_color'))) stroke:{{session('chosen_cv_color')}}; @else stroke:#0187de; @endif"></path>
             </g>
             <g transform="matrix(1,0,0,1,0,790)">
                 <text>

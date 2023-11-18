@@ -33,7 +33,7 @@
                                                          style="overflow:hidden;max-width:265px;max-height:350px;">
                                                         <div class="exad-card-thumb">
                                                             @php $cv=$view->cv; @endphp
-                                                            @include('components.cv.cv_template_'.$cv->template->file_name.'_card')
+                                                            @include('customer-cp.cvs.cv_cards.cv_template_'.$cv->template->file_name.'_card')
                                                         </div>
                                                     </div>
                                                 </td>
@@ -70,7 +70,7 @@
                                                 <td>
                                                     <div class="exad-card left text_on_image yes">
                                                         <div class="exad-card-thumb">
-                                                            @include('components.cv.cv_template_'.$cv->template->file_name.'_card')
+                                                            @include('customer-cp.cvs.cv_cards.cv_template_'.$cv->template->file_name.'_card')
                                                         </div>
                                                     </div>
                                                 </td>

@@ -213,7 +213,7 @@
                     <div class="elementor-widget-wrap elementor-element-populated">
                         <section data-particle_enable="false" data-particle-mobile-disabled="false"
                                  class="elementor-section elementor-inner-section elementor-element elementor-element-1b1acc28 elementor-section-full_width elementor-section-content-middle elementor-section-height-default elementor-section-height-default exad-glass-effect-no exad-sticky-section-no"
-                                 data-id="1b1acc28" data-element_type="section">
+                                 data-id="1b1acc28" data-element_type="section" style="direction: ltr">
                             <div class="elementor-container elementor-column-gap-custom">
                                 <div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-2c353033 exad-glass-effect-no exad-sticky-section-no"
                                      data-id="2c353033" data-element_type="column">

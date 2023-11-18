@@ -1,7 +1,7 @@
 <section data-particle_enable="false" data-particle-mobile-disabled="false"
          class="elementor-section elementor-top-section elementor-element elementor-element-5ad58134 elementor-section-boxed elementor-section-height-default elementor-section-height-default exad-glass-effect-no exad-sticky-section-no"
          data-id="5ad58134" data-element_type="section"
-         data-settings="{&quot;background_background&quot;:&quot;gradient&quot;}">
+         data-settings="{&quot;background_background&quot;:&quot;gradient&quot;}" style="direction:ltr">
     <div class="elementor-background-overlay"></div>
     <div class="elementor-container elementor-column-gap-default">
         <div
@@ -40,10 +40,10 @@
                             <div class="elementor-counter-number-wrapper">
                                 <span class="elementor-counter-number-prefix"></span>
                                 <span class="elementor-counter-number" data-duration="2000" data-to-value="50"
-                                      data-from-value="0" data-delimiter=",">0</span>
-                                <span class="elementor-counter-number-suffix">K</span>
+                                      data-from-value="0" data-delimiter=",">{{__('home.about_section_statistic_value')}}</span>
+                                <span class="elementor-counter-number-suffix">{{__('home.about_section_statistic_unit')}}</span>
                             </div>
-                            <div class="elementor-counter-title">Templets</div>
+                            <div class="elementor-counter-title">{{__('home.about_section_statistic_title')}}</div>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                     data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
                     data-widget_type="heading.default">
                     <div class="elementor-widget-container">
-                        <h2 class="elementor-heading-title elementor-size-default">Online CV Creator</h2></div>
+                        <h2 class="elementor-heading-title elementor-size-default about_sub_title">{{__('home.about_section_sub_title')}}</h2></div>
                 </div>
                 <div
                     class="elementor-element elementor-element-18c960b exad-sticky-section-no exad-glass-effect-no elementor-invisible elementor-widget elementor-widget-heading"
@@ -67,19 +67,14 @@
                     data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
                     data-widget_type="heading.default">
                     <div class="elementor-widget-container">
-                        <h3 class="elementor-heading-title elementor-size-default">Insert our pre-written CV
-                            content
+                        <h3 class="elementor-heading-title elementor-size-default about_main_title">{{__('home.about_section_main_title')}}
                         </h3></div>
                 </div>
                 <div
                     class="elementor-element elementor-element-719301a exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor"
                     data-id="719301a" data-element_type="widget" data-widget_type="text-editor.default">
-                    <div class="elementor-widget-container">
-                        Creating a CV with the best online CV maker in the Saudi Arabia couldn&#8217;t be
-                        easier.
-                        Get inspiration on the go with CV examples for any industry, role, or experience level.
-                        Pick
-                        a stunning CV template &#8211; builder-checked and ready for download
+                    <div class="elementor-widget-container about_content" >
+                        {{__('home.about_section_content')}}
                     </div>
                 </div>
                 <section data-particle_enable="false" data-particle-mobile-disabled="false"
@@ -97,9 +92,9 @@
                                     <div class="elementor-widget-container">
                                         <div class="elementor-button-wrapper">
                                             <a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-float"
-                                               href="https://projects.datatime4it.com/chtml/startcv/">
+                                               href="{{route('cv.start')}}">
                                                         <span class="elementor-button-content-wrapper">
-                                                        <span class="elementor-button-text">Start  Now</span>
+                                                        <span class="elementor-button-text">{{__('Start Now')}}</span>
 		                                                </span>
                                             </a>
                                         </div>

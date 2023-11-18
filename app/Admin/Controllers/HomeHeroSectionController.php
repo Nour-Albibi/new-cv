@@ -27,7 +27,9 @@ class HomeHeroSectionController extends AdminController
         $grid = new Grid(new HomeHeroSection());
 
         $grid->column('id', __('Id'));
-        $grid->column('main_title_en', __('Main title'));
+        $grid->column('main_title_en', __('Main title'))->display(function(){
+            return $this->main_title_en;
+        });
         $grid->column('sub_title_en', __('Sub title'));
         $grid->column('description_en', __('Description'));
 
@@ -65,8 +67,8 @@ class HomeHeroSectionController extends AdminController
     {
         $form = new Form(new HomeHeroSection());
 
-        $form->text('main_title_ar', __('Arabic Main title'));
-        $form->text('main_title_en', __('English Main title'));
+        $form->summernote('main_title_ar', __('Arabic Main title'));
+        $form->summernote('main_title_en', __('English Main title'));
         $form->text('sub_title_ar', __('Arabic Sub title'));
         $form->text('sub_title_en', __('English Sub title'));
         $form->text('description_ar', __('Arabic Description'));

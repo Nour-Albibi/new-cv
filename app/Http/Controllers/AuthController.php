@@ -32,8 +32,15 @@ class AuthController extends Controller
                     'email' => ['required', 'string', 'email', 'max:255', 'unique:' . Customer::class],
                     'password' => ['required', 'confirmed', Password::defaults()]]
             );
-            if (AuthService::createCustomerAndAutoLogin($request->all()))
-                return redirect(RouteServiceProvider::HOME);
+            if (AuthService::createCustomerAndAutoLogin($request->all())){
+                if (!empty(session('redirect_after_login'))) {
+                $redirect = session('redirect_after_login');
+                CVService::syncCustomer();
+                    return redirect($redirect);
+                }else{
+                    return redirect(RouteServiceProvider::HOME);
+                }
+            }
         } catch (\Exception $exception) {
             return redirect()->back()->withErrors(['msg' => $exception->getMessage()]);
         }

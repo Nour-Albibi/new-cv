@@ -37,7 +37,7 @@
     <link rel="stylesheet" id="exad-main-style-css"
           href="{{asset('assets/css/exad-styles.min.css?ver=6.3.1')}}" media="all" defer>
     <link rel="stylesheet" href="{{asset('assets/css/languages.css')}}"/>
-    <script src="https://cdn.tiny.cloud/1/8gvsyw0ovfyq7awcszb8qt4133wzpzvgr4mp1f5yg09jq23f/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/8gvsyw0ovfyq7awcszb8qt4133wzpzvgr4mp1f5yg09jq23f/tinymce/6/tinymce.min.js" referrerpolicy="origin" async></script>
     <script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
 @endsection
 @section('main_content')
@@ -236,11 +236,42 @@
     </script>
     <script>
         var currentTab = {{session('current_step_num') ?? 0}};
-        @if(!empty($addedItem) && count($addedItem->model->customer_cv_work_history)) var current_workExperience={{count($addedItem->model->customer_cv_work_history)}};
+            @if(!empty($addedItem) && count($addedItem->model->customer_cv_work_history))
+            var current_workExperience={{count($addedItem->model->customer_cv_work_history)}};
+                @else
+            var  current_workExperience=1;
+            @endif
+            @if(!empty($addedItem) && count($addedItem->model->customer_cv_education))
+            var current_edu={{count($addedItem->model->customer_cv_education)}};
             @else
-        var  current_workExperience=1;
+            var  current_edu=1;current_edu
         @endif
+            @if(!empty($addedItem) && count($addedItem->model->customer_cv_project))
+            var current_project={{count($addedItem->model->customer_cv_project)}};
+            @else
+            var  current_project=1;
+            @endif
+            @if(!empty($addedItem) && count($addedItem->model->customer_cv_language))
+            var current_language={{count($addedItem->model->customer_cv_language)}};
+            @else
+            var  current_language=1;
+            @endif
+            @if(!empty($addedItem) && count($addedItem->model->customer_cv_course))
+            var current_course={{count($addedItem->model->customer_cv_course)}};
+            @else
+            var  current_course=1;
+            @endif
     </script>
     <script src="{{asset('assets/js/cv.js')}}"></script>
-
+    <script>
+        $(document).ready(function(){
+            @if(!empty($addedItem->model->template_color))
+            $('.sidebar_color').attr('fill',{{$addedItem->model->template_color}});
+            @elseif(!empty(session('chosen_cv_color')))
+            $('.sidebar_color').attr('fill',{{session('chosen_cv_color')}});
+            @else
+            $('.sidebar_color').attr('fill',"#0187de");
+            @endif
+        });
+    </script>
 @endsection

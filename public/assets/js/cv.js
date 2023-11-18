@@ -1,10 +1,10 @@
 // var currentTab = 0; // Current tab is set to be the first tab (0)
 // var current_workExperience = 1;
-var current_project = 1;
+// var current_project = 1;
 var button_indecator = 0;
-var current_edu = 1;
-var current_language = 1;
-var current_course=1;
+// var current_edu = 1;
+// var current_language = 1;
+// var current_course=1;
 var main_path = "http://localhost/cv/public/";
 showTab(currentTab); // Display the current tab
 openModal();

@@ -574,10 +574,7 @@
                 <path style="stroke:none;" d=""/>
             </symbol>
         </g>
-        @if(!empty($addedItem->model->image))
-            <image id="image5" width="189" height="189"
-                   xlink:href="{{asset('files/uploads/'.$addedItem->model->image)}}"/>
-        @elseif(isset($cv) &&  !empty($cv) &&  !empty($cv->image))
+        @if(isset($cv) &&  !empty($cv) &&  !empty($cv->image))
             <image id="image5" width="189" height="189"
                    xlink:href="{{asset('files/uploads/'.$cv->image)}}"/>
         @else
@@ -587,7 +584,7 @@
     </defs>
     <g id="surface2">
         <path id="sidebar_color"
-              style=" stroke:none;fill-rule:evenodd;@if(!empty($addedItem->model->template_color)) fill:{{$addedItem->model->template_color}}; @elseif(!empty(session('chosen_cv_color'))) fill:{{session('chosen_cv_color')}}; @else fill:rgb(73,98,103); @endif fill-opacity:1;"
+              style=" stroke:none;fill-rule:evenodd;@if(!empty($cv->template_color)) fill:{{$cv->template_color}}; @elseif(!empty(session('chosen_cv_color'))) fill:{{session('chosen_cv_color')}}; @else fill:rgb(73,98,103); @endif fill-opacity:1;"
               d="M 0 0 L 96.992188 0 L 96.992188 341.234375 L 0 341.234375 Z M 0 0 "/>
         <use xlink:href="#image5" transform="matrix(0.384894,0,0,0.383837,15.371694,11.011336)"
              id="template_profile_image"/>
@@ -785,13 +782,7 @@
             <use xlink:href="#glyph2-2" x="70.14719" y="175.391037"/>
         </g>
         <text style="font: bold 1.1rem sans-serif; transform: translate(106px, 36px);" id="cv_template_name">
-            @if(!empty($addedItem))
-                @if($lang=="en")
-                    {{$addedItem->model->first_name.' '.$addedItem->model->surename}}
-                @else
-                    {{$addedItem->model->first_name_ar.' '.$addedItem->model->surename_ar}}
-                @endif
-            @elseif(isset($cv) &&  !empty($cv))
+            @if(isset($cv) &&  !empty($cv))
                 @if($lang=="en")
                     {{$cv->first_name.' '.$cv->surename}}
                 @else

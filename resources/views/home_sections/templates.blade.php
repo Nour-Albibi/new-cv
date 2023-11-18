@@ -23,10 +23,7 @@
                                         data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
                                         data-widget_type="heading.default">
                                         <div class="elementor-widget-container">
-                                            <h2 class="elementor-heading-title elementor-size-default">Our
-                                                Professionalty Designed CV Templates
-
-                                            </h2></div>
+                                            <h2 class="elementor-heading-title elementor-size-default">{{__('home.template_section_sub_title')}}</h2></div>
                                     </div>
                                     <div
                                         class="elementor-element elementor-element-43375a84 exad-sticky-section-no exad-glass-effect-no elementor-invisible elementor-widget elementor-widget-heading"
@@ -34,9 +31,7 @@
                                         data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
                                         data-widget_type="heading.default">
                                         <div class="elementor-widget-container">
-                                            <h3 class="elementor-heading-title elementor-size-default">Choose Your
-                                                CV
-                                                Template
+                                            <h3 class="elementor-heading-title elementor-size-default">{{__('home.template_section_main_title')}}
                                             </h3></div>
                                     </div>
                                 </div>
@@ -195,7 +190,7 @@
                         class="elementor-element elementor-element-44d3f72e elementor-widget__width-auto exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-heading"
                         data-id="44d3f72e" data-element_type="widget" data-widget_type="heading.default">
                         <div class="elementor-widget-container">
-                            <h6 class="elementor-heading-title elementor-size-default">CV Templets</h6></div>
+                            <h6 class="elementor-heading-title elementor-size-default">{{__('CV Templates')}}</h6></div>
                     </div>
                     <section data-particle_enable="false" data-particle-mobile-disabled="false"
                              class="elementor-section elementor-inner-section elementor-element elementor-element-1f59029 exad-glass-effect-yes elementor-section-boxed elementor-section-height-default elementor-section-height-default exad-sticky-section-no"

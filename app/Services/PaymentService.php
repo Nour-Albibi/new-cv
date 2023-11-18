@@ -66,10 +66,11 @@ class PaymentService
         });
         //Destroy Cart
         if(!empty($invoice)){
-            session('current_step_num',0);
-            Session::forget('customer_cv_data');
-            Session::forget('show_confirm');
+//            session('current_step_num',0);
+//            Session::forget('customer_cv_data');
+//            Session::forget('show_confirm');
             $cart->destroy();
+            CVService::ResetCVDataForCreateNew();
         }
         return true;
     }

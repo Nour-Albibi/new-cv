@@ -169,17 +169,17 @@ class CVService
                 $customer_cv->save();
                 //dd($data);
                 foreach ($data as $language) {
-                CustomerCvLanguage::create([
-                    'customer_cv_id' => $cvItem->id,
-                    'language_ar' => $language['language_ar'] ?? '',
-                    'language_en' => $language['language_en'] ?? '',
-                    'language_id' => $language['language_id'] ?? '',
-                    'level_ar' => $language['level_ar'] ??  $language['level_en'],
-                    'level_en' => $language['level_en'] ?? '',
-                    'information_ar' => $language['information_ar'] ?? '',
-                    'information_en' => $language['information_en'] ?? '',
-                ]);
-            }
+                    CustomerCvLanguage::create([
+                        'customer_cv_id' => $cvItem->id,
+                        'language_ar' => $language['language_ar'] ?? '',
+                        'language_en' => $language['language_en'] ?? '',
+                        'language_id' => $language['language_id'] ?? '',
+                        'level_ar' => $language['level_ar'] ??  $language['level_en'],
+                        'level_en' => $language['level_en'] ?? '',
+                        'information_ar' => $language['information_ar'] ?? '',
+                        'information_en' => $language['information_en'] ?? '',
+                    ]);
+                }
             }
         }
         return true;
@@ -247,14 +247,14 @@ class CVService
                     foreach ($data['skills_ids'] as $skill) {
                         if($skill!=null){
                             $selected_skill=Skill::find($skill);
-                           if(!empty($selected_skill)){
-                               CustomerCvSkill::create([
-                                   'customer_cv_id' => $cvItem->id,
-                                   'content_ar' => $selected_skill->name_ar ?? '',
-                                   'content_en' => $selected_skill->name_en ?? '',
-                                   'skill_id' => $selected_skill->id ?? '',
-                               ]);
-                           }
+                            if(!empty($selected_skill)){
+                                CustomerCvSkill::create([
+                                    'customer_cv_id' => $cvItem->id,
+                                    'content_ar' => $selected_skill->name_ar ?? '',
+                                    'content_en' => $selected_skill->name_en ?? '',
+                                    'skill_id' => $selected_skill->id ?? '',
+                                ]);
+                            }
                         }
                     }
                 }
@@ -284,8 +284,8 @@ class CVService
                         'course_name_en' => $course['course_name_en'] ?? '',
                         'trainer_ar' => $course['trainer_ar'] ?? '',
                         'trainer_en' => $course['trainer_en'] ?? '',
-                        'start_date' => $course['start_date'] ?? '',
-                        'end_date' => $course['end_date'] ?? '',
+                        'start_date' => $course['start_date'] ?? Null,
+                        'end_date' => $course['end_date'] ?? Null,
                     ]);
                 }
             }
@@ -308,7 +308,9 @@ class CVService
                 $customer_cv->save();
                 $current=0;
                 self::deleteOldCEducations($customer_cv);
+                // dd($data);
                 foreach ($data as $education) {
+
                     if(isset($education['current']))$current=1;
                     CustomerCvEducation::create([
                         'customer_cv_id' => $cvItem->id,
@@ -325,6 +327,7 @@ class CVService
                         'end_date' => $education['end_date'] ?? null,
                         'current'=>$current
                     ]);
+                    // echo($education['institution_name_en'].'<br>');
                 }
             }
         }
@@ -352,8 +355,8 @@ class CVService
                         'project_name_ar' => $project['project_name_ar'] ?? '',
                         'description_en' => $project['description_en'] ?? '',
                         'description_ar' => $project['description_ar'] ?? '',
-                        'start_date' => $project['start_date'] ?? '',
-                        'end_date' => $project['end_date'] ?? '',
+                        'start_date' => $project['start_date'] ?? Null,
+                        'end_date' => $project['end_date'] ?? Null,
                     ]);
                 }
             }
@@ -403,7 +406,7 @@ class CVService
         if(Auth::guard('customer')->check() && Auth::guard('customer')->user()->getActiveSubscription()!=null){
             $subscription_id= Auth::guard('customer')->user()->getActiveSubscription()->id;
         }
-      return CustomerCv::where('id',$id)->update([
+        return CustomerCv::where('id',$id)->update([
             'template_id' => session('chosen_template_id'),
             'template_color' => session('chosen_cv_color'),
             'cv_language' => session('chosen_cv_language'),
@@ -439,7 +442,7 @@ class CVService
             $active_subscription=Auth::guard('customer')->user()->getActiveSubscription();
             if($active_subscription!=null){
                 if($active_subscription->current_cv_count < $active_subscription->max_cv_limit)
-                $subscription_id= $active_subscription->id;
+                    $subscription_id= $active_subscription->id;
             }
         }
         if (self::checkChosenCVSetting()) {
@@ -498,19 +501,19 @@ class CVService
     public static function deleteAllRelatedDataToCV($cv){
         try{
             if(count($cv->customer_cv_work_history))
-            $cv->customer_cv_work_history()->delete();
+                $cv->customer_cv_work_history()->delete();
             if(count($cv->customer_cv_project))
-            $cv->customer_cv_project()->delete();
+                $cv->customer_cv_project()->delete();
             if(count($cv->customer_cv_education))
-            $cv->customer_cv_education()->delete();
+                $cv->customer_cv_education()->delete();
             if(count($cv->customer_cv_course))
-            $cv->customer_cv_course()->delete();
+                $cv->customer_cv_course()->delete();
             if(count($cv->customer_cv_skill))
-            $cv->customer_cv_skill()->delete();
+                $cv->customer_cv_skill()->delete();
             if(count($cv->customer_cv_summery))
-            $cv->customer_cv_summery()->delete();
+                $cv->customer_cv_summery()->delete();
             if(count($cv->customer_cv_language))
-            $cv->customer_cv_language()->delete();
+                $cv->customer_cv_language()->delete();
             return true;
         }catch (\Exception $exception){
 //            return $exception->getMessage();
