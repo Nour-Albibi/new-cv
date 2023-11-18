@@ -23,7 +23,7 @@ class CustomerController extends Controller
         $user_id=Auth::guard('customer')->user()->id;
         $allcvs =CustomerCv::where('customer_id',$user_id)->count();
         $subscription=Subscription::where('user_id',$user_id)->where('status','1')->first();
-        $cvs =CustomerCv::where('customer_id',$user_id)->orderBy('updated_at','desc')->take(3)->get();
+        $cvs =CustomerCv::where('customer_id',$user_id)->where('subscription_id','!=',0)->orderBy('updated_at','desc')->take(3)->get();
         $customer_views=View::select('views.cv_id','views.company_id','how_often')
             ->join('customer_cvs','customer_cvs.id','views.cv_id')
             ->where('customer_cvs.customer_id','=',$user_id)

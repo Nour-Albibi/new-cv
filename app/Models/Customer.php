@@ -85,7 +85,8 @@ class Customer extends Authenticatable
         $active_subscription = $this->getActiveSubscription();
         if ($active_subscription != null) {
             $max_limits = $active_subscription->max_cv_limit;
-            $count_created_cvs = $this->getCountCVsRelatedToActiveSubscription($active_subscription->id);
+//            $count_created_cvs = $this->getCountCVsRelatedToActiveSubscription($active_subscription->id);
+            $count_created_cvs =$active_subscription->current_cv_count;
             if ($max_limits >= $count_created_cvs) {
                 return false;
             } else {
