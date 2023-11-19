@@ -13,8 +13,18 @@
                     </li>
 
                 </ul>
-                <form>
+                    @if($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                    </div>
+                    @endif
+
+                <form  action="{{route('company.update_profile')}}" method='post' enctype="multipart/form-data">
                     <div class="mb-3">
+                        @csrf
+                        @method('put')
                         <h6 class="m-3">COMPANY INFORMATION FORM</h6>
                         <div class="row">
                             <div class="col-lg-11 mx-auto">
@@ -23,71 +33,67 @@
                                     <div class="col-xl-12 col-lg-12 col-md-8 mt-md-0  mt-4">
                                         <div class="form">
                                             <div class="row p-2">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="fullName">Company ID</label>
-                                                        <input type="text" class="form-control mb-3"
-                                                               id="fullName" value="123" disabled>
-                                                    </div>
-                                                </div>
+
+
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="profession">Company
                                                             Name:</label>
                                                         <input type="text" class="form-control mb-3"
-                                                               id="profession" placeholder=""
-                                                               value="Professional Medical  Company ">
+                                                               id="profession" placeholder="" name="company_name"
+                                                               value="{{ old('company_name', Auth::guard('company')->user()->company_name) }} ">
                                                     </div>
                                                 </div>
-
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="location">Company Email
+                                                            address:</label>
+                                                        <input type="text" class="form-control mb-3"
+                                                               id="location" name="email"
+                                                               placeholder="example@example.com"
+                                                               value="{{ old('email', Auth::guard('company')->user()->email) }}">
+                                                    </div>
+                                                </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="address">Company
                                                             Address:</label>
                                                         <input type="text" class="form-control mb-3"
-                                                               id="address" placeholder=""
-                                                               value="Riyadh Central Province, KSA">
+                                                               id="address" placeholder="" name="address"
+                                                               value="{{ old('address', Auth::guard('company')->user()->address) }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="address">Company
-                                                            Website:</label>
-                                                        <input type="text" class="form-control mb-3"
-                                                               id="address" placeholder=""
-                                                               value="www.company.com">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="location">Company Email
-                                                            address:</label>
-                                                        <input type="text" class="form-control mb-3"
-                                                               id="location"
-                                                               placeholder="m.alturki@promedex.com"
-                                                               value="m.r@promedex.com">
-                                                    </div>
-                                                </div>
+
+
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="phone">Company Phone:</label>
                                                         <input type="text" class="form-control mb-3"
                                                                id="phone"
-                                                               placeholder="00966 56 304 9104"
-                                                               value="00966 56 3041234">
+                                                               placeholder="00966 ** *** ****" name="contact_phone"
+                                                               value="{{ old('contact_phone', Auth::guard('company')->user()->contact_phone) }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="password">Password:</label>
+                                                        <input type="password" class="form-control mb-3"
+                                                               id="password"
+                                                               placeholder="new password" name="password"
+                                                               value="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="password">Confirm password:</label>
+                                                        <input type="password" class="form-control mb-3"
+                                                               id="password"
+                                                               placeholder="Confirm password" name="password_confirmation"
+                                                               value="">
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="phone"> Fax No.:</label>
-                                                        <input type="text" class="form-control mb-3"
-                                                               id="phone"
-                                                               placeholder="966 56 304 9104"
-                                                               value="966 56 304 9104">
-                                                    </div>
-                                                </div>
 
 
                                                 <div class="row">
@@ -100,14 +106,14 @@
                                                         </div>
                                                         <div class="input-group">
                                                             <input type="file" class="form-control"
-                                                                   id="customFile">
+                                                                   id="customFile" name="avatar">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="mb-2">
                                                             <img class="rounded-circle avatar-xl"
                                                                  alt="200x200"
-                                                                 src="assets/images/img-7.png"
+                                                                 src="{{ old('first_name', '/files/images/'.Auth::guard('company')->user()->avatar) }}"
                                                                  data-holder-rendered="true">
                                                         </div>
 
@@ -119,10 +125,7 @@
 
                                                 <div class="col-md-12 mt-1">
                                                     <div class="form-group text-end">
-
-                                                        <a href="" class="btn btn-success">Edit</a>
-                                                        <a href=""
-                                                           class="btn btn-secondary">Clear</a>
+                                                        <button class="btn btn-success" type="submit">save</button>
 
                                                     </div>
                                                 </div>

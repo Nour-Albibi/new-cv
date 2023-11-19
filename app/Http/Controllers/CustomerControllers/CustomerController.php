@@ -62,6 +62,7 @@ class CustomerController extends Controller
         $customer->update($validated);
         return redirect()->route('customer.myprofile');
      }
+
      public function viewedmyCV(){
         $user_id=Auth::guard('customer')->user()->id;
         $customer_views=View::select('views.cv_id','views.company_id','how_often')

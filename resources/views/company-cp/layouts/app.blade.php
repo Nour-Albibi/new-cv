@@ -107,7 +107,7 @@
             border-color: #515151;
         }
     </style>
-
+@livewireStyles
 </head>
 
 
@@ -197,6 +197,6 @@
 <script src="{{asset('company-assets/libs/node-waves/waves.min.js')}}"></script>
 
 <script src="{{asset('company-assets/js/app.js')}}"></script>
-
+@livewireScripts
 </body>
 </html>
