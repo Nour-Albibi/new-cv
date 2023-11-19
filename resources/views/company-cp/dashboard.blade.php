@@ -97,7 +97,7 @@
                                 </div>
 
                                 @if ($subscription)
-                                    @php $countCV=getTotalCompanyDownloadedCVBySubscriptionId($subscription->id);
+                                    @php $countCV=$subscription->current_cv_count;
                                     $max_limit=$subscription->max_cv_limit;
                                     $avarage=($countCV/$max_limit)*100;
                                     @endphp
