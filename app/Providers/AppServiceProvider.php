@@ -43,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
             'App\Composers\ViewComposer'
         );
         \View::composer(
-            ['customer-cp.*'],
+            ['customer-cp.partials.header'],
             'App\Composers\CustomerCPComposer'
         );
     }

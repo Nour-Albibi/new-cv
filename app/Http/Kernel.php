@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\companyCheckSubscription;
 use App\Http\Middleware\customerCheckSubscription;
 use App\Http\Middleware\Language;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -67,5 +68,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'language'=>Language::class,
         'customer.check_subscription'=>customerCheckSubscription::class,
+        'company.check_subscription'=>companyCheckSubscription::class,
     ];
 }

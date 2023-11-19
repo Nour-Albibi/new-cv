@@ -14,6 +14,7 @@ use App\Models\ProfessionalSummary;
 use App\Models\Skill;
 use App\Models\Subscription;
 use App\Models\Template;
+use App\Models\View;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -518,6 +519,21 @@ class CVService
         }catch (\Exception $exception){
 //            return $exception->getMessage();
             return false;
+        }
+    }
+    public static function addNewCompanyView($company_id,$cv_id){
+        $view=View::where('company_id',$company_id)
+            ->where('cv_id',$cv_id)->first();
+        if($view!=null){
+            $view->how_often+=1;
+            $view->save();
+        }else{
+            $company_subscription=Auth::guard('company')->user()->getActiveSubscription();
+            View::create(['company_id'=>$company_id,'company_subscription_id'=>
+                $company_subscription->id,'cv_id'=>$cv_id,
+                'how_often'=>1]);
+            $company_subscription->current_cv_count+=1;
+            $company_subscription->save();
         }
     }
 }

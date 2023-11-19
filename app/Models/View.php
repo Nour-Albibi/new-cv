@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class View extends Model
 {
+    protected $fillable=['company_id','cv_id','date','how_often','company_subscription_id'];
     use HasFactory;
 
 public function company()

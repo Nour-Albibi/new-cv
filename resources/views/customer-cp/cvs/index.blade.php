@@ -14,7 +14,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex" style="justify-content: space-between;margin-bottom: 8px">
-                            <h5>My CVs</h5>
+                                <h5>My CVs</h5>
                                 <a href="{{route('cv.create')}}" class=" btn btn-success">{{__('Create CV')}}</a>
                             </div>
                             <div class="table-responsive">
@@ -49,12 +49,14 @@
                                                         onclick="window.location.href='{{ route('customer.downloadCV',$cv) }}';">
                                                     Download <i class="fas fa-arrow-down"></i></button>
                                             </td>
-                                            @if($cv->downloads==0)
-                                                <td>
+                                            <td>
+                                                @if($cv->downloads==0)
                                                     <a href="{{route('customer.editCV',['cv'=>$cv->id])}}"><i
                                                             class="fas fa-pen text-info"></i></a>
-                                                </td>
-                                            @endif
+                                                @endif
+                                                <a class="ml-5" href="{{route('customer.preview_cv',['cv'=>$cv])}}" target="_blank"><i
+                                                        class="fas fa-eye text-info"></i></a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

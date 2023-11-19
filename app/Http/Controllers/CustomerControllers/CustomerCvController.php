@@ -16,5 +16,8 @@ class CustomerCvController extends Controller
 
         return view('customer-cp.cvs.index',compact('cvs','user_id'));
    }
-
+    public function PreviewCVinPage(CustomerCv $cv){
+        $cvFileName=$cv->template->file_name;
+        return view('cv-templates.'.$cvFileName,['cv' => $cv]);
+    }
 }

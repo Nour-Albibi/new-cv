@@ -263,15 +263,4 @@
             @endif
     </script>
     <script src="{{asset('assets/js/cv.js')}}"></script>
-    <script>
-        $(document).ready(function(){
-            @if(!empty($addedItem->model->template_color))
-            $('.sidebar_color').attr('fill',{{$addedItem->model->template_color}});
-            @elseif(!empty(session('chosen_cv_color')))
-            $('.sidebar_color').attr('fill',{{session('chosen_cv_color')}});
-            @else
-            $('.sidebar_color').attr('fill',"#0187de");
-            @endif
-        });
-    </script>
 @endsection

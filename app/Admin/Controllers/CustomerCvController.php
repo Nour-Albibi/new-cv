@@ -35,9 +35,9 @@ class CustomerCvController extends AdminController
 
         $grid->template()->name_en();
         $grid->column('cv_language',__('CV Language'))->display(function(){
-           if($this->cv_language==1){ return "English";}
-           elseif($this->cv_language==2){return "Arabic";}
-           else {return "Both";}
+           if($this->cv_language=="en"){ return "English";}
+           elseif($this->cv_language=="ar"){return "Arabic";}
+           else {return "English";}
         });
         $grid->column('customer_id', __('Customer'))->display(function () {
             if(!empty($this->customer)){
@@ -76,6 +76,7 @@ class CustomerCvController extends AdminController
         $cv=CustomerCv::findorFail($id);
         $cvFileName=$cv->template->file_name;
         $lang=$cv->cv_language;
+//        dd('cv-templates.'.$cvFileName);
         return view('cv-templates.'.$cvFileName,['cv' => $cv,'lang'=>$lang]);
 //        $show = new Show(CustomerCv::findOrFail($id));
 //

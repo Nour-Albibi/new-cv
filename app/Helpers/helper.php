@@ -109,6 +109,9 @@ function getLanguageLevel($level_name){
 function getTotalCreatedCVBySubscriptionId($subscription_id){
   return   \App\Models\CustomerCv::where('subscription_id',$subscription_id)->count();
 }
+function getTotalCompanyDownloadedCVBySubscriptionId($subscription_id){
+    return  \App\Models\View::where('company_subscription_id',$subscription_id)->count();
+}
 if (!function_exists('company')) {
     function company(?string $key = null)
     {

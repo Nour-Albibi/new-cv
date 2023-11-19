@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Models\CustomerCv;
+use App\Models\Subscription;
+use App\Models\View;
 use App\Providers\RouteServiceProvider;
 use App\Services\CVService;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -37,7 +40,10 @@ class CompanyController extends Controller
         return redirect()->route('home_page');
     }
     public function dashboard(){
-        return view('company-cp.dashboard');
+        $user_id=Auth::guard('company')->user()->id;
+        $last_find_cvs=View::where('company_id',$user_id)->get();
+        $subscription=Subscription::where('user_id',$user_id)->where('status','1')->first();
+        return view('company-cp.dashboard',compact('last_find_cvs','subscription'));
     }
 
     public function CVs(){
@@ -45,7 +51,7 @@ class CompanyController extends Controller
     }
 
     public function search(Request $request){
-        cvs=CustomerCv::wherehas()
+        $cvs=CustomerCv::wherehas();
         dd($request);
     }
     public function profile(){
@@ -80,5 +86,20 @@ class CompanyController extends Controller
 
     public function chat(){
         return view('company-cp.chat');
+    }
+    public function PreviewCVinPage(CustomerCv $cv){
+        $cvFileName=$cv->template->file_name;
+        return view('cv-templates.'.$cvFileName,['cv' => $cv]);
+    }
+    public function DownloadCV(CustomerCv $cv){
+        try{
+            CVService::addNewCompanyView(Auth::guard('company')->user()->id,$cv->id);
+            $cvFileName=$cv->template->file_name;
+            $pdf = Pdf::loadView('cv-templates.'.$cvFileName.'_pdf',['cv' => $cv]);
+            return $pdf->download('CV.pdf');
+        }catch (\Exception $exception){
+            return redirect()->back()->withErrors(['msg' =>$exception->getMessage()]);
+        }
+
     }
 }

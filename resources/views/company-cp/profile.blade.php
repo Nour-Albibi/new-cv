@@ -113,7 +113,7 @@
                                                         <div class="mb-2">
                                                             <img class="rounded-circle avatar-xl"
                                                                  alt="200x200"
-                                                                 src="{{ old('first_name', '/files/images/'.Auth::guard('company')->user()->avatar) }}"
+                                                                 src="{{ old('first_name', asset('/files/images/'.Auth::guard('company')->user()->avatar)) }}"
                                                                  data-holder-rendered="true">
                                                         </div>
 
