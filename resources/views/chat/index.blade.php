@@ -1,12 +1,12 @@
 @extends('company-cp.layouts.app')
-@section('title','Profile')
-
+@section('title','Chatting')
+@section('HeaderSection')
+    <script src="https://js.pusher.com/8.0.1/pusher.min.js"></script>
+@endsection
 @section('content')
     <div class="d-lg-flex">
         <div class="chat-leftsidebar me-lg-4">
             <div class="card">
-
-
                 <div class="p-4">
                     <div class="search-box chat-search-box pb-4">
                         <div class="position-relative">
@@ -356,7 +356,6 @@
 
             </div>
         </div>
-
         <div class="w-100 user-chat">
             <div class="card">
                 <div class="p-4 border-bottom ">
@@ -367,52 +366,38 @@
                         </div>
                         <div class="col-md-8 col-3">
                             <ul class="list-inline user-chat-nav text-end mb-0">
-                                <li class="list-inline-item d-none d-sm-inline-block">
-                                    <div class="dropdown">
-                                        <button class="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="mdi mdi-magnify font-size-18"></i>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-md">
-                                            <form class="p-3">
-                                                <div class="form-group m-0">
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+{{--                                <li class="list-inline-item d-none d-sm-inline-block">--}}
+{{--                                    <div class="dropdown">--}}
+{{--                                        <button class="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                            <i class="mdi mdi-magnify font-size-18"></i>--}}
+{{--                                        </button>--}}
+{{--                                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-md">--}}
+{{--                                            <form class="p-3">--}}
+{{--                                                <div class="form-group m-0">--}}
+{{--                                                    <div class="input-group">--}}
+{{--                                                        <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">--}}
 
-                                                        <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+{{--                                                        <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>--}}
 
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-inline-item  d-none d-sm-inline-block">
-                                    <div class="dropdown">
-                                        <button class="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="mdi mdi-cog-outline font-size-18"></i>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="#">View Profile</a>
-                                            <a class="dropdown-item" href="#">Clear chat</a>
-                                            <a class="dropdown-item" href="#">Muted</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="list-inline-item">
-                                    <div class="dropdown">
-                                        <button class="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="mdi mdi-dots-horizontal font-size-18"></i>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else</a>
-                                        </div>
-                                    </div>
-                                </li>
-
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </form>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </li>--}}
+{{--                                <li class="list-inline-item  d-none d-sm-inline-block">--}}
+{{--                                    <div class="dropdown">--}}
+{{--                                        <button class="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                            <i class="mdi mdi-cog-outline font-size-18"></i>--}}
+{{--                                        </button>--}}
+{{--                                        <div class="dropdown-menu dropdown-menu-end">--}}
+{{--                                            <a class="dropdown-item" href="#">View Profile</a>--}}
+{{--                                            <a class="dropdown-item" href="#">Clear chat</a>--}}
+{{--                                            <a class="dropdown-item" href="#">Muted</a>--}}
+{{--                                            <a class="dropdown-item" href="#">Delete</a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </li>--}}
                             </ul>
                         </div>
                     </div>
@@ -427,8 +412,6 @@
                                     <span class="title">Today</span>
                                 </div>
                             </li>
-
-
                             <li>
                                 <div class="conversation-list">
 
@@ -660,3 +643,40 @@
 
     </div>
 @endsection
+@section('custom_js')
+    <script>
+        var pusher = new Pusher("{{config('broadcasting.connections.pusher.key')}}", {
+            cluster: "ap2",
+        });
+        var channel = pusher.subscribe("public");
+        //Receive message
+        channel.bind("chat", function (data) {
+            $.post('/receive', {
+                _token: '{{csrf_token()}}',
+                message: data.message
+            }).done(function (res) {
+                $('.messages > .message').last().after(res);
+                $(document).scrollTop($(document).height());
+            });
+        });
+        //Broadcast message
+        $('form').submit(function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: "/broadcast",
+                method: 'POST',
+                headers: {
+                    'X-Socket-Id': pusher.connection.socket_id
+                },
+                data: {
+                    _token: '{{csrf_token()}}',
+                    message: $('form #message').val()
+                }
+            }).done(function (res) {
+                $('.messages > .message').last().after(res);
+                $('form #message').val('');
+                $(document).scrollTop($(document).height());
+            });
+        });
+    </script>
+    @endsection

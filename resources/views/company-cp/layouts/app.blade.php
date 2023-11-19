@@ -28,7 +28,8 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;800&display=swap');
     </style>
-@livewireStyles
+    @yield('HeaderSection')
+{{--@livewireStyles--}}
 </head>
 
 
@@ -119,6 +120,6 @@
 
 <script src="{{asset('company-assets/js/app.js')}}"></script>
 @yield('custom_js')
-@livewireScripts
+{{--@livewireScripts--}}
 </body>
 </html>

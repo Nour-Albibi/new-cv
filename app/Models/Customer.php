@@ -130,5 +130,9 @@ class Customer extends Authenticatable
             $cv->delete();
         }
     }
-
+    public function scopeWithSearchKey($query,$key){
+        $query->where('first_name','like','%'.$key.'%')->orwhere('last_name','like','%'.$key.'%')->orwhere('email','like','%'.$key.'%')
+            ->orwhere('contact_phone','like','%'.$key.'%');
+        return $query;
+    }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\CustomerControllers\CSubscriptionController;
 use App\Http\Controllers\CustomerControllers\CustomerController;
 use App\Http\Controllers\CustomerControllers\CustomerCvController;
 use App\Http\Controllers\CVController;
+use App\Http\Controllers\PusherController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'language'], function () {
@@ -32,5 +33,10 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/profile', [CompanyController::class, 'profile'])->name('company.profile');
         Route::put('/profile', [CompanyController::class, 'update_profile'])->name('company.update_profile');
         Route::get('/chat', [CompanyController::class, 'chat'])->name('company.chat');
+        Route::post('/loadOldMessages', [CompanyController::class, 'loadOldMessages'])->name('company.chat.loadOldMessages');
+        Route::post('/getSearchedContacts', [CompanyController::class, 'getSearchedContacts'])->name('company.chat.getSearchedContacts');
+
+
+        //        Route::get('/chat', [PusherController::class, 'index'])->name('company.chat');
     });
 });
