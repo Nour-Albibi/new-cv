@@ -32,7 +32,7 @@ class SubscriptionService
                 'start_date'=>Carbon::now()->toDateTimeString(),
                 'end_date'=>Carbon::now()->addDays(($package->duration*30)),
                 'max_cv_limit'=>$package->quantity,
-                'current_cv_count'=>1,
+                'current_cv_count'=>0,
                 'status'=>1]);
             //Create Invoice
             $invoice_id=(Invoice::select('id')->latest()->first()->id ?? 1)+1;
@@ -40,7 +40,7 @@ class SubscriptionService
             $invoice=Invoice::create(['invoice_no'=>$invoice_no,
                 'subscription_id'=>$subscription->id,
                 'customer_id'=>$subscription->user_id,
-                'cutomer_type'=>1,
+                'cutomer_type'=>$data['customer_type'],
                 'package_fee'=>$package->total_price,
                 'sub_total'=>$package->total_price,
                 'total_amount'=>$package->total_price,

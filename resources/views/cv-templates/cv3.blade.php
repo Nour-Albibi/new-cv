@@ -17,6 +17,9 @@
         h5.section-title{
             color: {{$cv->template_color ?? "#2A5978"}}  !important;
         }
+        .col-main{
+            flex-direction:column;
+        }
     </style>
 </head>
 <body>

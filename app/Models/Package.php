@@ -11,4 +11,7 @@ class Package extends Model
     public function coupons(){
         return $this->hasMany('App\Models\Coupon','package_idphp artisan admin:make UserController --model=App\User');
     }
+    public function features(){
+        return $this->hasMany('App\Models\PackagesFeautre','package_id');
+    }
 }

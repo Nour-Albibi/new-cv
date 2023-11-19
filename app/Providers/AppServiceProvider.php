@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
     {
 
         Paginator::useBootstrapFive();
-    Paginator::useBootstrapFour();
+        Paginator::useBootstrapFour();
 //        Session::flush();Auth::guard('customer')->logout();
         $this->app->bind('settings', function () {
             return Cache::rememberForever('company_settings', function () {

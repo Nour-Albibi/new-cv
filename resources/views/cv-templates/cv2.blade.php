@@ -23,6 +23,9 @@
         .Home {
             max-width: 750px;
         }
+        * {
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>

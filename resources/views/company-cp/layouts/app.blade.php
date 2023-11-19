@@ -118,6 +118,7 @@
 <script src="{{asset('company-assets/libs/node-waves/waves.min.js')}}"></script>
 
 <script src="{{asset('company-assets/js/app.js')}}"></script>
+@yield('custom_js')
 @livewireScripts
 </body>
 </html>

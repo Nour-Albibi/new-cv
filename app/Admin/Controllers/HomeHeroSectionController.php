@@ -73,7 +73,7 @@ class HomeHeroSectionController extends AdminController
         $form->text('sub_title_en', __('English Sub title'));
         $form->text('description_ar', __('Arabic Description'));
         $form->text('description_en', __('English Description'));
-        $form->hasMany('images', __('Images'), function (Form\NestedForm $form) {
+        $form->hasMany('images', __('Image'), function (Form\NestedForm $form) {
             $form->hidden('id');
             $form->image('image',__('Image'))->help('width:700px;height:900px;recommended image ext: webp');
         });

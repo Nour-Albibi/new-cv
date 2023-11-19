@@ -19,6 +19,9 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/', [CompanyController::class, 'dashboard'])->name('company.dashboard');
         Route::get('/subscriptions', [CompanySubscriptionController::class, 'subscriptions'])->name('company.subscriptions');
         Route::get('/subscriptions/create_new', [CompanySubscriptionController::class, 'create_new'])->name('company.subscriptions.create_new');
+        Route::get('/subscriptions/create_and_buy', [CompanySubscriptionController::class, 'create_and_buy'])->name('company.subscriptions.create_and_buy');
+        Route::post('/subscriptions/store_new', [CompanySubscriptionController::class, 'store_new'])->name('company.subscriptions.store_new');
+
         Route::get('/subscriptions/new', [CompanySubscriptionController::class, 'buysubscription'])->name('company.subscriptions.add');
         Route::get('/subscriptions/{subscription}', [CompanySubscriptionController::class, 'showsubscription'])->name('company.subscriptions.show');
         Route::get('preview_cv/{cv}',[CompanyController::class,'PreviewCVinPage'])->name('company.preview_cv');

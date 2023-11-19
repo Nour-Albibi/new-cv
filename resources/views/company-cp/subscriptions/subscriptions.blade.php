@@ -6,19 +6,17 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body  pt-0">
-                    <ul class="nav nav-tabs nav-tabs-custom mb-4">
+                    <ul class="nav nav-tabs nav-tabs-custom mb-4" style="display: flex;justify-content: space-between">
                         <li class="nav-item">
                             <a class="nav-link fw-bold p-3 active" href="#">Subscription Managment</a>
                         </li>
-                        @if ($canSubscribeToNewPackage)
                             <li class="m">
-                                <a class="nav-link  fw-bold p-3 btn btn-success active"
-                                   style="border-color: #ced4da;margin-bottom: 4px;margin-top: 5px;"
-                                   href="{{ route('company.subscriptions.create_new') }}">
+                                <a class="btn btn-primary waves-effect waves-light"
+                                   style="color:#fff;margin-bottom: 4px;margin-top: 5px;"
+                                   href="{{ route('company.subscriptions.create_and_buy') }}">
                                     {{__('Subscribe to New Package')}}
                                 </a>
                             </li>
-                        @endif
                     </ul>
                     <div class="table-responsive">
                         <table class="table table-centered datatable dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">

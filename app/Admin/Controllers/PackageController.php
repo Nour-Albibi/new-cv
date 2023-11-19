@@ -87,13 +87,18 @@ class PackageController extends AdminController
         $form->hidden('id');
         $form->text('name_en', __('Package English Name'));
         $form->text('name_ar', __('Package Arabic Name'));
-        $form->text('description_en', __('English Description'));
-        $form->text('description_ar', __('Arabic Description'));
+        $form->textarea('description_en', __('English Description'));
+        $form->textarea('description_ar', __('Arabic Description'));
         $form->number('quantity', __('Quantity'))->help(__('CV Allowed Count'))->min(1);
         $form->number('duration', __('Duration'))->min(1)->help(__('Duration in Months'));
         $form->decimal('cv_price', __('CV price'))->rules('min:0');
         $form->hidden('total_price');
         $form->radio('type', __('Package Type'))->options([1 => __('Normal Customer Package'), 2 => __('Company Package')])->default(1);
+        $form->hasMany('features', __('Package features'), function (Form\NestedForm $form) {
+            $form->hidden('id');
+            $form->text('title_ar',__('Arabic Title'));
+            $form->text('title_en',__('English Title'));
+        });
         $states = [
             'on'  => ['value' => 1, 'text' => __('Active'), 'color' => 'success'],
             'off' => ['value' => 0, 'text' => __('Disable'), 'color' => 'danger'],
