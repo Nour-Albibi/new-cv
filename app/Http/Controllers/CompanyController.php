@@ -22,7 +22,6 @@ class CompanyController extends Controller
         return view('auth.login');
     }
     public function doLogin(Request $request){
-        // dd('hi company');
         try{
             $credentials=$request->only(['email','password']);
             if(auth()->guard('companies')->attempt($credentials)){
@@ -47,7 +46,9 @@ class CompanyController extends Controller
     }
 
     public function CVs(){
-        return view('company-cp.find_cv');
+        $cvs=CustomerCv::select('first_name','first_name_ar','surename','surename_ar','phone','email','image','open_for_remote',
+            'linkedlin_url','country_ar','country_en');
+        return view('company-cp.find_cv',compact('cvs'));
     }
 
     public function search(Request $request){
@@ -60,7 +61,6 @@ class CompanyController extends Controller
 
     public function update_profile (Request $request)
      {
-        // dd($request);
         $company=Auth::guard('company')->user();
         if($request['password']=='')
         unset($request['password']);

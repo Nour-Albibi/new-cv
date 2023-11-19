@@ -1,23 +1,17 @@
 @extends('company-cp.layouts.app')
-@section('title','Profile')
-
+@section('title','Find CV')
 @section('content')
-
-
-
-
 <div class="row">
     <div class="col-lg-8">
         <div class="card">
-
             <div class="card-body">
                     <h5>Find CVs & Download </h5>
                     <div class="table-responsive">
                         <table class="table table-centered table-nowrap mb-0">
                             <thead class="thead-light">
                             <tr>
-                                <th>CV Template</th>
-                                <th>CV Name</th>
+                                <th>Job Seeker CV</th>
+                                <th>Full Name</th>
                                 <th>how often</th>
                                 <th> Date</th>
                                 <th> View</th>
@@ -26,8 +20,6 @@
                             </thead>
                             <tbody>
                             <tr>
-
-
                                 <td><a href="javascript: void(0);" class="text-dark fw-bold">Template 1</a> </td>
 
                                 <td>Name 1</td>
@@ -44,19 +36,10 @@
                                 <td>
                                     <a href="javascript:void(0);" class="me-3 text-primary" data-bs-container="#tooltip-container1" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="mdi mdi-book-arrow-down font-size-18 text-primary"></i></a>
                                 </td>
-
-
-
                             </tr>
-
-
-
-
                             </tbody>
                         </table>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -64,17 +47,10 @@
             <div class="row">
                 <div class="col-xl-12 col-md-12">
                     <div class="card">
-
                         <livewire:search />
-
                     </div>
-
-
                 </div>
-
-
             </div>
         </div>
-
     </div>
 @endsection
