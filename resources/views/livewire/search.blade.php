@@ -8,11 +8,11 @@
 
         <div class="border p-3 rounded mt-4">
 
-            <h5 class="font-size-16">Search</h5>
+            <h5 class="font-size-16">{{ __('Search by name') }}</h5>
 
             <div class="search-box me-2 mt-3">
                 <div class="position-relative">
-                    <input type="text" wire:model="jobtitle" class="form-control" placeholder="Search...">
+                    <input type="text" name="name" class="form-control" placeholder="Search...">
                     <i class="ti-search search-icon"></i>
                 </div>
             </div>
@@ -22,6 +22,12 @@
 
         <div class="border p-3 rounded mt-4">
             <h5 class="font-size-16">{{ __('information') }}</h5>
+            <div class="search-box me-2 mt-3">
+                <div class="position-relative">
+                    <input type="text" wire:model="jobtitle" class="form-control" placeholder="Search...">
+                    <i class="ti-search search-icon"></i>
+                </div>
+            </div>
 
 
             <div id="accordion" class="custom-accordion categories-accordion">

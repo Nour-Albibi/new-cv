@@ -19,6 +19,11 @@ class CustomerCv extends Model implements UseCartable
 
     protected $perPage = 2;
 
+    public function name()
+    {
+       return ucfirst($this->first_name) . ' ' . ucfirst($this->surname);
+    }
+
     public function template(){
         return $this->belongsTo('App\Models\Template','template_id');
     }
