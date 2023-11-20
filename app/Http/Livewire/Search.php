@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class Search extends Component
 {
-    public $counter;
+
     public $jobtitle;
     public $jobs;
     public $jobid;
@@ -45,10 +45,7 @@ class Search extends Component
         // dd($this->skills);
     }
     }
-    public function increment()
-    {
-        $this->counter++;
-    }
+
 
 
     public function render()
