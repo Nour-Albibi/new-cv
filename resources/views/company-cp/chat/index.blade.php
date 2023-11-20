@@ -3,6 +3,8 @@
 @section('HeaderSection')
     <script src="https://js.pusher.com/8.0.1/pusher.min.js"></script>
 {{--    <script src="{{asset('assets/js/echo.js')}}"></script>--}}
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <style>
         .chat-conversation{
             max-height:400px;
@@ -11,7 +13,7 @@
     </style>
 @endsection
 @section('content')
-    <input type="hidden" name="current_user" value="8" id="current_user" />
+    <input type="hidden" name="current_user" value="11" id="current_user" />
     <input type="hidden" name="_token" value="{{csrf_token()}}"/>
     <div class="d-lg-flex">
         <div class="chat-leftsidebar me-lg-4">
@@ -186,13 +188,14 @@
         var pusher = new Pusher("{{config('broadcasting.connections.pusher.key')}}", {
             cluster: "ap2",
         });
-        var channel = pusher.subscribe(`chat-message.${current_user_id}`);
+        // var channel = pusher.subscribe(`chat-message.${current_user_id}`);
         //Receive message
         Pusher.logToConsole = true;
         setTimeout(() => {
             var current_user_id = $("#current_user").val();
-            window.Echo.private(`chat-message.${current_user_id}`)
-                .listen('.chat', (e) => {
+            window.Echo.private(`chat-message.11`)
+                .listen('.server.created', (e) => {
+                    console.log(e);
                     $.post(main_path+'/receive', {
                         _token: '{{csrf_token()}}',
                         message: data.message

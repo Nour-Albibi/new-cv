@@ -3,6 +3,8 @@
 @section('HeaderSection')
     <script src="https://js.pusher.com/8.0.1/pusher.min.js"></script>
 {{--    <script src="{{asset('assets/js/echo.js')}}"></script>--}}
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <style>
     .chat-conversation{
         max-height:400px;
@@ -11,7 +13,7 @@
     </style>
 @endsection
 @section('content')
-    <input type="hidden" name="current_user" id="current_user" value="11"/>
+    <input type="hidden" name="current_user" id="current_user" value="8"/>
     <input type="hidden" name="_token" value="{{csrf_token()}}"/>
     <div class="d-lg-flex">
         <div class="chat-leftsidebar me-lg-4">
@@ -187,13 +189,13 @@
             cluster: "ap2",
         });
         // alert(`chat-message.${current_user_id}`);
-        var channel = pusher.subscribe(`chat-message.${current_user_id}`);
+        // var channel = pusher.subscribe(`chat-message.${current_user_id}`);
         //Receive message
         Pusher.logToConsole = true;
-        setTimeout(() => {
+        // setTimeout(() => {
             var current_user_id = $("#current_user").val();
-            window.Echo.private(`chat-message.${current_user_id}`)
-                .listen('.chat', (e) => {
+            window.Echo.private(`chat-message.8`)
+                .listen('.server.created', (e) => {
                     $.post(main_path+'/receive', {
                         _token: '{{csrf_token()}}',
                         message: data.message
@@ -202,7 +204,7 @@
                         $(document).scrollTop($(document).height());
                     });
                 });
-        }, 200);
+        // }, 200);
         {{--channel.bind("chat", function (data) {--}}
         {{--    $.post(main_path+'/receive', {--}}
         {{--        _token: '{{csrf_token()}}',--}}

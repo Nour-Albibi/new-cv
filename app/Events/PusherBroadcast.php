@@ -35,10 +35,10 @@ class PusherBroadcast implements ShouldBroadcast
     {
 //        return new PrivateChannel('channel-name');
 //        return ['public'];
-
         return new PrivateChannel('chat-message.' . $this->message->to_user);
     }
-    public function broadcastAs(){
-        return 'chat';
+    public function broadcastAs()
+    {
+        return 'server.created';
     }
 }
