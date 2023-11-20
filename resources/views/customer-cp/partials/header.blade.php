@@ -44,7 +44,7 @@
                              height="22" loading="lazy">  {{__('Arabic')}} <span class="mdi mdi-chevron-down"></span>
                     @else
                         <img class="me-2" src="{{asset('customer-assets/images/flags/us.jpg')}}" alt="Header Language"
-                             height="16"> English <span class="mdi mdi-chevron-down"></span>
+                             height="16"> {{ __('English') }} <span class="mdi mdi-chevron-down"></span>
                     @endif
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
@@ -62,7 +62,7 @@
                             @else
                                 <img class="me-2" src="{{asset('customer-assets/images/flags/us.jpg')}}"
                                      alt="Header Language"
-                                     height="16"> English
+                                     height="16"> {{ __('English') }}
                             @endif
                         </a>
                     </form>
@@ -87,10 +87,10 @@
                     <div class="p-3">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h6 class="m-0"> Notifications </h6>
+                                <h6 class="m-0"> {{ __('Notifications') }} </h6>
                             </div>
                             <div class="col-auto">
-                                <a href="{{route('customer.viewedmyCV')}}" class="small"> View All</a>
+                                <a href="{{route('customer.viewedmyCV')}}" class="small"> {{ __('View All') }}</a>
                             </div>
                         </div>
                     </div>
@@ -125,7 +125,7 @@
                     <div class="p-2 border-top">
                         <a class="btn btn-sm btn-link font-size-14 w-100 text-center"
                            href="{{route('customer.viewedmyCV')}}">
-                            <i class="mdi mdi-arrow-right-circle me-1"></i> View More..
+                            <i class="mdi mdi-arrow-right-circle me-1"></i> {{ __('View More..') }}
                         </a>
                     </div>
                 </div>
@@ -152,10 +152,10 @@
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
                     <a class="dropdown-item" href="{{ route('customer.myprofile') }}"><i
-                            class="mdi mdi-account-circle-outline font-size-16 align-middle me-1"></i> Profile</a>
+                            class="mdi mdi-account-circle-outline font-size-16 align-middle me-1"></i> {{ __('Profile') }}</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="{{ route('customer.logout') }}"><i
-                            class="mdi mdi-power font-size-16 align-middle me-1 text-danger"></i> Logout</a>
+                            class="mdi mdi-power font-size-16 align-middle me-1 text-danger"></i> {{ __('Logout') }}</a>
                 </div>
             </div>
         </div>

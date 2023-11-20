@@ -1,7 +1,7 @@
 @extends('customer-cp.layouts.app')
 
 @section('title')
-    New Subscription
+    {{ __('New Subscription') }}
 @endsection
 
 @section('content')
@@ -31,7 +31,7 @@
             <div class="card-body  pt-0">
                 <ul class="nav nav-tabs nav-tabs-custom mb-4">
                     <li class="nav-item" >
-                        <a class="nav-link fw-bold p-3 active" href="#">New subscription</a>
+                        <a class="nav-link fw-bold p-3 active" href="#">{{ __('New subscription') }}</a>
                     </li>
 
                 </ul>
@@ -42,12 +42,12 @@
                         <thead class="thead-light">
                             <tr>
 
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                                <th>duaration</th>
-                                <th>Action</th>
+                                <th>{{ __('Name') }}</th>
+                                <th>{{ __('Description') }}</th>
+                                <th>{{ __('Quantity') }}</th>
+                                <th>{{ __('Price') }}</th>
+                                <th>{{ __('duaration') }}</th>
+                                <th>{{ __('Action') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -63,7 +63,7 @@
                                 <td>{{ $package->duration }}&nbspMonth</td>
 
                                 <td>
-                                    <a href="{{ route('customer.subscriptions.buy',$package) }}">Buy</a>
+                                    <a href="{{ route('customer.subscriptions.buy',$package) }}">{{ __('Buy') }}</a>
                                 </td>
 
 

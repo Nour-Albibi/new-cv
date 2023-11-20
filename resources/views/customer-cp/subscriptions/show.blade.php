@@ -1,7 +1,7 @@
 @extends('customer-cp.layouts.app')
 
 @section('title')
-    Subscriptions
+    {{ __('Subscriptions') }}
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@
                 <div class="card-body  pt-0">
                     <ul class="nav nav-tabs nav-tabs-custom mb-4">
                         <li class="nav-item">
-                            <a class="nav-link fw-bold p-3 active" href="#">Subscription</a>
+                            <a class="nav-link fw-bold p-3 active" href="#">{{ __('Subscription') }}</a>
                         </li>
 
                     </ul>
@@ -21,14 +21,14 @@
                                style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead class="thead-light">
                             <tr>
-                                <th>Invoice No#</th>
-                                <th>PLAN</th>
-                                <th>price</th>
-                                <th>start Date</th>
-                                <th>Expire Date</th>
-                                <th>Payment gateway</th>
-                                <th>Status</th>
-                                <th>Renew</th>
+                                <th>{{ __('Invoice No#') }}</th>
+                                <th>{{ __('PLAN') }}</th>
+                                <th>{{ __('price') }}</th>
+                                <th>{{ __('start Date') }}</th>
+                                <th>{{ __('Expire Date') }}</th>
+                                <th>{{ __('Payment gateway') }}</th>
+                                <th>{{ __('Status') }}</th>
+                                <th>{{ __('Renew') }}</th>
                             </tr>
                             </thead>
                             <tbody>

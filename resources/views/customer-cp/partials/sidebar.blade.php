@@ -24,7 +24,7 @@
                         @endif
 
                     </h5>
-                    <span class="font-size-13 text-white-50">Customer</span>
+                    <span class="font-size-13 text-white-50">{{ __('Customer') }}</span>
                 </div>
             </div>
         </div>
@@ -40,33 +40,33 @@
                 <li>
                     <a href="{{ route('customer.dashboard') }}" class="waves-effect">
                         <i class="dripicons-home"></i>
-                        <span>Dashboard</span>
+                        <span>{{ __('Dashboard') }}</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="{{ route('customer.CVs') }}" class=" waves-effect">
                         <i class="dripicons-calendar"></i>
-                        <span style="font-size: small;">CV Managment</span>
+                        <span style="font-size: small;">{{ __('CV Managment') }}</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('customer.subscriptions') }}" class=" waves-effect">
                         <i class="dripicons-calendar"></i>
-                        <span style="font-size: small;">Supcription Managment</span>
+                        <span style="font-size: small;">{{ __('Supcription Managment') }}</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="{{route('customer.chat')}}" class=" waves-effect">
                         <i class="dripicons-message"></i>
-                        <span style="font-size: small;">Chat</span>
+                        <span style="font-size: small;">{{ __('Chat') }}</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('customer.viewedmyCV') }}" class=" waves-effect">
                         <i class="dripicons-calendar"></i>
-                        <span style="font-size: small;">Viewed my CV</span>
+                        <span style="font-size: small;">{{ __('Viewed my CV') }}</span>
                     </a>
                 </li>
             </ul>

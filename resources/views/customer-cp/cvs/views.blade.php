@@ -1,7 +1,7 @@
 @extends('customer-cp.layouts.app')
 
 @section('title')
-    Viewed My CVs
+    {{ __('Viewed My CVs') }}
 @endsection
 @section('custom_css')
     <link href="{{asset('customer-assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" defer />
@@ -19,7 +19,7 @@
                         <div class="card-body  pt-0">
                             <ul class="nav nav-tabs nav-tabs-custom mb-4">
                                 <li class="nav-item">
-                                    <a class="nav-link fw-bold p-3 active" href="#">Viewed MY CV </a>
+                                    <a class="nav-link fw-bold p-3 active" href="#">{{ __('Viewed My CVs') }} </a>
                                 </li>
 
                             </ul>
@@ -27,10 +27,10 @@
                                 <table class="table table-centered datatable dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead class="thead-light">
                                     <tr>
-                                        <th>CV Template</th>
-                                        <th>Company Name</th>
-                                        <th>how often</th>
-                                        <th> Date</th>
+                                        <th>{{ __('CV Template') }}</th>
+                                        <th>{{ __('Company Name') }}</th>
+                                        <th>{{ __('how often') }}</th>
+                                        <th> {{ __('Date') }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>

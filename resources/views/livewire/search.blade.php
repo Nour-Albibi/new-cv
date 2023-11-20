@@ -1,7 +1,4 @@
 <div>
-    <a wire:click="increment">Hi</a>
-    <h1>{{ $counter }}</h1>
-
 
     <div class="card-body">
         <form action="{{ route('company.dofind_cvs') }}" method="post">
@@ -24,21 +21,22 @@
 
 
         <div class="border p-3 rounded mt-4">
-            <h5 class="font-size-16">{{ __('jobtitle') }}</h5>
+            <h5 class="font-size-16">{{ __('information') }}</h5>
 
 
             <div id="accordion" class="custom-accordion categories-accordion">
                 <div class="categories-group-card">
-                    <a href="#collapseOne" class="categories-group-list collapsed" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseOne">
+                    <a href="#collapseOne" class="categories-group-list collapsed" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
                         <i class="ti-desktop font-size-16 align-middle me-2"></i> {{ __('jobtitle') }}
                         <i class="mdi mdi-minus float-end accor-plus-icon"></i>
                     </a>
                     <div id="collapseOne" class="collapse" data-parent="#accordion">
                         <ul class="list-unstyled categories-list mb-0">
-                            @if ($jobs)
                             @php
                             $lang='en';
                         @endphp
+
+                            @if ($jobs)
                             @foreach ($jobs as $job )
                             <input type="radio" name="jobtitle" value="{{ $job->id }}" wire:model="jobid" id="jobtitle">
                            {{$job->{"name_".$lang} }}<br>
@@ -80,24 +78,24 @@
         </div>
 
         <div class="border p-3 rounded mt-4">
-            <h5 class="font-size-16">Filter 3</h5>
+            <h5 class="font-size-16">Amount</h5>
 
             <div class="mt-4">
                 <div class="form-check mt-2">
-                    <input type="radio" id="multirange" name="amount" class="form-check-input" checked>
-                    <label class="custom-control-label" for="amount"> All</label>
+                    <input type="radio" id="multirange" value="100" name="amount" class="form-check-input" checked>
+                    <label class="custom-control-label"  for="amount"> All</label>
                 </div>
                 <div class="form-check mt-2">
-                    <input type="radio" id="multirange1" name="amount" class="form-check-input">
-                    <label class="custom-control-label" for="amount"> 1-3</label>
+                    <input type="radio" id="multirange1" value="3" name="amount" class="form-check-input">
+                    <label class="custom-control-label"  for="amount"> 1-3</label>
                 </div>
                 <div class="form-check mt-2">
-                    <input type="radio" id="multirange2" name="amount" class="form-check-input">
-                    <label class="custom-control-label" for="amount"> 4-10</label>
+                    <input type="radio" id="multirange2" value="10" name="amount" class="form-check-input">
+                    <label class="custom-control-label"  for="amount"> 4-10</label>
                 </div>
                 <div class="form-check mt-2">
-                    <input type="radio" id="multirange3" name="amount" class="form-check-input">
-                    <label class="custom-control-label" for="amount"> 10-20</label>
+                    <input type="radio" id="multirange3" value="20" name="amount" class="form-check-input">
+                    <label class="custom-control-label"  for="amount"> 10-20</label>
                 </div>
 
             </div>

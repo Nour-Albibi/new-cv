@@ -10,7 +10,7 @@
                             <div class="card-body  pt-0">
                                 <ul class="nav nav-tabs nav-tabs-custom mb-4">
                                     <li class="nav-item">
-                                        <a class="nav-link fw-bold p-3 active" href="#">Viewed MY CV </a>
+                                        <a class="nav-link fw-bold p-3 active" href="#">{{ __('Viewed MY CV') }} </a>
                                     </li>
 
                                 </ul>
@@ -19,10 +19,10 @@
                                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead class="thead-light">
                                         <tr>
-                                            <th>CV Template</th>
-                                            <th>Company Name</th>
-                                            <th>how often</th>
-                                            <th> Date</th>
+                                            <th>{{ __('CV Template') }}</th>
+                                            <th>{{ __('Company Name') }}</th>
+                                            <th>{{ __('how often') }}</th>
+                                            <th> {{ __('Date') }}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -53,15 +53,15 @@
                     @else
                         <div class="card">
                             <div class="card-body">
-                                <h5>My latest cvs</h5>
+                                <h5>{{ __('My latest cvs') }}</h5>
                                 <div class="table-responsive">
                                     <table class="table table-centered table-nowrap mb-0">
                                         <thead>
                                         <tr>
-                                            <th scope="col">CV Template</th>
+                                            <th scope="col">{{ __('CV Template') }}</th>
                                             <th>{{__('Subscription')}}</th>
-                                            <th scope="col">Date</th>
-                                            <th scope=""> PDF</th>
+                                            <th scope="col">{{ __('Date') }}</th>
+                                            <th scope=""> {{ __('PDF') }}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -82,7 +82,7 @@
                                                     <button type="button"
                                                             class="btn btn-primary waves-effect waves-light"
                                                             onclick="window.location.href='{{ route('customer.downloadCV',$cv) }}';">
-                                                        Download <i class="fas fa-arrow-down"></i></button>
+                                                        {{ __('Download') }} <i class="fas fa-arrow-down"></i></button>
                                                 </td>
                                             </tr>
                                         @endforeach
