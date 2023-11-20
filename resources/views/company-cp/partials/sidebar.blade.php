@@ -22,7 +22,7 @@
                             </li>
                         @endif
                     </h5>
-                    <span class="font-size-13 text-white-50">Company </span>
+                    <span class="font-size-13 text-white-50">{{ __('Company') }} </span>
                 </div>
             </div>
         </div>
@@ -32,37 +32,37 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title">Menu</li>
+                <li class="menu-title">{{ __('Menu') }}</li>
 
                 <li>
                     <a href="{{route('company.dashboard')}}" class="waves-effect">
                         <i class="dripicons-home"></i>
-                        <span>Dashboard</span>
+                        <span>{{ __('Dashboard') }}</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="{{route('company.profile')}}" class=" waves-effect">
                         <i class="dripicons-calendar"></i>
-                        <span style="font-size: small;">My Profile</span>
+                        <span style="font-size: small;">{{ __('My Profile') }}</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{route('company.subscriptions')}}" class=" waves-effect">
                         <i class="dripicons-calendar"></i>
-                        <span style="font-size: small;">My Supcription </span>
+                        <span style="font-size: small;">{{ __('My Supcription') }} </span>
                     </a>
                 </li>
                 <li>
                     <a href="{{route('company.find_cvs')}}" class=" waves-effect">
                         <i class="dripicons-calendar"></i>
-                        <span style="font-size: small;">Find CVs & Download</span>
+                        <span style="font-size: small;">{{ __('Find CVs & Download') }}</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{route('company.chat')}}" class=" waves-effect">
                         <i class="dripicons-message"></i>
-                        <span style="font-size: small;">Chat</span>
+                        <span style="font-size: small;">{{ __('Chat') }}</span>
                     </a>
                 </li>
 

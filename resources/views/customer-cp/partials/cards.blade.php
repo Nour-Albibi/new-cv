@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="text-center">
-                        <p class="font-size-16">Subscription</p>
+                        <p class="font-size-16">{{ __('Subscription') }}</p>
                         <div class="mini-stat-icon mx-auto mb-4 mt-3">
                             <span class="avatar-title rounded-circle bg-soft-success">
 
@@ -30,7 +30,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="text-center">
-                        <p class="font-size-16">Count of CVs</p>
+                        <p class="font-size-16">{{ __('Count of CVs') }}</p>
                         <div class="mini-stat-icon mx-auto mb-4 mt-3">
                             <span class="avatar-title rounded-circle bg-soft-success">
                                     <i class="fa-solid fa-clipboard" style="color: #fff;font-size: 20px;"></i>

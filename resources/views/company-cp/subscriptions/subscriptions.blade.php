@@ -8,7 +8,7 @@
                 <div class="card-body  pt-0">
                     <ul class="nav nav-tabs nav-tabs-custom mb-4">
                         <li class="nav-item">
-                            <a class="nav-link fw-bold p-3 active" href="#">Subscription Managment</a>
+                            <a class="nav-link fw-bold p-3 active" href="#">{{ __('Subscription Managment') }}</a>
                         </li>
                         @if ($canSubscribeToNewPackage)
                             <li class="m">
@@ -30,11 +30,11 @@
                                         <label class="form-check-label" for="ordercheck">&nbsp;</label>
                                     </div>
                                 </th>
-                                <th>PLAN</th>
-                                <th>price</th>
-                                <th>Subscrip Date</th>
-                                <th>Expire Date</th>
-                                <th>Status	</th>
+                                <th>{{ __('PLAN') }}</th>
+                                <th>{{ __('price') }}</th>
+                                <th>{{ __('Subscrip Date') }}</th>
+                                <th>{{ __('Expire Date') }}</th>
+                                <th>{{ __('Status') }}	</th>
 
                             </tr>
                             </thead>

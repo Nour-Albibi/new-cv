@@ -8,8 +8,7 @@
             <div class="card-body  pt-0">
                 <ul class="nav nav-tabs nav-tabs-custom mb-4">
                     <li class="nav-item">
-                        <a class="nav-link fw-bold p-3 active" href="#">COMPANY INFORMATION
-                            Managment</a>
+                        <a class="nav-link fw-bold p-3 active" href="#">{{ __('COMPANY INFORMATION Managment') }}</a>
                     </li>
 
                 </ul>
@@ -25,7 +24,7 @@
                     <div class="mb-3">
                         @csrf
                         @method('put')
-                        <h6 class="m-3">COMPANY INFORMATION FORM</h6>
+                        <h6 class="m-3">{{ __('COMPANY INFORMATION FORM') }}</h6>
                         <div class="row">
                             <div class="col-lg-11 mx-auto">
                                 <div class="row">
@@ -38,8 +37,7 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="profession">Company
-                                                            Name:</label>
+                                                        <label for="profession">{{ __('Company Name:') }}</label>
                                                         <input type="text" class="form-control mb-3"
                                                                id="profession" placeholder="" name="company_name"
                                                                value="{{ old('company_name', Auth::guard('company')->user()->company_name) }} ">
@@ -47,8 +45,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="location">Company Email
-                                                            address:</label>
+                                                        <label for="location">{{ __('Company Email address:') }}</label>
                                                         <input type="text" class="form-control mb-3"
                                                                id="location" name="email"
                                                                placeholder="example@example.com"
@@ -57,8 +54,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="address">Company
-                                                            Address:</label>
+                                                        <label for="address">{{ __('Company Address:') }}</label>
                                                         <input type="text" class="form-control mb-3"
                                                                id="address" placeholder="" name="address"
                                                                value="{{ old('address', Auth::guard('company')->user()->address) }}">
@@ -68,7 +64,7 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="phone">Company Phone:</label>
+                                                        <label for="phone">{{ __('Company Phone:') }}</label>
                                                         <input type="text" class="form-control mb-3"
                                                                id="phone"
                                                                placeholder="00966 ** *** ****" name="contact_phone"
@@ -77,7 +73,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="password">Password:</label>
+                                                        <label for="password">{{ __('Password') }}:</label>
                                                         <input type="password" class="form-control mb-3"
                                                                id="password"
                                                                placeholder="new password" name="password"
@@ -86,7 +82,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="password">Confirm password:</label>
+                                                        <label for="password">{{ __('Confirm password:') }}</label>
                                                         <input type="password" class="form-control mb-3"
                                                                id="password"
                                                                placeholder="Confirm password" name="password_confirmation"
@@ -99,8 +95,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <label for="website1">Company
-                                                                logo </label>
+                                                            <label for="website1">{{ __('Company logo') }} </label>
 
 
                                                         </div>
@@ -125,7 +120,7 @@
 
                                                 <div class="col-md-12 mt-1">
                                                     <div class="form-group text-end">
-                                                        <button class="btn btn-success" type="submit">save</button>
+                                                        <button class="btn btn-success" type="submit">{{ __('save') }}</button>
 
                                                     </div>
                                                 </div>

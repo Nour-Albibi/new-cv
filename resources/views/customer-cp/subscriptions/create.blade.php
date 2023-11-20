@@ -98,19 +98,14 @@
                                                                                         class="amount-sm">{{$pkg->cv_price}}</span>
                                                                                 </div>
                                                                                 <ul>
-                                                                                    <li>Unlimited printing and
-                                                                                        downloading
-                                                                                        for {{$pkg->duration*30}}
+                                                                                    <li>{{ __('Unlimited printing and downloading for') }} {{$pkg->duration*30}}
                                                                                         days
                                                                                     </li>
-                                                                                    <li>Create {{$pkg->quantity}} CVs
-                                                                                        and cover
-                                                                                        letters
+                                                                                    <li>{{ __('Create') }} {{$pkg->quantity}} {{ __('CVs and cover letters') }}
                                                                                     </li>
-                                                                                    <li>auto-renews at every 4 weeks
+                                                                                    <li>{{ __('auto-renews at every 4 weeks') }}
                                                                                     </li>
-                                                                                    <li class="disable">Cancel at any
-                                                                                        time
+                                                                                    <li class="disable">{{ __('Cancel at any time') }}
                                                                                     </li>
                                                                                 </ul>
                                                                             </div>
@@ -125,13 +120,13 @@
                                                     <div class="row mt-4 mb-4 ">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label class="text-uppercase">Payment details</label>
+                                                                <label class="text-uppercase">{{ __('Payment details') }}</label>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="profession">Name on card:</label>
+                                                            <label for="profession">{{ __('Name on card:') }}</label>
                                                             <input type="text" name="name_on_card"
                                                                    class="form-control mb-3"
                                                                    required="required" placeholder="Name on card">
@@ -140,7 +135,7 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="address">Card Number:</label>
+                                                            <label for="address">{{ __('Card Number:') }}</label>
                                                             <i class="fa fa-credit-card"></i>
                                                             <input type="text" name="card_number" class="form-control"
                                                                    required="required">
@@ -148,21 +143,21 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="address">Expiry:</label>
+                                                            <label for="address">{{ __('Expiry:') }}</label>
                                                             <input type="text" name="expiry" class="form-control"
                                                                    required="required">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="location">CVV:</label>
+                                                            <label for="location">{{ __('CVV:') }}</label>
                                                             <input type="text" name="cvv" class="form-control"
                                                                    required="required">
                                                         </div>
                                                     </div>
 
                                                     <div class="mt-4 mb-4">
-                                                        <h6 class="text-uppercase">Billing Address</h6>
+                                                        <h6 class="text-uppercase">{{ __('Billing Address') }}</h6>
                                                         <div class="row mt-3">
                                                             <div class="col-md-6">
                                                                 <div class="inputbox mt-3 mr-2"><input
@@ -170,7 +165,7 @@
                                                                         name="address"
                                                                         class="form-control"
                                                                         required="required">
-                                                                    <span>Street Address</span></div>
+                                                                    <span>{{ __('Street Address') }}</span></div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="inputbox mt-3 mr-2"><input
@@ -178,7 +173,7 @@
                                                                         name="city"
                                                                         class="form-control"
                                                                         required="required">
-                                                                    <span>City</span></div>
+                                                                    <span>{{ __('City') }}</span></div>
                                                             </div>
                                                         </div>
                                                         <div class="row mt-2">
@@ -188,7 +183,7 @@
                                                                         name="state"
                                                                         class="form-control"
                                                                         required="required">
-                                                                    <span>State/Province</span></div>
+                                                                    <span>{{ __('State/Province') }}</span></div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="inputbox mt-3 mr-2"><input
@@ -196,7 +191,7 @@
                                                                         name="zip_code"
                                                                         class="form-control"
                                                                         required="required">
-                                                                    <span>Zip code</span></div>
+                                                                    <span>{{ __('Zip code') }}</span></div>
                                                             </div>
                                                         </div>
                                                     </div>

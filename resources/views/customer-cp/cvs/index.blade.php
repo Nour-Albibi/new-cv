@@ -1,7 +1,7 @@
 @extends('customer-cp.layouts.app')
 
 @section('title')
-    cvs
+    {{ __('cvs') }}
 @endsection
 
 @section('content')
@@ -14,17 +14,17 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex" style="justify-content: space-between;margin-bottom: 8px">
-                            <h5>My CVs</h5>
+                            <h5>{{ __('My CVs') }}</h5>
                                 <a href="{{route('cv.create')}}" class=" btn btn-success">{{__('Create CV')}}</a>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-centered table-nowrap mb-0">
                                     <thead>
                                     <tr>
-                                        <th scope="col"> CV Template</th>
+                                        <th scope="col"> {{ __('CV Template') }}</th>
                                         <th>{{__('Subscription')}}</th>
-                                        <th scope="col"> Date</th>
-                                        <th scope=""> PDF</th>
+                                        <th scope="col"> {{ __('Date') }}</th>
+                                        <th scope=""> {{ __('PDF') }}</th>
                                         <th>{{__('Action')}}</th>
                                     </tr>
                                     </thead>
