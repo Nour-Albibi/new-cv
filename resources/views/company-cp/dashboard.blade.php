@@ -21,7 +21,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($last_find_cvs as $viewed_cv)
-                                    @php $cv=$viewed_cv->cv; @endphp
+                                    @php $cv=$viewed_cv->cv;  @endphp
                                     <tr>
                                         <td>
                                             <div class="exad-card left text_on_image yes">

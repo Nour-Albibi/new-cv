@@ -33,7 +33,7 @@ class Search extends Component
         if ($this->jobtitle)
         {
 
-            $this->jobs=JobTitle::where('name_en','like','%'.$this->jobtitle.'%')->take(5)->get();
+            $this->jobs=JobTitle::where('name_en','like','%'.$this->jobtitle.'%')->take(25)->get();
         }
     }
 
@@ -41,7 +41,7 @@ class Search extends Component
     {
         if($this->jobid)
         {
-            $this->skills= Skill::where('job_title_id',$this->jobid)->take(5)->get();
+            $this->skills= Skill::where('job_title_id',$this->jobid)->take(25)->get();
         // dd($this->skills);
     }
     }

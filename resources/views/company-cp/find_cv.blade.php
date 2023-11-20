@@ -2,14 +2,9 @@
 @section('title','Profile')
 
 @section('content')
-
-
-
-
 <div class="row">
     <div class="col-lg-8">
         <div class="card">
-
             <div class="card-body">
                     <h5>Find CVs & Download </h5>
                     <div class="table-responsive">
@@ -25,41 +20,39 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @if (isset($cvs))
                                     @foreach ($cvs as $cv)
                                     <tr>
                                     <td><a href="javascript: void(0);" class="text-dark fw-bold">{{ $cv->id }}</a> </td>
 
                                     <td>{{ $cv->{"first_name"}.' '.$cv->{"surename"} }}</td>
                                     <td>
-                                        <div class="badge badge-soft-success font-size-12">{{ $cv->views }}</div>
+                                        <div class="badge badge-soft-success font-size-12">{{ $cv->views()->count() }}</div>
                                     </td>
                                     <td>
-                                        {{ $cv->created_at }}
+                                        {{date('d/m/Y', strtotime($cv->created_at))  }}
                                     </td>
 
                                     <td>
-                                        <div class="badge badge-soft-success font-size-12">View</div>
+                                        <div class="badge badge-soft-success font-size-12">
+                                            <a class="ml-5" href="{{route('company.preview_cv',['cv'=>$cv])}}"
+                                               target="_blank">{{__('View')}}</a>
+                                        </div>
                                     </td>
                                     <td>
-                                        <a href="javascript:void(0);" class="me-3 text-primary" data-bs-container="#tooltip-container1" data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i class="mdi mdi-book-arrow-down font-size-18 text-primary"></i></a>
+                                        <a href="javascript:void(0);" class="me-3 text-primary"
+                                           data-bs-container="#tooltip-container1" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="Download"
+                                           onclick="window.location.href='{{ route('company.downloadCV',$cv) }}';"><i
+                                                class="mdi mdi-book-arrow-down font-size-18 text-primary"></i></a>
                                     </td>
                                     @endforeach
-
                             <tr>
-
-
-
-
-
-
-
-
-                                {!! $cvs->links() !!}
-                                @endif
 
                             </tbody>
                         </table>
+                        @if (count($cvs))
+                            {!! $cvs->links() !!}
+                        @endif
                     </div>
 
 
@@ -70,17 +63,10 @@
             <div class="row">
                 <div class="col-xl-12 col-md-12">
                     <div class="card">
-
-                        <livewire:search />
-
+                        <livewire:search :skills="$skills" :jobs="$jobs" />
                     </div>
-
-
                 </div>
-
-
             </div>
         </div>
-
     </div>
 @endsection
