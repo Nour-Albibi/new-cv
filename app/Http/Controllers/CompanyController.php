@@ -85,43 +85,6 @@ class CompanyController extends Controller
         $company->update($validated);
         return redirect()->route('company.profile');
      }
-
-    public function chat(){
-        $employees = LiveChatMessage::select('employee_id')
-            ->with('employeesList')
-            ->distinct('employee_id')
-            ->where('employee_id','!=',NULL)
-            ->where('company_id', Auth::guard('company')->user()->id)
-            ->get();
-        return view('company-cp.chat.index',compact('employees'));
-    }
-    public function loadOldMessages(Request $request){
-        try{
-            $employee_id=$request->employee_id;
-            $employee=Customer::find($employee_id);
-            $chat_messages = LiveChatMessage::select('*')
-                ->where('employee_id','=',$employee_id)
-                ->where('company_id', Auth::guard('company')->user()->id)
-                ->get();
-            return view('company-cp.chat.get_conversation',compact('chat_messages','employee','employee_id'))->render();
-
-        }catch (\Exception $exception){
-            return $exception->getMessage();
-        }
-    }
-    public function openConversation(Request $request){
-        try{
-            $employee_id=$request->employee_id;
-            $employee=Customer::find($employee_id);
-            $chat_messages = LiveChatMessage::select('*')
-                ->where('employee_id','=',$employee_id)
-                ->where('company_id', Auth::guard('company')->user()->id)
-                ->get();
-            return view('company-cp.chat.open_conversation',compact('chat_messages','employee','employee_id'));
-        }catch (\Exception $exception){
-            return redirect()->back()->withErrors(['msg' =>$exception->getMessage()]);
-        }
-    }
     public function PreviewCVinPage(CustomerCv $cv){
         $cvFileName=$cv->template->file_name;
         return view('cv-templates.'.$cvFileName,['cv' => $cv]);
@@ -136,15 +99,5 @@ class CompanyController extends Controller
             return redirect()->back()->withErrors(['msg' =>$exception->getMessage()]);
         }
 
-    }
-    public function getSearchedContacts(Request $request){
-        try{
-            //email first_name last_name phone_number
-            $contacts=Customer::select('*')->WithSearchKey($request->key)
-                ->distinct('id')->get();
-            return view('company-cp.chat.get_searched_contacts',compact('contacts'))->render();
-        }catch (\Exception $exception){
-            return $exception->getMessage();
-        }
     }
 }

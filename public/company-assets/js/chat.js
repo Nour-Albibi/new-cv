@@ -1,4 +1,4 @@
-var main_path="/customer/chat";
+var main_path="/company/chat";
 var current_company;
 function openConversation(){
 

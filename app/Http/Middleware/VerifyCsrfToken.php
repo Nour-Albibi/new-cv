@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
+        '/broadcasting/auth',
         'cv-builder/AddNewWorkHistory',
         'cv-builder/AddProject',
         'cv-builder/AddEducation',
@@ -22,7 +23,9 @@ class VerifyCsrfToken extends Middleware
         'cv-builder/PreviewCV',
         'cv-builder/getCVCard',
         'cv-builder/PreviewCVNew',
-        'company/loadOldMessages',
-        'company/getSearchedContacts'
+        'company/chat/loadOldMessages',
+        'company/chat/getSearchedContacts',
+        'customer/chat/loadOldMessages',
+        'customer/chat/getSearchedContacts'
     ];
 }

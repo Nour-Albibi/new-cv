@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CustomerChatController;
 use App\Http\Controllers\CustomerControllers\CSubscriptionController;
 use App\Http\Controllers\CustomerControllers\CustomerController;
 use App\Http\Controllers\CustomerControllers\CustomerCvController;
@@ -28,5 +29,12 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/profile', [CustomerController::class, 'profile'])->name('customer.myprofile');
         Route::put('/profile', [CustomerController::class, 'update_profile'])->name('customer.update_profile');
         Route::get('/editCv/{cv}', [CVController::class, 'editCV'])->name('customer.editCV');
+        Route::group(['prefix' => 'chat'], function () {
+            Route::get('/', [CustomerChatController::class, 'chat'])->name('customer.chat');
+            Route::post('/loadOldMessages', [CustomerChatController::class, 'loadOldMessages'])->name('customer.chat.loadOldMessages');
+            Route::post('/getSearchedContacts', [CustomerChatController::class, 'getSearchedContacts'])->name('customer.chat.getSearchedContacts');
+            Route::post('/broadcast', [CustomerChatController::class, 'broadcast']);
+            Route::post('/receive', [CustomerChatController::class, 'receive']);
+        });
     });
 });

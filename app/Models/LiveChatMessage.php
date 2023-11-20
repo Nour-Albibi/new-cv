@@ -12,6 +12,9 @@ class LiveChatMessage extends Model
     public function employeesList(){
         return $this->belongsTo('App\Models\Customer','employee_id');
     }
+    public function companyList(){
+        return $this->belongsTo('App\Models\Customer','company_id');
+    }
     public function sent_from_user(){
         return $this->belongsTo('App\Models\Customer','from_user');
     }

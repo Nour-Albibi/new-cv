@@ -5,7 +5,7 @@ var button_indecator = 0;
 // var current_edu = 1;
 // var current_language = 1;
 // var current_course=1;
-var main_path = "http://localhost/cv/public/";
+var main_path = "/";
 showTab(currentTab); // Display the current tab
 openModal();
 

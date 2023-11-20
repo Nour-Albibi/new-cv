@@ -78,6 +78,7 @@ class AuthController extends Controller
                 return redirect($redirect);
             }
             return redirect()->intended(RouteServiceProvider::HOME);
+//            return redirect()->back();
         } catch (\Exception $exception) {
             return redirect()->back()->withErrors(['msg' => $exception->getMessage()]);
         }

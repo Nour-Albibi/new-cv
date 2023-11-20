@@ -15,7 +15,7 @@ class PusherBroadcast implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public string $message;
+    public LiveChatMessage $message;
     /**
      * Create a new event instance.
      *
@@ -35,6 +35,7 @@ class PusherBroadcast implements ShouldBroadcast
     {
 //        return new PrivateChannel('channel-name');
 //        return ['public'];
+
         return new PrivateChannel('chat-message.' . $this->message->to_user);
     }
     public function broadcastAs(){

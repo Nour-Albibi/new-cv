@@ -1,7 +1,7 @@
 @foreach($contacts as $contact)
-    @if($contact->customer_type==1)
+    @if($contact->customer_type==2)
     <li>
-        <a href="javascript:void(0)" class="open_conversation_box" image="{{$contact->avatar}}" employee_name="{{$contact->first_name.' '.$contact->last_name}}" employee_id="{{$contact->id}}">
+        <a href="javascript:void(0)" class="open_conversation_box" image="{{$contact->avatar}}" company_name="{{$contact->first_name.' '.$contact->last_name}}" company_id="{{$contact->id}}">
             <div class="media">
                 <div class="align-self-center me-3">
                     <i class="mdi mdi-circle text-success font-size-10"></i>
@@ -21,19 +21,19 @@
 @endforeach
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
-    var main_path="/company/chat";
+    var main_path="/customer/chat";
     $(document).ready(function(){
         $('.open_conversation_box').on('click',function (){
-            employee_name=$(this).attr('employee_name');
-            employee_id=$(this).attr('employee_id');
-            $('#employee_name').html(employee_name);
+            company_name=$(this).attr('company_name');
+            company_id=$(this).attr('company_id');
+            $('#employee_name').html(company_id);
             $("#chat_conversation_card").removeClass("d-none");
             $("#load_conversation").html("<i class='fa  fa-spinner' ></i>");
-            loadOldConversation(employee_id);
+            loadOldConversation(company_id);
         });
     });
-    function loadOldConversation(employee_id){
-        $.post(main_path+'/loadOldMessages',{employee_id:employee_id},function (data){
+    function loadOldConversation(company_id){
+        $.post(main_path+'/loadOldMessages',{company_id:company_id},function (data){
             $("#load_conversation").html(data);
         });
     }

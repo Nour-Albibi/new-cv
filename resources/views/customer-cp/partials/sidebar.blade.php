@@ -58,7 +58,7 @@
                 </li>
 
                 <li>
-                    <a href="#" class=" waves-effect">
+                    <a href="{{route('customer.chat')}}" class=" waves-effect">
                         <i class="dripicons-message"></i>
                         <span style="font-size: small;">Chat</span>
                     </a>

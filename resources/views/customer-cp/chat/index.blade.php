@@ -1,17 +1,17 @@
-@extends('company-cp.layouts.app')
+@extends('customer-cp.layouts.app')
 @section('title','Chatting')
 @section('HeaderSection')
     <script src="https://js.pusher.com/8.0.1/pusher.min.js"></script>
 {{--    <script src="{{asset('assets/js/echo.js')}}"></script>--}}
     <style>
-        .chat-conversation{
-            max-height:400px;
-            overflow:auto;
-        }
+    .chat-conversation{
+        max-height:400px;
+        overflow:auto;
+    }
     </style>
 @endsection
 @section('content')
-    <input type="hidden" name="current_user" value="8" id="current_user" />
+    <input type="hidden" name="current_user" id="current_user" value="11"/>
     <input type="hidden" name="_token" value="{{csrf_token()}}"/>
     <div class="d-lg-flex">
         <div class="chat-leftsidebar me-lg-4">
@@ -87,18 +87,18 @@
                                 <div>
                                     <h5 class="font-size-16 mb-3">{{__('Contacts')}}</h5>
                                     <ul class="list-unstyled chat-list">
-                                     @foreach($employees as $employee)
+                                     @foreach($companies as $company)
                                         <li>
-                                            <a href="javascript:void(0)" class="open_conversation_box" image="{{$employee->avatar}}" employee_name="{{$employee->first_name.' '.$employee->last_name}}" employee_id="{{$employee->id}}">
+                                            <a href="javascript:void(0)" class="open_conversation_box" image="{{$company->avatar}}" employee_name="{{$company->first_name.' '.$company->last_name}}" employee_id="{{$company->id}}">
                                                 <div class="media">
                                                     <div class="align-self-center me-3">
                                                         <i class="mdi mdi-circle text-success font-size-10"></i>
                                                     </div>
                                                     <div class="align-self-center me-3">
-                                                        <img src="@if(!empty($employee->avatar)){{asset('files/'.$employee->avatar)}} @else {{asset('company-assets/images/users/avatar-3.jpg')}} @endif" class="rounded-circle avatar-xs" alt="">
+                                                        <img src="@if(!empty($company->avatar)){{asset('files/'.$company->avatar)}} @else {{asset('company-assets/images/users/avatar-3.jpg')}} @endif" class="rounded-circle avatar-xs" alt="">
                                                     </div>
                                                     <div class="media-body overflow-hidden">
-                                                        <h5 class="text-truncate font-size-14 mb-1">{{$employee->first_name.' '.$employee->last_name}}</h5>
+                                                        <h5 class="text-truncate font-size-14 mb-1">{{$company->first_name.' '.$company->last_name}}</h5>
                                                         <p class="text-truncate mb-0">I've finished it! See you so</p>
                                                     </div>
                                                     <div class="font-size-11">12 min</div>
@@ -179,13 +179,14 @@
     </div>
 @endsection
 @section('custom_js')
-    <script src="{{asset('company-assets/js/chat.js')}}"></script>
+    <script src="{{asset('assets/js/chat.js')}}"></script>
     <script>
-        var main_path="/company/chat";
-        let current_user_id = $("#current_user").val();
+        var main_path="/customer/chat";
+        var current_user_id = $("#current_user").val();
         var pusher = new Pusher("{{config('broadcasting.connections.pusher.key')}}", {
             cluster: "ap2",
         });
+        // alert(`chat-message.${current_user_id}`);
         var channel = pusher.subscribe(`chat-message.${current_user_id}`);
         //Receive message
         Pusher.logToConsole = true;

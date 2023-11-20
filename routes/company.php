@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CompanyChatController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyControllers\CompanySubscriptionController;
 use App\Http\Controllers\CustomerControllers\CSubscriptionController;
@@ -32,11 +33,13 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/views', [CompanyController::class, 'viewedmyCV'])->name('company.viewedmyCV');
         Route::get('/profile', [CompanyController::class, 'profile'])->name('company.profile');
         Route::put('/profile', [CompanyController::class, 'update_profile'])->name('company.update_profile');
-        Route::get('/chat', [CompanyController::class, 'chat'])->name('company.chat');
-        Route::post('/loadOldMessages', [CompanyController::class, 'loadOldMessages'])->name('company.chat.loadOldMessages');
-        Route::post('/getSearchedContacts', [CompanyController::class, 'getSearchedContacts'])->name('company.chat.getSearchedContacts');
-
-
-        //        Route::get('/chat', [PusherController::class, 'index'])->name('company.chat');
+        //Company Chats
+            Route::group(['prefix' => 'chat'], function () {
+                Route::get('/', [CompanyChatController::class, 'chat'])->name('company.chat');
+                Route::post('/loadOldMessages', [CompanyChatController::class, 'loadOldMessages'])->name('company.chat.loadOldMessages');
+                Route::post('/getSearchedContacts', [CompanyChatController::class, 'getSearchedContacts'])->name('company.chat.getSearchedContacts');
+                Route::post('/broadcast', [CompanyChatController::class, 'broadcast']);
+                Route::post('/receive', [CompanyChatController::class, 'receive']);
+            });
     });
 });
