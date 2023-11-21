@@ -31,30 +31,19 @@
     @yield('HeaderSection')
 @livewireStyles
 </head>
-
-
 <body>
-
 <!-- Begin page -->
 <div id="layout-wrapper">
-
 @include('company-cp.partials.header')
-
     <!-- ========== Left Sidebar Start ========== -->
 @include('company-cp.partials.sidebar')
     <!-- Left Sidebar End -->
-
     <!-- ============================================================== -->
     <!-- Start right Content here -->
     <!-- ============================================================== -->
     <div class="main-content">
-
-
         <!-- End Page-content -->
-
-
           <div class="page-content">
-
               <!-- start page title -->
               <div class="page-title-box">
                   <div class="container-fluid">
@@ -70,15 +59,12 @@
                           </div>
                           <div class="col-sm-6">
                               <div class="float-end d-none d-sm-block">
-
                               </div>
                           </div>
                       </div>
                   </div>
               </div>
               <!-- end page title -->
-
-
               <div class="container-fluid">
                   <div class="page-content-wrapper">
                       @yield('content')

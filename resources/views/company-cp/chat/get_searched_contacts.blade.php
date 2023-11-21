@@ -11,9 +11,9 @@
                 </div>
                 <div class="media-body overflow-hidden">
                     <h5 class="text-truncate font-size-14 mb-1">{{$contact->first_name.' '.$contact->last_name}}</h5>
-                    <p class="text-truncate mb-0">I've finished it! See you so</p>
+                    <p class="text-truncate mb-0">{{__('Hey there lets talk on chat')}}</p>
                 </div>
-                <div class="font-size-11">12 min</div>
+                <div class="font-size-11"></div>
             </div>
         </a>
     </li>

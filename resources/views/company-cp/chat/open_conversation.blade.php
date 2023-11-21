@@ -16,11 +16,6 @@
     <div>
         <div class="chat-conversation p-3">
             <ul class="list-unstyled" data-simplebar style="max-height: 600px;">
-                {{--                <li>--}}
-                {{--                    <div class="chat-day-title">--}}
-                {{--                        <span class="title">Today</span>--}}
-                {{--                    </div>--}}
-                {{--                </li>--}}
                 @foreach($chat_messages as $message)
                     @if($message->from_user==$employee_id)
                         <li>
