@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Events\PusherBroadcast;
 use App\Models\Customer;
 use App\Models\LiveChatMessage;
+use App\Notifications\NewCompanyMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class CompanyChatController extends Controller
 {
@@ -64,6 +66,8 @@ class CompanyChatController extends Controller
             'company_id'=>Auth::guard('company')->user()->id,
             'image'=>'images/202311151852125763876_3446160035431815_6420745989722415528_n.jpg',
             'message'=>$request->get('message')]);
+        $customer=Customer::find($request->to_user);
+        Notification::send($customer, new NewCompanyMessage($message));
         broadcast(new PusherBroadcast($message))->toOthers();
         return view('company-cp.chat.broadcast',['message'=>$message]);
     }
@@ -73,6 +77,6 @@ class CompanyChatController extends Controller
             'company_id'=>Auth::guard('company')->user()->id,
             'image'=>'images/2023111311571656750309019.jpeg',
             'message'=>$request->get('message')]);
-        return view('company-cp.chat.receive',['message'=>$message]);
+        return view('company-cp.chat.recieve',['message'=>$message]);
     }
 }

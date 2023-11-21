@@ -35,6 +35,7 @@ Route::group(['middleware' => 'language'], function () {
             Route::post('/getSearchedContacts', [CustomerChatController::class, 'getSearchedContacts'])->name('customer.chat.getSearchedContacts');
             Route::post('/broadcast', [CustomerChatController::class, 'broadcast']);
             Route::post('/receive', [CustomerChatController::class, 'receive']);
+            Route::any('pusher/auth',[CustomerChatController::class,'pusher_auth'])->name('customer.pusher.auth');
         });
     });
 });

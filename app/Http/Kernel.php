@@ -69,5 +69,6 @@ class Kernel extends HttpKernel
         'language'=>Language::class,
         'customer.check_subscription'=>customerCheckSubscription::class,
         'company.check_subscription'=>companyCheckSubscription::class,
+        'assign.guard' => \App\Http\Middleware\AssignGuard::class,
     ];
 }

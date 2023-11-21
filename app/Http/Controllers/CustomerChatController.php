@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewMessage;
 use App\Events\PusherBroadcast;
 use App\Models\Customer;
 use App\Models\LiveChatMessage;
+use App\Notifications\NewCustomerMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class CustomerChatController extends Controller
 {
@@ -64,17 +67,20 @@ class CustomerChatController extends Controller
             'to_user'=>$request->to_user,'employee_id'=>Auth::guard('customer')->user()->id,
             'company_id'=>$request->to_user,'image'=>'images/2023111311571656750309019.jpeg','message'=>$request->get('message')]
        );
+        $company=Customer::find($request->to_user);
+        Notification::send($company, new NewCustomerMessage($message));
         broadcast(new PusherBroadcast($message))->toOthers();
-
         return view('customer-cp.chat.broadcast',['message'=>$message]);
     }
     public function receive(Request $request){
-        dd($request);
         $message=LiveChatMessage::create(['from_user'=>11,
             'to_user'=>Auth::guard('customer')->user()->id,'employee_id'=>Auth::guard('customer')->user()->id,
             'company_id'=>11,
             'image'=>'images/202311151852125763876_3446160035431815_6420745989722415528_n.jpg',
             'message'=>$request->get('message')]);
-        return view('customer-cp.chat.receive',['message'=>$message]);
+        return view('customer-cp.chat.recieve',['message'=>$message]);
+    }
+    public function pusher_auth(Request $request){
+        return true;
     }
 }

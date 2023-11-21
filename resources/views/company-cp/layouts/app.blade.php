@@ -32,6 +32,11 @@
 @livewireStyles
 </head>
 <body>
+<audio id="myAudio" style="visibility: hidden;width: auto;">
+    <source src="{{asset('sounds/notification-2.mp3')}}" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<input type="hidden" name="user_id" id="user_id" value="{{auth()->guard('company')->user()->id}}"/>
 <!-- Begin page -->
 <div id="layout-wrapper">
 @include('company-cp.partials.header')

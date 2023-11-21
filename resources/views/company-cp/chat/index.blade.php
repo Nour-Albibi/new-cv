@@ -169,23 +169,23 @@
         var pusher = new Pusher("{{config('broadcasting.connections.pusher.key')}}", {
             cluster: "ap2",
         });
-        // var channel = pusher.subscribe(`chat-message.${current_user_id}`);
+        var channel = pusher.subscribe(`chat-message.${current_user_id}`);
         //Receive message
         Pusher.logToConsole = true;
-        setTimeout(() => {
-            var current_user_id = $("#current_user").val();
-            window.Echo.private(`chat-message.${current_user_id}`)
-                .listen('.server.created', (e) => {
-                    console.log(e);
-                    $.post(main_path+'/receive', {
-                        _token: '{{csrf_token()}}',
-                        message: data.message
-                    }).done(function (res) {
-                        $('#load_conversation > li').last().after(res);
-                        $(document).scrollTop($(document).height());
-                    });
-                });
-        }, 200);
+        {{--setTimeout(() => {--}}
+        {{--    var current_user_id = $("#current_user").val();--}}
+        {{--    window.Echo.private(`chat-message.${current_user_id}`)--}}
+        {{--        .listen('.server.created', (e) => {--}}
+        {{--            console.log(e);--}}
+        {{--            $.post(main_path+'/receive', {--}}
+        {{--                _token: '{{csrf_token()}}',--}}
+        {{--                message: data.message--}}
+        {{--            }).done(function (res) {--}}
+        {{--                $('#load_conversation > li').last().after(res);--}}
+        {{--                $(document).scrollTop($(document).height());--}}
+        {{--            });--}}
+        {{--        });--}}
+        {{--}, 200);--}}
         {{--channel.bind("chat", function (data) {--}}
         {{--    $.post(main_path+'/receive', {--}}
         {{--        _token: '{{csrf_token()}}',--}}
@@ -215,5 +215,42 @@
                 $(document).scrollTop($(document).height());
             });
         });
+    </script>
+    <script>
+        var audio="";
+        var main_path="/company/chat";
+        document.addEventListener('DOMContentLoaded', function() {
+            audio = new Audio("/sounds/notification-2.mp3");}
+        );
+        $(function() {
+            var NewAudio = document.getElementById("myAudio");
+            $channel = 'chat-messages-notification.' + $("#user_id").val();
+            Pusher.logToConsole = true;
+            Echo.private(`chat-message.${current_user_id}`)
+                .listen('.server.created', (data) => {
+                    $.post(main_path + '/receive', {
+                        _token: '{{csrf_token()}}',
+                        message: data.message.message
+                    }).done(function (res) {
+                        $('#load_conversation > li').last().after(res);
+                        $(document).scrollTop($(document).height());
+                    });
+                });
+            Echo.private($channel)
+                .notification((n) => {
+                    console.log('new message');
+                    // console.log(n.company_message);
+                    // if (n.order.status == "pending") {
+                    // update_notifications();
+                    //   var audio = new Audio('/sounds/notification-2.mp3')
+                    //  audio.play();
+                    NewAudio.play();
+                    // }
+                    // if (typeof (n.order.restaurant) != "undefined" && current_item_hash != "") {
+                    //     role_page(n.order, n.order.status);
+                    // }
+                });
+        });
+
     </script>
 @endsection

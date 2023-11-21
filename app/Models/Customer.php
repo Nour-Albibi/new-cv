@@ -135,4 +135,8 @@ class Customer extends Authenticatable
             ->orwhere('contact_phone','like','%'.$key.'%');
         return $query;
     }
+    public function receivesBroadcastNotificationsOn()
+    {
+        return 'chat-messages-notification.'.$this->id;
+    }
 }

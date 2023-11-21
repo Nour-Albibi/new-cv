@@ -16,3 +16,19 @@ use Illuminate\Support\Facades\Broadcast;
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+Broadcast::channel('chat-message.{id}', function ($user, $id) {
+    // // $id = $user->id;
+    // $user= Administrator::find($user->id);
+    // return (int) $user->restaurant_id === (int) $restaurant_id;
+    // return (int) $user->id === (int) $id;
+    return true;
+    // auth()->guard('admin')->user()->id
+});
+Broadcast::channel('chat-messages-notification.{id}', function ($user, $id) {
+    // // $id = $user->id;
+    // $user= Administrator::find($user->id);
+    // return (int) $user->restaurant_id === (int) $restaurant_id;
+    // return (int) $user->id === (int) $id;
+    return true;
+    // auth()->guard('admin')->user()->id
+});
