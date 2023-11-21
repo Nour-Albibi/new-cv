@@ -90,7 +90,10 @@
                                 <h6 class="m-0"> {{ __('Notifications') }} </h6>
                             </div>
                             <div class="col-auto">
-                                <a href="{{route('customer.viewedmyCV')}}" class="small"> {{ __('View All') }}</a>
+                                <form action="{{route('markAllAsRead')}}" method="post" id="maskall_read">
+                                    @csrf
+                                    <a href="javascript:void(0)"  onclick="$('form#maskall_read').submit()" class="small"> {{ __('Make All As Read') }}</a>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -144,10 +147,10 @@
                         @endif
                     </div>
                     <div class="p-2 border-top">
-                        <a class="btn btn-sm btn-link font-size-14 w-100 text-center"
-                           href="{{route('customer.viewedmyCV')}}">
-                            <i class="mdi mdi-arrow-right-circle me-1"></i> {{ __('View More..') }}
-                        </a>
+{{--                        <a class="btn btn-sm btn-link font-size-14 w-100 text-center"--}}
+{{--                           href="{{route('customer.viewedmyCV')}}">--}}
+{{--                            <i class="mdi mdi-arrow-right-circle me-1"></i> {{ __('View More..') }}--}}
+{{--                        </a>--}}
                     </div>
                 </div>
             </div>

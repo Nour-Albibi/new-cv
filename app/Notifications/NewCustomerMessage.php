@@ -71,6 +71,7 @@ class NewCustomerMessage extends Notification implements ShouldBroadcast
             // 'message' => "$this->message (User $notifiable->id)"
             'message' => $this->message,
             'user_message' => $this->user_message,
+            'user_name'=>$this->user_message->employeesList->first_name
         ]);
     }
 }

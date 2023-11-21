@@ -194,46 +194,10 @@
                 $(document).scrollTop($(document).height());
             });
         });
-        // alert(`chat-message.${current_user_id}`);
         var channel = pusher.subscribe(`chat-message.${current_user_id}`);
         //Receive message
         Pusher.logToConsole = true;
-        // setTimeout(() => {
-            var current_user_id = $("#current_user").val();
-            // alert(`chat-message.${current_user_id}`);
-        // $(function() {
-            {{--window.Echo.private(`chat-message.${current_user_id}`)--}}
-            {{--    .listen('.server.created', (e) => {--}}
-            {{--        $.post(main_path + '/receive', {--}}
-            {{--            _token: '{{csrf_token()}}',--}}
-            {{--            message: data.message--}}
-            {{--        }).done(function (res) {--}}
-            {{--            $('#load_conversation > li').last().after(res);--}}
-            {{--            $(document).scrollTop($(document).height());--}}
-            {{--        });--}}
-            {{--    });--}}
-            // }, 200);
-        // });
-        {{--channel.bind("chat", function (data) {--}}
-        {{--    $.post(main_path+'/receive', {--}}
-        {{--        _token: '{{csrf_token()}}',--}}
-        {{--        message: data.message--}}
-        {{--    }).done(function (res) {--}}
-        {{--        $('#load_conversation > li').last().after(res);--}}
-        {{--        $(document).scrollTop($(document).height());--}}
-        {{--    });--}}
-        {{--});--}}
-
-    </script>
-    <script>
-        var audio="";
-        var main_path="/customer/chat";
-        document.addEventListener('DOMContentLoaded', function() {
-            audio = new Audio("/sounds/notification-2.mp3");}
-        );
         $(function() {
-            var NewAudio = document.getElementById("myAudio");
-            $channel = 'chat-messages-notification.' + $("#user_id").val();
             Pusher.logToConsole = true;
             Echo.private(`chat-message.${current_user_id}`)
                 .listen('.server.created', (data) => {
@@ -245,39 +209,7 @@
                         $(document).scrollTop($(document).height());
                     });
                 });
-            Echo.private($channel)
-                .notification((n) => {
-                    console.log('new message');
-                    console.log(n.company_message);
-                    // if (n.order.status == "pending") {
-                    update_notifications();
-                    //   var audio = new Audio('/sounds/notification-2.mp3')
-                    //  audio.play();
-                    NewAudio.play();
-                    // }
-                    // if (typeof (n.order.restaurant) != "undefined" && current_item_hash != "") {
-                    //     role_page(n.order, n.order.status);
-                    // }
-                });
-            $channel2 = 'cv-view-notification.' + $("#user_id").val();
-            Echo.private($channel2)
-                .notification((n) => {
-                    console.log('new message');
-                    update_notifications();
-                    NewAudio.play();
-                });
         });
-    function update_notifications(){
-        $.ajax({
-            method: "POST",
-            url: "/customer/notifications/getNewCompanyMessagesNotifications",
-            data: {
-                "_token": $('meta[name="csrf-token"]').attr('content'),
-            }
-        }).done(function(data) {
-            $("#notifications_list").html(data);
-        });
-    }
     </script>
-{{--    <script src="{{asset('customer-assets/js/notifications.js')}}"></script>--}}
+    <script src="{{asset('customer-assets/js/notifications.js')}}"></script>
 @endsection

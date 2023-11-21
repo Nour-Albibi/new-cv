@@ -39,5 +39,7 @@ Route::group(['middleware' => 'language'], function () {
         });
         //Notifications
         Route::post('notifications/getNewCompanyMessagesNotifications',[CustomerController::class,'getNewCompanyMessagesNotifications']);
+        Route::post('notifications/markAllAsRead',[CustomerController::class,'markAllAsRead'])->name('markAllAsRead');
+
     });
 });

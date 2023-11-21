@@ -127,6 +127,7 @@ class CompanyController extends Controller
         return redirect()->route('company.profile');
      }
     public function PreviewCVinPage(CustomerCv $cv){
+        CVService::addNewCompanyView(Auth::guard('company')->user()->id, $cv->id);
         $cvFileName=$cv->template->file_name;
         return view('cv-templates.'.$cvFileName,['cv' => $cv]);
     }
@@ -141,5 +142,19 @@ class CompanyController extends Controller
             return redirect()->back()->withErrors(['msg' => $exception->getMessage()]);
         }
 
+    }
+    public function getNewCustomerMessagesNotifications(){
+        $user=Auth::guard('company')->user();
+        $notifications = $user->unreadNotifications->whereIn('type', ['App\Notifications\NewCustomerMessage']);
+
+        return view('company-cp.notifications.new_message', ['user_id' => $user->id, 'notifications' => $notifications, 'icon' => "fa fa-message", "notifications_title" => __('New Message From Company'), 'link_base' => 'customer/chat'])->render();
+    }
+    public function markAllAsRead()
+    {
+        $user=Auth::guard('company')->user();
+        if ($user) {
+            $user->unreadNotifications->whereIn('type', ['App\Notifications\NewCustomerMessage'])->markAsRead();
+            return redirect()->back();
+        }
     }
 }

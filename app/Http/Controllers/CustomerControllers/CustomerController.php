@@ -76,6 +76,13 @@ class CustomerController extends Controller
         $notifications = $user->unreadNotifications->whereIn('type', ['App\Notifications\NewCompanyMessage','App\Notifications\CvNewView']);
 
         return view('customer-cp.notifications.new_message', ['user_id' => $user->id, 'notifications' => $notifications, 'icon' => "fa fa-message", "notifications_title" => __('New Message From Company'), 'link_base' => 'customer/chat'])->render();
-
+    }
+    public function markAllAsRead()
+    {
+        $user=Auth::guard('customer')->user();
+        if ($user) {
+            $user->unreadNotifications->whereIn('type', ['App\Notifications\NewCompanyMessage', 'App\Notifications\CvNewView'])->markAsRead();
+            return redirect()->back();
+        }
     }
 }

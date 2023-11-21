@@ -47,5 +47,9 @@ class AppServiceProvider extends ServiceProvider
             ['customer-cp.partials.header'],
             'App\Composers\CustomerCPComposer'
         );
+        \View::composer(
+            ['company-cp.partials.header'],
+            'App\Composers\CompanyCPComposer'
+        );
     }
 }

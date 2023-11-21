@@ -41,5 +41,9 @@ Route::group(['middleware' => 'language'], function () {
                 Route::post('/broadcast', [CompanyChatController::class, 'broadcast']);
                 Route::post('/receive', [CompanyChatController::class, 'receive']);
             });
+            //notifications
+        Route::post('notifications/getNewCustomerMessagesNotifications',[CompanyController::class,'getNewCustomerMessagesNotifications']);
+        Route::post('notifications/markAllAsRead',[CompanyController::class,'markAllAsRead'])->name('company.markAllAsRead');
+
     });
 });

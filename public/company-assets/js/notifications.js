@@ -1,5 +1,5 @@
 var audio="";
-var main_path="/customer/chat";
+var main_path="/company/chat";
 document.addEventListener('DOMContentLoaded', function() {
     audio = new Audio("/sounds/notification-2.mp3");}
 );
@@ -13,18 +13,11 @@ $(function() {
             update_notifications();
             NewAudio.play();
         });
-    $channel2 = 'cv-view-notification.' + $("#user_id").val();
-    Echo.private($channel2)
-        .notification((n) => {
-            console.log('new message');
-            update_notifications();
-            NewAudio.play();
-        });
 });
 function update_notifications(){
     $.ajax({
         method: "POST",
-        url: "/customer/notifications/getNewCompanyMessagesNotifications",
+        url: "/company/notifications/getNewCompanyMessagesNotifications",
         data: {
             "_token": $('meta[name="csrf-token"]').attr('content'),
         }

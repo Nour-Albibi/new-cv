@@ -12,7 +12,7 @@
                 <h6 class="m-0"> {{ __('Notifications') }} </h6>
             </div>
             <div class="col-auto">
-                <form action="{{route('markAllAsRead')}}" method="post" id="maskall_read">
+                <form action="{{route('company.markAllAsRead')}}" method="post" id="maskall_read">
                     @csrf
                     <a href="javascript:void(0)"  onclick="$('form#maskall_read').submit()" class="small"> {{ __('Make All As Read') }}</a>
                 </form>
@@ -26,8 +26,7 @@
             </div>
         @else
             @foreach($notifications as $notification)
-                @if($notification->type=="App\Notifications\NewCompanyMessage")
-                    <a href="{{url('customer/chat')}}" class="text-reset notification-item">
+                    <a href="{{url('company/chat')}}" class="text-reset notification-item">
                         <div class="media">
                             <div class="avatar-xs me-3">
                                     <span class="avatar-title bg-primary rounded-circle font-size-16">
@@ -35,9 +34,9 @@
                                     </span>
                             </div>
                             <div class="media-body">
-                                <h6 class="mt-0 mb-1">@if(isset($notification->data['company_name'])){{__('You have new view From: ').$notification->data['company_name']}} @endif</h6>
+                                <h6 class="mt-0 mb-1">@if(isset($notification->data['user_name'])){{__('You have new view From: ').$notification->data['user_name']}} @endif</h6>
                                 <div class="font-size-13 text-muted">
-                                    <p class="mb-1">{{__(' Message: ').$notification->data['company_message']['message'] ?? ''}}</p>
+                                    <p class="mb-1">{{__(' Message: ').$notification->data['user_message']['message'] ?? ''}}</p>
                                     <p class="mb-0"><i
                                             class="mdi mdi-clock-outline"></i>{{ (new \DateTime($notification->created_at))->format('Y-m-d H:i:s')}}
                                     </p>
@@ -45,26 +44,6 @@
                             </div>
                         </div>
                     </a>
-                @else
-                    <a href="{{route('customer.viewedmyCV')}}" class="text-reset notification-item">
-                        <div class="media">
-                            <div class="avatar-xs me-3">
-                                    <span class="avatar-title bg-primary rounded-circle font-size-16">
-                                        <i class="mdi mdi-cart text-white"></i>
-                                    </span>
-                            </div>
-                            <div class="media-body">
-                                <h6 class="mt-0 mb-1">@if(isset($notification->data['company_name'])){{__('You have new view From: ').$notification->data['company_name']}} @endif</h6>
-                                <div class="font-size-13 text-muted">
-                                    <p class="mb-1">{{__(' CV: ').$notification->data['view_cv']['cv_id'] ?? ''}}</p>
-                                    <p class="mb-0"><i
-                                            class="mdi mdi-clock-outline"></i>{{ (new \DateTime($notification->data['view_cv']['created_at']))->format('Y-m-d H:i:s')}}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    @endif
             @endforeach
         @endif
     </div>
