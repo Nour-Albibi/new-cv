@@ -75,7 +75,7 @@
                 </button>
             </div>
 
-            <div class="dropdown d-inline-block">
+            <div class="dropdown d-inline-block" id="notifications_list">
                 <button type="button" class="btn header-item noti-icon waves-effect"
                         id="page-header-notifications-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -94,31 +94,52 @@
                             </div>
                         </div>
                     </div>
-                    <div data-simplebar style="max-height: 230px;">
+                    <div data-simplebar style="max-height: 230px;" >
                         @if($notifications->count() == 0)
                             <div class="notifications-empty text-center">
                                 <h6 class="mt-0 mb-1"> {{ __('No New notifications') }}</h6>
                             </div>
                         @else
                             @foreach($notifications as $notification)
-                                <a href="" class="text-reset notification-item">
-                                    <div class="media">
-                                        <div class="avatar-xs me-3">
+                                @if($notification->type=="App\Notifications\NewCompanyMessage")
+                                    <a href="{{url('customer/chat')}}" class="text-reset notification-item">
+                                        <div class="media">
+                                            <div class="avatar-xs me-3">
                                     <span class="avatar-title bg-primary rounded-circle font-size-16">
                                         <i class="mdi mdi-cart text-white"></i>
                                     </span>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="mt-0 mb-1">@if(isset($notification->data['company_name'])){{__('You have new view From: ').$notification->data['company_name']}} @endif</h6>
-                                            <div class="font-size-13 text-muted">
-                                                <p class="mb-1">{{__(' CV: ').$notification->data['view_cv']['cv_id'] ?? ''}}</p>
-                                                <p class="mb-0"><i
-                                                        class="mdi mdi-clock-outline"></i>{{ (new \DateTime($notification->data['view_cv']['created_at']))->format('Y-m-d H:i:s')}}
-                                                </p>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="mt-0 mb-1">@if(isset($notification->data['company_name'])){{__('You have new view From: ').$notification->data['company_name']}} @endif</h6>
+                                                <div class="font-size-13 text-muted">
+                                                    <p class="mb-1">{{__(' Message: ').$notification->data['company_message']['message'] ?? ''}}</p>
+                                                    <p class="mb-0"><i
+                                                            class="mdi mdi-clock-outline"></i>{{ (new \DateTime($notification->created_at))->format('Y-m-d H:i:s')}}
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                @else
+                                    <a href="{{route('customer.viewedmyCV')}}" class="text-reset notification-item">
+                                        <div class="media">
+                                            <div class="avatar-xs me-3">
+                                    <span class="avatar-title bg-primary rounded-circle font-size-16">
+                                        <i class="mdi mdi-cart text-white"></i>
+                                    </span>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="mt-0 mb-1">@if(isset($notification->data['company_name'])){{__('You have new view From: ').$notification->data['company_name']}} @endif</h6>
+                                                <div class="font-size-13 text-muted">
+                                                    <p class="mb-1">{{__(' CV: ').$notification->data['view_cv']['cv_id'] ?? ''}}</p>
+                                                    <p class="mb-0"><i
+                                                            class="mdi mdi-clock-outline"></i>{{ (new \DateTime($notification->data['view_cv']['created_at']))->format('Y-m-d H:i:s')}}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                @endif
                             @endforeach
                         @endif
                     </div>

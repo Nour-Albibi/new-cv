@@ -34,7 +34,7 @@ class CvNewView extends Notification implements ShouldBroadcast
      */
     public function via($notifiable)
     {
-        return ['mail','database', 'broadcast'];
+        return ['database', 'broadcast'];
     }
 
     /**

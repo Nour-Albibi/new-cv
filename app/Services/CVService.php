@@ -15,7 +15,10 @@ use App\Models\Skill;
 use App\Models\Subscription;
 use App\Models\Template;
 use App\Models\View;
+use App\Notifications\CvNewView;
+use App\Notifications\NewCompanyMessage;
 use Carbon\Carbon;
+use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
@@ -522,6 +525,7 @@ class CVService
         }
     }
     public static function addNewCompanyView($company_id,$cv_id){
+        $cv=CustomerCv::find($cv_id);
         $view=View::where('company_id',$company_id)
             ->where('cv_id',$cv_id)->first();
         if($view!=null){
@@ -529,11 +533,13 @@ class CVService
             $view->save();
         }else{
             $company_subscription=Auth::guard('company')->user()->getActiveSubscription();
-            View::create(['company_id'=>$company_id,'company_subscription_id'=>
+            $view=View::create(['company_id'=>$company_id,'company_subscription_id'=>
                 $company_subscription->id,'cv_id'=>$cv_id,
                 'how_often'=>1]);
             $company_subscription->current_cv_count+=1;
             $company_subscription->save();
         }
+        $customer=$cv->customer;
+        \Illuminate\Support\Facades\Notification::send($customer, new CvNewView($view));
     }
 }

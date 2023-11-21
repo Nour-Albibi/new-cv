@@ -71,4 +71,11 @@ class CustomerController extends Controller
             ->get();
         return view('customer-cp.cvs.views',compact('customer_views','user_id'));
     }
+    public function getNewCompanyMessagesNotifications(){
+        $user=Auth::guard('customer')->user();
+        $notifications = $user->unreadNotifications->whereIn('type', ['App\Notifications\NewCompanyMessage','App\Notifications\CvNewView']);
+
+        return view('customer-cp.notifications.new_message', ['user_id' => $user->id, 'notifications' => $notifications, 'icon' => "fa fa-message", "notifications_title" => __('New Message From Company'), 'link_base' => 'customer/chat'])->render();
+
+    }
 }

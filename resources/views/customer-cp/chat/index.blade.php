@@ -250,7 +250,7 @@
                     console.log('new message');
                     console.log(n.company_message);
                     // if (n.order.status == "pending") {
-                    // update_notifications();
+                    update_notifications();
                     //   var audio = new Audio('/sounds/notification-2.mp3')
                     //  audio.play();
                     NewAudio.play();
@@ -259,8 +259,25 @@
                     //     role_page(n.order, n.order.status);
                     // }
                 });
+            $channel2 = 'cv-view-notification.' + $("#user_id").val();
+            Echo.private($channel2)
+                .notification((n) => {
+                    console.log('new message');
+                    update_notifications();
+                    NewAudio.play();
+                });
         });
-
+    function update_notifications(){
+        $.ajax({
+            method: "POST",
+            url: "/customer/notifications/getNewCompanyMessagesNotifications",
+            data: {
+                "_token": $('meta[name="csrf-token"]').attr('content'),
+            }
+        }).done(function(data) {
+            $("#notifications_list").html(data);
+        });
+    }
     </script>
 {{--    <script src="{{asset('customer-assets/js/notifications.js')}}"></script>--}}
 @endsection

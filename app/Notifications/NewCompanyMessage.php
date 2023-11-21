@@ -71,6 +71,7 @@ class NewCompanyMessage extends Notification implements ShouldBroadcast
             // 'message' => "$this->message (User $notifiable->id)"
             'message' => $this->message,
             'company_message' => $this->company_message,
+            'company_name'=>$this->company_message->companyList->company_name
         ]);
     }
 }

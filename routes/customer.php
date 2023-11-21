@@ -37,5 +37,7 @@ Route::group(['middleware' => 'language'], function () {
             Route::post('/receive', [CustomerChatController::class, 'receive']);
             Route::any('pusher/auth',[CustomerChatController::class,'pusher_auth'])->name('customer.pusher.auth');
         });
+        //Notifications
+        Route::post('notifications/getNewCompanyMessagesNotifications',[CustomerController::class,'getNewCompanyMessagesNotifications']);
     });
 });
