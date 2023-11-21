@@ -36,7 +36,7 @@ class CustomerCPComposer
     {
         $user = Auth::guard('customer')->user();
         if($user){
-            $notifications = $user->unreadNotifications->whereIn('type', ['App\Notifications\CvNewView']);
+            $notifications = $user->unreadNotifications->whereIn('type', ['App\Notifications\CvNewView','App\Notifications\NewCompanyMessage']);
             $view->with(['notifications'=>$notifications]);
         }
 

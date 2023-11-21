@@ -1,7 +1,7 @@
 @extends('customer-cp.layouts.app')
 
 @section('title')
-    {{ __('Subscriptionsssssssssssssssssss') }}
+    {{ __('Subscriptions') }}
 @endsection
 @section('content')
     <div class="row">
@@ -10,7 +10,7 @@
                 <div class="card-body  pt-0">
                     <ul class="nav nav-tabs nav-tabs-custom mb-4" style="justify-content: space-between">
                         <li class="nav-item">
-                            <a class="nav-link fw-bold p-3 active" href="#">{{ __('Subscription Managmentssssssssssssssssss') }}</a>
+                            <a class="nav-link fw-bold p-3 active" href="#">{{ __('Subscription Managment') }}</a>
                         </li>
                         @if ($canSubscribeToNewPackage)
                             <li class="m">
@@ -35,11 +35,11 @@
                                         <label class="form-check-label" for="ordercheck">&nbsp;</label>
                                     </div>
                                 </th>
-                                <th>{{ __('PLANssssssssssssssssss') }}</th>
-                                <th>{{ __('pricessssssssssssssssss') }}</th>
-                                <th>{{ __('Start Datessssssssssssssssss') }}</th>
-                                <th>{{ __('Expire Datessssssssssssssssss') }}</th>
-                                <th>{{ __('Statusssssssssssssssssss') }}</th>
+                                <th>{{ __('PLAN') }}</th>
+                                <th>{{ __('price') }}</th>
+                                <th>{{ __('Start Date') }}</th>
+                                <th>{{ __('Expire Date') }}</th>
+                                <th>{{ __('Status') }}</th>
                             </tr>
                             </thead>
                             <tbody>
