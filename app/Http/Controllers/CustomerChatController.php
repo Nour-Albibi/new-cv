@@ -17,7 +17,10 @@ class CustomerChatController extends Controller
             ->where('company_id','!=',NULL)
             ->where('employee_id', Auth::guard('customer')->user()->id)
             ->get();
-        return view('customer-cp.chat.index',compact('companies'));
+        $suggestedCompanies=Customer::select('customers.*')
+        ->where('customer_type',2)->join('subscriptions','subscriptions.user_id',
+            'customers.id')->where('subscriptions.status',1)->take(7)->get()->shuffle();
+        return view('customer-cp.chat.index',compact('companies','suggestedCompanies'));
     }
     public function loadOldMessages(Request $request){
         try{

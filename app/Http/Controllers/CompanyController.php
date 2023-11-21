@@ -16,7 +16,6 @@ use App\Providers\RouteServiceProvider;
 use App\Services\CVService;
 use FontLib\Table\Type\name;
 use Barryvdh\DomPDF\Facade\Pdf;
-use FontLib\Table\Type\name;
 use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -64,27 +63,15 @@ class CompanyController extends Controller
     }
 
     public function search(Request $request){
-        // dd($request->jobtitle);
         if($jobtitle=JobTitle::where('id',$request->jobtitle)->first())
         {
         $jobtitlear=$jobtitle->name_ar;
         $jobtitleen=$jobtitle->name_en;}
-        // else $jobtitle=$jobtitlear='';
         $name=$request->name;
         $amount=$request->amount;
-        // dd($request);
-        // dd($jobtitlear);
-        // $cvs=CustomerCv::wherehas('customer_cv_work_history',function($q) use($jobtitle){
-        //     $q->where('job_title_en', 'like', $jobtitle);
-        //     return $q;})->get();
-
-
-
-
             $cvs=CustomerCv::latest();
             if($name)
             $cvs=$cvs->where(DB::raw("concat(first_name, ' ', surename)"), 'LIKE', "%".$name."%");
-        // dd($cvs->get());
             if($jobtitle)
         $cvs=$cvs->where(function ($query) use($jobtitleen , $jobtitlear){
             $query->wherehas('customer_cv_work_history',function($q) use($jobtitleen){
@@ -101,27 +88,7 @@ class CompanyController extends Controller
                         $q->whereIn('skill_id', $skills);
                     return $q;
                 });}
-
-
                 $cvs=$cvs->take($amount)->paginate(10);
-                // dd ($cvs);
-            // dd ($cvs);
-    //     $cvs=CustomerCv::where(function ($query) use($jobtitle , $jobtitlear){
-    //     $query->wherehas('customer_cv_work_history',function($jobtitle){
-    //         $q=CustomerCvWorkHistory::where('job_title_en', 'like', $jobtitle);
-    //         // dd($q);
-    //     return $q;});
-    //     if($jobtitlear){
-    //     $query->orwherehas('customer_cv_work_history',function($jobtitlear){
-    //         $q=CustomerCvWorkHistory::where('job_title_ar', 'like', $jobtitlear);
-    //     return $q;});}
-    //     return $query;
-    // })->wherehas('customer_cv_skill',function($skills){
-    //         $q=CustomerCvSkill::where('skill_id', 'in', $skills);
-    //     return $q;
-
-    // })->get();
-        // dd($cvs);
         return view('company-cp.find_cv',compact('cvs'));
     }
 

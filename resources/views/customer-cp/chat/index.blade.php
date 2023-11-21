@@ -36,52 +36,6 @@
                         </ul>
                         <div class="tab-content py-4">
                             <div class="tab-pane show active" id="chat">
-                                <div>
-                                    <h5 class="font-size-16 mb-3">Online</h5>
-                                    <ul class="list-unstyled chat-list">
-                                        <li class="active">
-                                            <a href="javascript:void(0)" class="open_conversation_box" image="/company-assets/images/users/avatar-2.jpg" employee_name="Steven Franklin" employee_id="2">
-                                                <div class="media">
-                                                    <div class="align-self-center me-3">
-                                                        <i class="mdi mdi-circle text-success font-size-10"></i>
-                                                    </div>
-                                                    <div class="align-self-center me-3">
-                                                        <img src="assets/images/users/avatar-2.jpg" class="rounded-circle avatar-xs" alt="">
-                                                    </div>
-
-                                                    <div class="media-body overflow-hidden">
-                                                        <h5 class="text-truncate font-size-14 mb-1">Steven Franklin</h5>
-                                                        <p class="text-truncate mb-0">Hey! there I'm available</p>
-                                                    </div>
-                                                    <div class="font-size-11">05 min</div>
-                                                </div>
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="#">
-                                                <div class="media">
-                                                    <div class="align-self-center me-3">
-                                                        <i class="mdi mdi-circle text-success font-size-10"></i>
-                                                    </div>
-                                                    <div class="avatar-xs align-self-center me-3">
-                                                                            <span class="avatar-title rounded-circle bg-soft-primary text-primary">
-                                                                                K
-                                                                            </span>
-                                                    </div>
-                                                    <div class="media-body overflow-hidden">
-                                                        <h5 class="text-truncate font-size-14 mb-1">Keith Gonzales</h5>
-                                                        <p class="text-truncate mb-0">This theme is awesome!</p>
-                                                    </div>
-                                                    <div class="font-size-11">24 min</div>
-                                                </div>
-                                            </a>
-                                        </li>
-
-
-
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                         <div class="tab-content pb-4">
@@ -90,6 +44,7 @@
                                     <h5 class="font-size-16 mb-3">{{__('Contacts')}}</h5>
                                     <ul class="list-unstyled chat-list">
                                      @foreach($companies as $company)
+                                         @php($company=$company->companyList)
                                         <li>
                                             <a href="javascript:void(0)" class="open_conversation_box" image="{{$company->avatar}}" employee_name="{{$company->first_name.' '.$company->last_name}}" employee_id="{{$company->id}}">
                                                 <div class="media">
@@ -101,12 +56,37 @@
                                                     </div>
                                                     <div class="media-body overflow-hidden">
                                                         <h5 class="text-truncate font-size-14 mb-1">{{$company->first_name.' '.$company->last_name}}</h5>
-                                                        <p class="text-truncate mb-0">I've finished it! See you so</p>
+                                                        <p class="text-truncate mb-0">{{__('Hey there lets talk on chat')}}</p>
                                                     </div>
                                                     <div class="font-size-11">12 min</div>
                                                 </div>
                                             </a>
                                         </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div style="margin-top:10px;">
+                                    <h5 class="font-size-16 mb-3">{{__('Other Contacts')}}</h5>
+                                    <ul class="list-unstyled chat-list">
+                                        @foreach($suggestedCompanies as $company)
+                                            <li>
+                                                <a href="javascript:void(0)" class="open_conversation_box" image="{{$company->avatar}}" employee_name="{{$company->first_name.' '.$company->last_name}}" employee_id="{{$company->id}}">
+                                                    <div class="media">
+                                                        <div class="align-self-center me-3">
+                                                            <i class="mdi mdi-circle text-success font-size-10"></i>
+                                                        </div>
+                                                        <div class="align-self-center me-3">
+                                                            <img src="@if(!empty($company->avatar)){{asset('files/'.$company->avatar)}} @else {{asset('company-assets/images/users/avatar-3.jpg')}} @endif" class="rounded-circle avatar-xs" alt="">
+                                                        </div>
+                                                        <div class="media-body overflow-hidden">
+                                                            <h5 class="text-truncate font-size-14 mb-1">{{$company->first_name.' '.$company->last_name}}</h5>
+                                                            <p class="text-truncate mb-0">{{__('Hey there lets talk on chat')}}</p>
+                                                        </div>
+                                                        <div class="font-size-11"></div>
+                                                    </div>
+                                                </a>
+                                            </li>
                                         @endforeach
                                     </ul>
                                 </div>
