@@ -8,7 +8,6 @@
 
             <div class="border p-3 rounded mt-4">
 
-                <h5 class="font-size-16">Search</h5>
             <h5 class="font-size-16">{{ __('Search by name') }}</h5>
 
             <div class="search-box me-2 mt-3">
@@ -29,18 +28,19 @@
                     <i class="ti-search search-icon"></i>
                 </div>
             </div>
-                <div id="accordion" class="custom-accordion categories-accordion">
-                    <div class="categories-group-card">
-                        <a href="#collapseOne" class="categories-group-list collapsed" data-bs-toggle="collapse"
-                           aria-expanded="true" aria-controls="collapseOne">
-                            <i class="ti-desktop font-size-16 align-middle me-2"></i> {{ __('jobtitle') }}
-                            <i class="mdi mdi-minus float-end accor-plus-icon"></i>
-                        </a>
-                        <div id="collapseOne" class="collapse" data-parent="#accordion">
-                            <ul class="list-unstyled categories-list mb-0" style="margin-left: 10px;">
-                                @php
-                                    $lang='en';
-                                @endphp
+
+
+            <div id="accordion" class="custom-accordion categories-accordion">
+                <div class="categories-group-card">
+                    <a href="#collapseOne" class="categories-group-list collapsed" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
+                        <i class="ti-desktop font-size-16 align-middle me-2"></i> {{ __('jobtitle') }}
+                        <i class="mdi mdi-minus float-end accor-plus-icon"></i>
+                    </a>
+                    <div id="collapseOne" class="collapse" data-parent="#accordion">
+                        <ul class="list-unstyled categories-list mb-0">
+                            @php
+                            $lang='en';
+                        @endphp
 
                                 @if ($jobs)
                                     @foreach ($jobs as $job )

@@ -14,6 +14,7 @@ use App\Models\JobTitle;
 use App\Models\Skill;
 use App\Providers\RouteServiceProvider;
 use App\Services\CVService;
+use FontLib\Table\Type\name;
 use Barryvdh\DomPDF\Facade\Pdf;
 use FontLib\Table\Type\name;
 use Illuminate\Contracts\Database\Query\Builder;
