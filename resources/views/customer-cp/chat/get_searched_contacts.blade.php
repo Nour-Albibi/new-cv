@@ -26,6 +26,7 @@
         $('.open_conversation_box').on('click',function (){
             company_name=$(this).attr('company_name');
             company_id=$(this).attr('company_id');
+            $('input[name=to_user]').val(company_id);
             $('#employee_name').html(company_id);
             $("#chat_conversation_card").removeClass("d-none");
             $("#load_conversation").html("<i class='fa  fa-spinner' ></i>");

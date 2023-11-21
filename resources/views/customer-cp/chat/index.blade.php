@@ -13,7 +13,7 @@
     </style>
 @endsection
 @section('content')
-    <input type="hidden" name="current_user" id="current_user" value="8"/>
+    <input type="hidden" name="current_user" id="current_user" value="{{auth()->guard('customer')->user()->id}}"/>
     <input type="hidden" name="_token" value="{{csrf_token()}}"/>
     <div class="d-lg-flex">
         <div class="chat-leftsidebar me-lg-4">
@@ -52,7 +52,7 @@
                                                         <i class="mdi mdi-circle text-success font-size-10"></i>
                                                     </div>
                                                     <div class="align-self-center me-3">
-                                                        <img src="@if(!empty($company->avatar)){{asset('files/'.$company->avatar)}} @else {{asset('company-assets/images/users/avatar-3.jpg')}} @endif" class="rounded-circle avatar-xs" alt="">
+                                                        <img src="@if(!empty($company->avatar)){{asset('files/images/'.$company->avatar)}} @else {{asset('company-assets/images/users/avatar-3.jpg')}} @endif" class="rounded-circle avatar-xs" alt="">
                                                     </div>
                                                     <div class="media-body overflow-hidden">
                                                         <h5 class="text-truncate font-size-14 mb-1">{{$company->first_name.' '.$company->last_name}}</h5>
@@ -77,7 +77,7 @@
                                                             <i class="mdi mdi-circle text-success font-size-10"></i>
                                                         </div>
                                                         <div class="align-self-center me-3">
-                                                            <img src="@if(!empty($company->avatar)){{asset('files/'.$company->avatar)}} @else {{asset('company-assets/images/users/avatar-3.jpg')}} @endif" class="rounded-circle avatar-xs" alt="">
+                                                            <img src="@if(!empty($company->avatar)){{asset('files/images/'.$company->avatar)}} @else {{asset('company-assets/images/users/avatar-3.jpg')}} @endif" class="rounded-circle avatar-xs" alt="">
                                                         </div>
                                                         <div class="media-body overflow-hidden">
                                                             <h5 class="text-truncate font-size-14 mb-1">{{$company->first_name.' '.$company->last_name}}</h5>
@@ -123,6 +123,7 @@
                     </div>
                     <div class="p-3 chat-input-section">
                         <form class="" name="send_message" id="send_message_form">
+                            <input type="hidden" name="to_user" value="" id="to_user"/>
                             <div class="row">
                                 <div class="col">
                                     <div class="position-relative">
@@ -168,13 +169,33 @@
         var pusher = new Pusher("{{config('broadcasting.connections.pusher.key')}}", {
             cluster: "ap2",
         });
+        //Broadcast message
+        $('form#send_message_form').submit(function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: main_path+"/broadcast",
+                method: 'POST',
+                headers: {
+                    'X-Socket-Id': pusher.connection.socket_id
+                },
+                data: {
+                    _token: '{{csrf_token()}}',
+                    message: $('form#send_message_form #message').val(),
+                    to_user:$('form#send_message_form #to_user').val()
+                }
+            }).done(function (res) {
+                $('#load_conversation > li').last().after(res);
+                $('form#send_message_form #message').val('')
+                $(document).scrollTop($(document).height());
+            });
+        });
         // alert(`chat-message.${current_user_id}`);
         // var channel = pusher.subscribe(`chat-message.${current_user_id}`);
         //Receive message
         Pusher.logToConsole = true;
         // setTimeout(() => {
             var current_user_id = $("#current_user").val();
-            window.Echo.private(`chat-message.8`)
+            window.Echo.private(`chat-message.${current_user_id}`)
                 .listen('.server.created', (e) => {
                     $.post(main_path+'/receive', {
                         _token: '{{csrf_token()}}',
@@ -194,24 +215,6 @@
         {{--        $(document).scrollTop($(document).height());--}}
         {{--    });--}}
         {{--});--}}
-        //Broadcast message
-        $('form#send_message_form').submit(function (event) {
-            event.preventDefault();
-            $.ajax({
-                url: main_path+"/broadcast",
-                method: 'POST',
-                headers: {
-                    'X-Socket-Id': pusher.connection.socket_id
-                },
-                data: {
-                    _token: '{{csrf_token()}}',
-                    message: $('form#send_message_form #message').val()
-                }
-            }).done(function (res) {
-                $('#load_conversation > li').last().after(res);
-                $('form#send_message_form #message').val('')
-                $(document).scrollTop($(document).height());
-            });
-        });
+
     </script>
 @endsection

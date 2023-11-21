@@ -61,14 +61,15 @@ class CustomerChatController extends Controller
     }
     public function broadcast(Request $request){
        $message=LiveChatMessage::create(['from_user'=>Auth::guard('customer')->user()->id,
-            'to_user'=>11,'employee_id'=>Auth::guard('customer')->user()->id,
-            'company_id'=>11,'image'=>'images/2023111311571656750309019.jpeg','message'=>$request->get('message')]
+            'to_user'=>$request->to_user,'employee_id'=>Auth::guard('customer')->user()->id,
+            'company_id'=>$request->to_user,'image'=>'images/2023111311571656750309019.jpeg','message'=>$request->get('message')]
        );
         broadcast(new PusherBroadcast($message))->toOthers();
 
         return view('customer-cp.chat.broadcast',['message'=>$message]);
     }
     public function receive(Request $request){
+        dd($request);
         $message=LiveChatMessage::create(['from_user'=>11,
             'to_user'=>Auth::guard('customer')->user()->id,'employee_id'=>Auth::guard('customer')->user()->id,
             'company_id'=>11,

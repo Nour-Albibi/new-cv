@@ -13,7 +13,7 @@
     </style>
 @endsection
 @section('content')
-    <input type="hidden" name="current_user" value="11" id="current_user" />
+    <input type="hidden" name="current_user" value="{{auth()->guard('company')->user()->id}}" id="current_user" />
     <input type="hidden" name="_token" value="{{csrf_token()}}"/>
     <div class="d-lg-flex">
         <div class="chat-leftsidebar me-lg-4">
@@ -52,7 +52,7 @@
                                                         <i class="mdi mdi-circle text-success font-size-10"></i>
                                                     </div>
                                                     <div class="align-self-center me-3">
-                                                        <img src="@if(!empty($employee->avatar)){{asset('files/'.$employee->avatar)}} @else {{asset('company-assets/images/users/avatar-3.jpg')}} @endif" class="rounded-circle avatar-xs" alt="">
+                                                        <img src="@if(!empty($employee->avatar)){{asset('files/images/'.$employee->avatar)}} @else {{asset('company-assets/images/users/avatar-3.jpg')}} @endif" class="rounded-circle avatar-xs" alt="">
                                                     </div>
                                                     <div class="media-body overflow-hidden">
                                                         <h5 class="text-truncate font-size-14 mb-1">{{$employee->first_name.' '.$employee->last_name}}</h5>
@@ -77,7 +77,7 @@
                                                             <i class="mdi mdi-circle text-success font-size-10"></i>
                                                         </div>
                                                         <div class="align-self-center me-3">
-                                                            <img src="@if(!empty($employee->avatar)){{asset('files/'.$employee->avatar)}} @else {{asset('company-assets/images/users/avatar-3.jpg')}} @endif" class="rounded-circle avatar-xs" alt="">
+                                                            <img src="@if(!empty($employee->avatar)){{asset('files/images/'.$employee->avatar)}} @else {{asset('company-assets/images/users/avatar-3.jpg')}} @endif" class="rounded-circle avatar-xs" alt="">
                                                         </div>
                                                         <div class="media-body overflow-hidden">
                                                             <h5 class="text-truncate font-size-14 mb-1">{{$employee->first_name.' '.$employee->last_name}}</h5>
@@ -123,6 +123,7 @@
                     </div>
                     <div class="p-3 chat-input-section">
                         <form class="" name="send_message" id="send_message_form">
+                            <input type="hidden" name="to_user" value="" id="to_user" />
                             <div class="row">
                                 <div class="col">
                                     <div class="position-relative">
@@ -173,7 +174,7 @@
         Pusher.logToConsole = true;
         setTimeout(() => {
             var current_user_id = $("#current_user").val();
-            window.Echo.private(`chat-message.11`)
+            window.Echo.private(`chat-message.${current_user_id}`)
                 .listen('.server.created', (e) => {
                     console.log(e);
                     $.post(main_path+'/receive', {
@@ -205,7 +206,8 @@
                 },
                 data: {
                     _token: '{{csrf_token()}}',
-                    message: $('form#send_message_form #message').val()
+                    message: $('form#send_message_form #message').val(),
+                    to_user:$('form#send_message_form #to_user').val()
                 }
             }).done(function (res) {
                 $('#load_conversation > li').last().after(res);

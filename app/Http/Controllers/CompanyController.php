@@ -65,8 +65,11 @@ class CompanyController extends Controller
     public function search(Request $request){
         if($jobtitle=JobTitle::where('id',$request->jobtitle)->first())
         {
+            $jobs=JobTitle::where('id',$request->jobtitle)->get();
         $jobtitlear=$jobtitle->name_ar;
-        $jobtitleen=$jobtitle->name_en;}
+        $jobtitleen=$jobtitle->name_en;}else{
+            $jobs=JobTitle::where('name_en','like','%software%')->take(8)->get();
+        }
         $name=$request->name;
         $amount=$request->amount;
             $cvs=CustomerCv::latest();
@@ -87,9 +90,12 @@ class CompanyController extends Controller
                 $cvs=$cvs->wherehas('customer_cv_skill',function($q) use ($skills) {
                         $q->whereIn('skill_id', $skills);
                     return $q;
-                });}
+                $skills=Skill::whereIn('id',$skills)->get();
+                });}else{
+                $skills=Skill::where('is_general',1)->get();
+            }
                 $cvs=$cvs->take($amount)->paginate(10);
-        return view('company-cp.find_cv',compact('cvs'));
+        return view('company-cp.find_cv',compact('cvs','skills','jobs'));
     }
 
     public function profile(){

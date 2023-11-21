@@ -60,7 +60,7 @@ class CompanyChatController extends Controller
     }
     public function broadcast(Request $request){
         $message=LiveChatMessage::create(['from_user'=>Auth::guard('company')->user()->id,
-            'to_user'=>8,'employee_id'=>8,
+            'to_user'=>$request->to_user,'employee_id'=>$request->to_user,
             'company_id'=>Auth::guard('company')->user()->id,
             'image'=>'images/202311151852125763876_3446160035431815_6420745989722415528_n.jpg',
             'message'=>$request->get('message')]);

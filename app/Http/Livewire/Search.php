@@ -49,7 +49,8 @@ class Search extends Component
 
 
     public function render()
-    {
-        return view('livewire.search');
+    {  $skills=Skill::where('is_general',1)->get();
+        $jobs=JobTitle::where('name_en','like','%software%')->take(8)->get();
+        return view('livewire.search',compact('skills','jobs'));
     }
 }
